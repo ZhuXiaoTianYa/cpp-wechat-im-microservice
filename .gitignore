@@ -1,2 +1,5 @@
 example/gflags/gflags
 example/gtest/gtest
+example/spdlog/async
+example/spdlog/sync
+example/spdlog/log.txt
