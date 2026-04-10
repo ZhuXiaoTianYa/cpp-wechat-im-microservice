@@ -5,3 +5,6 @@ example/spdlog/sync
 example/spdlog/log.txt
 example/spdlog/main.log
 example/spdlog/main
+example/etcd/etcd-cpp-apiv3
+example/etcd/get
+example/etcd/put
