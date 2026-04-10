@@ -3,3 +3,5 @@ example/gtest/gtest
 example/spdlog/async
 example/spdlog/sync
 example/spdlog/log.txt
+example/spdlog/main.log
+example/spdlog/main
