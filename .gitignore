@@ -10,3 +10,5 @@ example/etcd/get
 example/etcd/put
 example/registry_discover/registry
 example/registry_discover/discovery
+example/brpc/client
+example/brpc/server
