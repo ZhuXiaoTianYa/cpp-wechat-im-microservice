@@ -12,3 +12,5 @@ example/registry_discover/registry
 example/registry_discover/discovery
 example/brpc/client
 example/brpc/server
+example/channel/discovery
+example/channel/registry

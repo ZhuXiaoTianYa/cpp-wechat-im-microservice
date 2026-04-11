@@ -81,8 +81,8 @@ private:
             else if (ev.event_type() == etcd::Event::EventType::DELETE_)
             {
                 if (_del_cb)
-                    _del_cb(ev.kv().key(), ev.kv().as_string());
-                LOG_DEBUG("下线服务: {}-{}", ev.kv().key(), ev.kv().as_string());
+                    _del_cb(ev.prev_kv().key(), ev.prev_kv().as_string());
+                LOG_DEBUG("下线服务: {}-{}", ev.prev_kv().key(), ev.prev_kv().as_string());
             }
         }
     }

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <spdlog/spdlog.h>
 #include <spdlog/async.h>
