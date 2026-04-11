@@ -8,3 +8,5 @@ example/spdlog/main
 example/etcd/etcd-cpp-apiv3
 example/etcd/get
 example/etcd/put
+example/registry_discover/registry
+example/registry_discover/discovery
