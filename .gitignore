@@ -18,3 +18,4 @@ example/json/main
 example/es/main
 example/es/icsearch
 example/httplib/main
+example/websocketpp/main
