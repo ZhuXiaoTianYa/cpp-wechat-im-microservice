@@ -17,3 +17,4 @@ example/channel/registry
 example/json/main
 example/es/main
 example/es/icsearch
+example/httplib/main
