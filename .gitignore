@@ -20,3 +20,5 @@ example/es/icsearch
 example/httplib/main
 example/websocketpp/main
 example/redis++/main
+example/odb/test1/main
+example/odb/test2/main
