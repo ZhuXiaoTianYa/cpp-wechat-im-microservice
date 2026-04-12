@@ -14,3 +14,4 @@ example/brpc/client
 example/brpc/server
 example/channel/discovery
 example/channel/registry
+example/json/main
