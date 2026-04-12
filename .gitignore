@@ -16,3 +16,4 @@ example/channel/discovery
 example/channel/registry
 example/json/main
 example/es/main
+example/es/icsearch
