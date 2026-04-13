@@ -22,3 +22,5 @@ example/websocketpp/main
 example/redis++/main
 example/odb/test1/main
 example/odb/test2/main
+example/AMQP-CPP/publish
+example/AMQP-CPP/consume
