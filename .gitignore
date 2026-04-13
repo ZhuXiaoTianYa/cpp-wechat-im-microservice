@@ -26,3 +26,5 @@ example/AMQP-CPP/AMQP-TEST/publish
 example/AMQP-CPP/AMQP-TEST/consume
 example/AMQP-CPP/rabbitmq_consume
 example/AMQP-CPP/rabbitmq_publish
+example/dms/dms_test
+example/dms/main
