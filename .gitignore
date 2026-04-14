@@ -28,3 +28,4 @@ example/AMQP-CPP/rabbitmq_consume
 example/AMQP-CPP/rabbitmq_publish
 example/dms/dms_test
 example/dms/main
+example/speech/test/test

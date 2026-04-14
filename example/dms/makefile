@@ -6,4 +6,4 @@ dms_test:dms_test.cc
 	g++ -std=c++11 $^ -o $@ -lcurl -lcrypto -lspdlog -lfmt -lgflags
 .PHONY:clean
 clean:
-	rm -f main dms_test
+	rm -f main dms_test 
