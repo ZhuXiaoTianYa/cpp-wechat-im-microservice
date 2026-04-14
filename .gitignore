@@ -30,3 +30,4 @@ example/dms/dms_test
 example/dms/main
 example/speech/test/test
 example/speech/asr_test.cc
+example/cmake/build
