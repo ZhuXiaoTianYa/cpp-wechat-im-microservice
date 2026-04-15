@@ -31,3 +31,4 @@ example/dms/main
 example/speech/test/test
 example/speech/asr_test.cc
 example/cmake/build
+code/server/speech/build

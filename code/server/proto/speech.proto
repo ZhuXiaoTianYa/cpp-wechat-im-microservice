@@ -1,5 +1,5 @@
 syntax = "proto3";
-package bite_im;
+package im_server;
 option cc_generic_services = true;
 
 /*
@@ -19,8 +19,8 @@ message SpeechRecognitionReq {
 message SpeechRecognitionRsp {
     string request_id = 1;
     bool success = 2;
-    string errmsg = 3;
-    string recognition_result = 4;
+    optional string errmsg = 3;
+    optional string recognition_result = 4;
 }
 
 service SpeechService {
