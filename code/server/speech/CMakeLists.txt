@@ -1,8 +1,13 @@
 # 1.添加cmake版本说明
 cmake_minimum_required(VERSION 3.28.3) 
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # 2.声明工程名称
 project(speech_server)
 set(target "speech_server")
+set(test_client "speech_client")
 # 3.检测并生成ODB框架代码
 #   1.添加所需的ODB映射代码的文件名称
 set(proto_path ${CMAKE_CURRENT_SOURCE_DIR}/../proto)
@@ -33,11 +38,20 @@ set(src_files "")
 aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/source src_files)
 # 5.声明目标及依赖
 add_executable(${target} ${src_files} ${proto_srcs})
+target_link_libraries(${target} -lgflags -lspdlog -lfmt -lcurl -ljsoncpp -lbrpc -lleveldb  -lssl -lcrypto -lprotobuf -letcd-cpp-api -lcpprest)
+target_link_libraries(${target} -lgflags -lspdlog -lfmt -lcurl -ljsoncpp -lbrpc -lleveldb  -lssl -lcrypto -lprotobuf -letcd-cpp-api -lcpprest)
+
+
+set(test_files "")
+aux_source_directory(${CMAKE_CURRENT_SOURCE_DIR}/test test_files)
+add_executable(${test_client} ${test_files} ${proto_srcs})
+target_link_libraries(${test_client} -lgflags -lspdlog -lfmt -lcurl -ljsoncpp -lbrpc -lleveldb  -lssl -lcrypto -lprotobuf -letcd-cpp-api -lcpprest)
+target_link_libraries(${test_client} -lgflags -lspdlog -lfmt -lcurl -ljsoncpp -lbrpc -lleveldb  -lssl -lcrypto -lprotobuf -letcd-cpp-api -lcpprest)
+
 # 6.设置头文件默认搜索路径
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../common)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../third/include)
 # 7.设置需要连接的库
-target_link_libraries(${target} -lgflags -lspdlog -lfmt -lcurl -ljsoncpp -lbrpc -lleveldb  -lssl -lcrypto -lprotobuf -letcd-cpp-api -lcpprest)
 # 8.设置安装路径
 INSTALL(TARGETS ${target} RUNTIME DESTINATION bin)

@@ -7,9 +7,9 @@ DEFINE_string(log_file, "", "发布模式下，指定日志输出文件");
 DEFINE_uint32(log_level, 0, "发布模式下，指定日志输出等级");
 
 DEFINE_string(registry_host, "http://127.0.0.1:2379", "注册服务中心地址");
-DEFINE_string(base_service, "/service", "服务器监考根目录");
+DEFINE_string(base_service, "/service", "服务器监控根目录");
 DEFINE_string(instance_name, "/speech_service/instance", "当前实例化名称");
-DEFINE_string(access_host, "127.0.0.1:8080", "当前实例化外部访问地址");
+DEFINE_string(access_host, "127.0.0.1:9001", "当前实例化外部访问地址");
 
 DEFINE_string(app_id, "123456", "云服务的APP ID");
 DEFINE_string(api_key, "123456", "云服务的API KEY");
