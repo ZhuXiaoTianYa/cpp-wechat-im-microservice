@@ -16,8 +16,8 @@ message UserRegisterReq {
     string request_id = 1;
     string nickname = 2;
     string password = 3;
-    string verify_code_id = 4;
-    string verify_code = 5;
+    optional string verify_code_id = 4;
+    optional string verify_code = 5;
 }
 
 message UserRegisterRsp {
