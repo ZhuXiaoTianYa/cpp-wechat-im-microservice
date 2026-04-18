@@ -10,6 +10,7 @@ option cc_generic_services = true;
 当服务发现的时候，通过 /service/file 进行服务发现，就可以发现所有的能够提供用户操作的实例信息了
 */
 
+
 message GetSingleFileReq {
     string request_id = 1;
     string file_id = 2;
@@ -21,7 +22,7 @@ message GetSingleFileRsp {
     string request_id = 1;
     bool success = 2;
     string errmsg = 3;
-    FileDownloadData file_data = 4;
+    optional FileDownloadData file_data = 4;
 }
 
 message GetMultiFileReq {
@@ -44,7 +45,6 @@ message PutSingleFileReq {
     optional string session_id = 3;
     FileUploadData file_data = 4;
 }
-
 message PutSingleFileRsp {
     string request_id = 1;
     bool success = 2;
@@ -71,4 +71,4 @@ service FileService {
     rpc GetMultiFile(GetMultiFileReq) returns (GetMultiFileRsp);
     rpc PutSingleFile(PutSingleFileReq) returns (PutSingleFileRsp);
     rpc PutMultiFile(PutMultiFileReq) returns (PutMultiFileRsp);
-}
+} 
