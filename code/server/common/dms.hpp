@@ -13,6 +13,7 @@ namespace im_server
     class DMSClient
     {
     public:
+        using ptr=std::shared_ptr<DMSClient>;
         // 初始化时创建 CURL 句柄
         DMSClient(const std::string &access_key_id, const std::string &access_key_secret)
             : _access_key_id(access_key_id),

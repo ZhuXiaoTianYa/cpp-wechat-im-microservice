@@ -27,6 +27,19 @@ namespace im_server
         return ss.str();
     }
 
+    std::string vcode()
+    {
+        std::random_device rd;
+        std::mt19937 generator(rd());
+        std::uniform_int_distribution<int> distribution(0, 9);
+        std::stringstream ss;
+        for (int i = 0; i < 6; i++)
+        {
+            ss << distribution(generator);
+        }
+        return ss.str();
+    }
+
     bool readFile(const std::string &filename, std::string &body)
     {
         std::ifstream ifs(filename, std::ios::binary);

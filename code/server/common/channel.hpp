@@ -11,7 +11,7 @@ namespace im_server
     class ServiceChannel
     {
     public:
-        using Ptr = std::shared_ptr<ServiceChannel>;
+        using ptr = std::shared_ptr<ServiceChannel>;
         using ChannelPtr = std::shared_ptr<brpc::Channel>;
         ServiceChannel(const std::string &name) : _service_name(name), _index(0) {}
 
@@ -76,7 +76,7 @@ namespace im_server
     class ServiceManager
     {
     public:
-        using Ptr = std::shared_ptr<ServiceManager>;
+        using ptr = std::shared_ptr<ServiceManager>;
         ServiceManager() {}
         ServiceChannel::ChannelPtr choose(const std::string &service_name)
         {
@@ -99,7 +99,7 @@ namespace im_server
         void onServiceOnline(const std::string &service_instance, const std::string &host)
         {
             std::string service_name = getServiceName(service_instance);
-            ServiceChannel::Ptr service;
+            ServiceChannel::ptr service;
             {
                 std::unique_lock<std::mutex> lock(_mutex);
                 auto fit = _follow_services.find(service_name);
@@ -130,7 +130,7 @@ namespace im_server
         void onServiceOffline(const std::string &service_instance, const std::string &host)
         {
             std::string service_name = getServiceName(service_instance);
-            ServiceChannel::Ptr service;
+            ServiceChannel::ptr service;
             {
                 std::unique_lock<std::mutex> lock(_mutex);
                 auto fit = _follow_services.find(service_name);
@@ -162,7 +162,7 @@ namespace im_server
 
     private:
         std::mutex _mutex;
-        std::unordered_map<std::string, ServiceChannel::Ptr> _services;
+        std::unordered_map<std::string, ServiceChannel::ptr> _services;
         std::unordered_set<std::string> _follow_services;
     };
 }

@@ -192,3 +192,6 @@ service UserService {
     rpc SetUserDescription(SetUserDescriptionReq) returns (SetUserDescriptionRsp);
     rpc SetUserPhoneNumber(SetUserPhoneNumberReq) returns (SetUserPhoneNumberRsp);
 }
+
+
+// protoc --cpp_out=./ --experimental_allow_proto3_optional -I ../../proto user.proto

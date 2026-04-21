@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 {
     gflags::ParseCommandLineFlags(&argc, &argv, true);
     im_server::init_logger(FLAGS_run_mode, FLAGS_log_file, FLAGS_log_level);
-    im_server::ServiceManager::Ptr sm = std::make_shared<im_server::ServiceManager>();
+    im_server::ServiceManager::ptr sm = std::make_shared<im_server::ServiceManager>();
     auto put_cb = std::bind(&im_server::ServiceManager::onServiceOnline, sm.get(), std::placeholders::_1, std::placeholders::_2);
     auto del_cb = std::bind(&im_server::ServiceManager::onServiceOffline, sm.get(), std::placeholders::_1, std::placeholders::_2);
     sm->declared(FLAGS_speech_name);
