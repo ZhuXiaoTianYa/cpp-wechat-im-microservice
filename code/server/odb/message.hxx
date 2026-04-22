@@ -11,6 +11,49 @@ namespace im_server {
 class Message {
 public:
     Message() {}
+    Message(const std::string &message_id, const std::string &session_id,
+            const std::string &user_id, const unsigned char message_type,
+            const boost::posix_time::ptime &create_time)
+        : _message_id(message_id), _session_id(session_id), _user_id(user_id),
+          _message_type(message_type), _create_time(create_time) {}
+
+    void message_id(const std::string &val) { _message_id = val; }
+    std::string message_id() { return _message_id; }
+
+    void session_id(const std::string &val) { _session_id = val; }
+    std::string session_id() { return _session_id; }
+    void user_id(const std::string &val) { _user_id = val; }
+    std::string user_id() { return _user_id; }
+    void message_type(const unsigned char val) { _message_type = val; }
+    unsigned char message_type() { return _message_type; }
+    void create_time(const boost::posix_time::ptime &val) {
+        _create_time = val;
+    }
+    boost::posix_time::ptime create_time() { return _create_time; }
+    void file_id(const std::string &val) { _file_id = val; }
+    std::string file_id() {
+        if (!_file_id)
+            return std::string();
+        return *_file_id;
+    }
+    void file_name(const std::string &val) { _file_name = val; }
+    std::string file_name() {
+        if (!_file_name)
+            return std::string();
+        return *_file_name;
+    }
+    void content(const std::string &val) { _content = val; }
+    std::string content() {
+        if (!_content)
+            return std::string();
+        return *_content;
+    }
+    void file_size(const unsigned int &val) { _file_size = val; }
+    unsigned int file_size() {
+        if (!_file_size)
+            return 0;
+        return *_file_size;
+    }
 
 private:
     friend class odb::access;

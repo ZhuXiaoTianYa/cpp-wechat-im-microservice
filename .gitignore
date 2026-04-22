@@ -38,3 +38,4 @@ code/server/user/test/es_test/main
 code/server/user/test/redis_test/main
 code/server/user/test/mysql_test/main
 code/server/transmite/build
+code/server/message/test/mysql_test/main

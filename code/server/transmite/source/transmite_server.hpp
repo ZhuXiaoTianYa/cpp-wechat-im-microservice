@@ -4,9 +4,9 @@
 
 #include "base.pb.h"
 #include "channel.hpp"
-#include "data_mysql.hpp"
 #include "etcd.hpp"
 #include "logger.hpp"
+#include "mysql_chat_session_member.hpp"
 #include "rabbitmq.hpp"
 #include "transmite.pb.h"
 #include "user-odb.hxx"
