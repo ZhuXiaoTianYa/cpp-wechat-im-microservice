@@ -29,5 +29,5 @@ private:
 } // namespace im_server
 
 // odb -d mysql --std c++11 --generate-query --generate-schema --profile
-// boost/date-time ../../../odb/chat_session_member.hxx
+// c
 //

@@ -201,9 +201,9 @@ public:
       trans.commit();
     } catch (std::exception &e) {
       LOG_ERROR("获取会话成员失败 {}:{}", ssid, e.what());
-      return false;
+      return res;
     }
-    return true;
+    return res;
   }
 
 private:
