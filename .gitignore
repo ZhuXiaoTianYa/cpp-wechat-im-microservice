@@ -40,3 +40,4 @@ code/server/user/test/mysql_test/main
 code/server/transmite/build
 code/server/message/test/mysql_test/main
 code/server/message/test/es_test/main
+code/server/message/build
