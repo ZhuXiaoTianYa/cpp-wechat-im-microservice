@@ -19,6 +19,7 @@
 #include <functional>
 #include <string>
 #include <unordered_map>
+#include <unordered_set>
 #include <utility>
 #include <vector>
 namespace im_server {
@@ -32,7 +33,9 @@ public:
         : _es_message(std::make_shared<ESMessage>(es_client)),
           _mysql_message(std::make_shared<MessageTable>(mysql_client)),
           _mm_channels(mm_channels), _file_service_name(file_service_name),
-          _user_service_name(user_service_name) {}
+          _user_service_name(user_service_name) {
+        _es_message->createIndex();
+    }
     ~MessageServiceImpl() {}
 
     virtual void GetHistoryMsg(::google::protobuf::RpcController *controller,
@@ -55,15 +58,15 @@ public:
         boost::posix_time::ptime etime =
             boost::posix_time::from_time_t(request->over_time());
         auto msg_list = _mysql_message->range(chat_ssid, stime, etime);
-        std::vector<std::string> file_id_list;
+        std::unordered_set<std::string> file_id_list;
         for (auto &msg : msg_list) {
             if (msg.file_id().empty())
                 continue;
-            file_id_list.push_back(msg.file_id());
+            file_id_list.insert(msg.file_id());
         }
-        std::vector<std::string> user_id_list;
+        std::unordered_set<std::string> user_id_list;
         for (auto &msg : msg_list) {
-            user_id_list.push_back(msg.user_id());
+            user_id_list.insert(msg.user_id());
         }
 
         std::unordered_map<std::string, std::string> file_data_list;
@@ -92,7 +95,7 @@ public:
                     MessageType::STRING);
                 message_info->mutable_message()
                     ->mutable_string_message()
-                    ->set_content(file_data_list[msg.file_id()]);
+                    ->set_content(msg.content());
                 break;
             case MessageType::IMAGE:
                 message_info->mutable_message()->set_message_type(
@@ -134,7 +137,6 @@ public:
                 LOG_ERROR("消息类型错误");
                 return;
             }
-            response->add_msg_list()->mutable_message();
         }
         response->set_request_id(rid);
         response->set_success(true);
@@ -157,15 +159,15 @@ public:
         std::string chat_ssid = request->chat_session_id();
         int64_t msg_count = request->msg_count();
         auto msg_list = _mysql_message->recent(chat_ssid, msg_count);
-        std::vector<std::string> file_id_list;
+        std::unordered_set<std::string> file_id_list;
         for (auto &msg : msg_list) {
             if (msg.file_id().empty())
                 continue;
-            file_id_list.push_back(msg.file_id());
+            file_id_list.insert(msg.file_id());
         }
-        std::vector<std::string> user_id_list;
+        std::unordered_set<std::string> user_id_list;
         for (auto &msg : msg_list) {
-            user_id_list.push_back(msg.user_id());
+            user_id_list.insert(msg.user_id());
         }
 
         std::unordered_map<std::string, std::string> file_data_list;
@@ -194,7 +196,7 @@ public:
                     MessageType::STRING);
                 message_info->mutable_message()
                     ->mutable_string_message()
-                    ->set_content(file_data_list[msg.file_id()]);
+                    ->set_content(msg.content());
                 break;
             case MessageType::IMAGE:
                 message_info->mutable_message()->set_message_type(
@@ -236,7 +238,6 @@ public:
                 LOG_ERROR("消息类型错误");
                 return;
             }
-            response->add_msg_list()->mutable_message();
         }
         response->set_request_id(rid);
         response->set_success(true);
@@ -259,9 +260,9 @@ public:
         std::string chat_ssid = request->chat_session_id();
         std::string skey = request->search_key();
         auto msg_list = _es_message->search(skey, chat_ssid);
-        std::vector<std::string> user_id_list;
+        std::unordered_set<std::string> user_id_list;
         for (auto &msg : msg_list) {
-            user_id_list.push_back(msg.user_id());
+            user_id_list.insert(msg.user_id());
         }
         std::unordered_map<std::string, UserInfo> user_info_list;
         bool ret = _GetUser(rid, user_id_list, user_info_list);
@@ -282,7 +283,6 @@ public:
             message_info->mutable_message()
                 ->mutable_string_message()
                 ->set_content(msg.content());
-            response->add_msg_list()->mutable_message();
         }
         response->set_request_id(rid);
         response->set_success(true);
@@ -298,6 +298,7 @@ public:
         }
         std::string file_id, file_name, content;
         int64_t file_size;
+        LOG_ERROR("获取一次消费：{}", message.message().message_type());
         switch (message.message().message_type()) {
         case MessageType::STRING:
             content = message.message().string_message().content();
@@ -312,6 +313,7 @@ public:
         case MessageType::IMAGE: {
             const auto &msg = message.message().image_message();
             file_size = msg.image_content().size();
+            LOG_DEBUG("收到图片消息 {}", file_size);
             ret = _PutFile("", msg.image_content(), file_size, file_id);
             if (ret == false) {
                 LOG_ERROR("上传图片到文件子服务失败");
@@ -322,6 +324,7 @@ public:
             const auto &msg = message.message().file_message();
             file_name = msg.file_name();
             file_size = msg.file_size();
+            LOG_DEBUG("收到文件消息 {}-{}", file_name, file_size);
             ret = _PutFile(file_name, msg.file_contents(), file_size, file_id);
             if (ret == false) {
                 LOG_ERROR("上传文件到文件子服务失败");
@@ -331,6 +334,7 @@ public:
         case MessageType::SPEECH: {
             const auto &msg = message.message().speech_message();
             file_size = msg.file_contents().size();
+            LOG_DEBUG("收到语音消息 {}", file_size);
             ret = _PutFile("", msg.file_contents(), file_size, file_id);
             if (ret == false) {
                 LOG_ERROR("上传语音到文件子服务失败");
@@ -359,7 +363,7 @@ public:
 private:
     bool
     _GetFile(const std::string &rid,
-             const std::vector<std::string> &file_id_list,
+             const std::unordered_set<std::string> &file_id_list,
              std::unordered_map<std::string, std::string> &file_data_list) {
         auto channel = _mm_channels->choose(_file_service_name);
         if (!channel) {
@@ -388,7 +392,7 @@ private:
     }
 
     bool _GetUser(const std::string &rid,
-                  const std::vector<std::string> &user_id_list,
+                  const std::unordered_set<std::string> &user_id_list,
                   std::unordered_map<std::string, UserInfo> &user_info_list) {
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {

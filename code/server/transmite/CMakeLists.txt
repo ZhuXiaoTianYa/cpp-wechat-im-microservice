@@ -36,7 +36,7 @@ foreach(proto_file IN LISTS proto_files)
 endforeach()
 
 set(odb_path ${CMAKE_CURRENT_SOURCE_DIR}/../odb)
-set(odb_files chat_session_member.hxx user.hxx)
+set(odb_files chat_session_member.hxx)
 #   2.检测框架代码文件是否已经生成
 set(odb_hxx "")
 set(odb_cxx "")
@@ -83,4 +83,4 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../odb)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../third/include)
 # 7.设置需要连接的库
 # 8.设置安装路径
-INSTALL(TARGETS ${target} RUNTIME DESTINATION bin)
+INSTALL(TARGETS ${target} ${test_client}  RUNTIME DESTINATION bin)

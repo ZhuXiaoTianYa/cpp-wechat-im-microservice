@@ -125,18 +125,18 @@ std::string code_id;
 //   ASSERT_TRUE(resp.success());
 // }
 
-// void set_user_avatar(std::string uid, std::string avatar) {
-//   auto channel = user_channels->choose(FLAGS_user_service);
-//   im_server::UserService_Stub stub(channel.get());
-//   im_server::SetUserAvatarReq req;
-//   im_server::SetUserAvatarRsp resp;
-//   brpc::Controller cntl;
-//   req.set_request_id(im_server::uuid());
-//   req.set_user_id(uid);
-//   req.set_session_id(session_id);
-//   req.set_avatar(avatar);
-//   stub.SetUserAvatar(&cntl, &req, &resp, nullptr);
-// }
+void set_user_avatar(std::string uid, std::string avatar) {
+    auto channel = user_channels->choose(FLAGS_user_service);
+    im_server::UserService_Stub stub(channel.get());
+    im_server::SetUserAvatarReq req;
+    im_server::SetUserAvatarRsp resp;
+    brpc::Controller cntl;
+    req.set_request_id(im_server::uuid());
+    req.set_user_id(uid);
+    req.set_session_id(session_id);
+    req.set_avatar(avatar);
+    stub.SetUserAvatar(&cntl, &req, &resp, nullptr);
+}
 
 // TEST(用户子服务测试, 批量用户信息获取测试) {
 //   set_user_avatar("用户ID1", "小猪佩奇的头像数据");
@@ -176,18 +176,18 @@ std::string code_id;
 // }
 
 void get_code(std::string phone) {
-  auto channel = user_channels->choose(FLAGS_user_service);
-  ASSERT_TRUE(channel);
-  im_server::UserService_Stub stub(channel.get());
-  im_server::PhoneVerifyCodeReq req;
-  im_server::PhoneVerifyCodeRsp resp;
-  brpc::Controller cntl;
-  req.set_request_id(im_server::uuid());
-  req.set_phone_number(phone);
-  stub.GetPhoneVerifyCode(&cntl, &req, &resp, nullptr);
-  code_id = resp.verify_code_id();
-  ASSERT_FALSE(cntl.Failed());
-  ASSERT_TRUE(resp.success());
+    auto channel = user_channels->choose(FLAGS_user_service);
+    ASSERT_TRUE(channel);
+    im_server::UserService_Stub stub(channel.get());
+    im_server::PhoneVerifyCodeReq req;
+    im_server::PhoneVerifyCodeRsp resp;
+    brpc::Controller cntl;
+    req.set_request_id(im_server::uuid());
+    req.set_phone_number(phone);
+    stub.GetPhoneVerifyCode(&cntl, &req, &resp, nullptr);
+    code_id = resp.verify_code_id();
+    ASSERT_FALSE(cntl.Failed());
+    ASSERT_TRUE(resp.success());
 }
 
 // TEST(用户子服务测试, 手机号注册测试) {
@@ -238,50 +238,72 @@ void get_code(std::string phone) {
 // }
 
 TEST(用户子服务测试, 手机号修改测试) {
-  auto channel = user_channels->choose(FLAGS_user_service);
-  ASSERT_TRUE(channel);
-  im_server::UserService_Stub stub(channel.get());
-  im_server::SetUserPhoneNumberReq req;
-  im_server::SetUserPhoneNumberRsp resp;
-  brpc::Controller cntl;
-  std::string phone;
-  std::string user_id;
-  std::cout << "请输入uid: ";
-  std::cin >> user_id;
-  std::cout << "请输入手机号: ";
-  std::cin >> phone;
-  std::string code;
-  get_code(phone);
-  std::cout << "请输入手机验证码: ";
-  std::cin >> code;
-  req.set_request_id(im_server::uuid());
-  req.set_user_id(user_id);
-  req.set_phone_number("18888888888");
-  req.set_phone_verify_code_id(code_id);
-  req.set_phone_verify_code(code);
-  stub.SetUserPhoneNumber(&cntl, &req, &resp, nullptr);
-  ASSERT_FALSE(cntl.Failed());
-  ASSERT_TRUE(resp.success());
+    auto channel = user_channels->choose(FLAGS_user_service);
+    ASSERT_TRUE(channel);
+    im_server::UserService_Stub stub(channel.get());
+    im_server::SetUserPhoneNumberReq req;
+    im_server::SetUserPhoneNumberRsp resp;
+    brpc::Controller cntl;
+    std::string phone;
+    std::string user_id;
+    std::cout << "请输入uid: ";
+    std::cin >> user_id;
+    std::cout << "请输入手机号: ";
+    std::cin >> phone;
+    std::string code;
+    get_code(phone);
+    std::cout << "请输入手机验证码: ";
+    std::cin >> code;
+    req.set_request_id(im_server::uuid());
+    req.set_user_id(user_id);
+    req.set_phone_number("18888888888");
+    req.set_phone_verify_code_id(code_id);
+    req.set_phone_verify_code(code);
+    stub.SetUserPhoneNumber(&cntl, &req, &resp, nullptr);
+    ASSERT_FALSE(cntl.Failed());
+    ASSERT_TRUE(resp.success());
 }
 
-int main(int argc, char *argv[]) {
-  testing::InitGoogleTest(&argc, argv);
-  gflags::ParseCommandLineFlags(&argc, &argv, true);
-  im_server::init_logger(FLAGS_run_mode, FLAGS_log_file, FLAGS_log_level);
+// int main(int argc, char *argv[]) {
+//   testing::InitGoogleTest(&argc, argv);
+//   gflags::ParseCommandLineFlags(&argc, &argv, true);
+//   im_server::init_logger(FLAGS_run_mode, FLAGS_log_file, FLAGS_log_level);
 
-  user_channels = std::make_shared<im_server::ServiceManager>();
-  auto put_cb = std::bind(&im_server::ServiceManager::onServiceOnline,
-                          user_channels.get(), std::placeholders::_1,
-                          std::placeholders::_2);
-  auto del_cb = std::bind(&im_server::ServiceManager::onServiceOffline,
-                          user_channels.get(), std::placeholders::_1,
-                          std::placeholders::_2);
-  user_channels->declared(FLAGS_user_service);
-  im_server::Discoverer::ptr dclient = std::make_shared<im_server::Discoverer>(
-      FLAGS_etcd_host, FLAGS_base_service, put_cb, del_cb);
-  user_info.set_nickname("猪妈妈");
-  user_info.set_user_id(user_id);
-  user_info.set_avatar("猪妈妈的头像数据");
-  user_info.set_description("这是一个美丽的妈妈");
-  return RUN_ALL_TESTS();
+//   user_channels = std::make_shared<im_server::ServiceManager>();
+//   auto put_cb = std::bind(&im_server::ServiceManager::onServiceOnline,
+//                           user_channels.get(), std::placeholders::_1,
+//                           std::placeholders::_2);
+//   auto del_cb = std::bind(&im_server::ServiceManager::onServiceOffline,
+//                           user_channels.get(), std::placeholders::_1,
+//                           std::placeholders::_2);
+//   user_channels->declared(FLAGS_user_service);
+//   im_server::Discoverer::ptr dclient =
+//   std::make_shared<im_server::Discoverer>(
+//       FLAGS_etcd_host, FLAGS_base_service, put_cb, del_cb);
+//   user_info.set_nickname("猪妈妈");
+//   user_info.set_user_id(user_id);
+//   user_info.set_avatar("猪妈妈的头像数据");
+//   user_info.set_description("这是一个美丽的妈妈");
+//   return RUN_ALL_TESTS();
+// }
+
+int main(int argc, char *argv[]) {
+    testing::InitGoogleTest(&argc, argv);
+    gflags::ParseCommandLineFlags(&argc, &argv, true);
+    im_server::init_logger(FLAGS_run_mode, FLAGS_log_file, FLAGS_log_level);
+
+    user_channels = std::make_shared<im_server::ServiceManager>();
+    auto put_cb = std::bind(&im_server::ServiceManager::onServiceOnline,
+                            user_channels.get(), std::placeholders::_1,
+                            std::placeholders::_2);
+    auto del_cb = std::bind(&im_server::ServiceManager::onServiceOffline,
+                            user_channels.get(), std::placeholders::_1,
+                            std::placeholders::_2);
+    user_channels->declared(FLAGS_user_service);
+    im_server::Discoverer::ptr dclient =
+        std::make_shared<im_server::Discoverer>(
+            FLAGS_etcd_host, FLAGS_base_service, put_cb, del_cb);
+    set_user_avatar("用户ID1", "小猪佩奇的头像");
+    set_user_avatar("用户ID2", "小猪乔治的头像");
+    return 0;
 }

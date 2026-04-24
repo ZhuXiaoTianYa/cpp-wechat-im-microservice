@@ -51,6 +51,7 @@ public:
             for (result::iterator it(r.begin()); it != r.end(); it++) {
                 res.push_back(*it);
             }
+            std::reverse(res.begin(), res.end());
             trans.commit();
         } catch (std::exception &e) {
             LOG_ERROR("获取最近消息失败 {}-{}-{}", ssid, count, e.what());

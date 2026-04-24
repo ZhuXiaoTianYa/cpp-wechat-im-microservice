@@ -9,8 +9,6 @@
 #include "mysql_chat_session_member.hpp"
 #include "rabbitmq.hpp"
 #include "transmite.pb.h"
-#include "user-odb.hxx"
-#include "user.hxx"
 #include "user.pb.h"
 #include "utils.hpp"
 namespace im_server {
