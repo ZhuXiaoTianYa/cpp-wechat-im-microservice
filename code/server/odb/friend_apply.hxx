@@ -4,13 +4,13 @@
 #include <string>
 
 namespace im_server {
-#pragma db object table("relation")
-class Relation {
+#pragma db object table("friend_apply")
+class FriendApply {
 public:
-    Relation() {}
+    FriendApply() {}
     // 用户名--新增用户 -- 用户ID, 昵称，密码
-    Relation(const std::string &eid, const std::string &uid,
-             const std::string &pid)
+    FriendApply(const std::string &eid, const std::string &uid,
+                const std::string &pid)
         : _user_id(uid), _peer_id(pid), _event_id(eid) {}
 
     void user_id(const std::string &val) { _user_id = val; }

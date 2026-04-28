@@ -57,10 +57,10 @@ public:
         std::vector<User> res;
         Json::Value json_user;
         json_user = EsSearch(_es_client, "user")
-                        .append_should_match("user_id.keyword", key)
+                        .append_should_match("user_id", key)
                         .append_should_match("nickname", key)
-                        .append_should_match("phone.keyword", key)
-                        .append_must_not_term("user_id.keyword", uid_list)
+                        .append_should_match("phone", key)
+                        .append_must_not_term("user_id", uid_list)
                         .search();
         if (json_user.isArray() == false) {
             LOG_INFO("查询结果为空或不是数组类型");

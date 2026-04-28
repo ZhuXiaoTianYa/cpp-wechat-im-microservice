@@ -125,16 +125,17 @@ int main(int argc, char *argv[]) {
         std::make_shared<im_server::Discoverer>(
             FLAGS_etcd_host, FLAGS_base_service, put_cb, del_cb);
 
-    string_message("用户ID1", "会话ID1", "你吃饭了吗");
-    LOG_DEBUG("字符串消息1已发送");
-    string_message("用户ID2", "会话ID1", "吃了盖浇饭");
-    LOG_DEBUG("字符串消息2已发送");
-    image_message("用户ID2", "会话ID1", "一个可爱的表情包");
-    LOG_DEBUG("图片消息1已发送");
-    speech_message("用户ID1", "会话ID1", "一声可爱的猪叫");
-    LOG_DEBUG("语音消息1已发送");
-    file_message("用户ID1", "会话ID1", "佩奇的文件名字", "佩奇的文件数据");
-    LOG_DEBUG("文件消息1已发送");
+    // string_message("用户ID1", "会话ID1", "你吃饭了吗");
+    // LOG_DEBUG("字符串消息1已发送");
+    // string_message("用户ID2", "会话ID1", "吃了盖浇饭");
+    // LOG_DEBUG("字符串消息2已发送");
+    // image_message("用户ID2", "会话ID1", "一个可爱的表情包");
+    // LOG_DEBUG("图片消息1已发送");
+    // speech_message("用户ID1", "会话ID1", "一声可爱的猪叫");
+    // LOG_DEBUG("语音消息1已发送");
+    file_message("292b-27cfaa08-0000", "5f2e-d00db990-0001", "猪爸爸的文件名字",
+                 "猪爸爸的文件数据");
+    // LOG_DEBUG("文件消息1已发送");
 
     return 0;
 }

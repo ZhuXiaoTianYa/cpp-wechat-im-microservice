@@ -42,3 +42,5 @@ code/server/message/test/mysql_test/main
 code/server/message/test/es_test/main
 code/server/message/build
 code/server/build
+code/server/friend/test/mysql_test/main
+code/server/friend/build/

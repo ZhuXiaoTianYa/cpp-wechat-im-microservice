@@ -41,6 +41,22 @@ std::string code_id;
 //     ASSERT_TRUE(resp.success());
 // }
 
+// TEST(用户子服务测试, 用户注册测试) {
+//     auto channel = user_channels->choose(FLAGS_user_service);
+//     ASSERT_TRUE(channel);
+//     im_server::UserService_Stub stub(channel.get());
+//     im_server::UserRegisterReq req;
+//     im_server::UserRegisterRsp resp;
+//     brpc::Controller cntl;
+//     req.set_request_id(im_server::uuid());
+//     req.set_nickname("猪爸爸");
+//     req.set_password("123456");
+//     // user_info.set_nickname("猪妈妈");
+//     stub.UserRegister(&cntl, &req, &resp, nullptr);
+//     ASSERT_FALSE(cntl.Failed());
+//     ASSERT_TRUE(resp.success());
+// }
+
 // TEST(用户子服务测试, 用户登录测试) {
 //   auto channel = user_channels->choose(FLAGS_user_service);
 //   ASSERT_TRUE(channel);
@@ -303,7 +319,9 @@ int main(int argc, char *argv[]) {
     im_server::Discoverer::ptr dclient =
         std::make_shared<im_server::Discoverer>(
             FLAGS_etcd_host, FLAGS_base_service, put_cb, del_cb);
-    set_user_avatar("用户ID1", "小猪佩奇的头像");
-    set_user_avatar("用户ID2", "小猪乔治的头像");
+    // set_user_avatar("用户ID1", "小猪佩奇的头像");
+    // set_user_avatar("用户ID2", "小猪乔治的头像");
+    // set_user_avatar("d96a-620dc7e7-0000", "亲爱的猪妈妈的头像数据");
+    set_user_avatar("292b-27cfaa08-0000", "严肃的猪爸爸的头像数据");
     return 0;
 }
