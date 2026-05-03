@@ -11,6 +11,7 @@ qt_add_executable(ChatClient
     mainwidget.cpp
     mainwidget.h
     mainwidget.ui
+    model/data.h
 )
 
 target_link_libraries(ChatClient
