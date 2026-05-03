@@ -44,3 +44,4 @@ code/server/message/build
 code/server/build
 code/server/friend/test/mysql_test/main
 code/server/friend/build/
+code/server/gateway/build/

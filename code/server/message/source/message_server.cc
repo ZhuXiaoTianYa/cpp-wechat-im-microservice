@@ -9,9 +9,9 @@ DEFINE_uint32(log_level, 0, "发布模式下，指定日志输出等级");
 DEFINE_string(registry_host, "http://127.0.0.1:2379", "注册服务中心地址");
 DEFINE_string(base_service, "/service", "服务器监控根目录");
 DEFINE_string(instance_name, "/message_service/instance", "当前实例化名称");
-DEFINE_string(access_host, "127.0.0.1:9005", "当前实例化外部访问地址");
+DEFINE_string(access_host, "127.0.0.1:9006", "当前实例化外部访问地址");
 
-DEFINE_int32(listen_port, 9005, "Rpc服务监听端口");
+DEFINE_int32(listen_port, 9006, "Rpc服务监听端口");
 DEFINE_int32(rpc_timeout, -1, "Rpc调用超时时间");
 DEFINE_int32(rpc_threads, 1, "Rpc的I/O线程数量");
 

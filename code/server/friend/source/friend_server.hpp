@@ -22,17 +22,6 @@
 #include <vector>
 namespace im_server {
 
-// rpc GetFriendList(GetFriendListReq) returns(GetFriendListRsp);
-// rpc FriendRemove(FriendRemoveReq) returns(FriendRemoveRsp);
-// rpc FriendAdd(FriendAddReq) returns(FriendAddRsp);
-// rpc FriendAddProcess(FriendAddProcessReq) returns(FriendAddProcessRsp);
-// rpc FriendSearch(FriendSearchReq) returns(FriendSearchRsp);
-// rpc GetChatSessionList(GetChatSessionListReq) returns(GetChatSessionListRsp);
-// rpc ChatSessionCreate(ChatSessionCreateReq) returns(ChatSessionCreateRsp);
-// rpc GetChatSessionMember(GetChatSessionMemberReq)
-//     returns(GetChatSessionMemberRsp);
-// rpc GetPendingFriendEventList(GetPendingFriendEventListReq)
-//     returns(GetPendingFriendEventListRsp);
 
 class FriendServiceImpl : public FriendService {
 public:
