@@ -266,6 +266,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.30.5/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.30.5/CMakeRCCompiler.cmake"
   "CMakeFiles/3.30.5/CMakeSystem.cmake"
+  "D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/resource.qrc"
   )
 
 # The corresponding makefile is:
@@ -277,6 +278,7 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/ChatClient_autogen.dir/AutogenInfo.json"
+  "CMakeFiles/ChatClient_autogen.dir/AutoRcc_resource_EWIEGA46WW_Info.json"
   ".qt/QtDeploySupport.cmake"
   ".qt/deploy_ChatClient_7d81c8bc7a.cmake"
   ".qt/QtDeployTargets.cmake"

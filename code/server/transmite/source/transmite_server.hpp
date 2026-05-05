@@ -71,6 +71,10 @@ public:
         message.set_timestamp(time(nullptr));
         message.mutable_sender()->CopyFrom(resp.user_info());
         message.mutable_message()->CopyFrom(request->message());
+        std::string data = message.SerializeAsString();
+        LOG_DEBUG("Publish size: {}, first 4 bytes: {}{}{}{}", data.size(),
+                  (unsigned char)data[0], (unsigned char)data[1],
+                  (unsigned char)data[2], (unsigned char)data[3]);
         bool ret = _mq_client->publish(
             _exchange_name, message.SerializeAsString(), _routing_key);
         if (ret == false) {

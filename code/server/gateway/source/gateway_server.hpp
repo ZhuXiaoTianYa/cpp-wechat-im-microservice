@@ -23,6 +23,7 @@
 #include <string>
 #include <thread>
 #include <websocketpp/close.hpp>
+#include <websocketpp/connection.hpp>
 #include <websocketpp/frame.hpp>
 namespace im_server {
 #define GET_PHONE_VERIFY_CODE "/service/user/get_phone_verify_code"
@@ -229,6 +230,17 @@ private:
         LOG_DEBUG("{}-{}-{} 长连接断开，清理缓存数据", ssid, uid,
                   (size_t)conn.get());
     }
+
+    void keepAlive(server_t::connection_ptr conn) {
+        if (!conn ||
+            conn->get_state() != websocketpp::session::state::value::open) {
+            LOG_DEBUG("非正常连接状态，结束连接保活");
+            return;
+        }
+        conn->ping("");
+        _ws_server.set_timer(60000,
+                             std::bind(&GatewayServer::keepAlive, this, conn));
+    }
     void onMessage(websocketpp::connection_hdl hdl, server_t::message_ptr msg) {
         auto conn = _ws_server.get_con_from_hdl(hdl);
         ClientAuthenticationReq req;
@@ -248,11 +260,13 @@ private:
             return;
         }
         _connections->insert(conn, *uid, ssid);
+        keepAlive(conn);
         LOG_DEBUG("新增长连接管理：{}-{}-{}", ssid, *uid, (size_t)conn.get());
     }
 
     void GetPhoneVerifyCode(const httplib::Request &request,
                             httplib::Response &response) {
+        LOG_ERROR("{} 用户注册请求收到");
         PhoneVerifyCodeReq req;
         PhoneVerifyCodeRsp rsp;
         brpc::Controller cntl;
@@ -423,11 +437,13 @@ private:
             return err_response("获取用户信息请求反序列化失败");
         }
         std::string ssid = req.session_id();
+        LOG_DEBUG("{} 用户ssid", ssid);
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
             LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
             return err_response("获取登录会话关联信息失败");
         }
+        LOG_DEBUG("{} 用户uid", *uid);
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
@@ -686,8 +702,9 @@ private:
             LOG_ERROR("{} 好友子服务调用失败", req.request_id());
             return err_response("好友子服务调用失败");
         }
-        auto conn = _connections->connection(*uid);
+        auto conn = _connections->connection(req.respondent_id());
         if (rsp.success() == true && conn) {
+            LOG_DEBUG("{}-被申请人在线", req.respondent_id());
             auto user_rsp = _GetUserInfo(req.request_id(), *uid);
             if (!user_rsp) {
                 LOG_ERROR("{} 获取用户信息失败", req.request_id());
@@ -760,8 +777,9 @@ private:
                 LOG_ERROR("{} 获取用户信息失败", req.request_id());
             }
             if (argee && apply_conn) {
+                LOG_DEBUG("{}-申请人在线", apply_id);
                 NotifyMessage notify;
-                notify.set_notify_type(NotifyType::FRIEND_ADD_PROCESS_NOTIFY);
+                notify.set_notify_type(NotifyType::CHAT_SESSION_CREATE_NOTIFY);
                 notify.mutable_new_chat_session_info()
                     ->mutable_chat_session_info()
                     ->set_single_chat_friend_id(*uid);
@@ -770,17 +788,18 @@ private:
                     ->set_chat_session_id(new_session_id);
                 notify.mutable_new_chat_session_info()
                     ->mutable_chat_session_info()
-                    ->set_avatar(process_user_rsp->user_info().avatar());
-                notify.mutable_new_chat_session_info()
-                    ->mutable_chat_session_info()
                     ->set_chat_session_name(
                         process_user_rsp->user_info().nickname());
+                notify.mutable_new_chat_session_info()
+                    ->mutable_chat_session_info()
+                    ->set_avatar(process_user_rsp->user_info().avatar());
                 apply_conn->send(notify.SerializeAsString(),
                                  websocketpp::frame::opcode::binary);
             }
             if (argee && process_conn) {
+                LOG_DEBUG("{}-处理人在线", *uid);
                 NotifyMessage notify;
-                notify.set_notify_type(NotifyType::FRIEND_ADD_PROCESS_NOTIFY);
+                notify.set_notify_type(NotifyType::CHAT_SESSION_CREATE_NOTIFY);
                 notify.mutable_new_chat_session_info()
                     ->mutable_chat_session_info()
                     ->set_single_chat_friend_id(apply_id);
@@ -789,11 +808,11 @@ private:
                     ->set_chat_session_id(new_session_id);
                 notify.mutable_new_chat_session_info()
                     ->mutable_chat_session_info()
-                    ->set_avatar(apply_user_rsp->user_info().avatar());
-                notify.mutable_new_chat_session_info()
-                    ->mutable_chat_session_info()
                     ->set_chat_session_name(
                         apply_user_rsp->user_info().nickname());
+                notify.mutable_new_chat_session_info()
+                    ->mutable_chat_session_info()
+                    ->set_avatar(apply_user_rsp->user_info().avatar());
                 process_conn->send(notify.SerializeAsString(),
                                    websocketpp::frame::opcode::binary);
             }
@@ -838,6 +857,7 @@ private:
         }
         auto conn = _connections->connection(peer_id);
         if (rsp.success() == true && conn) {
+            LOG_DEBUG("{}-被删除好友在线", peer_id);
             NotifyMessage notify;
             notify.set_notify_type(NotifyType::FRIEND_REMOVE_NOTIFY);
             notify.mutable_friend_remove()->set_user_id(*uid);
@@ -1033,6 +1053,7 @@ private:
             for (int i = 0; i < req.member_id_list_size(); i++) {
                 auto conn = _connections->connection(req.member_id_list(i));
                 if (!conn) {
+                    LOG_DEBUG("{}-用户未在线", req.member_id_list(i));
                     continue;
                 }
                 NotifyMessage notify;
@@ -1329,7 +1350,7 @@ private:
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
-        auto channel = _mm_channels->choose(_message_service_name);
+        auto channel = _mm_channels->choose(_speech_service_name);
         if (!channel) {
             LOG_ERROR("{} 未找到可供业务处理的语音子服务节点",
                       req.request_id());

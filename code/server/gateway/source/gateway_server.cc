@@ -8,7 +8,6 @@ DEFINE_uint32(log_level, 0, "发布模式下，指定日志输出等级");
 
 DEFINE_string(registry_host, "http://127.0.0.1:2379", "注册服务中心地址");
 DEFINE_string(base_service, "/service", "服务器监控根目录");
-DEFINE_string(access_host, "127.0.0.1:9003", "当前实例化外部访问地址");
 
 DEFINE_string(redis_host, "127.0.0.1", "设置Redis的IP地址,格式:127.0.0.1");
 DEFINE_int32(redis_port, 6379, "设置Redis的监听端口,格式:6379");
@@ -37,7 +36,7 @@ int main(int argc, char *argv[]) {
                               FLAGS_file_service, FLAGS_user_service,
                               FLAGS_message_service, FLAGS_speech_service,
                               FLAGS_transmite_service, FLAGS_friend_service);
-    gsb.make_server_object(FLAGS_http_listen_port, FLAGS_websocket_listen_port);
+    gsb.make_server_object(FLAGS_websocket_listen_port, FLAGS_http_listen_port);
     auto server = gsb.build();
     server->start();
     return 0;

@@ -177,6 +177,30 @@ ChatClient_autogen\fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient_autogen.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient_autogen.dir\build
 .PHONY : ChatClient_autogen\fast
 
+ChatClient_autogen\EWIEGA46WW\qrc_resource.obj: ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj
+.PHONY : ChatClient_autogen\EWIEGA46WW\qrc_resource.obj
+
+# target to build an object file
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj
+.PHONY : ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj
+
+ChatClient_autogen\EWIEGA46WW\qrc_resource.i: ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.i
+.PHONY : ChatClient_autogen\EWIEGA46WW\qrc_resource.i
+
+# target to preprocess a source file
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.i
+.PHONY : ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.i
+
+ChatClient_autogen\EWIEGA46WW\qrc_resource.s: ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.s
+.PHONY : ChatClient_autogen\EWIEGA46WW\qrc_resource.s
+
+# target to generate assembly for a file
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.s
+.PHONY : ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.s
+
 ChatClient_autogen\mocs_compilation.obj: ChatClient_autogen\mocs_compilation.cpp.obj
 .PHONY : ChatClient_autogen\mocs_compilation.obj
 
@@ -200,6 +224,30 @@ ChatClient_autogen\mocs_compilation.s: ChatClient_autogen\mocs_compilation.cpp.s
 ChatClient_autogen\mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.s
 .PHONY : ChatClient_autogen\mocs_compilation.cpp.s
+
+closebutton.obj: closebutton.cpp.obj
+.PHONY : closebutton.obj
+
+# target to build an object file
+closebutton.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\closebutton.cpp.obj
+.PHONY : closebutton.cpp.obj
+
+closebutton.i: closebutton.cpp.i
+.PHONY : closebutton.i
+
+# target to preprocess a source file
+closebutton.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\closebutton.cpp.i
+.PHONY : closebutton.cpp.i
+
+closebutton.s: closebutton.cpp.s
+.PHONY : closebutton.s
+
+# target to generate assembly for a file
+closebutton.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\closebutton.cpp.s
+.PHONY : closebutton.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -249,6 +297,54 @@ mainwidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\mainwidget.cpp.s
 .PHONY : mainwidget.cpp.s
 
+sessionfriendarea.obj: sessionfriendarea.cpp.obj
+.PHONY : sessionfriendarea.obj
+
+# target to build an object file
+sessionfriendarea.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj
+.PHONY : sessionfriendarea.cpp.obj
+
+sessionfriendarea.i: sessionfriendarea.cpp.i
+.PHONY : sessionfriendarea.i
+
+# target to preprocess a source file
+sessionfriendarea.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.i
+.PHONY : sessionfriendarea.cpp.i
+
+sessionfriendarea.s: sessionfriendarea.cpp.s
+.PHONY : sessionfriendarea.s
+
+# target to generate assembly for a file
+sessionfriendarea.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.s
+.PHONY : sessionfriendarea.cpp.s
+
+titlebar.obj: titlebar.cpp.obj
+.PHONY : titlebar.obj
+
+# target to build an object file
+titlebar.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\titlebar.cpp.obj
+.PHONY : titlebar.cpp.obj
+
+titlebar.i: titlebar.cpp.i
+.PHONY : titlebar.i
+
+# target to preprocess a source file
+titlebar.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\titlebar.cpp.i
+.PHONY : titlebar.cpp.i
+
+titlebar.s: titlebar.cpp.s
+.PHONY : titlebar.s
+
+# target to generate assembly for a file
+titlebar.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\ChatClient.dir\build.make /nologo -$(MAKEFLAGS) CMakeFiles\ChatClient.dir\titlebar.cpp.s
+.PHONY : titlebar.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -263,15 +359,27 @@ help:
 	@echo ... ChatClient_autogen
 	@echo ... ChatClient_autogen_timestamp_deps
 	@echo ... ChatClient
+	@echo ... ChatClient_autogen/EWIEGA46WW/qrc_resource.obj
+	@echo ... ChatClient_autogen/EWIEGA46WW/qrc_resource.i
+	@echo ... ChatClient_autogen/EWIEGA46WW/qrc_resource.s
 	@echo ... ChatClient_autogen/mocs_compilation.obj
 	@echo ... ChatClient_autogen/mocs_compilation.i
 	@echo ... ChatClient_autogen/mocs_compilation.s
+	@echo ... closebutton.obj
+	@echo ... closebutton.i
+	@echo ... closebutton.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
 	@echo ... mainwidget.obj
 	@echo ... mainwidget.i
 	@echo ... mainwidget.s
+	@echo ... sessionfriendarea.obj
+	@echo ... sessionfriendarea.i
+	@echo ... sessionfriendarea.s
+	@echo ... titlebar.obj
+	@echo ... titlebar.i
+	@echo ... titlebar.s
 .PHONY : help
 
 

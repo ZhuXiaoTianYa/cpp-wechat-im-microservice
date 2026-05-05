@@ -383,7 +383,8 @@
 		"D:/Qt6/6.11.0/msvc2022_64/lib/cmake/Qt6/QtPublicWindowsHelpers.cmake",
 		"D:/Qt6/Tools/CMake_64/share/cmake-3.30/Modules/CMakeFindDependencyMacro.cmake",
 		"D:/Qt6/6.11.0/msvc2022_64/lib/cmake/Qt6/Qt6Dependencies.cmake",
-		"D:/Qt6/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake"
+		"D:/Qt6/Tools/CMake_64/share/cmake-3.30/Modules/GNUInstallDirs.cmake",
+		"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/resource.qrc"
 	],
 	"CMAKE_SOURCE_DIR" : "D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient",
 	"CROSS_CONFIG" : false,
@@ -391,6 +392,12 @@
 	"DEP_FILE_RULE_NAME" : "ChatClient_autogen/timestamp",
 	"HEADERS" : 
 	[
+		[
+			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/closebutton.h",
+			"MU",
+			"EWIEGA46WW/moc_closebutton.cpp",
+			null
+		],
 		[
 			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/mainwidget.h",
 			"MU",
@@ -401,6 +408,18 @@
 			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/model/data.h",
 			"MU",
 			"NLOY5YBGEN/moc_data.cpp",
+			null
+		],
+		[
+			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/sessionfriendarea.h",
+			"MU",
+			"EWIEGA46WW/moc_sessionfriendarea.cpp",
+			null
+		],
+		[
+			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/titlebar.h",
+			"MU",
+			"EWIEGA46WW/moc_titlebar.cpp",
 			null
 		]
 	],
@@ -461,12 +480,27 @@
 	"SOURCES" : 
 	[
 		[
+			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/closebutton.cpp",
+			"MU",
+			null
+		],
+		[
 			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/main.cpp",
 			"MU",
 			null
 		],
 		[
 			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/mainwidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/sessionfriendarea.cpp",
+			"MU",
+			null
+		],
+		[
+			"D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/titlebar.cpp",
 			"MU",
 			null
 		]

@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.19)
 project(ChatClient LANGUAGES CXX)
 
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
+
 find_package(Qt6 6.5 REQUIRED COMPONENTS Core Widgets)
 
 qt_standard_project_setup()
@@ -12,6 +16,11 @@ qt_add_executable(ChatClient
     mainwidget.h
     mainwidget.ui
     model/data.h
+    resource.qrc
+    sessionfriendarea.h sessionfriendarea.cpp
+    titlebar.h titlebar.cpp
+    closebutton.h closebutton.cpp
+
 )
 
 target_link_libraries(ChatClient

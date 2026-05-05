@@ -58,10 +58,42 @@ include CMakeFiles\ChatClient.dir\progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles\ChatClient.dir\flags.make
 
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource.qrc
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: CMakeFiles\ChatClient_autogen.dir\AutoRcc_resource_EWIEGA46WW_Info.json
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\history.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\cross.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\modify.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\max.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\submit.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\min.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\sound.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\friend_inactive.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\apply_inactive.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\search.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\more.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\session_inactive.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\close_active.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\sound_active.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\file.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\logo.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\apply_active.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\unchecked.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\friend_active.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\session_active.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\groupAvatar.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\checked.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\defaultAvatar.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\image.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\resource\image\close_inactive.png
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Qt6\6.11.0\msvc2022_64\bin\rcc.exe
+ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp: D:\Qt6\6.11.0\msvc2022_64\bin\rcc.exe
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic RCC for resource.qrc"
+	D:\Qt6\Tools\CMake_64\bin\cmake.exe -E cmake_autorcc D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/CMakeFiles/ChatClient_autogen.dir/AutoRcc_resource_EWIEGA46WW_Info.json Debug
+
 CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
 CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj: ChatClient_autogen\mocs_compilation.cpp
 CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/ChatClient.dir/ChatClient_autogen/mocs_compilation.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ChatClient.dir/ChatClient_autogen/mocs_compilation.cpp.obj"
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\ChatClient_autogen\mocs_compilation.cpp
 <<
@@ -81,7 +113,7 @@ CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.s: cmake_force
 CMakeFiles\ChatClient.dir\main.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
 CMakeFiles\ChatClient.dir\main.cpp.obj: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\main.cpp
 CMakeFiles\ChatClient.dir\main.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/ChatClient.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ChatClient.dir/main.cpp.obj"
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\main.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\main.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\main.cpp
 <<
@@ -101,7 +133,7 @@ CMakeFiles\ChatClient.dir\main.cpp.s: cmake_force
 CMakeFiles\ChatClient.dir\mainwidget.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
 CMakeFiles\ChatClient.dir\mainwidget.cpp.obj: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\mainwidget.cpp
 CMakeFiles\ChatClient.dir\mainwidget.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/ChatClient.dir/mainwidget.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ChatClient.dir/mainwidget.cpp.obj"
 	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\mainwidget.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\mainwidget.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\mainwidget.cpp
 <<
@@ -118,11 +150,95 @@ CMakeFiles\ChatClient.dir\mainwidget.cpp.s: cmake_force
  /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ChatClient.dir\mainwidget.cpp.s /c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\mainwidget.cpp
 <<
 
+CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
+CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\sessionfriendarea.cpp
+CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ChatClient.dir/sessionfriendarea.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\sessionfriendarea.cpp
+<<
+
+CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/sessionfriendarea.cpp.i"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" > CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\sessionfriendarea.cpp
+<<
+
+CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/sessionfriendarea.cpp.s"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ChatClient.dir\sessionfriendarea.cpp.s /c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\sessionfriendarea.cpp
+<<
+
+CMakeFiles\ChatClient.dir\titlebar.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
+CMakeFiles\ChatClient.dir\titlebar.cpp.obj: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\titlebar.cpp
+CMakeFiles\ChatClient.dir\titlebar.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ChatClient.dir/titlebar.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\titlebar.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\titlebar.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\titlebar.cpp
+<<
+
+CMakeFiles\ChatClient.dir\titlebar.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/titlebar.cpp.i"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" > CMakeFiles\ChatClient.dir\titlebar.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\titlebar.cpp
+<<
+
+CMakeFiles\ChatClient.dir\titlebar.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/titlebar.cpp.s"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ChatClient.dir\titlebar.cpp.s /c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\titlebar.cpp
+<<
+
+CMakeFiles\ChatClient.dir\closebutton.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
+CMakeFiles\ChatClient.dir\closebutton.cpp.obj: D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\closebutton.cpp
+CMakeFiles\ChatClient.dir\closebutton.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ChatClient.dir/closebutton.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\closebutton.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\closebutton.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\closebutton.cpp
+<<
+
+CMakeFiles\ChatClient.dir\closebutton.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/closebutton.cpp.i"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" > CMakeFiles\ChatClient.dir\closebutton.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\closebutton.cpp
+<<
+
+CMakeFiles\ChatClient.dir\closebutton.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/closebutton.cpp.s"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ChatClient.dir\closebutton.cpp.s /c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\closebutton.cpp
+<<
+
+CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj: CMakeFiles\ChatClient.dir\flags.make
+CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj: ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp
+CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj: CMakeFiles\ChatClient.dir\compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ChatClient.dir/ChatClient_autogen/EWIEGA46WW/qrc_resource.cpp.obj"
+	$(CMAKE_COMMAND) -E cmake_cl_compile_depends --dep-file=CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj.d --working-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug --filter-prefix="注意: 包含文件:  " -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /showIncludes /FoCMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj /FdCMakeFiles\ChatClient.dir\ /FS -c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp
+<<
+
+CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ChatClient.dir/ChatClient_autogen/EWIEGA46WW/qrc_resource.cpp.i"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" > CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.i @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp
+<<
+
+CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ChatClient.dir/ChatClient_autogen/EWIEGA46WW/qrc_resource.cpp.s"
+	"D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\cl.exe" @<<
+ /nologo /TP $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) /FoNUL /FAs /FaCMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.s /c D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp
+<<
+
 # Object files for target ChatClient
 ChatClient_OBJECTS = \
 "CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj" \
 "CMakeFiles\ChatClient.dir\main.cpp.obj" \
-"CMakeFiles\ChatClient.dir\mainwidget.cpp.obj"
+"CMakeFiles\ChatClient.dir\mainwidget.cpp.obj" \
+"CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj" \
+"CMakeFiles\ChatClient.dir\titlebar.cpp.obj" \
+"CMakeFiles\ChatClient.dir\closebutton.cpp.obj" \
+"CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj"
 
 # External object files for target ChatClient
 ChatClient_EXTERNAL_OBJECTS =
@@ -130,13 +246,17 @@ ChatClient_EXTERNAL_OBJECTS =
 ChatClient.exe: CMakeFiles\ChatClient.dir\ChatClient_autogen\mocs_compilation.cpp.obj
 ChatClient.exe: CMakeFiles\ChatClient.dir\main.cpp.obj
 ChatClient.exe: CMakeFiles\ChatClient.dir\mainwidget.cpp.obj
+ChatClient.exe: CMakeFiles\ChatClient.dir\sessionfriendarea.cpp.obj
+ChatClient.exe: CMakeFiles\ChatClient.dir\titlebar.cpp.obj
+ChatClient.exe: CMakeFiles\ChatClient.dir\closebutton.cpp.obj
+ChatClient.exe: CMakeFiles\ChatClient.dir\ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp.obj
 ChatClient.exe: CMakeFiles\ChatClient.dir\build.make
 ChatClient.exe: D:\Qt6\6.11.0\msvc2022_64\lib\Qt6Widgetsd.lib
 ChatClient.exe: D:\Qt6\6.11.0\msvc2022_64\lib\Qt6Guid.lib
 ChatClient.exe: D:\Qt6\6.11.0\msvc2022_64\lib\Qt6Cored.lib
 ChatClient.exe: D:\Qt6\6.11.0\msvc2022_64\lib\Qt6EntryPointd.lib
 ChatClient.exe: CMakeFiles\ChatClient.dir\objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ChatClient.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ChatClient.exe"
 	D:\Qt6\Tools\CMake_64\bin\cmake.exe -E vs_link_exe --intdir=CMakeFiles\ChatClient.dir --rc="D:\Windows Kits\10\bin\10.0.26100.0\x64\rc.exe" --mt="D:\Windows Kits\10\bin\10.0.26100.0\x64\mt.exe" --manifests -- "D:\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\Hostx64\x64\link.exe" /nologo @CMakeFiles\ChatClient.dir\objects1.rsp @<<
  /out:ChatClient.exe /implib:ChatClient.lib /pdb:D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\ChatClient.pdb /version:0.0 /machine:x64 /debug /INCREMENTAL /subsystem:windows  D:\Qt6\6.11.0\msvc2022_64\lib\Qt6Widgetsd.lib D:\Qt6\6.11.0\msvc2022_64\lib\Qt6Guid.lib D:\Qt6\6.11.0\msvc2022_64\lib\Qt6Cored.lib mpr.lib userenv.lib D:\Qt6\6.11.0\msvc2022_64\lib\Qt6EntryPointd.lib shell32.lib d3d11.lib dxgi.lib dxguid.lib d3d12.lib kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib 
 <<
@@ -149,7 +269,7 @@ CMakeFiles\ChatClient.dir\clean:
 	$(CMAKE_COMMAND) -P CMakeFiles\ChatClient.dir\cmake_clean.cmake
 .PHONY : CMakeFiles\ChatClient.dir\clean
 
-CMakeFiles\ChatClient.dir\depend:
+CMakeFiles\ChatClient.dir\depend: ChatClient_autogen\EWIEGA46WW\qrc_resource.cpp
 	$(CMAKE_COMMAND) -E cmake_depends "NMake Makefiles JOM" D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug D:\Repositories\gitee\cpp-feishu-im-microservice\code\client\ChatClient\build\Desktop_Qt_6_11_0_MSVC2022_64bit-Debug\CMakeFiles\ChatClient.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles\ChatClient.dir\depend
 

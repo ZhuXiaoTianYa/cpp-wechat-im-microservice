@@ -39,7 +39,9 @@ public:
           _redis_status(std::make_shared<Status>(redis_client)),
           _redis_code(std::make_shared<Code>(redis_client)),
           _mm_channels(mm_channels), _file_service_name(file_service_name),
-          _dms_client(dms_client) {}
+          _dms_client(dms_client) {
+        _es_user->createIndex();
+    }
     ~UserServiceImpl() {}
 
     bool nickname_check(const std::string &nickname) {
@@ -157,7 +159,7 @@ public:
         }
         std::string ssid = uuid();
         _redis_session->append(ssid, user->user_id());
-        _redis_status->append(ssid);
+        _redis_status->append(user->user_id());
         response->set_request_id(request->request_id());
         response->set_success(true);
         response->set_login_session_id(ssid);
@@ -291,7 +293,7 @@ public:
         }
         std::string ssid = uuid();
         _redis_session->append(ssid, user->user_id());
-        _redis_status->append(ssid);
+        _redis_status->append(user->user_id());
         response->set_request_id(request->request_id());
         response->set_success(true);
         response->set_login_session_id(ssid);
@@ -310,6 +312,7 @@ public:
             return;
         };
         std::string uid = request->user_id();
+        LOG_DEBUG("{}-uid", uid);
         auto user = _mysql_user->select_by_id(uid);
         if (!user) {
             LOG_ERROR("{} - 未找到用户信息 - {}", request->request_id(), uid);

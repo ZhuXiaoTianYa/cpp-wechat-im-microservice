@@ -58,6 +58,11 @@ public:
         boost::posix_time::ptime etime =
             boost::posix_time::from_time_t(request->over_time());
         auto msg_list = _mysql_message->range(chat_ssid, stime, etime);
+        if (msg_list.empty()) {
+            response->set_request_id(rid);
+            response->set_success(true);
+            return;
+        }
         std::unordered_set<std::string> file_id_list;
         for (auto &msg : msg_list) {
             if (msg.file_id().empty())
@@ -159,6 +164,11 @@ public:
         std::string chat_ssid = request->chat_session_id();
         int64_t msg_count = request->msg_count();
         auto msg_list = _mysql_message->recent(chat_ssid, msg_count);
+        if (msg_list.empty()) {
+            response->set_request_id(rid);
+            response->set_success(true);
+            return;
+        }
         std::unordered_set<std::string> file_id_list;
         for (auto &msg : msg_list) {
             if (msg.file_id().empty())
@@ -228,10 +238,10 @@ public:
                 message_info->mutable_message()->set_message_type(
                     MessageType::SPEECH);
                 message_info->mutable_message()
-                    ->mutable_file_message()
+                    ->mutable_speech_message()
                     ->set_file_contents(file_data_list[msg.file_id()]);
                 message_info->mutable_message()
-                    ->mutable_file_message()
+                    ->mutable_speech_message()
                     ->set_file_id(msg.file_id());
                 break;
             default:
@@ -260,6 +270,11 @@ public:
         std::string chat_ssid = request->chat_session_id();
         std::string skey = request->search_key();
         auto msg_list = _es_message->search(skey, chat_ssid);
+        if (msg_list.empty()) {
+            response->set_request_id(rid);
+            response->set_success(true);
+            return;
+        }
         std::unordered_set<std::string> user_id_list;
         for (auto &msg : msg_list) {
             user_id_list.insert(msg.user_id());
@@ -290,6 +305,10 @@ public:
     }
 
     void onMessage(const char *body, size_t sz) {
+        LOG_DEBUG("Received MQ body size: {}, first 4 bytes: "
+                  "{}{}{}{}",
+                  sz, (unsigned char)body[0], (unsigned char)body[1],
+                  (unsigned char)body[2], (unsigned char)body[3]);
         MessageInfo message;
         bool ret = message.ParseFromArray(body, sz);
         if (ret == false) {

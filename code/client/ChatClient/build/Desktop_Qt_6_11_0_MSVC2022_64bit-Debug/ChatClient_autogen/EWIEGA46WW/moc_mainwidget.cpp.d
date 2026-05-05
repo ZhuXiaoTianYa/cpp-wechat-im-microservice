@@ -11,6 +11,7 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstdint \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstdlib \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/cstring \
+  D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/excpt.h \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/functional \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/initializer_list \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/iterator \
@@ -41,6 +42,13 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/version \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals.h \
   D:/Microsoft\ Visual\ Studio/2022/Community/VC/Tools/MSVC/14.44.35207/include/yvals_core.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QEvent \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QList \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QObject \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QPoint \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QRect \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QSize \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/QSizeF \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/q17memory.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/q20bit.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/q20functional.h \
@@ -50,6 +58,7 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/q20utility.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/q23type_traits.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/q23utility.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qabstracteventdispatcher.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qalgorithms.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qalloc.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qanystringview.h \
@@ -60,6 +69,7 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qatomic.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qatomic_cxx11.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qbasicatomic.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qbasictimer.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qbindingstorage.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qbytearray.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qbytearrayalgorithms.h \
@@ -77,10 +87,15 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qcontainerinfo.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qcontainertools_impl.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qcontiguouscache.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qcoreapplication.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qcoreapplication_platform.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qcoreevent.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qdarwinhelpers.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qdatastream.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qdeadlinetimer.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qdebug.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qendian.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qeventloop.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qexceptionhandling.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qflags.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qfloat16.h \
@@ -92,12 +107,14 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qglobalstatic.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qhash.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qhashfunctions.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qiodevice.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qiodevicebase.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qiterable.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qiterator.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qlatin1stringview.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qline.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qlist.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qlocale.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qlogging.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qmalloc.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qmap.h \
@@ -107,6 +124,7 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qmetatype.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qminmax.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qnamespace.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qnativeinterface.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qnumeric.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qobject.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qobject_impl.h \
@@ -163,44 +181,125 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qtversionchecks.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qtypeinfo.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qtypes.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qurl.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qutf8stringview.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qvariant.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qvarlengtharray.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qversiontagging.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qxptype_traits.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtCore/qyieldcpu.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/QMouseEvent \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/QTransform \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qaction.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qbitmap.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qbrush.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qcolor.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qcursor.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qevent.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qeventpoint.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qfont.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qfontinfo.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qfontmetrics.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qfontvariableaxis.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qguiapplication.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qguiapplication_platform.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qicon.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qimage.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qinputdevice.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qinputmethod.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qkeysequence.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpaintdevice.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpalette.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpen.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpixelformat.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpixmap.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpointingdevice.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qpolygon.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qregion.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qrgb.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qrgba64.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qscreen.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qscreen_platform.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtextcursor.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtextdocument.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtextformat.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtextoption.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtgui-config.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtguiexports.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtguiglobal.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qtransform.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qvector2d.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qvectornd.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qwindowdefs.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtGui/qwindowdefs_win.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QFrame \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QHBoxLayout \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QLineEdit \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QPushButton \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QScrollArea \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QScrollBar \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QVBoxLayout \
   D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/QWidget \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qabstractbutton.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qabstractscrollarea.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qabstractslider.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qboxlayout.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qframe.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qgridlayout.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qlayout.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qlayoutitem.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qlineedit.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qpushbutton.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qscrollarea.h \
+  D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qscrollbar.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qsizepolicy.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qtwidgets-config.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qtwidgetsexports.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qtwidgetsglobal.h \
   D:/Qt6/6.11.0/msvc2022_64/include/QtWidgets/qwidget.h \
+  D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/closebutton.h \
+  D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/sessionfriendarea.h \
+  D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/titlebar.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/DriverSpecs.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/SpecStrings.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/apiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/apisetcconv.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/basetsd.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/bcrypt.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/cderr.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/driverspecs.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/guiddef.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/inaddr.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/kernelspecs.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/ktmtypes.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/minwindef.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/no_sal2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/poppack.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/pshpack1.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/pshpack2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/pshpack4.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/pshpack8.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpc.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpcasync.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpcdce.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpcdcep.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpcndr.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpcnterr.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/rpcsal.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/sdkddkver.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/sdv_driverspecs.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/specstrings.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/specstrings_strict.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/stralign.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/tvout.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/winapifamily.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/windef.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/winerror.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/winpackagefamily.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/winsmcrd.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/wnnc.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/wtypes.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/shared/wtypesbase.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/assert.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_malloc.h \
@@ -208,11 +307,117 @@ D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/build/De
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_memory.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_search.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_stdio_config.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wctype.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wstdio.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wstdlib.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/corecrt_wstring.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/ctype.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/errno.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/stddef.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/stdio.h \
   D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/stdlib.h \
-  D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/string.h
+  D:/Windows\ Kits/10/include/10.0.26100.0/ucrt/string.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/apiquery2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/cguid.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/combaseapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/coml2api.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/commctrl.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/commdlg.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/consoleapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/consoleapi2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/consoleapi3.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/datetimeapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/dde.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/ddeml.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/debugapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/dlgs.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/dpa_dsa.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/dpapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/dwmapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/enclaveapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/errhandlingapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/fibersapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/fileapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/fileapifromapp.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/handleapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/heapapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/ime_cmodes.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/imm.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/interlockedapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/ioapiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/jobapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/jobapi2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/joystickapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/libloaderapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/lzexpand.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mciapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mcx.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/memoryapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/minwinbase.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mmeapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mmiscapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mmiscapi2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mmsyscom.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/mmsystem.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/msxml.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/namedpipeapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/namespaceapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/nb30.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/ncrypt.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/oaidl.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/objbase.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/objidl.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/objidlbase.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/ole2.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/oleauto.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/oleidl.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/playsoundapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/processenv.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/processthreadsapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/processtopologyapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/profileapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/propidl.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/propidlbase.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/prsht.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/realtimeapiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/reason.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/rpcnsi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/rpcnsip.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/securityappcontainer.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/securitybaseapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/servprov.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/shellapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/stringapiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/synchapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/sysinfoapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/systemtopologyapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/threadpoolapiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/threadpoollegacyapiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/timeapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/timezoneapi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/unknwn.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/unknwnbase.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/urlmon.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/utilapiset.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/uxtheme.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/verrsrc.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winbase.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/wincon.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/wincontypes.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/wincrypt.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/windows.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winefs.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/wingdi.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winioctl.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winnetwk.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winnls.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winnt.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winperf.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winreg.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winscard.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winsock.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winspool.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winsvc.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winuser.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/winver.h \
+  D:/Windows\ Kits/10/include/10.0.26100.0/um/wow64apiset.h

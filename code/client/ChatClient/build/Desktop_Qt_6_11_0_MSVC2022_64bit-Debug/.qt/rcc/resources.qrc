@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/">
+    <file alias="../resource.qrc">D:/Repositories/gitee/cpp-feishu-im-microservice/code/client/ChatClient/resource.qrc</file>
+  </qresource>
+</RCC>
+

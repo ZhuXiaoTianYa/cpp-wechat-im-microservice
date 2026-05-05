@@ -22,7 +22,6 @@
 #include <vector>
 namespace im_server {
 
-
 class FriendServiceImpl : public FriendService {
 public:
     FriendServiceImpl(const std::shared_ptr<odb::core::database> &mysql_client,
