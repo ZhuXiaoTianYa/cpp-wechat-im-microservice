@@ -1,7 +1,8 @@
 /**
  * @file gateway_server.hpp
  * @brief 网关服务模块
- * @details 提供HTTP和WebSocket双协议接入，统一对外服务入口，负责请求路由、会话管理、实时通知
+ * @details
+ * 提供HTTP和WebSocket双协议接入，统一对外服务入口，负责请求路由、会话管理、实时通知
  * @author ZhuTian
  * @date 2026
  */
@@ -86,7 +87,7 @@ namespace im_server {
 class GatewayServer {
 public:
     using ptr = std::shared_ptr<GatewayServer>;
-    
+
     /**
      * @brief 构造函数
      * @param ws_port WebSocket服务端口
@@ -266,8 +267,9 @@ private:
         std::string ssid, uid;
         bool ret = _connections->client(conn, uid, ssid);
         if (ret == false) {
-            LOG_WARN("WebSocket 关闭时未找到连接映射，跳过 Redis 清理 | conn={}",
-                     (void *)conn.get());
+            LOG_WARN(
+                "WebSocket 关闭时未找到连接映射，跳过 Redis 清理 | conn={}",
+                (void *)conn.get());
             return;
         }
         _redis_session->remove(ssid);
@@ -301,18 +303,19 @@ private:
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_WARN(
-                "WebSocket 首包鉴权失败：Redis 中无此 session_id | session_id={}",
-                ssid);
+            LOG_WARN("WebSocket 首包鉴权失败：Redis 中无此 session_id | "
+                     "session_id={}",
+                     ssid);
             _ws_server.close(hdl, websocketpp::close::status::unsupported_data,
                              "未找到会话信息");
             return;
         }
         _connections->insert(conn, *uid, ssid);
         keepAlive(conn);
-        LOG_INFO("WebSocket 鉴权成功并已注册路由 | session_id={} | user_id={} | "
-                 "conn={}",
-                 ssid, *uid, (void *)conn.get());
+        LOG_INFO(
+            "WebSocket 鉴权成功并已注册路由 | session_id={} | user_id={} | "
+            "conn={}",
+            ssid, *uid, (void *)conn.get());
     }
 
     void GetPhoneVerifyCode(const httplib::Request &request,
@@ -574,16 +577,18 @@ private:
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("HTTP 修改头像 | request_id={} | 阶段=RPC选路 | 结果=失败",
-                      req.request_id());
+            LOG_ERROR(
+                "HTTP 修改头像 | request_id={} | 阶段=RPC选路 | 结果=失败",
+                req.request_id());
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.SetUserAvatar(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("HTTP 修改头像 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
-                      "brpc={}",
-                      req.request_id(), cntl.ErrorText());
+            LOG_ERROR(
+                "HTTP 修改头像 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
+                "brpc={}",
+                req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
         LOG_DEBUG("HTTP 修改头像 | request_id={} | user_id={} | 结果=成功",
@@ -617,16 +622,18 @@ private:
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("HTTP 修改昵称 | request_id={} | 阶段=RPC选路 | 结果=失败",
-                      req.request_id());
+            LOG_ERROR(
+                "HTTP 修改昵称 | request_id={} | 阶段=RPC选路 | 结果=失败",
+                req.request_id());
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.SetUserNickname(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("HTTP 修改昵称 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
-                      "brpc={}",
-                      req.request_id(), cntl.ErrorText());
+            LOG_ERROR(
+                "HTTP 修改昵称 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
+                "brpc={}",
+                req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
         LOG_DEBUG("HTTP 修改昵称 | request_id={} | user_id={} | 结果=成功",
@@ -826,7 +833,8 @@ private:
                       req.respondent_id());
             auto user_rsp = _GetUserInfo(req.request_id(), *uid);
             if (!user_rsp) {
-                LOG_ERROR("好友申请推送失败 | request_id={} | 阶段=内部查询申请人资料 | "
+                LOG_ERROR("好友申请推送失败 | request_id={} | "
+                          "阶段=内部查询申请人资料 | "
                           "结果=失败",
                           req.request_id());
                 return err_response("获取用户信息失败");
@@ -882,19 +890,22 @@ private:
             std::string new_session_id = rsp.new_session_id();
             auto process_user_rsp = _GetUserInfo(req.request_id(), *uid);
             if (!process_user_rsp) {
-                LOG_ERROR("好友同意流程 | request_id={} | 阶段=查询处理人资料 | 结果=失败",
+                LOG_ERROR("好友同意流程 | request_id={} | 阶段=查询处理人资料 "
+                          "| 结果=失败",
                           req.request_id());
                 return err_response("获取用户信息失败");
             }
             auto apply_user_rsp = _GetUserInfo(req.request_id(), apply_id);
             if (!apply_user_rsp) {
-                LOG_ERROR("好友同意流程 | request_id={} | 阶段=查询申请人资料 | 结果=失败",
+                LOG_ERROR("好友同意流程 | request_id={} | 阶段=查询申请人资料 "
+                          "| 结果=失败",
                           req.request_id());
                 return err_response("获取用户信息失败");
             }
             auto process_conn = _connections->connection(*uid);
             if (!process_conn) {
-                LOG_DEBUG("会话创建通知跳过 | 处理人当前不在线 | user_id={}", *uid);
+                LOG_DEBUG("会话创建通知跳过 | 处理人当前不在线 | user_id={}",
+                          *uid);
             }
             auto apply_conn = _connections->connection(apply_id);
             if (!apply_conn) {
@@ -902,7 +913,8 @@ private:
                           apply_id);
             }
             if (argee && apply_conn) {
-                LOG_DEBUG("会话创建通知下发 | 目标=申请人 | user_id={}", apply_id);
+                LOG_DEBUG("会话创建通知下发 | 目标=申请人 | user_id={}",
+                          apply_id);
                 NotifyMessage notify;
                 notify.set_notify_type(NotifyType::CHAT_SESSION_CREATE_NOTIFY);
                 notify.mutable_new_chat_session_info()
@@ -1184,8 +1196,9 @@ private:
             for (int i = 0; i < req.member_id_list_size(); i++) {
                 auto conn = _connections->connection(req.member_id_list(i));
                 if (!conn) {
-                    LOG_DEBUG("群会话创建通知跳过 | 成员未建立长连接 | user_id={}",
-                              req.member_id_list(i));
+                    LOG_DEBUG(
+                        "群会话创建通知跳过 | 成员未建立长连接 | user_id={}",
+                        req.member_id_list(i));
                     continue;
                 }
                 NotifyMessage notify;
@@ -1337,7 +1350,7 @@ private:
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
-        auto channel = _mm_channels->choose(_message_service_name);
+        auto channel = _mm_channels->choose(_file_service_name);
         if (!channel) {
             LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
                       req.request_id(), _file_service_name);
@@ -1375,7 +1388,7 @@ private:
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
-        auto channel = _mm_channels->choose(_message_service_name);
+        auto channel = _mm_channels->choose(_file_service_name);
         if (!channel) {
             LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
                       req.request_id(), _file_service_name);
@@ -1413,7 +1426,7 @@ private:
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
-        auto channel = _mm_channels->choose(_message_service_name);
+        auto channel = _mm_channels->choose(_file_service_name);
         if (!channel) {
             LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
                       req.request_id(), _file_service_name);
@@ -1451,7 +1464,7 @@ private:
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
-        auto channel = _mm_channels->choose(_message_service_name);
+        auto channel = _mm_channels->choose(_file_service_name);
         if (!channel) {
             LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
                       req.request_id(), _file_service_name);
