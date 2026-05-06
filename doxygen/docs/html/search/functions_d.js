@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['search_0',['search',['../classim__server_1_1ESMessage.html#a8efd6e9098d094ab0d7aa6276f429559',1,'im_server::ESMessage::search()'],['../classim__server_1_1EsSearch.html#a9d6428f2e82908dc44929211c52e8ea1',1,'im_server::EsSearch::search()'],['../classim__server_1_1ESUser.html#a3ebd29d4e655e9c3259a5759b53ff0c6',1,'im_server::ESUser::search()']]],
+  ['select_1',['select',['../classim__server_1_1ChatSessionTable.html#a465233c63b82729256d994cafd8bf11e',1,'im_server::ChatSessionTable']]],
+  ['select_5fby_5fid_2',['select_by_id',['../classim__server_1_1UserTable.html#a5b6a0b925cc38ecc155772a9fb4873e9',1,'im_server::UserTable']]],
+  ['select_5fby_5fnickname_3',['select_by_nickname',['../classim__server_1_1UserTable.html#ad58b5ca97b3b3c3013cacdde877d95a4',1,'im_server::UserTable']]],
+  ['select_5fby_5fphone_4',['select_by_phone',['../classim__server_1_1UserTable.html#ab62eb1a559011b358e2f763a26768e8f',1,'im_server::UserTable']]],
+  ['select_5fmulti_5fusers_5',['select_multi_users',['../classim__server_1_1UserTable.html#a4d1e2581c7750066ab5a743c63f0ae51',1,'im_server::UserTable']]],
+  ['send_6',['send',['../classim__server_1_1DMSClient.html#a06b920964b32a786fd91d6ea199799cb',1,'im_server::DMSClient']]],
+  ['serialize_7',['Serialize',['../namespaceim__server.html#a308b91b78b3ef2a6e171c5841da003bc',1,'im_server']]],
+  ['servicechannel_8',['ServiceChannel',['../classim__server_1_1ServiceChannel.html#af6e3e02c70d4960c3532119fe928f9cf',1,'im_server::ServiceChannel']]],
+  ['servicemanager_9',['ServiceManager',['../classim__server_1_1ServiceManager.html#a2f9779ec6a6fd9a658c8975eed408281',1,'im_server::ServiceManager']]],
+  ['session_10',['Session',['../classim__server_1_1Session.html#a83287028663e9f6ec13a6939edfc9c01',1,'im_server::Session']]],
+  ['session_5fid_11',['session_id',['../classim__server_1_1Message.html#a47f2d9f0b49471167654fe70d1cfd12c',1,'im_server::Message::session_id()'],['../classim__server_1_1ChatSessionMember.html#ac9256cf22c25e302992e224fd2171d25',1,'im_server::ChatSessionMember::session_id()'],['../classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4',1,'im_server::Message::session_id()'],['../classim__server_1_1ChatSessionMember.html#ac5cfb0caa7be7589b9532ed6fe5bebe3',1,'im_server::ChatSessionMember::session_id()']]],
+  ['setuseravatar_12',['SetUserAvatar',['../classim__server_1_1UserServiceImpl.html#a8713f1bf2f0ae54455ccd754ac9c1f58',1,'im_server::UserServiceImpl']]],
+  ['setuserdescription_13',['SetUserDescription',['../classim__server_1_1UserServiceImpl.html#a7fc2c71602adc0ed5d82c738957e7d67',1,'im_server::UserServiceImpl']]],
+  ['setusernickname_14',['SetUserNickname',['../classim__server_1_1UserServiceImpl.html#af12d9afe7238c8691f628794e5d160a7',1,'im_server::UserServiceImpl']]],
+  ['setuserphonenumber_15',['SetUserPhoneNumber',['../classim__server_1_1UserServiceImpl.html#ae9f3384973c1834cffbcc816834d2af3',1,'im_server::UserServiceImpl']]],
+  ['singlechatsession_16',['singleChatSession',['../classim__server_1_1ChatSessionTable.html#adcbd3f105ce7ada7da5ca88ccf0b6915',1,'im_server::ChatSessionTable']]],
+  ['speechrecognition_17',['SpeechRecognition',['../classim__server_1_1SpeechServiceImpl.html#afe4d3b10d8b665cf418f23e8cb77866b',1,'im_server::SpeechServiceImpl']]],
+  ['speechserver_18',['SpeechServer',['../classim__server_1_1SpeechServer.html#a427771ef5a79b0760aaa897d110c5853',1,'im_server::SpeechServer']]],
+  ['speechserviceimpl_19',['SpeechServiceImpl',['../classim__server_1_1SpeechServiceImpl.html#a8cdd1f7cecf77174f444872ec73f8891',1,'im_server::SpeechServiceImpl']]],
+  ['start_20',['start',['../classim__server_1_1GatewayServer.html#a728a11f71de6057e57c2e015790766a2',1,'im_server::GatewayServer::start()'],['../classim__server_1_1UserServer.html#aa3f510b44cb8bdaf05a042c3bf172df0',1,'im_server::UserServer::start()'],['../classim__server_1_1FriendServer.html#a5d4c271323f31b34e9771b8b918fe8ab',1,'im_server::FriendServer::start()'],['../classim__server_1_1MessageServer.html#a77914fbb62b03b7bd60e31e5cdf8a05d',1,'im_server::MessageServer::start()'],['../classim__server_1_1TransmiteServer.html#a5049020966938afd0bd44ca723e773dc',1,'im_server::TransmiteServer::start()'],['../classim__server_1_1FileServer.html#a480d86928f1cc61d25d0ecb75f727780',1,'im_server::FileServer::start()'],['../classim__server_1_1SpeechServer.html#a3269d8e52cb23bc648c9634c3f095caa',1,'im_server::SpeechServer::start()']]],
+  ['status_21',['Status',['../classim__server_1_1Status.html#af88cc64df9225df0d732f5690461c02b',1,'im_server::Status']]]
+];

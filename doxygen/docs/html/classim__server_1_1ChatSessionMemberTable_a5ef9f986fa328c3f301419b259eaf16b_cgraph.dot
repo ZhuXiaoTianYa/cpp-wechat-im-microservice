@@ -1,0 +1,13 @@
+digraph "im_server::ChatSessionMemberTable::remove"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="im_server::ChatSessionMember\lTable::remove",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="im_server::ChatSessionMember\l::session_id",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1ChatSessionMember.html#ac9256cf22c25e302992e224fd2171d25",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="im_server::ChatSessionMember\l::user_id",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1ChatSessionMember.html#a3f8de7f4c322bd781ca11ee4df9fee86",tooltip=" "];
+}

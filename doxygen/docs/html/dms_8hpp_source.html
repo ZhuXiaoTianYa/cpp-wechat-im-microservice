@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/dms.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_a0da88266a9bf42b4467cc2dfadac3cd.html">common</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">dms.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="dms_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="logger_8hpp.html">logger.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;curl/curl.h&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;openssl/hmac.h&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;random&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;sstream&gt;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;time.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1DMSClient.html">DMSClient</a> {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html#ada47cf0b071eb3c4a571892c1301efe9">   14</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classim__server_1_1DMSClient.html#ada47cf0b071eb3c4a571892c1301efe9">ptr</a> = std::shared_ptr&lt;DMSClient&gt;;</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// 初始化时创建 CURL 句柄</span></div>
+<div class="foldopen" id="foldopen00016" data-start="{" data-end="}">
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html#a6955af53f3af42ef1ccb5e41d78357d1">   16</a></span>    <a class="code hl_function" href="classim__server_1_1DMSClient.html#a6955af53f3af42ef1ccb5e41d78357d1">DMSClient</a>(<span class="keyword">const</span> std::string &amp;access_key_id,</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>              <span class="keyword">const</span> std::string &amp;access_key_secret)</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        : _access_key_id(access_key_id), _access_key_secret(access_key_secret) {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        curl_global_init(CURL_GLOBAL_ALL);</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        _curl = curl_easy_init();</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
+</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <span class="comment">// 析构时释放</span></div>
+<div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html#ac58a7c40b58537856bf424f8088094a7">   24</a></span>    <a class="code hl_function" href="classim__server_1_1DMSClient.html#ac58a7c40b58537856bf424f8088094a7">~DMSClient</a>() {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">if</span> (_curl) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            curl_easy_cleanup(_curl);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// 禁用拷贝（CURL 句柄不能拷贝）</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html#abacaa71b75e31080a2430568a54797f7">   31</a></span>    <a class="code hl_function" href="classim__server_1_1DMSClient.html#abacaa71b75e31080a2430568a54797f7">DMSClient</a>(<span class="keyword">const</span> <a class="code hl_class" href="classim__server_1_1DMSClient.html">DMSClient</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html#a3bf2fd3c0d8c8bb2e330a8a3eaa74d61">   32</a></span>    <a class="code hl_class" href="classim__server_1_1DMSClient.html">DMSClient</a> &amp;<a class="code hl_function" href="classim__server_1_1DMSClient.html#a3bf2fd3c0d8c8bb2e330a8a3eaa74d61">operator=</a>(<span class="keyword">const</span> <a class="code hl_class" href="classim__server_1_1DMSClient.html">DMSClient</a> &amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="comment">// 发送接口（高效复用 CURL）</span></div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="}">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classim__server_1_1DMSClient.html#a06b920964b32a786fd91d6ea199799cb">   35</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classim__server_1_1DMSClient.html#a06b920964b32a786fd91d6ea199799cb">send</a>(<span class="keyword">const</span> std::string &amp;phone, <span class="keyword">const</span> std::string &amp;code) {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        <span class="keywordflow">if</span> (!_curl)</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        curl_easy_reset(_curl);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        std::string resp;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordtype">char</span> timestamp[64];</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        time_t now = time(<span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        strftime(timestamp, <span class="keyword">sizeof</span>(timestamp), <span class="stringliteral">&quot;%Y-%m-%dT%H:%M:%SZ&quot;</span>,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>                 gmtime(&amp;now));</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        std::string nonce = genNonce();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// ===================== 配置 =====================</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        std::string signName = <span class="stringliteral">&quot;云渚科技验证平台&quot;</span>;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        std::string templateCode = <span class="stringliteral">&quot;100001&quot;</span>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        std::string schemeName = <span class="stringliteral">&quot;测试方案&quot;</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        std::string templateParam = R<span class="stringliteral">&quot;({&quot;code&quot;:&quot;)&quot; + code + R</span><span class="stringliteral">&quot;(&quot;,&quot;min&quot;:&quot;5&quot;})&quot;;</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span><span class="stringliteral"></span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="stringliteral">        std::vector&lt;std::pair&lt;std::string, std::string&gt;&gt; params = {</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="stringliteral">            {</span><span class="stringliteral">&quot;AccessKeyId&quot;</span>, _access_key_id},</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            {<span class="stringliteral">&quot;Action&quot;</span>, <span class="stringliteral">&quot;SendSmsVerifyCode&quot;</span>},</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>            {<span class="stringliteral">&quot;CountryCode&quot;</span>, <span class="stringliteral">&quot;86&quot;</span>},</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            {<span class="stringliteral">&quot;Format&quot;</span>, <span class="stringliteral">&quot;JSON&quot;</span>},</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            {<span class="stringliteral">&quot;PhoneNumber&quot;</span>, phone},</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            {<span class="stringliteral">&quot;RegionId&quot;</span>, <span class="stringliteral">&quot;cn-hangzhou&quot;</span>},</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            {<span class="stringliteral">&quot;SchemeName&quot;</span>, schemeName},</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            {<span class="stringliteral">&quot;SignName&quot;</span>, signName},</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            {<span class="stringliteral">&quot;SignatureMethod&quot;</span>, <span class="stringliteral">&quot;HMAC-SHA1&quot;</span>},</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>            {<span class="stringliteral">&quot;SignatureNonce&quot;</span>, nonce},</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>            {<span class="stringliteral">&quot;SignatureVersion&quot;</span>, <span class="stringliteral">&quot;1.0&quot;</span>},</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            {<span class="stringliteral">&quot;TemplateCode&quot;</span>, templateCode},</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            {<span class="stringliteral">&quot;TemplateParam&quot;</span>, templateParam},</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            {<span class="stringliteral">&quot;Timestamp&quot;</span>, timestamp},</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            {<span class="stringliteral">&quot;Version&quot;</span>, <span class="stringliteral">&quot;2017-05-25&quot;</span>},</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        };</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        sort(params.begin(), params.end());</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        std::string query;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : params) {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">if</span> (!query.empty())</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>                query += <span class="stringliteral">&quot;&amp;&quot;</span>;</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>            <span class="keywordtype">char</span> *k = curl_easy_escape(_curl, p.first.c_str(), p.first.size());</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>            <span class="keywordtype">char</span> *v =</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>                curl_easy_escape(_curl, p.second.c_str(), p.second.size());</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            query += k;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            query += <span class="stringliteral">&quot;=&quot;</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            query += v;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            curl_free(k);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>            curl_free(v);</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        }</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        std::string stringToSign = <span class="stringliteral">&quot;POST&amp;%2F&amp;&quot;</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordtype">char</span> *encodedQuery =</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            curl_easy_escape(_curl, query.c_str(), query.size());</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        stringToSign += encodedQuery;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        curl_free(encodedQuery);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        std::string signature =</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>            hmacSha1Base64(_access_key_secret + <span class="stringliteral">&quot;&amp;&quot;</span>, stringToSign);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        std::string postData = query + <span class="stringliteral">&quot;&amp;Signature=&quot;</span>;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        <span class="keywordtype">char</span> *sigEncoded =</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>            curl_easy_escape(_curl, signature.c_str(), signature.size());</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        postData += sigEncoded;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        curl_free(sigEncoded);</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        curl_easy_setopt(_curl, CURLOPT_URL, <span class="stringliteral">&quot;https://dypnsapi.aliyuncs.com&quot;</span>);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        curl_easy_setopt(_curl, CURLOPT_POST, 1L);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        curl_easy_setopt(_curl, CURLOPT_POSTFIELDS, postData.c_str());</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        curl_easy_setopt(_curl, CURLOPT_WRITEFUNCTION, writeCallback);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        curl_easy_setopt(_curl, CURLOPT_WRITEDATA, &amp;resp);</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        curl_easy_perform(_curl);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">// ===================== 结果判断 + 错误信息提取 =====================</span></div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="keywordtype">bool</span> success = (resp.find(<span class="stringliteral">&quot;\&quot;Success\&quot;:true&quot;</span>) != std::string::npos ||</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                        resp.find(<span class="stringliteral">&quot;\&quot;Code\&quot;:\&quot;OK\&quot;&quot;</span>) != std::string::npos);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="keywordflow">if</span> (!success) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;短信发送失败，返回结果: {}&quot;</span>, resp);</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">return</span> success;</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
+</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">static</span> <span class="keywordtype">size_t</span> writeCallback(<span class="keywordtype">void</span> *contents, <span class="keywordtype">size_t</span> size, <span class="keywordtype">size_t</span> nmemb,</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>                                std::string *s) {</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        s-&gt;append((<span class="keywordtype">char</span> *)contents, size * nmemb);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keywordflow">return</span> size * nmemb;</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">static</span> std::string hmacSha1Base64(<span class="keyword">const</span> std::string &amp;key,</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>                                      <span class="keyword">const</span> std::string &amp;data) {</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> hash[20];</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        HMAC(EVP_sha1(), key.data(), key.size(),</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>             (<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)data.data(), data.size(), hash, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span> </div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        <span class="keywordtype">char</span> b64[256];</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        EVP_EncodeBlock((<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *)b64, hash, 20);</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        std::string res = b64;</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        res.erase(remove(res.begin(), res.end(), <span class="charliteral">&#39;\n&#39;</span>), res.end());</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    }</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <span class="keyword">static</span> std::string genNonce() {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        <span class="keyword">static</span> std::random_device rd;</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>        <span class="keyword">static</span> std::mt19937 gen(rd());</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        std::uniform_int_distribution&lt;&gt; dis(100000000, 999999999);</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>        <span class="keywordflow">return</span> std::to_string(dis(gen));</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    std::string _access_key_id;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    std::string _access_key_secret;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    CURL *_curl = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>};</div>
+</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>} <span class="comment">// namespace im_server</span></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html"><div class="ttname"><a href="classim__server_1_1DMSClient.html">im_server::DMSClient</a></div><div class="ttdef"><b>Definition</b> dms.hpp:12</div></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html_a06b920964b32a786fd91d6ea199799cb"><div class="ttname"><a href="classim__server_1_1DMSClient.html#a06b920964b32a786fd91d6ea199799cb">im_server::DMSClient::send</a></div><div class="ttdeci">bool send(const std::string &amp;phone, const std::string &amp;code)</div><div class="ttdef"><b>Definition</b> dms.hpp:35</div></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html_a3bf2fd3c0d8c8bb2e330a8a3eaa74d61"><div class="ttname"><a href="classim__server_1_1DMSClient.html#a3bf2fd3c0d8c8bb2e330a8a3eaa74d61">im_server::DMSClient::operator=</a></div><div class="ttdeci">DMSClient &amp; operator=(const DMSClient &amp;)=delete</div></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html_a6955af53f3af42ef1ccb5e41d78357d1"><div class="ttname"><a href="classim__server_1_1DMSClient.html#a6955af53f3af42ef1ccb5e41d78357d1">im_server::DMSClient::DMSClient</a></div><div class="ttdeci">DMSClient(const std::string &amp;access_key_id, const std::string &amp;access_key_secret)</div><div class="ttdef"><b>Definition</b> dms.hpp:16</div></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html_abacaa71b75e31080a2430568a54797f7"><div class="ttname"><a href="classim__server_1_1DMSClient.html#abacaa71b75e31080a2430568a54797f7">im_server::DMSClient::DMSClient</a></div><div class="ttdeci">DMSClient(const DMSClient &amp;)=delete</div></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html_ac58a7c40b58537856bf424f8088094a7"><div class="ttname"><a href="classim__server_1_1DMSClient.html#ac58a7c40b58537856bf424f8088094a7">im_server::DMSClient::~DMSClient</a></div><div class="ttdeci">~DMSClient()</div><div class="ttdef"><b>Definition</b> dms.hpp:24</div></div>
+<div class="ttc" id="aclassim__server_1_1DMSClient_html_ada47cf0b071eb3c4a571892c1301efe9"><div class="ttname"><a href="classim__server_1_1DMSClient.html#ada47cf0b071eb3c4a571892c1301efe9">im_server::DMSClient::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; DMSClient &gt; ptr</div><div class="ttdef"><b>Definition</b> dms.hpp:14</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gae6fc70e87e424e7083c63696b8fb9e78"><div class="ttname"><a href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(fmt,...)</div><div class="ttdoc">错误级别日志，用于记录错误和异常</div><div class="ttdef"><b>Definition</b> logger.hpp:95</div></div>
+<div class="ttc" id="alogger_8hpp_html"><div class="ttname"><a href="logger_8hpp.html">logger.hpp</a></div><div class="ttdoc">IM服务器日志模块封装</div></div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

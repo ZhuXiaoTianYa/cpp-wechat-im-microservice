@@ -1,3 +1,14 @@
+/**
+ * @file friend_server.hpp
+ * @brief 好友与会话服务模块
+ * @details 提供好友关系管理、好友申请处理、会话管理等功能
+ * @author ZhuTian
+ * @date 2026
+ */
+
+#pragma once
+
+#define IM_LOG_SERVICE_TAG "好友服务"
 #include <brpc/controller.h>
 #include <brpc/server.h>
 #include <butil/logging.h>
@@ -22,8 +33,21 @@
 #include <vector>
 namespace im_server {
 
+/**
+ * @class FriendServiceImpl
+ * @brief 好友服务RPC接口实现类
+ * @details 实现好友关系管理、好友申请、会话创建等功能，集成MySQL、ES和下游服务
+ */
 class FriendServiceImpl : public FriendService {
 public:
+    /**
+     * @brief 构造函数
+     * @param mysql_client MySQL数据库连接
+     * @param es_client Elasticsearch客户端（用于用户搜索）
+     * @param mm_channels 下游服务管理器
+     * @param message_service_name 消息服务名称
+     * @param user_service_name 用户服务名称
+     */
     FriendServiceImpl(const std::shared_ptr<odb::core::database> &mysql_client,
                       const std::shared_ptr<elasticlient::Client> &es_client,
                       const std::shared_ptr<ServiceManager> &mm_channels,
@@ -38,8 +62,17 @@ public:
           _mm_channels(mm_channels),
           _message_service_name(message_service_name),
           _user_service_name(user_service_name) {}
+    
     ~FriendServiceImpl() {}
 
+    /**
+     * @brief 获取好友列表
+     * @param controller RPC控制器
+     * @param request 请求（包含用户ID）
+     * @param response 响应（包含好友信息列表）
+     * @param done RPC回调
+     * @details 从MySQL查询好友关系，批量拉取用户详细信息
+     */
     virtual void GetFriendList(::google::protobuf::RpcController *controller,
                                const ::im_server::GetFriendListReq *request,
                                ::im_server::GetFriendListRsp *response,
@@ -63,7 +96,9 @@ public:
         std::unordered_map<std::string, UserInfo> user_lists;
         bool ret = GetUserInfo(rid, user_id_lists, user_lists);
         if (ret == false) {
-            LOG_ERROR("{} - 批量获取用户信息失败", request->request_id());
+            LOG_ERROR("RPC FriendService | request_id={} | 阶段=批量拉取用户资料 | "
+                      "结果=失败",
+                      request->request_id());
             return err_response(request->request_id(), "批量获取用户信息失败");
         }
         for (const auto &user : user_lists) {
@@ -72,6 +107,14 @@ public:
         response->set_request_id(rid);
         response->set_success(true);
     }
+    /**
+     * @brief 删除好友
+     * @param controller RPC控制器
+     * @param request 请求（包含用户ID和对方ID）
+     * @param response 响应（成功或失败）
+     * @param done RPC回调
+     * @details 删除双向好友关系和对应的单聊会话
+     */
     virtual void FriendRemove(::google::protobuf::RpcController *controller,
                               const ::im_server::FriendRemoveReq *request,
                               ::im_server::FriendRemoveRsp *response,
@@ -90,12 +133,16 @@ public:
         std::string rid = request->request_id();
         bool ret = _mysql_relation->remove(uid, pid);
         if (ret == false) {
-            LOG_ERROR("{} - 从数据库删除好友信息失败 {}:{}", rid, uid, pid);
+            LOG_ERROR("RPC FriendRemove | request_id={} | 阶段=MySQL删除好友关系 | "
+                      "结果=失败 | user_id={} | peer_id={}",
+                      rid, uid, pid);
             return err_response(rid, "从数据库删除好友信息失败");
         }
         ret = _mysql_chat_session->remove(uid, pid);
         if (ret == false) {
-            LOG_ERROR("{} - 从数据库删除好友会话信息失败 {}:{}", rid, uid, pid);
+            LOG_ERROR("RPC FriendRemove | request_id={} | 阶段=MySQL删除单聊会话 | "
+                      "结果=失败 | user_id={} | peer_id={}",
+                      rid, uid, pid);
             return err_response(rid, "从数据库删除好友会话信息失败");
         }
         response->set_request_id(rid);
@@ -119,20 +166,24 @@ public:
         std::string rid = request->request_id();
         bool ret = _mysql_relation->exists(uid, pid);
         if (ret == true) {
-            LOG_ERROR("{} -申请好友失败 {}:{} ,已经是好友了", rid, uid, pid);
+            LOG_WARN("RPC FriendAdd | request_id={} | 阶段=业务校验 | 结果=拒绝 | "
+                     "原因=双方已是好友 | applicant={} | target={}",
+                     rid, uid, pid);
             return err_response(rid, "两者已经是好友了");
         }
         ret = _mysql_apply->exists(uid, pid);
         if (ret == true) {
-            LOG_ERROR("{} -申请好友失败，已经申请过对方好友 {}-{}", rid, uid,
-                      pid);
+            LOG_WARN("RPC FriendAdd | request_id={} | 阶段=业务校验 | 结果=拒绝 | "
+                     "原因=已存在待处理或重复申请 | applicant={} | target={}",
+                     rid, uid, pid);
             return err_response(rid, "已经申请过对方好友");
         }
         std::string eid = uuid();
         FriendApply ev(eid, uid, pid);
         ret = _mysql_apply->insert(ev);
         if (ret == false) {
-            LOG_ERROR("{} -向数据库中新增好友申请事件失败", rid);
+            LOG_ERROR("RPC FriendAdd | request_id={} | 阶段=MySQL写入好友申请 | 结果=失败",
+                      rid);
             return err_response(rid, "向数据库中新增好友申请事件失败");
         }
         response->set_request_id(rid);
@@ -159,26 +210,34 @@ public:
         bool agree = request->agree();
         bool ret = _mysql_apply->exists(pid, uid);
         if (ret == false) {
-            LOG_ERROR("{} - 没有找到{}-{}对应的好友申请事件", uid, rid, pid);
+            LOG_WARN("RPC FriendAddProcess | request_id={} | 阶段=校验申请记录 | "
+                     "结果=拒绝 | 原因=无匹配申请 | handler={} | applicant={}",
+                     rid, uid, pid);
             return err_response(rid, "没有找到对应的好友申请事件");
         }
         ret = _mysql_apply->remove(pid, uid);
         if (ret == false) {
-            LOG_ERROR("{} -从数据库中删除申请事件 {}:{} 失败", rid, uid, pid);
+            LOG_ERROR("RPC FriendAddProcess | request_id={} | 阶段=MySQL删除申请记录 | "
+                      "结果=失败 | handler={} | applicant={}",
+                      rid, uid, pid);
             return err_response(rid, "从数据库中删除申请事件失败");
         }
         std::string cssid;
         if (agree == true) {
             ret = _mysql_relation->insert(uid, pid);
             if (ret == false) {
-                LOG_ERROR("{} -新增好友关系信息 {}:{} 失败", rid, uid, pid);
+                LOG_ERROR("RPC FriendAddProcess | request_id={} | 阶段=MySQL写入好友关系 | "
+                          "结果=失败 | user_id={} | peer_id={}",
+                          rid, uid, pid);
                 return err_response(rid, "新增好友关系信息失败");
             }
             cssid = uuid();
             ChatSession css(cssid, "", ChatSessionType::SINGLE);
             ret = _mysql_chat_session->insert(css);
             if (ret == false) {
-                LOG_ERROR("{} -新增单聊会话信息失败 {}", rid, cssid);
+                LOG_ERROR("RPC FriendAddProcess | request_id={} | 阶段=MySQL创建单聊会话 | "
+                          "结果=失败 | session_id={}",
+                          rid, cssid);
                 return err_response(rid, "新增单聊会话信息失败");
             }
             ChatSessionMember csm1(cssid, uid);
@@ -186,7 +245,9 @@ public:
             std::vector<ChatSessionMember> csm_lists = {csm1, csm2};
             ret = _mysql_chat_session_member->append(csm_lists);
             if (ret == false) {
-                LOG_ERROR("{} -添加会话成员信息失败 {}", rid, cssid);
+                LOG_ERROR("RPC FriendAddProcess | request_id={} | 阶段=MySQL写入会话成员 | "
+                          "结果=失败 | session_id={}",
+                          rid, cssid);
                 return err_response(rid, "添加会话成员信息失败");
             }
         }
@@ -224,7 +285,9 @@ public:
         std::unordered_map<std::string, UserInfo> user_lists;
         bool ret = GetUserInfo(rid, user_id_lists, user_lists);
         if (ret == false) {
-            LOG_ERROR("{} - 批量获取用户信息失败", request->request_id());
+            LOG_ERROR("RPC FriendService | request_id={} | 阶段=批量拉取用户资料 | "
+                      "结果=失败",
+                      request->request_id());
             return err_response(request->request_id(), "批量获取用户信息失败");
         }
         for (auto &user : user_lists) {
@@ -257,7 +320,9 @@ public:
         std::unordered_map<std::string, UserInfo> user_lists;
         bool ret = GetUserInfo(rid, user_id_lists, user_lists);
         if (ret == false) {
-            LOG_ERROR("{} - 批量获取用户信息失败", request->request_id());
+            LOG_ERROR("RPC FriendService | request_id={} | 阶段=批量拉取用户资料 | "
+                      "结果=失败",
+                      request->request_id());
             return err_response(request->request_id(), "批量获取用户信息失败");
         }
         auto gc_list = _mysql_chat_session->groupChatSession(uid);
@@ -310,7 +375,8 @@ public:
         ChatSession cs(cssid, cssname, ChatSessionType::GROUP);
         bool ret = _mysql_chat_session->insert(cs);
         if (ret == false) {
-            LOG_ERROR("{} - 向数据库中添加会话信息失败 - {}",
+            LOG_ERROR("RPC ChatSessionCreate | request_id={} | 阶段=MySQL创建群会话 | "
+                      "结果=失败 | session_name={}",
                       request->request_id(), cssname);
             return err_response(request->request_id(),
                                 "向数据库中添加会话信息失败");
@@ -322,7 +388,8 @@ public:
         }
         ret = _mysql_chat_session_member->append(chat_member_list);
         if (ret == false) {
-            LOG_ERROR("{} - 向数据库中添加会话成员信息失败 - {}",
+            LOG_ERROR("RPC ChatSessionCreate | request_id={} | 阶段=MySQL写入群成员 | "
+                      "结果=失败 | session_name={}",
                       request->request_id(), cssname);
             return err_response(request->request_id(),
                                 "向数据库中添加会话成员信息失败");
@@ -358,7 +425,9 @@ public:
         std::unordered_map<std::string, UserInfo> user_lists;
         bool ret = GetUserInfo(rid, user_id_lists, user_lists);
         if (ret == false) {
-            LOG_ERROR("{} - 批量获取用户信息失败", request->request_id());
+            LOG_ERROR("RPC FriendService | request_id={} | 阶段=批量拉取用户资料 | "
+                      "结果=失败",
+                      request->request_id());
             return err_response(request->request_id(), "批量获取用户信息失败");
         }
         response->set_request_id(rid);
@@ -392,7 +461,9 @@ public:
         std::unordered_map<std::string, UserInfo> user_lists;
         bool ret = GetUserInfo(rid, user_id_lists, user_lists);
         if (ret == false) {
-            LOG_ERROR("{} - 批量获取用户信息失败", request->request_id());
+            LOG_ERROR("RPC FriendService | request_id={} | 阶段=批量拉取用户资料 | "
+                      "结果=失败",
+                      request->request_id());
             return err_response(request->request_id(), "批量获取用户信息失败");
         }
         response->set_request_id(rid);
@@ -407,7 +478,9 @@ private:
                           MessageInfo &msg) {
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} - 获取消息子服务信道失败！！", rid);
+            LOG_ERROR("内部调用消息服务 | request_id={} | 阶段=RPC选路 | 结果=失败 | "
+                      "target={}",
+                      rid, _message_service_name);
             return false;
         }
         MsgStorageService_Stub stub(channel.get());
@@ -419,11 +492,14 @@ private:
         req.set_msg_count(1);
         stub.GetRecentMsg(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} - 消息子服务调用失败 - {}", rid, cntl.ErrorText());
+            LOG_ERROR("内部调用消息服务 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
+                      "brpc={}",
+                      rid, cntl.ErrorText());
             return false;
         }
         if (rsp.success() == false) {
-            LOG_ERROR("{} - 获取消息失败 - {}", rid, rsp.errmsg());
+            LOG_WARN("内部调用消息服务 | request_id={} | 业务返回失败 | detail={}",
+                     rid, rsp.errmsg());
             return false;
         }
         if (rsp.msg_list_size() > 0) {
@@ -437,7 +513,9 @@ private:
                      std::unordered_map<std::string, UserInfo> &user_list) {
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} - 获取用户子服务信道失败！！", rid);
+            LOG_ERROR("内部调用用户服务 | request_id={} | 阶段=RPC选路 | 结果=失败 | "
+                      "target={}",
+                      rid, _user_service_name);
             return false;
         }
         UserService_Stub stub(channel.get());
@@ -450,11 +528,14 @@ private:
         }
         stub.GetMultiUserInfo(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} - 用户子服务调用失败 - {}", rid, cntl.ErrorText());
+            LOG_ERROR("内部调用用户服务 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
+                      "brpc={}",
+                      rid, cntl.ErrorText());
             return false;
         }
         if (rsp.success() == false) {
-            LOG_ERROR("{} - 批量获取用户信息失败 - {}", rid, rsp.errmsg());
+            LOG_WARN("内部调用用户服务 | request_id={} | 业务返回失败 | detail={}",
+                     rid, rsp.errmsg());
             return false;
         }
         const auto &users_list = rsp.users_info();
@@ -465,21 +546,33 @@ private:
     }
 
 private:
-    ESUser::ptr _es_user;
-    ChatSessionMemberTable::ptr _mysql_chat_session_member;
-    ChatSessionTable::ptr _mysql_chat_session;
-    FriendApplyTable::ptr _mysql_apply;
-    RelationTable::ptr _mysql_relation;
-
-    // rpc调用客户端
-    std::string _message_service_name;
-    std::string _user_service_name;
-    ServiceManager::ptr _mm_channels;
+    ESUser::ptr _es_user;                                      ///< Elasticsearch用户索引管理
+    ChatSessionMemberTable::ptr _mysql_chat_session_member;   ///< MySQL会话成员表操作
+    ChatSessionTable::ptr _mysql_chat_session;                ///< MySQL会话表操作
+    FriendApplyTable::ptr _mysql_apply;                       ///< MySQL好友申请表操作
+    RelationTable::ptr _mysql_relation;                       ///< MySQL好友关系表操作
+    std::string _message_service_name;                        ///< 消息服务名称
+    std::string _user_service_name;                           ///< 用户服务名称
+    ServiceManager::ptr _mm_channels;                         ///< 下游服务管理器
 };
 
+/**
+ * @class FriendServer
+ * @brief 好友服务器主类
+ * @details 封装好友服务的所有依赖组件，提供启动接口
+ */
 class FriendServer {
 public:
     using ptr = std::shared_ptr<FriendServer>;
+    
+    /**
+     * @brief 构造函数
+     * @param mysql_client MySQL数据库连接
+     * @param es_client Elasticsearch客户端
+     * @param service_discoverer 服务发现客户端
+     * @param registry_client 服务注册客户端
+     * @param rpc_server RPC服务器实例
+     */
     FriendServer(const std::shared_ptr<odb::core::database> &mysql_client,
                  const std::shared_ptr<elasticlient::Client> &es_client,
                  const std::shared_ptr<Discoverer> &service_discoverer,
@@ -488,21 +581,40 @@ public:
         : _mysql_client(mysql_client), _es_client(es_client),
           _service_discoverer(service_discoverer),
           _registry_client(registry_client), _rpc_server(rpc_server) {}
+    
     ~FriendServer() {}
 
-    // 启动RPC服务器
+    /**
+     * @brief 启动RPC服务器
+     * @details 阻塞运行直到收到退出信号
+     */
     void start() { _rpc_server->RunUntilAskedToQuit(); }
 
 private:
-    std::shared_ptr<odb::core::database> _mysql_client;
-    std::shared_ptr<elasticlient::Client> _es_client;
-    Discoverer::ptr _service_discoverer;
-    Registrar::ptr _registry_client;
-    std::shared_ptr<brpc::Server> _rpc_server;
+    std::shared_ptr<odb::core::database> _mysql_client;    ///< MySQL数据库连接
+    std::shared_ptr<elasticlient::Client> _es_client;      ///< Elasticsearch客户端
+    Discoverer::ptr _service_discoverer;                   ///< 服务发现客户端
+    Registrar::ptr _registry_client;                       ///< 服务注册客户端
+    std::shared_ptr<brpc::Server> _rpc_server;             ///< RPC服务器
 };
 
+/**
+ * @class FriendServerBuilder
+ * @brief 好友服务器构建器
+ * @details 使用Builder模式构建好友服务器，按步骤初始化各个组件
+ */
 class FriendServerBuilder {
 public:
+    /**
+     * @brief 创建MySQL客户端
+     * @param user 数据库用户名
+     * @param passwd 数据库密码
+     * @param host 数据库地址
+     * @param db 数据库名
+     * @param cset 字符集
+     * @param port 数据库端口
+     * @param conn_pool_count 连接池大小
+     */
     void make_mysql_object(const std::string &user, const std::string &passwd,
                            const std::string &host, const std::string &db,
                            const std::string &cset, int port,
@@ -511,10 +623,22 @@ public:
             user, passwd, host, db, cset, port, conn_pool_count);
     }
 
+    /**
+     * @brief 创建Elasticsearch客户端
+     * @param host_list ES节点地址列表
+     */
     void make_es_object(const std::vector<std::string> &host_list) {
         _es_client = im_server::ESClientFactory::create(host_list);
     }
 
+    /**
+     * @brief 创建服务发现客户端
+     * @param reg_host etcd服务器地址
+     * @param base_service_name 服务发现基础路径
+     * @param user_service_name 用户服务名称
+     * @param message_service_name 消息服务名称
+     * @details 监听用户服务和消息服务的上下线事件
+     */
     void make_discovery_object(const std::string &reg_host,
                                const std::string &base_service_name,
                                const std::string &user_service_name,
@@ -534,6 +658,13 @@ public:
             reg_host, base_service_name, put_cb, del_cb);
     }
 
+    /**
+     * @brief 创建服务注册客户端
+     * @param reg_host etcd服务器地址
+     * @param service_name 服务名称
+     * @param access_host 服务访问地址
+     * @details 将本服务注册到etcd，失败则终止程序
+     */
     void make_registry_object(const std::string &reg_host,
                               const std::string &service_name,
                               const std::string &access_host) {
@@ -543,22 +674,29 @@ public:
             abort();
     }
 
+    /**
+     * @brief 创建RPC服务器
+     * @param port 监听端口
+     * @param timeout 空闲超时时间（秒）
+     * @param num_threads 工作线程数
+     * @details 创建并启动RPC服务器，注册好友服务实现
+     */
     void make_rpc_object(const uint16_t &port, const uint32_t &timeout,
                          const uint8_t &num_threads) {
         if (!_mysql_client) {
-            LOG_ERROR("Mysql数据库模块未初始化");
+            LOG_ERROR("好友服务启动检查失败 | 组件=MySQL | 原因=未初始化");
             abort();
         }
         if (!_es_client) {
-            LOG_ERROR("ES数据库模块未初始化");
+            LOG_ERROR("好友服务启动检查失败 | 组件=Elasticsearch | 原因=未初始化");
             abort();
         }
         if (!_mm_channels) {
-            LOG_ERROR("信道管理模块未初始化");
+            LOG_ERROR("好友服务启动检查失败 | 组件=下游RPC信道 | 原因=未初始化");
             abort();
         }
         if (!_service_discoverer) {
-            LOG_ERROR("服务发现模块未初始化");
+            LOG_ERROR("好友服务启动检查失败 | 组件=etcd服务发现 | 原因=未初始化");
             abort();
         }
         _rpc_server = std::make_shared<brpc::Server>();
@@ -568,7 +706,7 @@ public:
         int ret = _rpc_server->AddService(
             friend_service, brpc::ServiceOwnership::SERVER_OWNS_SERVICE);
         if (ret == -1) {
-            LOG_ERROR("添加Rpc服务失败");
+            LOG_ERROR("好友服务启动失败 | 阶段=添加RPC服务");
             abort();
         }
         brpc::ServerOptions options;
@@ -576,34 +714,35 @@ public:
         options.num_threads = num_threads;
         ret = _rpc_server->Start(port, &options);
         if (ret == -1) {
-            LOG_ERROR("启动Rpc服务失败");
+            LOG_ERROR("好友服务启动失败 | 阶段=启动RPC服务器 | port={}", port);
             abort();
         }
+        LOG_INFO("好友服务启动成功 | port={} | timeout={}s | threads={}", port, timeout, num_threads);
     }
 
     FriendServer::ptr build() {
         if (!_mysql_client) {
-            LOG_ERROR("Mysql数据库模块未初始化");
+            LOG_ERROR("好友服务构建失败 | 组件=MySQL | 原因=未初始化");
             abort();
         }
         if (!_es_client) {
-            LOG_ERROR("ES数据库模块未初始化");
+            LOG_ERROR("好友服务构建失败 | 组件=Elasticsearch | 原因=未初始化");
             abort();
         }
         if (!_mm_channels) {
-            LOG_ERROR("信道管理模块未初始化");
+            LOG_ERROR("好友服务构建失败 | 组件=下游RPC信道 | 原因=未初始化");
             abort();
         }
         if (!_service_discoverer) {
-            LOG_ERROR("服务发现模块未初始化");
+            LOG_ERROR("好友服务构建失败 | 组件=etcd服务发现 | 原因=未初始化");
             abort();
         }
         if (!_registry_client) {
-            LOG_ERROR("服务注册模块未初始化");
+            LOG_ERROR("好友服务构建失败 | 组件=etcd服务注册 | 原因=未初始化");
             abort();
         }
         if (!_rpc_server) {
-            LOG_ERROR("Rpc服务器模块未初始化");
+            LOG_ERROR("好友服务构建失败 | 组件=RPC服务器 | 原因=未初始化");
             abort();
         }
         return std::make_shared<FriendServer>(_mysql_client, _es_client,

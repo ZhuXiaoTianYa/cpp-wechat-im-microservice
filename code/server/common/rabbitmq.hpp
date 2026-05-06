@@ -1,3 +1,13 @@
+/**
+ * @file rabbitmq.hpp
+ * @brief RabbitMQ消息队列封装
+ * @details 基于AMQP-CPP和libev实现的RabbitMQ客户端，支持消息发布和消费
+ * @author ZhuTian
+ * @date 2026
+ */
+
+#pragma once
+
 #include "logger.hpp"
 #include <amqpcpp.h>
 #include <amqpcpp/libev.h>
@@ -5,11 +15,26 @@
 #include <memory>
 #include <openssl/opensslv.h>
 #include <openssl/ssl.h>
+
 namespace im_server {
+
+/**
+ * @class MQClient
+ * @brief RabbitMQ客户端类
+ * @details 封装RabbitMQ连接、信道、交换机、队列的声明和消息收发功能
+ */
 class MQClient {
 public:
     using ptr = std::shared_ptr<MQClient>;
     using MessageCallback = std::function<void(const char *, size_t)>;
+    
+    /**
+     * @brief 构造函数
+     * @param user RabbitMQ用户名
+     * @param passwd RabbitMQ密码
+     * @param host RabbitMQ服务器地址
+     * @details 创建连接、信道，并启动libev事件循环线程
+     */
     MQClient(const std::string &user, const std::string &passwd,
              const std::string &host) {
         _loop = EV_DEFAULT;
@@ -21,13 +46,26 @@ public:
         _channel = std::make_unique<AMQP::TcpChannel>(_connection.get());
         _loop_thread = std::thread([this]() { ev_loop(_loop, 0); });
     }
+    
+    /**
+     * @brief 析构函数
+     * @details 停止事件循环，等待线程退出
+     */
     ~MQClient() {
         ev_async_init(&_async_watcher, watcher_callback);
         ev_async_start(_loop, &_async_watcher);
         ev_async_send(_loop, &_async_watcher);
         _loop_thread.join();
-        // ev_loop_destroy(_loop);
     }
+    
+    /**
+     * @brief 声明MQ组件（交换机、队列、绑定）
+     * @param exchange 交换机名称
+     * @param queue 队列名称
+     * @param routing_key 路由键（默认为"routing_key"）
+     * @param exchange_type 交换机类型（默认为direct）
+     * @details 声明交换机、队列并建立绑定关系
+     */
     void declareComponents(
         const std::string &exchange, const std::string &queue,
         const std::string &routing_key = "routing_key",

@@ -1,3 +1,13 @@
+/**
+ * @file channel.hpp
+ * @brief RPC信道管理模块
+ * @details 提供服务信道管理和负载均衡功能，支持服务上下线动态更新
+ * @author ZhuTian
+ * @date 2026
+ */
+
+#pragma once
+
 #include <vector>
 #include <unordered_map>
 #include <string>
@@ -6,15 +16,31 @@
 #include <set>
 #include <brpc/channel.h>
 #include "logger.hpp"
+
 namespace im_server
 {
+    /**
+     * @class ServiceChannel
+     * @brief 单个服务的信道管理类
+     * @details 管理同一服务的多个实例信道，提供轮询负载均衡
+     */
     class ServiceChannel
     {
     public:
         using ptr = std::shared_ptr<ServiceChannel>;
         using ChannelPtr = std::shared_ptr<brpc::Channel>;
+        
+        /**
+         * @brief 构造函数
+         * @param name 服务名称
+         */
         ServiceChannel(const std::string &name) : _service_name(name), _index(0) {}
 
+        /**
+         * @brief 添加服务实例信道
+         * @param host 服务地址（格式：ip:port）
+         * @details 创建brpc信道并添加到信道池
+         */
         void append(const std::string &host)
         {
             ChannelPtr channel = std::make_shared<brpc::Channel>();
@@ -34,6 +60,11 @@ namespace im_server
             _channels.push_back(channel);
         }
 
+        /**
+         * @brief 删除服务实例信道
+         * @param host 服务地址
+         * @details 服务下线时删除对应信道
+         */
         void remove(const std::string &host)
         {
             std::unique_lock<std::mutex> lock(_mutex);
@@ -54,6 +85,11 @@ namespace im_server
             _hosts.erase(it);
         }
 
+        /**
+         * @brief 选择一个信道（轮询负载均衡）
+         * @return brpc信道智能指针，若无可用信道则返回空指针
+         * @details 使用轮询算法在多个实例间分配请求
+         */
         ChannelPtr choose()
         {
             std::unique_lock<std::mutex> lock(_mutex);
@@ -66,18 +102,31 @@ namespace im_server
         }
 
     private:
-        std::mutex _mutex;
-        int _index;
-        std::string _service_name;
-        std::vector<ChannelPtr> _channels;
-        std::unordered_map<std::string, ChannelPtr> _hosts;
+        std::mutex _mutex;                                    ///< 保护信道列表的互斥锁
+        int _index;                                           ///< 轮询索引
+        std::string _service_name;                            ///< 服务名称
+        std::vector<ChannelPtr> _channels;                    ///< 信道列表（用于轮询）
+        std::unordered_map<std::string, ChannelPtr> _hosts;  ///< 地址到信道的映射
     };
 
+    /**
+     * @class ServiceManager
+     * @brief 服务管理器
+     * @details 管理多个服务的信道，处理服务上下线事件，配合etcd服务发现使用
+     */
     class ServiceManager
     {
     public:
         using ptr = std::shared_ptr<ServiceManager>;
+        
         ServiceManager() {}
+        
+        /**
+         * @brief 选择服务信道
+         * @param service_name 服务名称
+         * @return brpc信道智能指针，若服务不存在则返回空指针
+         * @details 从指定服务的多个实例中选择一个信道
+         */
         ServiceChannel::ChannelPtr choose(const std::string &service_name)
         {
             std::unique_lock<std::mutex> lock(_mutex);
@@ -90,12 +139,23 @@ namespace im_server
             return sit->second->choose();
         }
 
+        /**
+         * @brief 声明关注的服务
+         * @param service_name 服务名称
+         * @details 只有声明关注的服务才会处理其上下线事件
+         */
         void declared(const std::string &service_name)
         {
             std::unique_lock<std::mutex> lock(_mutex);
             _follow_services.insert(service_name);
         }
 
+        /**
+         * @brief 服务上线回调
+         * @param service_instance 服务实例名（格式：服务名/实例ID）
+         * @param host 服务地址
+         * @details 由etcd服务发现触发，添加新的服务实例信道
+         */
         void onServiceOnline(const std::string &service_instance, const std::string &host)
         {
             std::string service_name = getServiceName(service_instance);

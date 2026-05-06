@@ -1,0 +1,278 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::Status类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1Status.html">Status</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1Status-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::Status类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>在线状态管理类  
+ <a href="classim__server_1_1Status.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="data__redis_8hpp_source.html">data_redis.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a65b6c0fe3e5072f2e5867bfb9b296ffe" id="r_a65b6c0fe3e5072f2e5867bfb9b296ffe"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Status.html#a65b6c0fe3e5072f2e5867bfb9b296ffe">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1Status.html">Status</a> &gt;</td></tr>
+<tr class="separator:a65b6c0fe3e5072f2e5867bfb9b296ffe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:af88cc64df9225df0d732f5690461c02b" id="r_af88cc64df9225df0d732f5690461c02b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Status.html#af88cc64df9225df0d732f5690461c02b">Status</a> (const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;redis_client)</td></tr>
+<tr class="memdesc:af88cc64df9225df0d732f5690461c02b"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:af88cc64df9225df0d732f5690461c02b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0483911442f7e3c74ab73352c03b660c" id="r_a0483911442f7e3c74ab73352c03b660c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Status.html#a0483911442f7e3c74ab73352c03b660c">append</a> (const std::string &amp;uid)</td></tr>
+<tr class="memdesc:a0483911442f7e3c74ab73352c03b660c"><td class="mdescLeft">&#160;</td><td class="mdescRight">设置用户在线状态  <br /></td></tr>
+<tr class="separator:a0483911442f7e3c74ab73352c03b660c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21642bf19963f20826578ebc713aec10" id="r_a21642bf19963f20826578ebc713aec10"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Status.html#a21642bf19963f20826578ebc713aec10">remove</a> (const std::string &amp;uid)</td></tr>
+<tr class="memdesc:a21642bf19963f20826578ebc713aec10"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除用户在线状态  <br /></td></tr>
+<tr class="separator:a21642bf19963f20826578ebc713aec10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05762cc00bfca5b04b56ce4b04e60994" id="r_a05762cc00bfca5b04b56ce4b04e60994"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Status.html#a05762cc00bfca5b04b56ce4b04e60994">exists</a> (const std::string &amp;uid)</td></tr>
+<tr class="memdesc:a05762cc00bfca5b04b56ce4b04e60994"><td class="mdescLeft">&#160;</td><td class="mdescRight">检查用户是否在线  <br /></td></tr>
+<tr class="separator:a05762cc00bfca5b04b56ce4b04e60994"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>在线状态管理类 </p>
+<p>封装Redis操作，管理用户在线状态 </p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a65b6c0fe3e5072f2e5867bfb9b296ffe" name="a65b6c0fe3e5072f2e5867bfb9b296ffe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a65b6c0fe3e5072f2e5867bfb9b296ffe">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1Status.html#a65b6c0fe3e5072f2e5867bfb9b296ffe">im_server::Status::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1Status.html">Status</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="af88cc64df9225df0d732f5690461c02b" name="af88cc64df9225df0d732f5690461c02b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af88cc64df9225df0d732f5690461c02b">&#9670;&#160;</a></span>Status()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::Status::Status </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;&#160;</td>
+          <td class="paramname"><em>redis_client</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">redis_client</td><td>Redis客户端实例 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a0483911442f7e3c74ab73352c03b660c" name="a0483911442f7e3c74ab73352c03b660c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0483911442f7e3c74ab73352c03b660c">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Status::append </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>设置用户在线状态 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uid</td><td>用户ID</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>在Redis中标记用户为在线 </p>
+
+</div>
+</div>
+<a id="a05762cc00bfca5b04b56ce4b04e60994" name="a05762cc00bfca5b04b56ce4b04e60994"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05762cc00bfca5b04b56ce4b04e60994">&#9670;&#160;</a></span>exists()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool im_server::Status::exists </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>检查用户是否在线 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uid</td><td>用户ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true=在线，false=离线 </dd></dl>
+
+</div>
+</div>
+<a id="a21642bf19963f20826578ebc713aec10" name="a21642bf19963f20826578ebc713aec10"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21642bf19963f20826578ebc713aec10">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Status::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>删除用户在线状态 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uid</td><td>用户ID</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>用户下线时删除在线标记 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/<a class="el" href="data__redis_8hpp_source.html">data_redis.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/logger.hpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_a0da88266a9bf42b4467cc2dfadac3cd.html">common</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
+<a href="#func-members">函数</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle"><div class="title">logger.hpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>IM服务器日志模块封装  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;spdlog/async.h&gt;</code><br />
+<code>#include &lt;spdlog/sinks/basic_file_sink.h&gt;</code><br />
+<code>#include &lt;spdlog/sinks/stdout_color_sinks.h&gt;</code><br />
+<code>#include &lt;spdlog/spdlog.h&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+logger.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="logger_8hpp__incl.png" border="0" usemap="#a_2home_2zhutian_2repositories_2gitee_2cpp-wechat-im-microservice_2code_2server_2common_2logger_8hpp" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="logger_8hpp__dep__incl.png" border="0" usemap="#a_2home_2zhutian_2repositories_2gitee_2cpp-wechat-im-microservice_2code_2server_2common_2logger_8hppdep" alt=""/></div>
+</div>
+</div>
+<p><a href="logger_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceim__server" id="r_namespaceim__server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceim__server.html">im_server</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ade8e70f1b78d83d5ea1c0aa31cfd2d8b" id="r_ade8e70f1b78d83d5ea1c0aa31cfd2d8b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>&#160;&#160;&#160;&quot;未配置服务&quot;</td></tr>
+<tr class="separator:ade8e70f1b78d83d5ea1c0aa31cfd2d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga20f022b1b58ba62e014b624fdd13572c" id="r_ga20f022b1b58ba62e014b624fdd13572c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#ga20f022b1b58ba62e014b624fdd13572c">LOG_TRACE</a>(fmt, ...)</td></tr>
+<tr class="memdesc:ga20f022b1b58ba62e014b624fdd13572c"><td class="mdescLeft">&#160;</td><td class="mdescRight">跟踪级别日志，用于详细的调试信息  <br /></td></tr>
+<tr class="separator:ga20f022b1b58ba62e014b624fdd13572c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac06cfc686322558f590c50eab8622ebd" id="r_gac06cfc686322558f590c50eab8622ebd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gac06cfc686322558f590c50eab8622ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">调试级别日志，用于开发阶段的调试信息  <br /></td></tr>
+<tr class="separator:gac06cfc686322558f590c50eab8622ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae69d735f8291bd2aff230fe6ffb4d4b3" id="r_gae69d735f8291bd2aff230fe6ffb4d4b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">LOG_INFO</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gae69d735f8291bd2aff230fe6ffb4d4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">信息级别日志，用于记录关键业务流程  <br /></td></tr>
+<tr class="separator:gae69d735f8291bd2aff230fe6ffb4d4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadba1363ea408060eab75cb5a48dcb907" id="r_gadba1363ea408060eab75cb5a48dcb907"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">LOG_WARN</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gadba1363ea408060eab75cb5a48dcb907"><td class="mdescLeft">&#160;</td><td class="mdescRight">警告级别日志，用于记录潜在问题或业务拒绝场景  <br /></td></tr>
+<tr class="separator:gadba1363ea408060eab75cb5a48dcb907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6fc70e87e424e7083c63696b8fb9e78" id="r_gae6fc70e87e424e7083c63696b8fb9e78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gae6fc70e87e424e7083c63696b8fb9e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">错误级别日志，用于记录错误和异常  <br /></td></tr>
+<tr class="separator:gae6fc70e87e424e7083c63696b8fb9e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa842d0e31b246c53e60d17b2d076e193" id="r_gaa842d0e31b246c53e60d17b2d076e193"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gaa842d0e31b246c53e60d17b2d076e193">LOG_FATAL</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gaa842d0e31b246c53e60d17b2d076e193"><td class="mdescLeft">&#160;</td><td class="mdescRight">致命错误日志，用于记录导致服务无法继续运行的严重错误  <br /></td></tr>
+<tr class="separator:gaa842d0e31b246c53e60d17b2d076e193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ad80d702bb92efd785e2cee867e3880a6" id="r_ad80d702bb92efd785e2cee867e3880a6"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a> (const char *path)</td></tr>
+<tr class="memdesc:ad80d702bb92efd785e2cee867e3880a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">提取文件路径中的短文件名  <br /></td></tr>
+<tr class="separator:ad80d702bb92efd785e2cee867e3880a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa96c2771ac190c3d5b3202379db913c" id="r_aaa96c2771ac190c3d5b3202379db913c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceim__server.html#aaa96c2771ac190c3d5b3202379db913c">im_server::init_logger</a> (bool mode, std::string &amp;filename, uint32_t level)</td></tr>
+<tr class="memdesc:aaa96c2771ac190c3d5b3202379db913c"><td class="mdescLeft">&#160;</td><td class="mdescRight">初始化日志系统  <br /></td></tr>
+<tr class="separator:aaa96c2771ac190c3d5b3202379db913c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a27b91dc9615c16cedc7c16a40153127c" id="r_a27b91dc9615c16cedc7c16a40153127c"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a></td></tr>
+<tr class="memdesc:a27b91dc9615c16cedc7c16a40153127c"><td class="mdescLeft">&#160;</td><td class="mdescRight">全局默认日志器实例  <br /></td></tr>
+<tr class="separator:a27b91dc9615c16cedc7c16a40153127c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>IM服务器日志模块封装 </p>
+<p>基于spdlog实现的统一日志系统，支持控制台和文件输出，自动添加服务标识 </p><dl class="section author"><dt>作者</dt><dd>ZhuTian </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2026 </dd></dl>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="ade8e70f1b78d83d5ea1c0aa31cfd2d8b" name="ade8e70f1b78d83d5ea1c0aa31cfd2d8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">&#9670;&#160;</a></span>IM_LOG_SERVICE_TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IM_LOG_SERVICE_TAG&#160;&#160;&#160;&quot;未配置服务&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

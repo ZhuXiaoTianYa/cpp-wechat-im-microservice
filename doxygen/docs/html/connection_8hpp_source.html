@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/gateway/source/connection.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_a8c1d74f4c1354cf526ca05f07dfd516.html">gateway</a></li><li class="navelem"><a class="el" href="dir_c14ef6b43b8142ca6fd05289f24b5126.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">connection.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="connection_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef IM_LOG_SERVICE_TAG</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="connection_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">   12</a></span><span class="preprocessor">#define IM_LOG_SERVICE_TAG &quot;网关&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;<a class="code" href="logger_8hpp.html">logger.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;cstddef&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;memory&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &lt;unordered_map&gt;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &lt;websocketpp/config/asio_no_tls.hpp&gt;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &lt;websocketpp/server.hpp&gt;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="namespaceim__server.html#a5c4e0bc6bba2a3a02a96c03d4f538e5f">   25</a></span><span class="keyword">typedef</span> websocketpp::server&lt;websocketpp::config::asio&gt; <a class="code hl_typedef" href="namespaceim__server.html#a5c4e0bc6bba2a3a02a96c03d4f538e5f">server_t</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="foldopen" id="foldopen00035" data-start="{" data-end="};">
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html">   35</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1Connection.html">Connection</a> {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="};">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structim__server_1_1Connection_1_1ClientInfo.html">   42</a></span>    <span class="keyword">struct </span><a class="code hl_struct" href="structim__server_1_1Connection_1_1ClientInfo.html">ClientInfo</a> {</div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="structim__server_1_1Connection_1_1ClientInfo.html#a52ded9bd23be8803ac87f989216aa8cf">   48</a></span>        <a class="code hl_function" href="structim__server_1_1Connection_1_1ClientInfo.html#a52ded9bd23be8803ac87f989216aa8cf">ClientInfo</a>(<span class="keyword">const</span> std::string &amp;u, <span class="keyword">const</span> std::string &amp;s)</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>            : <a class="code hl_variable" href="structim__server_1_1Connection_1_1ClientInfo.html#ac6f348d505d6543d088a18285a061a5d">uid</a>(u), <a class="code hl_variable" href="structim__server_1_1Connection_1_1ClientInfo.html#a0c2ea734de85f5c96f7453badbc5cb61">ssid</a>(s) {}</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="structim__server_1_1Connection_1_1ClientInfo.html#ac6f348d505d6543d088a18285a061a5d">   50</a></span>        std::string <a class="code hl_variable" href="structim__server_1_1Connection_1_1ClientInfo.html#ac6f348d505d6543d088a18285a061a5d">uid</a>;  </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structim__server_1_1Connection_1_1ClientInfo.html#a0c2ea734de85f5c96f7453badbc5cb61">   51</a></span>        std::string <a class="code hl_variable" href="structim__server_1_1Connection_1_1ClientInfo.html#a0c2ea734de85f5c96f7453badbc5cb61">ssid</a>; </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    };</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#af3beea4a8102b12af6514ba0b4fe95ab">   55</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classim__server_1_1Connection.html#af3beea4a8102b12af6514ba0b4fe95ab">ptr</a> = std::shared_ptr&lt;Connection&gt;;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#a7577d82d468f0d78574f8cb74a2dce0b">   57</a></span>    <a class="code hl_function" href="classim__server_1_1Connection.html#a7577d82d468f0d78574f8cb74a2dce0b">Connection</a>() {}</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#afcd143a78261f26789b16967f437b2c4">   58</a></span>    <a class="code hl_function" href="classim__server_1_1Connection.html#afcd143a78261f26789b16967f437b2c4">~Connection</a>() {}</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#ab3007121f9fa2e82e369985a466e8710">   67</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Connection.html#ab3007121f9fa2e82e369985a466e8710">insert</a>(<span class="keyword">const</span> server_t::connection_ptr &amp;conn, <span class="keyword">const</span> std::string &amp;uid,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                <span class="keyword">const</span> std::string &amp;ssid) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        std::unique_lock&lt;std::mutex&gt; lock(_mutex);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        _uid_connections.insert(std::make_pair(uid, conn));</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        _conn_clients.insert(std::make_pair(conn, <a class="code hl_struct" href="structim__server_1_1Connection_1_1ClientInfo.html">ClientInfo</a>(uid, ssid)));</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <a class="code hl_define" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(<span class="stringliteral">&quot;WebSocket 已绑定用户 | session_id={} | user_id={} | conn={}&quot;</span>,</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>                  ssid, uid, (<span class="keywordtype">void</span> *)conn.get());</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    }</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#aff08602e9ac3fe8e1578204e36c76c63">   82</a></span>    server_t::connection_ptr <a class="code hl_function" href="classim__server_1_1Connection.html#aff08602e9ac3fe8e1578204e36c76c63">connection</a>(<span class="keyword">const</span> std::string &amp;uid) {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        std::unique_lock&lt;std::mutex&gt; lock(_mutex);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        <span class="keyword">auto</span> it = _uid_connections.find(uid);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">if</span> (it == _uid_connections.end()) {</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>            <a class="code hl_define" href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">LOG_WARN</a>(<span class="stringliteral">&quot;按 user_id 查找 WebSocket 连接不存在 | user_id={}&quot;</span>, uid);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>            <span class="keywordflow">return</span> server_t::connection_ptr();</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        }</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <span class="keywordflow">return</span> it-&gt;second;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00100" data-start="{" data-end="}">
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#ac54ce5b6281354ddd656fcb6555a0a1d">  100</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classim__server_1_1Connection.html#ac54ce5b6281354ddd656fcb6555a0a1d">client</a>(<span class="keyword">const</span> server_t::connection_ptr &amp;conn, std::string &amp;uid,</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>                std::string &amp;ssid) {</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        std::unique_lock&lt;std::mutex&gt; lock(_mutex);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        <span class="keyword">auto</span> it = _conn_clients.find(conn);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        <span class="keywordflow">if</span> (it == _conn_clients.end()) {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            <a class="code hl_define" href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">LOG_WARN</a>(<span class="stringliteral">&quot;按连接句柄解析客户端信息失败 | conn={}&quot;</span>, (<span class="keywordtype">void</span> *)conn.get());</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        uid = it-&gt;second.uid;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        ssid = it-&gt;second.ssid;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <a class="code hl_define" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(<span class="stringliteral">&quot;已解析 WebSocket 对应的用户与会话 | user_id={} | session_id={}&quot;</span>,</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>                  uid, ssid);</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    }</div>
+</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="foldopen" id="foldopen00120" data-start="{" data-end="}">
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno"><a class="line" href="classim__server_1_1Connection.html#a63c281c6bb342790cab7e5d3ac84f0dd">  120</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Connection.html#a63c281c6bb342790cab7e5d3ac84f0dd">remove</a>(<span class="keyword">const</span> server_t::connection_ptr &amp;conn) {</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        std::unique_lock&lt;std::mutex&gt; lock(_mutex);</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="keyword">auto</span> it = _conn_clients.find(conn);</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keywordflow">if</span> (it == _conn_clients.end()) {</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>            <a class="code hl_define" href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">LOG_WARN</a>(<span class="stringliteral">&quot;按连接句柄解析客户端信息失败 | conn={}&quot;</span>, (<span class="keywordtype">void</span> *)conn.get());</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        }</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keyword">const</span> std::string removed_uid = it-&gt;second.uid;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        _uid_connections.erase(removed_uid);</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        _conn_clients.erase(it);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <a class="code hl_define" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(<span class="stringliteral">&quot;已移除 WebSocket 连接映射 | user_id={}&quot;</span>, removed_uid);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    std::mutex _mutex; </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    std::unordered_map&lt;std::string, server_t::connection_ptr&gt; _uid_connections; </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    std::unordered_map&lt;server_t::connection_ptr, ClientInfo&gt; _conn_clients; </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>};</div>
+</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>} <span class="comment">// namespace im_server</span></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html"><div class="ttname"><a href="classim__server_1_1Connection.html">im_server::Connection</a></div><div class="ttdoc">WebSocket连接管理器</div><div class="ttdef"><b>Definition</b> connection.hpp:35</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_a63c281c6bb342790cab7e5d3ac84f0dd"><div class="ttname"><a href="classim__server_1_1Connection.html#a63c281c6bb342790cab7e5d3ac84f0dd">im_server::Connection::remove</a></div><div class="ttdeci">void remove(const server_t::connection_ptr &amp;conn)</div><div class="ttdoc">移除连接映射</div><div class="ttdef"><b>Definition</b> connection.hpp:120</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_a7577d82d468f0d78574f8cb74a2dce0b"><div class="ttname"><a href="classim__server_1_1Connection.html#a7577d82d468f0d78574f8cb74a2dce0b">im_server::Connection::Connection</a></div><div class="ttdeci">Connection()</div><div class="ttdef"><b>Definition</b> connection.hpp:57</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_ab3007121f9fa2e82e369985a466e8710"><div class="ttname"><a href="classim__server_1_1Connection.html#ab3007121f9fa2e82e369985a466e8710">im_server::Connection::insert</a></div><div class="ttdeci">void insert(const server_t::connection_ptr &amp;conn, const std::string &amp;uid, const std::string &amp;ssid)</div><div class="ttdoc">插入新的连接映射</div><div class="ttdef"><b>Definition</b> connection.hpp:67</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_ac54ce5b6281354ddd656fcb6555a0a1d"><div class="ttname"><a href="classim__server_1_1Connection.html#ac54ce5b6281354ddd656fcb6555a0a1d">im_server::Connection::client</a></div><div class="ttdeci">bool client(const server_t::connection_ptr &amp;conn, std::string &amp;uid, std::string &amp;ssid)</div><div class="ttdoc">根据连接查找客户端信息</div><div class="ttdef"><b>Definition</b> connection.hpp:100</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_af3beea4a8102b12af6514ba0b4fe95ab"><div class="ttname"><a href="classim__server_1_1Connection.html#af3beea4a8102b12af6514ba0b4fe95ab">im_server::Connection::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Connection &gt; ptr</div><div class="ttdef"><b>Definition</b> connection.hpp:55</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_afcd143a78261f26789b16967f437b2c4"><div class="ttname"><a href="classim__server_1_1Connection.html#afcd143a78261f26789b16967f437b2c4">im_server::Connection::~Connection</a></div><div class="ttdeci">~Connection()</div><div class="ttdef"><b>Definition</b> connection.hpp:58</div></div>
+<div class="ttc" id="aclassim__server_1_1Connection_html_aff08602e9ac3fe8e1578204e36c76c63"><div class="ttname"><a href="classim__server_1_1Connection.html#aff08602e9ac3fe8e1578204e36c76c63">im_server::Connection::connection</a></div><div class="ttdeci">server_t::connection_ptr connection(const std::string &amp;uid)</div><div class="ttdoc">根据用户ID查找WebSocket连接</div><div class="ttdef"><b>Definition</b> connection.hpp:82</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gac06cfc686322558f590c50eab8622ebd"><div class="ttname"><a href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(fmt,...)</div><div class="ttdoc">调试级别日志，用于开发阶段的调试信息</div><div class="ttdef"><b>Definition</b> logger.hpp:77</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gadba1363ea408060eab75cb5a48dcb907"><div class="ttname"><a href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">LOG_WARN</a></div><div class="ttdeci">#define LOG_WARN(fmt,...)</div><div class="ttdoc">警告级别日志，用于记录潜在问题或业务拒绝场景</div><div class="ttdef"><b>Definition</b> logger.hpp:89</div></div>
+<div class="ttc" id="alogger_8hpp_html"><div class="ttname"><a href="logger_8hpp.html">logger.hpp</a></div><div class="ttdoc">IM服务器日志模块封装</div></div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+<div class="ttc" id="anamespaceim__server_html_a5c4e0bc6bba2a3a02a96c03d4f538e5f"><div class="ttname"><a href="namespaceim__server.html#a5c4e0bc6bba2a3a02a96c03d4f538e5f">im_server::server_t</a></div><div class="ttdeci">websocketpp::server&lt; websocketpp::config::asio &gt; server_t</div><div class="ttdoc">WebSocket服务器类型定义</div><div class="ttdef"><b>Definition</b> connection.hpp:25</div></div>
+<div class="ttc" id="astructim__server_1_1Connection_1_1ClientInfo_html"><div class="ttname"><a href="structim__server_1_1Connection_1_1ClientInfo.html">im_server::Connection::ClientInfo</a></div><div class="ttdoc">客户端信息结构</div><div class="ttdef"><b>Definition</b> connection.hpp:42</div></div>
+<div class="ttc" id="astructim__server_1_1Connection_1_1ClientInfo_html_a0c2ea734de85f5c96f7453badbc5cb61"><div class="ttname"><a href="structim__server_1_1Connection_1_1ClientInfo.html#a0c2ea734de85f5c96f7453badbc5cb61">im_server::Connection::ClientInfo::ssid</a></div><div class="ttdeci">std::string ssid</div><div class="ttdoc">会话ID</div><div class="ttdef"><b>Definition</b> connection.hpp:51</div></div>
+<div class="ttc" id="astructim__server_1_1Connection_1_1ClientInfo_html_a52ded9bd23be8803ac87f989216aa8cf"><div class="ttname"><a href="structim__server_1_1Connection_1_1ClientInfo.html#a52ded9bd23be8803ac87f989216aa8cf">im_server::Connection::ClientInfo::ClientInfo</a></div><div class="ttdeci">ClientInfo(const std::string &amp;u, const std::string &amp;s)</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>Definition</b> connection.hpp:48</div></div>
+<div class="ttc" id="astructim__server_1_1Connection_1_1ClientInfo_html_ac6f348d505d6543d088a18285a061a5d"><div class="ttname"><a href="structim__server_1_1Connection_1_1ClientInfo.html#ac6f348d505d6543d088a18285a061a5d">im_server::Connection::ClientInfo::uid</a></div><div class="ttdeci">std::string uid</div><div class="ttdoc">用户ID</div><div class="ttdef"><b>Definition</b> connection.hpp:50</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

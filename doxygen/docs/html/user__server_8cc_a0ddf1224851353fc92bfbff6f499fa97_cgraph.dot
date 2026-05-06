@@ -1,0 +1,37 @@
+digraph "main"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="main",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="im_server::UserServerBuilder\l::build",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#a1ff37d61a077843207fbf69c50a113c6",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="im_server::init_logger",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceim__server.html#aaa96c2771ac190c3d5b3202379db913c",tooltip="初始化日志系统"];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="im_server::UserServerBuilder\l::make_discovery_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#af716681e55d18684e554c8e27813f447",tooltip="创建服务发现客户端"];
+  Node4 -> Node5 [id="edge4_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="im_server::ServiceManager\l::onServiceOffline",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1ServiceManager.html#a2c5a0b3c79a19f9040a3f554e9c71d83",tooltip=" "];
+  Node4 -> Node6 [id="edge5_Node000004_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="im_server::ServiceManager\l::onServiceOnline",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1ServiceManager.html#a0caf34fbdb95af0f8136de8e67ad470b",tooltip="服务上线回调"];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="im_server::UserServerBuilder\l::make_dms_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#a2206f3390572f2e94c7045750fdcb734",tooltip="创建短信服务客户端"];
+  Node1 -> Node8 [id="edge7_Node000001_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="im_server::UserServerBuilder\l::make_es_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#a84132a9584170eaa724bdefd60ba78f6",tooltip="创建Elasticsearch客户端"];
+  Node8 -> Node9 [id="edge8_Node000008_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="im_server::ESClientFactory\l::create",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1ESClientFactory.html#a66d55c4648c9fbe1d7c53a3dae9ac012",tooltip=" "];
+  Node1 -> Node10 [id="edge9_Node000001_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="im_server::UserServerBuilder\l::make_mysql_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#af0e6ae11b3513026e196d669ff363fb8",tooltip="创建MySQL客户端"];
+  Node10 -> Node11 [id="edge10_Node000010_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="im_server::ODBFactory\l::create",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1ODBFactory.html#a2e5c095232c39a52bba87ba646c5d07d",tooltip="创建MySQL数据库连接池"];
+  Node1 -> Node12 [id="edge11_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="im_server::UserServerBuilder\l::make_redis_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#ac4cae9b14d5b5c05619de4da4aa90b27",tooltip="创建Redis客户端"];
+  Node12 -> Node13 [id="edge12_Node000012_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="im_server::RedisClientFactory\l::create",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1RedisClientFactory.html#ab852a3ab6286ec8715541518d2a8eebc",tooltip="创建Redis客户端"];
+  Node1 -> Node14 [id="edge13_Node000001_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="im_server::UserServerBuilder\l::make_registry_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#a752cd4431d081d4401a68a17b75e4149",tooltip="创建服务注册客户端"];
+  Node1 -> Node15 [id="edge14_Node000001_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="im_server::UserServerBuilder\l::make_rpc_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1UserServerBuilder.html#a3fc1f7eb061096a8c47b5fd1bcffdbb7",tooltip=" "];
+}

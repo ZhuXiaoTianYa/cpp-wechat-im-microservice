@@ -1,0 +1,488 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::TransmiteServerBuilder类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html">TransmiteServerBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1TransmiteServerBuilder-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::TransmiteServerBuilder类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>消息转发服务器构建器  
+ <a href="classim__server_1_1TransmiteServerBuilder.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="transmite__server_8hpp_source.html">transmite_server.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a6741540df0b6ab87ab81055ce8747276" id="r_a6741540df0b6ab87ab81055ce8747276"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html#a6741540df0b6ab87ab81055ce8747276">make_mysql_object</a> (const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;db, const std::string &amp;cset, int port, int &amp;conn_pool_count)</td></tr>
+<tr class="memdesc:a6741540df0b6ab87ab81055ce8747276"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建MySQL客户端  <br /></td></tr>
+<tr class="separator:a6741540df0b6ab87ab81055ce8747276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4059a8c4ca6e7eb6877070a1044185a7" id="r_a4059a8c4ca6e7eb6877070a1044185a7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html#a4059a8c4ca6e7eb6877070a1044185a7">make_discovery_object</a> (const std::string &amp;reg_host, const std::string &amp;base_service_name, const std::string &amp;user_service_name)</td></tr>
+<tr class="memdesc:a4059a8c4ca6e7eb6877070a1044185a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建服务发现客户端  <br /></td></tr>
+<tr class="separator:a4059a8c4ca6e7eb6877070a1044185a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a463f35bb97acc62d3fe6fd62f01d070a" id="r_a463f35bb97acc62d3fe6fd62f01d070a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html#a463f35bb97acc62d3fe6fd62f01d070a">make_registry_object</a> (const std::string &amp;reg_host, const std::string &amp;service_name, const std::string &amp;access_host)</td></tr>
+<tr class="memdesc:a463f35bb97acc62d3fe6fd62f01d070a"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建服务注册客户端  <br /></td></tr>
+<tr class="separator:a463f35bb97acc62d3fe6fd62f01d070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4704f273dd454b899878325ca49f178b" id="r_a4704f273dd454b899878325ca49f178b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html#a4704f273dd454b899878325ca49f178b">make_mq_object</a> (const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;exchange_name, const std::string &amp;queue_name, const std::string &amp;routing_key=&quot;routing_key&quot;)</td></tr>
+<tr class="memdesc:a4704f273dd454b899878325ca49f178b"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建RabbitMQ客户端  <br /></td></tr>
+<tr class="separator:a4704f273dd454b899878325ca49f178b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0539e00a5dc2ca43252322744db4e7e" id="r_aa0539e00a5dc2ca43252322744db4e7e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html#aa0539e00a5dc2ca43252322744db4e7e">make_rpc_object</a> (const uint16_t &amp;port, const uint32_t &amp;timeout, const uint8_t &amp;num_threads)</td></tr>
+<tr class="separator:aa0539e00a5dc2ca43252322744db4e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae95d5ababeb858dca1b6161aa1e5a57" id="r_aae95d5ababeb858dca1b6161aa1e5a57"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classim__server_1_1TransmiteServer.html#a940c75b758f87b68e1bfc5c1278414db">TransmiteServer::ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1TransmiteServerBuilder.html#aae95d5ababeb858dca1b6161aa1e5a57">build</a> ()</td></tr>
+<tr class="separator:aae95d5ababeb858dca1b6161aa1e5a57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>消息转发服务器构建器 </p>
+<p>使用Builder模式构建消息转发服务器，按步骤初始化各个组件 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="aae95d5ababeb858dca1b6161aa1e5a57" name="aae95d5ababeb858dca1b6161aa1e5a57"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae95d5ababeb858dca1b6161aa1e5a57">&#9670;&#160;</a></span>build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classim__server_1_1TransmiteServer.html#a940c75b758f87b68e1bfc5c1278414db">TransmiteServer::ptr</a> im_server::TransmiteServerBuilder::build </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_aae95d5ababeb858dca1b6161aa1e5a57_icgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_aae95d5ababeb858dca1b6161aa1e5a57_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a4059a8c4ca6e7eb6877070a1044185a7" name="a4059a8c4ca6e7eb6877070a1044185a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4059a8c4ca6e7eb6877070a1044185a7">&#9670;&#160;</a></span>make_discovery_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::TransmiteServerBuilder::make_discovery_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg_host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>base_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user_service_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建服务发现客户端 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg_host</td><td>etcd服务器地址 </td></tr>
+    <tr><td class="paramname">base_service_name</td><td>服务发现基础路径 </td></tr>
+    <tr><td class="paramname">user_service_name</td><td>用户服务名称</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>监听用户服务的上下线事件 </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_a4059a8c4ca6e7eb6877070a1044185a7_cgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_a4059a8c4ca6e7eb6877070a1044185a7_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_a4059a8c4ca6e7eb6877070a1044185a7_icgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_a4059a8c4ca6e7eb6877070a1044185a7_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a4704f273dd454b899878325ca49f178b" name="a4704f273dd454b899878325ca49f178b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4704f273dd454b899878325ca49f178b">&#9670;&#160;</a></span>make_mq_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::TransmiteServerBuilder::make_mq_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>passwd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>exchange_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>queue_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>routing_key</em> = <code>&quot;routing_key&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建RabbitMQ客户端 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user</td><td>RabbitMQ用户名 </td></tr>
+    <tr><td class="paramname">passwd</td><td>RabbitMQ密码 </td></tr>
+    <tr><td class="paramname">host</td><td>RabbitMQ服务器地址 </td></tr>
+    <tr><td class="paramname">exchange_name</td><td>交换机名称 </td></tr>
+    <tr><td class="paramname">queue_name</td><td>队列名称 </td></tr>
+    <tr><td class="paramname">routing_key</td><td>路由键（默认为"routing_key"）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>声明交换机、队列并建立绑定关系 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_a4704f273dd454b899878325ca49f178b_icgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_a4704f273dd454b899878325ca49f178b_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a6741540df0b6ab87ab81055ce8747276" name="a6741540df0b6ab87ab81055ce8747276"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6741540df0b6ab87ab81055ce8747276">&#9670;&#160;</a></span>make_mysql_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::TransmiteServerBuilder::make_mysql_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>passwd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>db</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>conn_pool_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建MySQL客户端 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user</td><td>数据库用户名 </td></tr>
+    <tr><td class="paramname">passwd</td><td>数据库密码 </td></tr>
+    <tr><td class="paramname">host</td><td>数据库地址 </td></tr>
+    <tr><td class="paramname">db</td><td>数据库名 </td></tr>
+    <tr><td class="paramname">cset</td><td>字符集 </td></tr>
+    <tr><td class="paramname">port</td><td>数据库端口 </td></tr>
+    <tr><td class="paramname">conn_pool_count</td><td>连接池大小 </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_a6741540df0b6ab87ab81055ce8747276_cgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_a6741540df0b6ab87ab81055ce8747276_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_a6741540df0b6ab87ab81055ce8747276_icgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_a6741540df0b6ab87ab81055ce8747276_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a463f35bb97acc62d3fe6fd62f01d070a" name="a463f35bb97acc62d3fe6fd62f01d070a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a463f35bb97acc62d3fe6fd62f01d070a">&#9670;&#160;</a></span>make_registry_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::TransmiteServerBuilder::make_registry_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg_host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>access_host</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建服务注册客户端 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg_host</td><td>etcd服务器地址 </td></tr>
+    <tr><td class="paramname">service_name</td><td>服务名称 </td></tr>
+    <tr><td class="paramname">access_host</td><td>服务访问地址</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将本服务注册到etcd，失败则终止程序 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_a463f35bb97acc62d3fe6fd62f01d070a_icgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_a463f35bb97acc62d3fe6fd62f01d070a_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aa0539e00a5dc2ca43252322744db4e7e" name="aa0539e00a5dc2ca43252322744db4e7e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0539e00a5dc2ca43252322744db4e7e">&#9670;&#160;</a></span>make_rpc_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::TransmiteServerBuilder::make_rpc_object </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t &amp;&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t &amp;&#160;</td>
+          <td class="paramname"><em>num_threads</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1TransmiteServerBuilder_aa0539e00a5dc2ca43252322744db4e7e_icgraph.png" border="0" usemap="#aclassim__server_1_1TransmiteServerBuilder_aa0539e00a5dc2ca43252322744db4e7e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/transmite/source/<a class="el" href="transmite__server_8hpp_source.html">transmite_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

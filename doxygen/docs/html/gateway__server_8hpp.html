@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/gateway/source/gateway_server.hpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_a8c1d74f4c1354cf526ca05f07dfd516.html">gateway</a></li><li class="navelem"><a class="el" href="dir_c14ef6b43b8142ca6fd05289f24b5126.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a>  </div>
+  <div class="headertitle"><div class="title">gateway_server.hpp 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>网关服务模块  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;brpc/controller.h&gt;</code><br />
+<code>#include &lt;brpc/server.h&gt;</code><br />
+<code>#include &lt;butil/logging.h&gt;</code><br />
+<code>#include &quot;base.pb.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="channel_8hpp_source.html">channel.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="connection_8hpp_source.html">connection.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="data__redis_8hpp_source.html">data_redis.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="etcd_8hpp_source.html">etcd.hpp</a>&quot;</code><br />
+<code>#include &quot;file.pb.h&quot;</code><br />
+<code>#include &quot;friend.pb.h&quot;</code><br />
+<code>#include &quot;gateway.pb.h&quot;</code><br />
+<code>#include &quot;httplib.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="logger_8hpp_source.html">logger.hpp</a>&quot;</code><br />
+<code>#include &quot;message.pb.h&quot;</code><br />
+<code>#include &quot;notify.pb.h&quot;</code><br />
+<code>#include &quot;speech.pb.h&quot;</code><br />
+<code>#include &quot;transmite.pb.h&quot;</code><br />
+<code>#include &quot;user.pb.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="utils_8hpp_source.html">utils.hpp</a>&quot;</code><br />
+<code>#include &lt;functional&gt;</code><br />
+<code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+<code>#include &lt;websocketpp/close.hpp&gt;</code><br />
+<code>#include &lt;websocketpp/connection.hpp&gt;</code><br />
+<code>#include &lt;websocketpp/frame.hpp&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+gateway_server.hpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="gateway__server_8hpp__incl.png" border="0" usemap="#a_2home_2zhutian_2repositories_2gitee_2cpp-wechat-im-microservice_2code_2server_2gateway_2source_2gateway__server_8hpp" alt=""/></div>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="gateway__server_8hpp__dep__incl.png" border="0" usemap="#a_2home_2zhutian_2repositories_2gitee_2cpp-wechat-im-microservice_2code_2server_2gateway_2source_2gateway__server_8hppdep" alt=""/></div>
+</div>
+</div>
+<p><a href="gateway__server_8hpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1GatewayServer.html">im_server::GatewayServer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">网关服务器主类  <a href="classim__server_1_1GatewayServer.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1GatewayServerBuilder.html">im_server::GatewayServerBuilder</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="namespaces" name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespaceim__server" id="r_namespaceim__server"><td class="memItemLeft" align="right" valign="top">namespace &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceim__server.html">im_server</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ade8e70f1b78d83d5ea1c0aa31cfd2d8b" id="r_ade8e70f1b78d83d5ea1c0aa31cfd2d8b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gateway__server_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>&#160;&#160;&#160;&quot;网关&quot;</td></tr>
+<tr class="separator:ade8e70f1b78d83d5ea1c0aa31cfd2d8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ce667ff78634580caf064765a0fea35" id="r_ga4ce667ff78634580caf064765a0fea35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga4ce667ff78634580caf064765a0fea35">GET_PHONE_VERIFY_CODE</a>&#160;&#160;&#160;&quot;/service/user/get_phone_verify_code&quot;</td></tr>
+<tr class="separator:ga4ce667ff78634580caf064765a0fea35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac45a7b9b8faf9dda5b8673e1085434c7" id="r_gac45a7b9b8faf9dda5b8673e1085434c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gac45a7b9b8faf9dda5b8673e1085434c7">USERNAME_REGISTER</a>&#160;&#160;&#160;&quot;/service/user/username_register&quot;</td></tr>
+<tr class="separator:gac45a7b9b8faf9dda5b8673e1085434c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga84f98b2567b78618d49827366cb95fcc" id="r_ga84f98b2567b78618d49827366cb95fcc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga84f98b2567b78618d49827366cb95fcc">USERNAME_LOGIN</a>&#160;&#160;&#160;&quot;/service/user/username_login&quot;</td></tr>
+<tr class="separator:ga84f98b2567b78618d49827366cb95fcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga459bacbc6f4131aef1de06d7949d2c9b" id="r_ga459bacbc6f4131aef1de06d7949d2c9b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga459bacbc6f4131aef1de06d7949d2c9b">PHONE_REGISTER</a>&#160;&#160;&#160;&quot;/service/user/phone_register&quot;</td></tr>
+<tr class="separator:ga459bacbc6f4131aef1de06d7949d2c9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae28f3f885695f3fe266e8b819e826819" id="r_gae28f3f885695f3fe266e8b819e826819"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gae28f3f885695f3fe266e8b819e826819">PHONE_LOGIN</a>&#160;&#160;&#160;&quot;/service/user/phone_login&quot;</td></tr>
+<tr class="separator:gae28f3f885695f3fe266e8b819e826819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga71b7b4ae8925b7ab9f91150aaa003fc1" id="r_ga71b7b4ae8925b7ab9f91150aaa003fc1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga71b7b4ae8925b7ab9f91150aaa003fc1">GET_USERINFO</a>&#160;&#160;&#160;&quot;/service/user/get_user_info&quot;</td></tr>
+<tr class="separator:ga71b7b4ae8925b7ab9f91150aaa003fc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e1b95c985b9b2470896bc61fded828c" id="r_ga6e1b95c985b9b2470896bc61fded828c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga6e1b95c985b9b2470896bc61fded828c">SET_USER_AVATAR</a>&#160;&#160;&#160;&quot;/service/user/set_avatar&quot;</td></tr>
+<tr class="separator:ga6e1b95c985b9b2470896bc61fded828c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga96dde8d952d3784d7bd65cbe4bbcca97" id="r_ga96dde8d952d3784d7bd65cbe4bbcca97"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga96dde8d952d3784d7bd65cbe4bbcca97">SET_USER_NICKNAME</a>&#160;&#160;&#160;&quot;/service/user/set_nickname&quot;</td></tr>
+<tr class="separator:ga96dde8d952d3784d7bd65cbe4bbcca97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabeaa02a448285b1f5c5afcfa68a17294" id="r_gabeaa02a448285b1f5c5afcfa68a17294"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gabeaa02a448285b1f5c5afcfa68a17294">SET_USER_DESC</a>&#160;&#160;&#160;&quot;/service/user/set_description&quot;</td></tr>
+<tr class="separator:gabeaa02a448285b1f5c5afcfa68a17294"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga985c544a252fae580975b1f40980d1d1" id="r_ga985c544a252fae580975b1f40980d1d1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga985c544a252fae580975b1f40980d1d1">SET_USER_PHONE</a>&#160;&#160;&#160;&quot;/service/user/set_phone&quot;</td></tr>
+<tr class="separator:ga985c544a252fae580975b1f40980d1d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e4f89f9b345020f5fb513b40b90a320" id="r_ga1e4f89f9b345020f5fb513b40b90a320"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga1e4f89f9b345020f5fb513b40b90a320">FRIEND_GET_LIST</a>&#160;&#160;&#160;&quot;/service/friend/get_friend_list&quot;</td></tr>
+<tr class="separator:ga1e4f89f9b345020f5fb513b40b90a320"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga305fc24fab656a48443834c0b129b7cd" id="r_ga305fc24fab656a48443834c0b129b7cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga305fc24fab656a48443834c0b129b7cd">FRIEND_APPLY</a>&#160;&#160;&#160;&quot;/service/friend/add_friend_apply&quot;</td></tr>
+<tr class="separator:ga305fc24fab656a48443834c0b129b7cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1e236d1e71008b7d4f8e37cb78609918" id="r_ga1e236d1e71008b7d4f8e37cb78609918"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga1e236d1e71008b7d4f8e37cb78609918">FRIEND_APPLY_PROCESS</a>&#160;&#160;&#160;&quot;/service/friend/add_friend_process&quot;</td></tr>
+<tr class="separator:ga1e236d1e71008b7d4f8e37cb78609918"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gafc4d70784a301537efe7ed4c2c397e3c" id="r_gafc4d70784a301537efe7ed4c2c397e3c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gafc4d70784a301537efe7ed4c2c397e3c">FRIEND_REMOVE</a>&#160;&#160;&#160;&quot;/service/friend/remove_friend&quot;</td></tr>
+<tr class="separator:gafc4d70784a301537efe7ed4c2c397e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab1fb1ee9307885ee58f0ad403a9afbc5" id="r_gab1fb1ee9307885ee58f0ad403a9afbc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gab1fb1ee9307885ee58f0ad403a9afbc5">FRIEND_SEARCH</a>&#160;&#160;&#160;&quot;/service/friend/search_friend&quot;</td></tr>
+<tr class="separator:gab1fb1ee9307885ee58f0ad403a9afbc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad6aef7260f60ca2680f9f7aa8f2c3c9f" id="r_gad6aef7260f60ca2680f9f7aa8f2c3c9f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gad6aef7260f60ca2680f9f7aa8f2c3c9f">FRIEND_GET_PENDING_EV</a>&#160;&#160;&#160;&quot;/service/friend/get_pending_friend_events&quot;</td></tr>
+<tr class="separator:gad6aef7260f60ca2680f9f7aa8f2c3c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaac088ede047a6259026d9292e4c97b86" id="r_gaac088ede047a6259026d9292e4c97b86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gaac088ede047a6259026d9292e4c97b86">CSS_GET_LIST</a>&#160;&#160;&#160;&quot;/service/friend/get_chat_session_list&quot;</td></tr>
+<tr class="separator:gaac088ede047a6259026d9292e4c97b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7c7559aed7269af68ba4bf23c064a728" id="r_ga7c7559aed7269af68ba4bf23c064a728"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga7c7559aed7269af68ba4bf23c064a728">CSS_CREATE</a>&#160;&#160;&#160;&quot;/service/friend/create_chat_session&quot;</td></tr>
+<tr class="separator:ga7c7559aed7269af68ba4bf23c064a728"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e5baa634655ac66ccf41e6f06f1ec66" id="r_ga9e5baa634655ac66ccf41e6f06f1ec66"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga9e5baa634655ac66ccf41e6f06f1ec66">CSS_GET_MEMBER</a>&#160;&#160;&#160;&quot;/service/friend/get_chat_session_member&quot;</td></tr>
+<tr class="separator:ga9e5baa634655ac66ccf41e6f06f1ec66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad426f6644fef164c56fcf5d143474379" id="r_gad426f6644fef164c56fcf5d143474379"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gad426f6644fef164c56fcf5d143474379">MSG_GET_RANGE</a>&#160;&#160;&#160;&quot;/service/message_storage/get_history&quot;</td></tr>
+<tr class="separator:gad426f6644fef164c56fcf5d143474379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa0d84d85b50986f42a92c21e0482d582" id="r_gaa0d84d85b50986f42a92c21e0482d582"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gaa0d84d85b50986f42a92c21e0482d582">MSG_GET_RECENT</a>&#160;&#160;&#160;&quot;/service/message_storage/get_recent&quot;</td></tr>
+<tr class="separator:gaa0d84d85b50986f42a92c21e0482d582"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga265fbfd3cf5ac52c394630ff20dea7b0" id="r_ga265fbfd3cf5ac52c394630ff20dea7b0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga265fbfd3cf5ac52c394630ff20dea7b0">MSG_KEY_SEARCH</a>&#160;&#160;&#160;&quot;/service/message_storage/search_history&quot;</td></tr>
+<tr class="separator:ga265fbfd3cf5ac52c394630ff20dea7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gab6b8f8f48c97ee1e58d494eaffbb33fe" id="r_gab6b8f8f48c97ee1e58d494eaffbb33fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gab6b8f8f48c97ee1e58d494eaffbb33fe">NEW_MESSAGE</a>&#160;&#160;&#160;&quot;/service/message_transmit/new_message&quot;</td></tr>
+<tr class="separator:gab6b8f8f48c97ee1e58d494eaffbb33fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae283678aa1c4d413c16c8a83ddd58b4d" id="r_gae283678aa1c4d413c16c8a83ddd58b4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#gae283678aa1c4d413c16c8a83ddd58b4d">FILE_GET_SINGLE</a>&#160;&#160;&#160;&quot;/service/file/get_single_file&quot;</td></tr>
+<tr class="separator:gae283678aa1c4d413c16c8a83ddd58b4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0ef90e4a351cb546d9159447b3bf6787" id="r_ga0ef90e4a351cb546d9159447b3bf6787"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga0ef90e4a351cb546d9159447b3bf6787">FILE_GET_MULTI</a>&#160;&#160;&#160;&quot;/service/file/get_multi_file&quot;</td></tr>
+<tr class="separator:ga0ef90e4a351cb546d9159447b3bf6787"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1aee8ad4e4e3d2739e12cffb2dc1aa54" id="r_ga1aee8ad4e4e3d2739e12cffb2dc1aa54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga1aee8ad4e4e3d2739e12cffb2dc1aa54">FILE_PUT_SINGLE</a>&#160;&#160;&#160;&quot;/service/file/put_single_file&quot;</td></tr>
+<tr class="separator:ga1aee8ad4e4e3d2739e12cffb2dc1aa54"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga38b862cb64e5161d779f5d1a375244fc" id="r_ga38b862cb64e5161d779f5d1a375244fc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga38b862cb64e5161d779f5d1a375244fc">FILE_PUT_MULTI</a>&#160;&#160;&#160;&quot;/service/file/put_multi_file&quot;</td></tr>
+<tr class="separator:ga38b862cb64e5161d779f5d1a375244fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga65ddd15bfaa8cbc68b12278dce05e257" id="r_ga65ddd15bfaa8cbc68b12278dce05e257"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__HttpRoutes.html#ga65ddd15bfaa8cbc68b12278dce05e257">SPEECH_RECOGNITION</a>&#160;&#160;&#160;&quot;/service/speech/recognition&quot;</td></tr>
+<tr class="separator:ga65ddd15bfaa8cbc68b12278dce05e257"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>网关服务模块 </p>
+<p>提供HTTP和WebSocket双协议接入，统一对外服务入口，负责请求路由、会话管理、实时通知 </p><dl class="section author"><dt>作者</dt><dd>ZhuTian </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2026 </dd></dl>
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="ade8e70f1b78d83d5ea1c0aa31cfd2d8b" name="ade8e70f1b78d83d5ea1c0aa31cfd2d8b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">&#9670;&#160;</a></span>IM_LOG_SERVICE_TAG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define IM_LOG_SERVICE_TAG&#160;&#160;&#160;&quot;网关&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

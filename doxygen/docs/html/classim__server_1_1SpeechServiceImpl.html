@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::SpeechServiceImpl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1SpeechServiceImpl.html">SpeechServiceImpl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1SpeechServiceImpl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::SpeechServiceImpl类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>语音识别服务RPC接口实现类  
+ <a href="classim__server_1_1SpeechServiceImpl.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="speech__server_8hpp_source.html">speech_server.hpp</a>&gt;</code></p>
+<div class="dynheader">
+类 im_server::SpeechServiceImpl 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1SpeechServiceImpl__inherit__graph.png" border="0" usemap="#aim__server_1_1SpeechServiceImpl_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+im_server::SpeechServiceImpl 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1SpeechServiceImpl__coll__graph.png" border="0" usemap="#aim__server_1_1SpeechServiceImpl_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a8cdd1f7cecf77174f444872ec73f8891" id="r_a8cdd1f7cecf77174f444872ec73f8891"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServiceImpl.html#a8cdd1f7cecf77174f444872ec73f8891">SpeechServiceImpl</a> (const <a class="el" href="classim__server_1_1ASRClient.html#a1cab9639d6160a1c66a3432911f14118">ASRClient::ptr</a> &amp;asr_client)</td></tr>
+<tr class="memdesc:a8cdd1f7cecf77174f444872ec73f8891"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:a8cdd1f7cecf77174f444872ec73f8891"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97b933dab16b2e5b04eb6c2bd828ab2c" id="r_a97b933dab16b2e5b04eb6c2bd828ab2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServiceImpl.html#a97b933dab16b2e5b04eb6c2bd828ab2c">~SpeechServiceImpl</a> ()</td></tr>
+<tr class="separator:a97b933dab16b2e5b04eb6c2bd828ab2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe4d3b10d8b665cf418f23e8cb77866b" id="r_afe4d3b10d8b665cf418f23e8cb77866b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServiceImpl.html#afe4d3b10d8b665cf418f23e8cb77866b">SpeechRecognition</a> (google::protobuf::RpcController *controller, const ::im_server::SpeechRecognitionReq *request, ::im_server::SpeechRecognitionRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="memdesc:afe4d3b10d8b665cf418f23e8cb77866b"><td class="mdescLeft">&#160;</td><td class="mdescRight">语音识别  <br /></td></tr>
+<tr class="separator:afe4d3b10d8b665cf418f23e8cb77866b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>语音识别服务RPC接口实现类 </p>
+<p>封装百度ASR接口，提供语音转文字功能 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a8cdd1f7cecf77174f444872ec73f8891" name="a8cdd1f7cecf77174f444872ec73f8891"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cdd1f7cecf77174f444872ec73f8891">&#9670;&#160;</a></span>SpeechServiceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::SpeechServiceImpl::SpeechServiceImpl </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classim__server_1_1ASRClient.html#a1cab9639d6160a1c66a3432911f14118">ASRClient::ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>asr_client</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">asr_client</td><td>百度ASR客户端 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a97b933dab16b2e5b04eb6c2bd828ab2c" name="a97b933dab16b2e5b04eb6c2bd828ab2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a97b933dab16b2e5b04eb6c2bd828ab2c">&#9670;&#160;</a></span>~SpeechServiceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::SpeechServiceImpl::~SpeechServiceImpl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="afe4d3b10d8b665cf418f23e8cb77866b" name="afe4d3b10d8b665cf418f23e8cb77866b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe4d3b10d8b665cf418f23e8cb77866b">&#9670;&#160;</a></span>SpeechRecognition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::SpeechServiceImpl::SpeechRecognition </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::SpeechRecognitionReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::SpeechRecognitionRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>语音识别 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>RPC控制器 </td></tr>
+    <tr><td class="paramname">request</td><td>请求（包含语音二进制数据） </td></tr>
+    <tr><td class="paramname">response</td><td>响应（包含识别结果文本） </td></tr>
+    <tr><td class="paramname">done</td><td>RPC回调</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>调用百度ASR接口进行语音识别 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/speech/source/<a class="el" href="speech__server_8hpp_source.html">speech_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

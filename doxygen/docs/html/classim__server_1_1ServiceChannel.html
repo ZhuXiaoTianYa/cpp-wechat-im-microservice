@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::ServiceChannel类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1ServiceChannel.html">ServiceChannel</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1ServiceChannel-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::ServiceChannel类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>单个服务的信道管理类  
+ <a href="classim__server_1_1ServiceChannel.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="channel_8hpp_source.html">channel.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:afe67dd08b7c866c7a1d5bf1fe3881806" id="r_afe67dd08b7c866c7a1d5bf1fe3881806"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1ServiceChannel.html#afe67dd08b7c866c7a1d5bf1fe3881806">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1ServiceChannel.html">ServiceChannel</a> &gt;</td></tr>
+<tr class="separator:afe67dd08b7c866c7a1d5bf1fe3881806"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0c1622f9f48b10c634d385fe76374f3" id="r_ae0c1622f9f48b10c634d385fe76374f3"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1ServiceChannel.html#ae0c1622f9f48b10c634d385fe76374f3">ChannelPtr</a> = std::shared_ptr&lt; brpc::Channel &gt;</td></tr>
+<tr class="separator:ae0c1622f9f48b10c634d385fe76374f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:af6e3e02c70d4960c3532119fe928f9cf" id="r_af6e3e02c70d4960c3532119fe928f9cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1ServiceChannel.html#af6e3e02c70d4960c3532119fe928f9cf">ServiceChannel</a> (const std::string &amp;name)</td></tr>
+<tr class="memdesc:af6e3e02c70d4960c3532119fe928f9cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:af6e3e02c70d4960c3532119fe928f9cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea3755671c81dbf91a7dedd9e4f27378" id="r_aea3755671c81dbf91a7dedd9e4f27378"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1ServiceChannel.html#aea3755671c81dbf91a7dedd9e4f27378">append</a> (const std::string &amp;host)</td></tr>
+<tr class="memdesc:aea3755671c81dbf91a7dedd9e4f27378"><td class="mdescLeft">&#160;</td><td class="mdescRight">添加服务实例信道  <br /></td></tr>
+<tr class="separator:aea3755671c81dbf91a7dedd9e4f27378"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14e058b431a346bede6696b73a2c8232" id="r_a14e058b431a346bede6696b73a2c8232"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1ServiceChannel.html#a14e058b431a346bede6696b73a2c8232">remove</a> (const std::string &amp;host)</td></tr>
+<tr class="memdesc:a14e058b431a346bede6696b73a2c8232"><td class="mdescLeft">&#160;</td><td class="mdescRight">删除服务实例信道  <br /></td></tr>
+<tr class="separator:a14e058b431a346bede6696b73a2c8232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a076c43221ff363c7c9b53e03c85ae575" id="r_a076c43221ff363c7c9b53e03c85ae575"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classim__server_1_1ServiceChannel.html#ae0c1622f9f48b10c634d385fe76374f3">ChannelPtr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1ServiceChannel.html#a076c43221ff363c7c9b53e03c85ae575">choose</a> ()</td></tr>
+<tr class="memdesc:a076c43221ff363c7c9b53e03c85ae575"><td class="mdescLeft">&#160;</td><td class="mdescRight">选择一个信道（轮询负载均衡）  <br /></td></tr>
+<tr class="separator:a076c43221ff363c7c9b53e03c85ae575"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>单个服务的信道管理类 </p>
+<p>管理同一服务的多个实例信道，提供轮询负载均衡 </p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="ae0c1622f9f48b10c634d385fe76374f3" name="ae0c1622f9f48b10c634d385fe76374f3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0c1622f9f48b10c634d385fe76374f3">&#9670;&#160;</a></span>ChannelPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1ServiceChannel.html#ae0c1622f9f48b10c634d385fe76374f3">im_server::ServiceChannel::ChannelPtr</a> =  std::shared_ptr&lt;brpc::Channel&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afe67dd08b7c866c7a1d5bf1fe3881806" name="afe67dd08b7c866c7a1d5bf1fe3881806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe67dd08b7c866c7a1d5bf1fe3881806">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1ServiceChannel.html#afe67dd08b7c866c7a1d5bf1fe3881806">im_server::ServiceChannel::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1ServiceChannel.html">ServiceChannel</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="af6e3e02c70d4960c3532119fe928f9cf" name="af6e3e02c70d4960c3532119fe928f9cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6e3e02c70d4960c3532119fe928f9cf">&#9670;&#160;</a></span>ServiceChannel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::ServiceChannel::ServiceChannel </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>服务名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aea3755671c81dbf91a7dedd9e4f27378" name="aea3755671c81dbf91a7dedd9e4f27378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea3755671c81dbf91a7dedd9e4f27378">&#9670;&#160;</a></span>append()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::ServiceChannel::append </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>添加服务实例信道 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>服务地址（格式：ip:port）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>创建brpc信道并添加到信道池 </p>
+
+</div>
+</div>
+<a id="a076c43221ff363c7c9b53e03c85ae575" name="a076c43221ff363c7c9b53e03c85ae575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a076c43221ff363c7c9b53e03c85ae575">&#9670;&#160;</a></span>choose()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classim__server_1_1ServiceChannel.html#ae0c1622f9f48b10c634d385fe76374f3">ChannelPtr</a> im_server::ServiceChannel::choose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>选择一个信道（轮询负载均衡） </p>
+<dl class="section return"><dt>返回</dt><dd>brpc信道智能指针，若无可用信道则返回空指针</dd></dl>
+<p>使用轮询算法在多个实例间分配请求 </p>
+
+</div>
+</div>
+<a id="a14e058b431a346bede6696b73a2c8232" name="a14e058b431a346bede6696b73a2c8232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14e058b431a346bede6696b73a2c8232">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::ServiceChannel::remove </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>删除服务实例信道 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>服务地址</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>服务下线时删除对应信道 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/<a class="el" href="channel_8hpp_source.html">channel.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

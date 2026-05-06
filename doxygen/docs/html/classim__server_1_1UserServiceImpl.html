@@ -1,0 +1,948 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::UserServiceImpl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1UserServiceImpl.html">UserServiceImpl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1UserServiceImpl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::UserServiceImpl类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>用户服务RPC接口实现类  
+ <a href="classim__server_1_1UserServiceImpl.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="user__server_8hpp_source.html">user_server.hpp</a>&gt;</code></p>
+<div class="dynheader">
+类 im_server::UserServiceImpl 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl__inherit__graph.png" border="0" usemap="#aim__server_1_1UserServiceImpl_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+im_server::UserServiceImpl 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl__coll__graph.png" border="0" usemap="#aim__server_1_1UserServiceImpl_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a510f79554cce7db641230a88e76bec68" id="r_a510f79554cce7db641230a88e76bec68"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a510f79554cce7db641230a88e76bec68">UserServiceImpl</a> (const std::shared_ptr&lt; <a class="el" href="classim__server_1_1DMSClient.html">DMSClient</a> &gt; &amp;dms_client, const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;redis_client, const std::shared_ptr&lt; odb::core::database &gt; &amp;mysql_client, const std::shared_ptr&lt; elasticlient::Client &gt; &amp;es_client, const std::shared_ptr&lt; <a class="el" href="classim__server_1_1ServiceManager.html">ServiceManager</a> &gt; &amp;mm_channels, const std::string &amp;file_service_name)</td></tr>
+<tr class="memdesc:a510f79554cce7db641230a88e76bec68"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:a510f79554cce7db641230a88e76bec68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae361c16daf4e60e7551171912aaf8735" id="r_ae361c16daf4e60e7551171912aaf8735"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#ae361c16daf4e60e7551171912aaf8735">~UserServiceImpl</a> ()</td></tr>
+<tr class="separator:ae361c16daf4e60e7551171912aaf8735"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a985c62a502b9885fe874c7dbea4260a6" id="r_a985c62a502b9885fe874c7dbea4260a6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a985c62a502b9885fe874c7dbea4260a6">nickname_check</a> (const std::string &amp;nickname)</td></tr>
+<tr class="memdesc:a985c62a502b9885fe874c7dbea4260a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">校验昵称合法性  <br /></td></tr>
+<tr class="separator:a985c62a502b9885fe874c7dbea4260a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac34e6b122916251b1ee2996706aa86bd" id="r_ac34e6b122916251b1ee2996706aa86bd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#ac34e6b122916251b1ee2996706aa86bd">password_check</a> (const std::string &amp;password)</td></tr>
+<tr class="memdesc:ac34e6b122916251b1ee2996706aa86bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">校验密码合法性  <br /></td></tr>
+<tr class="separator:ac34e6b122916251b1ee2996706aa86bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f96f60c88bf237620f0ed265c243afe" id="r_a6f96f60c88bf237620f0ed265c243afe"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a6f96f60c88bf237620f0ed265c243afe">phone_check</a> (const std::string &amp;phone)</td></tr>
+<tr class="memdesc:a6f96f60c88bf237620f0ed265c243afe"><td class="mdescLeft">&#160;</td><td class="mdescRight">校验手机号合法性  <br /></td></tr>
+<tr class="separator:a6f96f60c88bf237620f0ed265c243afe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a36a92cf7226ac0e054d699ae1ce54fe2" id="r_a36a92cf7226ac0e054d699ae1ce54fe2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a36a92cf7226ac0e054d699ae1ce54fe2">UserRegister</a> (google::protobuf::RpcController *controller, const ::im_server::UserRegisterReq *request, ::im_server::UserRegisterRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="memdesc:a36a92cf7226ac0e054d699ae1ce54fe2"><td class="mdescLeft">&#160;</td><td class="mdescRight">用户名密码注册  <br /></td></tr>
+<tr class="separator:a36a92cf7226ac0e054d699ae1ce54fe2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a518c84b0d78e6041d2cdf4342419bdf0" id="r_a518c84b0d78e6041d2cdf4342419bdf0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a518c84b0d78e6041d2cdf4342419bdf0">UserLogin</a> (google::protobuf::RpcController *controller, const ::im_server::UserLoginReq *request, ::im_server::UserLoginRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:a518c84b0d78e6041d2cdf4342419bdf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2f2dacfcc6cc173d335ee9970ed8d592" id="r_a2f2dacfcc6cc173d335ee9970ed8d592"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a2f2dacfcc6cc173d335ee9970ed8d592">GetPhoneVerifyCode</a> (google::protobuf::RpcController *controller, const ::im_server::PhoneVerifyCodeReq *request, ::im_server::PhoneVerifyCodeRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:a2f2dacfcc6cc173d335ee9970ed8d592"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eaf24b69f4a79201759d775ffbb3ec4" id="r_a1eaf24b69f4a79201759d775ffbb3ec4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a1eaf24b69f4a79201759d775ffbb3ec4">PhoneRegister</a> (google::protobuf::RpcController *controller, const ::im_server::PhoneRegisterReq *request, ::im_server::PhoneRegisterRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:a1eaf24b69f4a79201759d775ffbb3ec4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0de9f74e59d3f042695ce080a44dcd7" id="r_ae0de9f74e59d3f042695ce080a44dcd7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#ae0de9f74e59d3f042695ce080a44dcd7">PhoneLogin</a> (google::protobuf::RpcController *controller, const ::im_server::PhoneLoginReq *request, ::im_server::PhoneLoginRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:ae0de9f74e59d3f042695ce080a44dcd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a048572b018e5e82d4a4971ddc80d847f" id="r_a048572b018e5e82d4a4971ddc80d847f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a048572b018e5e82d4a4971ddc80d847f">GetUserInfo</a> (google::protobuf::RpcController *controller, const ::im_server::GetUserInfoReq *request, ::im_server::GetUserInfoRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:a048572b018e5e82d4a4971ddc80d847f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac851d7e8778c0fc20e027360484fd79" id="r_aac851d7e8778c0fc20e027360484fd79"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#aac851d7e8778c0fc20e027360484fd79">GetMultiUserInfo</a> (google::protobuf::RpcController *controller, const ::im_server::GetMultiUserInfoReq *request, ::im_server::GetMultiUserInfoRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:aac851d7e8778c0fc20e027360484fd79"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8713f1bf2f0ae54455ccd754ac9c1f58" id="r_a8713f1bf2f0ae54455ccd754ac9c1f58"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a8713f1bf2f0ae54455ccd754ac9c1f58">SetUserAvatar</a> (google::protobuf::RpcController *controller, const ::im_server::SetUserAvatarReq *request, ::im_server::SetUserAvatarRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:a8713f1bf2f0ae54455ccd754ac9c1f58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af12d9afe7238c8691f628794e5d160a7" id="r_af12d9afe7238c8691f628794e5d160a7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#af12d9afe7238c8691f628794e5d160a7">SetUserNickname</a> (google::protobuf::RpcController *controller, const ::im_server::SetUserNicknameReq *request, ::im_server::SetUserNicknameRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:af12d9afe7238c8691f628794e5d160a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fc2c71602adc0ed5d82c738957e7d67" id="r_a7fc2c71602adc0ed5d82c738957e7d67"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#a7fc2c71602adc0ed5d82c738957e7d67">SetUserDescription</a> (google::protobuf::RpcController *controller, const ::im_server::SetUserDescriptionReq *request, ::im_server::SetUserDescriptionRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:a7fc2c71602adc0ed5d82c738957e7d67"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9f3384973c1834cffbcc816834d2af3" id="r_ae9f3384973c1834cffbcc816834d2af3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServiceImpl.html#ae9f3384973c1834cffbcc816834d2af3">SetUserPhoneNumber</a> (google::protobuf::RpcController *controller, const ::im_server::SetUserPhoneNumberReq *request, ::im_server::SetUserPhoneNumberRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="separator:ae9f3384973c1834cffbcc816834d2af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>用户服务RPC接口实现类 </p>
+<p>实现用户注册、登录、信息查询与修改、会话管理等功能 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a510f79554cce7db641230a88e76bec68" name="a510f79554cce7db641230a88e76bec68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a510f79554cce7db641230a88e76bec68">&#9670;&#160;</a></span>UserServiceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::UserServiceImpl::UserServiceImpl </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classim__server_1_1DMSClient.html">DMSClient</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>dms_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;&#160;</td>
+          <td class="paramname"><em>redis_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; odb::core::database &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mysql_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; elasticlient::Client &gt; &amp;&#160;</td>
+          <td class="paramname"><em>es_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classim__server_1_1ServiceManager.html">ServiceManager</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mm_channels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_service_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dms_client</td><td>短信服务客户端 </td></tr>
+    <tr><td class="paramname">redis_client</td><td>Redis客户端（用于会话、状态、验证码） </td></tr>
+    <tr><td class="paramname">mysql_client</td><td>MySQL数据库连接 </td></tr>
+    <tr><td class="paramname">es_client</td><td>Elasticsearch客户端（用于用户搜索） </td></tr>
+    <tr><td class="paramname">mm_channels</td><td>下游服务管理器 </td></tr>
+    <tr><td class="paramname">file_service_name</td><td>文件服务名称 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae361c16daf4e60e7551171912aaf8735" name="ae361c16daf4e60e7551171912aaf8735"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae361c16daf4e60e7551171912aaf8735">&#9670;&#160;</a></span>~UserServiceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::UserServiceImpl::~UserServiceImpl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aac851d7e8778c0fc20e027360484fd79" name="aac851d7e8778c0fc20e027360484fd79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac851d7e8778c0fc20e027360484fd79">&#9670;&#160;</a></span>GetMultiUserInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::GetMultiUserInfo </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::GetMultiUserInfoReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::GetMultiUserInfoRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2f2dacfcc6cc173d335ee9970ed8d592" name="a2f2dacfcc6cc173d335ee9970ed8d592"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2f2dacfcc6cc173d335ee9970ed8d592">&#9670;&#160;</a></span>GetPhoneVerifyCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::GetPhoneVerifyCode </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::PhoneVerifyCodeReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::PhoneVerifyCodeRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_a2f2dacfcc6cc173d335ee9970ed8d592_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_a2f2dacfcc6cc173d335ee9970ed8d592_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a048572b018e5e82d4a4971ddc80d847f" name="a048572b018e5e82d4a4971ddc80d847f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a048572b018e5e82d4a4971ddc80d847f">&#9670;&#160;</a></span>GetUserInfo()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::GetUserInfo </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::GetUserInfoReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::GetUserInfoRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a985c62a502b9885fe874c7dbea4260a6" name="a985c62a502b9885fe874c7dbea4260a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a985c62a502b9885fe874c7dbea4260a6">&#9670;&#160;</a></span>nickname_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool im_server::UserServiceImpl::nickname_check </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>nickname</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>校验昵称合法性 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nickname</td><td>待校验的昵称 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true=合法，false=不合法 </dd></dl>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_a985c62a502b9885fe874c7dbea4260a6_icgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_a985c62a502b9885fe874c7dbea4260a6_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ac34e6b122916251b1ee2996706aa86bd" name="ac34e6b122916251b1ee2996706aa86bd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac34e6b122916251b1ee2996706aa86bd">&#9670;&#160;</a></span>password_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool im_server::UserServiceImpl::password_check </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>password</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>校验密码合法性 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">password</td><td>待校验的密码 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true=合法，false=不合法</dd></dl>
+<p>密码要求：长度6-15位，仅包含字母、数字、下划线和短横线 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_ac34e6b122916251b1ee2996706aa86bd_icgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_ac34e6b122916251b1ee2996706aa86bd_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a6f96f60c88bf237620f0ed265c243afe" name="a6f96f60c88bf237620f0ed265c243afe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f96f60c88bf237620f0ed265c243afe">&#9670;&#160;</a></span>phone_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool im_server::UserServiceImpl::phone_check </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>phone</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>校验手机号合法性 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">phone</td><td>待校验的手机号 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true=合法，false=不合法</dd></dl>
+<p>手机号要求：11位数字，以13-19开头 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_a6f96f60c88bf237620f0ed265c243afe_icgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_a6f96f60c88bf237620f0ed265c243afe_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae0de9f74e59d3f042695ce080a44dcd7" name="ae0de9f74e59d3f042695ce080a44dcd7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0de9f74e59d3f042695ce080a44dcd7">&#9670;&#160;</a></span>PhoneLogin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::PhoneLogin </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::PhoneLoginReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::PhoneLoginRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_ae0de9f74e59d3f042695ce080a44dcd7_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_ae0de9f74e59d3f042695ce080a44dcd7_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a1eaf24b69f4a79201759d775ffbb3ec4" name="a1eaf24b69f4a79201759d775ffbb3ec4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eaf24b69f4a79201759d775ffbb3ec4">&#9670;&#160;</a></span>PhoneRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::PhoneRegister </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::PhoneRegisterReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::PhoneRegisterRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_a1eaf24b69f4a79201759d775ffbb3ec4_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_a1eaf24b69f4a79201759d775ffbb3ec4_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a8713f1bf2f0ae54455ccd754ac9c1f58" name="a8713f1bf2f0ae54455ccd754ac9c1f58"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8713f1bf2f0ae54455ccd754ac9c1f58">&#9670;&#160;</a></span>SetUserAvatar()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::SetUserAvatar </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::SetUserAvatarReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::SetUserAvatarRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7fc2c71602adc0ed5d82c738957e7d67" name="a7fc2c71602adc0ed5d82c738957e7d67"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fc2c71602adc0ed5d82c738957e7d67">&#9670;&#160;</a></span>SetUserDescription()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::SetUserDescription </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::SetUserDescriptionReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::SetUserDescriptionRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af12d9afe7238c8691f628794e5d160a7" name="af12d9afe7238c8691f628794e5d160a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af12d9afe7238c8691f628794e5d160a7">&#9670;&#160;</a></span>SetUserNickname()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::SetUserNickname </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::SetUserNicknameReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::SetUserNicknameRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_af12d9afe7238c8691f628794e5d160a7_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_af12d9afe7238c8691f628794e5d160a7_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae9f3384973c1834cffbcc816834d2af3" name="ae9f3384973c1834cffbcc816834d2af3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9f3384973c1834cffbcc816834d2af3">&#9670;&#160;</a></span>SetUserPhoneNumber()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::SetUserPhoneNumber </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::SetUserPhoneNumberReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::SetUserPhoneNumberRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_ae9f3384973c1834cffbcc816834d2af3_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_ae9f3384973c1834cffbcc816834d2af3_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a518c84b0d78e6041d2cdf4342419bdf0" name="a518c84b0d78e6041d2cdf4342419bdf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518c84b0d78e6041d2cdf4342419bdf0">&#9670;&#160;</a></span>UserLogin()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::UserLogin </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::UserLoginReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::UserLoginRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_a518c84b0d78e6041d2cdf4342419bdf0_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_a518c84b0d78e6041d2cdf4342419bdf0_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a36a92cf7226ac0e054d699ae1ce54fe2" name="a36a92cf7226ac0e054d699ae1ce54fe2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a36a92cf7226ac0e054d699ae1ce54fe2">&#9670;&#160;</a></span>UserRegister()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void im_server::UserServiceImpl::UserRegister </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::UserRegisterReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::UserRegisterRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>用户名密码注册 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>RPC控制器 </td></tr>
+    <tr><td class="paramname">request</td><td>注册请求（包含昵称、密码） </td></tr>
+    <tr><td class="paramname">response</td><td>注册响应（包含用户ID、会话ID） </td></tr>
+    <tr><td class="paramname">done</td><td>RPC回调</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>校验昵称和密码格式，检查昵称唯一性，创建用户并同步到ES </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1UserServiceImpl_a36a92cf7226ac0e054d699ae1ce54fe2_cgraph.png" border="0" usemap="#aclassim__server_1_1UserServiceImpl_a36a92cf7226ac0e054d699ae1ce54fe2_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/user/source/<a class="el" href="user__server_8hpp_source.html">user_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::UserServer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1UserServer.html">UserServer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1UserServer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::UserServer类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>用户服务器主类  
+ <a href="classim__server_1_1UserServer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="user__server_8hpp_source.html">user_server.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a1ea2ba2f3c77bfa9c0875aea61c9af36" id="r_a1ea2ba2f3c77bfa9c0875aea61c9af36"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServer.html#a1ea2ba2f3c77bfa9c0875aea61c9af36">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1UserServer.html">UserServer</a> &gt;</td></tr>
+<tr class="separator:a1ea2ba2f3c77bfa9c0875aea61c9af36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:afa41440cacfafe8a64ff372f4958d523" id="r_afa41440cacfafe8a64ff372f4958d523"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServer.html#afa41440cacfafe8a64ff372f4958d523">UserServer</a> (const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;redis_client, const std::shared_ptr&lt; odb::core::database &gt; &amp;mysql_client, const std::shared_ptr&lt; elasticlient::Client &gt; &amp;es_client, const std::shared_ptr&lt; <a class="el" href="classim__server_1_1Discoverer.html">Discoverer</a> &gt; &amp;service_discoverer, const std::shared_ptr&lt; <a class="el" href="classim__server_1_1Registrar.html">Registrar</a> &gt; &amp;registry_client, const std::shared_ptr&lt; brpc::Server &gt; &amp;rpc_server)</td></tr>
+<tr class="memdesc:afa41440cacfafe8a64ff372f4958d523"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:afa41440cacfafe8a64ff372f4958d523"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a133cfd23d75700a31b543ceabbbebd62" id="r_a133cfd23d75700a31b543ceabbbebd62"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServer.html#a133cfd23d75700a31b543ceabbbebd62">~UserServer</a> ()</td></tr>
+<tr class="separator:a133cfd23d75700a31b543ceabbbebd62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3f510b44cb8bdaf05a042c3bf172df0" id="r_aa3f510b44cb8bdaf05a042c3bf172df0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1UserServer.html#aa3f510b44cb8bdaf05a042c3bf172df0">start</a> ()</td></tr>
+<tr class="memdesc:aa3f510b44cb8bdaf05a042c3bf172df0"><td class="mdescLeft">&#160;</td><td class="mdescRight">启动RPC服务器  <br /></td></tr>
+<tr class="separator:aa3f510b44cb8bdaf05a042c3bf172df0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>用户服务器主类 </p>
+<p>封装用户服务的所有依赖组件，提供启动接口 </p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a1ea2ba2f3c77bfa9c0875aea61c9af36" name="a1ea2ba2f3c77bfa9c0875aea61c9af36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ea2ba2f3c77bfa9c0875aea61c9af36">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1UserServer.html#a1ea2ba2f3c77bfa9c0875aea61c9af36">im_server::UserServer::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1UserServer.html">UserServer</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="afa41440cacfafe8a64ff372f4958d523" name="afa41440cacfafe8a64ff372f4958d523"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa41440cacfafe8a64ff372f4958d523">&#9670;&#160;</a></span>UserServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::UserServer::UserServer </td>
+          <td>(</td>
+          <td class="paramtype">const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;&#160;</td>
+          <td class="paramname"><em>redis_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; odb::core::database &gt; &amp;&#160;</td>
+          <td class="paramname"><em>mysql_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; elasticlient::Client &gt; &amp;&#160;</td>
+          <td class="paramname"><em>es_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classim__server_1_1Discoverer.html">Discoverer</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>service_discoverer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; <a class="el" href="classim__server_1_1Registrar.html">Registrar</a> &gt; &amp;&#160;</td>
+          <td class="paramname"><em>registry_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; brpc::Server &gt; &amp;&#160;</td>
+          <td class="paramname"><em>rpc_server</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">redis_client</td><td>Redis客户端 </td></tr>
+    <tr><td class="paramname">mysql_client</td><td>MySQL数据库连接 </td></tr>
+    <tr><td class="paramname">es_client</td><td>Elasticsearch客户端 </td></tr>
+    <tr><td class="paramname">service_discoverer</td><td>服务发现客户端 </td></tr>
+    <tr><td class="paramname">registry_client</td><td>服务注册客户端 </td></tr>
+    <tr><td class="paramname">rpc_server</td><td>RPC服务器实例 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a133cfd23d75700a31b543ceabbbebd62" name="a133cfd23d75700a31b543ceabbbebd62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a133cfd23d75700a31b543ceabbbebd62">&#9670;&#160;</a></span>~UserServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::UserServer::~UserServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="aa3f510b44cb8bdaf05a042c3bf172df0" name="aa3f510b44cb8bdaf05a042c3bf172df0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3f510b44cb8bdaf05a042c3bf172df0">&#9670;&#160;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::UserServer::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>启动RPC服务器 </p>
+<p>阻塞运行直到收到退出信号 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/user/source/<a class="el" href="user__server_8hpp_source.html">user_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

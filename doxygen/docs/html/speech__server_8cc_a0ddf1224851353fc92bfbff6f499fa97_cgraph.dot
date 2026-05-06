@@ -1,0 +1,19 @@
+digraph "main"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="main",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="im_server::SpeechServerBuilder\l::build",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1SpeechServerBuilder.html#a6538a597c29c85749df936715481c1dc",tooltip="构建语音服务器实例"];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="im_server::init_logger",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespaceim__server.html#aaa96c2771ac190c3d5b3202379db913c",tooltip="初始化日志系统"];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="im_server::SpeechServerBuilder\l::make_asr_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1SpeechServerBuilder.html#a14fbfde77681d07f5bcec52e8db6bb15",tooltip="创建百度ASR客户端"];
+  Node1 -> Node5 [id="edge4_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="im_server::SpeechServerBuilder\l::make_reg_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1SpeechServerBuilder.html#acbb0823d66fabf1673300e98caa9086c",tooltip="创建服务注册客户端"];
+  Node1 -> Node6 [id="edge5_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="im_server::SpeechServerBuilder\l::make_rpc_object",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1SpeechServerBuilder.html#ac735762280a29abbe52c4c0236e430e7",tooltip="创建RPC服务器"];
+}

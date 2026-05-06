@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/odb/message.hxx 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_41b53c9105f563c9baeb0959506990af.html">odb</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">message.hxx</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="message_8hxx.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;boost/date_time/posix_time/posix_time.hpp&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;boost/date_time/posix_time/ptime.hpp&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;odb/core.hxx&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;odb/forward.hxx&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;odb/nullable.hxx&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#pragma db object table(&quot;message&quot;)</span></div>
+<div class="foldopen" id="foldopen00025" data-start="{" data-end="};">
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html">   25</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1Message.html">Message</a> {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#ac8c3e707077e6482842a9b76a460d8ad">   27</a></span>    <a class="code hl_function" href="classim__server_1_1Message.html#ac8c3e707077e6482842a9b76a460d8ad">Message</a>() {}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#ad5ab05e4d31939aa1c9e92a36aaa8765">   37</a></span>    <a class="code hl_function" href="classim__server_1_1Message.html#ad5ab05e4d31939aa1c9e92a36aaa8765">Message</a>(<span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classim__server_1_1Message.html#ae6b27ed45e62590042645f0d90fd39e4">message_id</a>, <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4">session_id</a>,</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            <span class="keyword">const</span> std::string &amp;<a class="code hl_function" href="classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a">user_id</a>, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_function" href="classim__server_1_1Message.html#a415b39e6965564a861c9f861fe81c33e">message_type</a>,</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>            <span class="keyword">const</span> boost::posix_time::ptime &amp;<a class="code hl_function" href="classim__server_1_1Message.html#a82a10276e705f0966e69f0e3f2a3ca2f">create_time</a>)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        : _message_id(<a class="code hl_function" href="classim__server_1_1Message.html#ae6b27ed45e62590042645f0d90fd39e4">message_id</a>), _session_id(<a class="code hl_function" href="classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4">session_id</a>), _user_id(<a class="code hl_function" href="classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a">user_id</a>),</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>          _message_type(<a class="code hl_function" href="classim__server_1_1Message.html#a415b39e6965564a861c9f861fe81c33e">message_type</a>), _create_time(<a class="code hl_function" href="classim__server_1_1Message.html#a82a10276e705f0966e69f0e3f2a3ca2f">create_time</a>) {}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a5b4002944791ec69c47d65621cf5908e">   43</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a5b4002944791ec69c47d65621cf5908e">message_id</a>(<span class="keyword">const</span> std::string &amp;val) { _message_id = val; }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#ae6b27ed45e62590042645f0d90fd39e4">   44</a></span>    std::string <a class="code hl_function" href="classim__server_1_1Message.html#ae6b27ed45e62590042645f0d90fd39e4">message_id</a>() { <span class="keywordflow">return</span> _message_id; }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a47f2d9f0b49471167654fe70d1cfd12c">   46</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a47f2d9f0b49471167654fe70d1cfd12c">session_id</a>(<span class="keyword">const</span> std::string &amp;val) { _session_id = val; }</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4">   47</a></span>    std::string <a class="code hl_function" href="classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4">session_id</a>() { <span class="keywordflow">return</span> _session_id; }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a78e431c583e6527bc857f462d85e6fa6">   49</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a78e431c583e6527bc857f462d85e6fa6">user_id</a>(<span class="keyword">const</span> std::string &amp;val) { _user_id = val; }</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a">   50</a></span>    std::string <a class="code hl_function" href="classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a">user_id</a>() { <span class="keywordflow">return</span> _user_id; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a7d9445436e51bf7eb914c70e7f208ea7">   52</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a7d9445436e51bf7eb914c70e7f208ea7">message_type</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> val) { _message_type = val; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a415b39e6965564a861c9f861fe81c33e">   53</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> <a class="code hl_function" href="classim__server_1_1Message.html#a415b39e6965564a861c9f861fe81c33e">message_type</a>() { <span class="keywordflow">return</span> _message_type; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    </div>
+<div class="foldopen" id="foldopen00055" data-start="{" data-end="}">
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a49d30c9b14f7cb0f55bd4eeef4c28f25">   55</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a49d30c9b14f7cb0f55bd4eeef4c28f25">create_time</a>(<span class="keyword">const</span> boost::posix_time::ptime &amp;val) {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        _create_time = val;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a82a10276e705f0966e69f0e3f2a3ca2f">   58</a></span>    boost::posix_time::ptime <a class="code hl_function" href="classim__server_1_1Message.html#a82a10276e705f0966e69f0e3f2a3ca2f">create_time</a>() { <span class="keywordflow">return</span> _create_time; }</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a0207cca5bb70d1f12cbb9b0391116c66">   60</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a0207cca5bb70d1f12cbb9b0391116c66">file_id</a>(<span class="keyword">const</span> std::string &amp;val) { _file_id = val; }</div>
+<div class="foldopen" id="foldopen00061" data-start="{" data-end="}">
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a34ee56517da42c2cff11a68da80d6ac2">   61</a></span>    std::string <a class="code hl_function" href="classim__server_1_1Message.html#a34ee56517da42c2cff11a68da80d6ac2">file_id</a>() {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        <span class="keywordflow">if</span> (!_file_id)</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> *_file_id;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
+</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#ad2d7262f82bfc687f7068d0dda204842">   67</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#ad2d7262f82bfc687f7068d0dda204842">file_name</a>(<span class="keyword">const</span> std::string &amp;val) { _file_name = val; }</div>
+<div class="foldopen" id="foldopen00068" data-start="{" data-end="}">
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a53a196eba4f312a8cca90defd9368ac0">   68</a></span>    std::string <a class="code hl_function" href="classim__server_1_1Message.html#a53a196eba4f312a8cca90defd9368ac0">file_name</a>() {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordflow">if</span> (!_file_name)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">return</span> *_file_name;</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    }</div>
+</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a5f17e85aeba7069ee7579df25485bd5b">   74</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a5f17e85aeba7069ee7579df25485bd5b">content</a>(<span class="keyword">const</span> std::string &amp;val) { _content = val; }</div>
+<div class="foldopen" id="foldopen00075" data-start="{" data-end="}">
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#ae1314ebe666d8a5fd873d59674b9f8dd">   75</a></span>    std::string <a class="code hl_function" href="classim__server_1_1Message.html#ae1314ebe666d8a5fd873d59674b9f8dd">content</a>() {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">if</span> (!_content)</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>            <span class="keywordflow">return</span> std::string();</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="keywordflow">return</span> *_content;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    }</div>
+</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a469675ee1268ddd5cf22fbd69c723a21">   81</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1Message.html#a469675ee1268ddd5cf22fbd69c723a21">file_size</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp;val) { _file_size = val; }</div>
+<div class="foldopen" id="foldopen00082" data-start="{" data-end="}">
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#a328ba5035d10ffb854a84b001e2f070a">   82</a></span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classim__server_1_1Message.html#a328ba5035d10ffb854a84b001e2f070a">file_size</a>() {</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <span class="keywordflow">if</span> (!_file_size)</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span> *_file_size;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    }</div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="classim__server_1_1Message.html#acb4d953abf85ae525f1d06a0c3a86a55">   89</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="classim__server_1_1Message.html#acb4d953abf85ae525f1d06a0c3a86a55">odb::access</a>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">#pragma db id auto</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> _id;                      </div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">#pragma db type(&quot;varchar(64)&quot;) index unique</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    std::string _message_id;                </div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#pragma db type(&quot;varchar(64)&quot;) index</span></div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    std::string _session_id;                </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">#pragma db type(&quot;varchar(64)&quot;)</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    std::string _user_id;                   </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> _message_type;            </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span><span class="preprocessor">#pragma db type(&quot;TIMESTAMP&quot;)</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    boost::posix_time::ptime _create_time;  </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="preprocessor">#pragma db type(&quot;varchar(64)&quot;)</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    odb::nullable&lt;std::string&gt; _file_id;    </div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#pragma db type(&quot;varchar(128)&quot;)</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    odb::nullable&lt;std::string&gt; _file_name;  </div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    odb::nullable&lt;std::string&gt; _content;    </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    odb::nullable&lt;unsigned int&gt; _file_size; </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>};</div>
+</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>} <span class="comment">// namespace im_server</span></div>
+<div class="ttc" id="aclassim__server_1_1Message_html"><div class="ttname"><a href="classim__server_1_1Message.html">im_server::Message</a></div><div class="ttdoc">消息实体类</div><div class="ttdef"><b>Definition</b> message.hxx:25</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a0207cca5bb70d1f12cbb9b0391116c66"><div class="ttname"><a href="classim__server_1_1Message.html#a0207cca5bb70d1f12cbb9b0391116c66">im_server::Message::file_id</a></div><div class="ttdeci">void file_id(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:60</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a328ba5035d10ffb854a84b001e2f070a"><div class="ttname"><a href="classim__server_1_1Message.html#a328ba5035d10ffb854a84b001e2f070a">im_server::Message::file_size</a></div><div class="ttdeci">unsigned int file_size()</div><div class="ttdef"><b>Definition</b> message.hxx:82</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a34ee56517da42c2cff11a68da80d6ac2"><div class="ttname"><a href="classim__server_1_1Message.html#a34ee56517da42c2cff11a68da80d6ac2">im_server::Message::file_id</a></div><div class="ttdeci">std::string file_id()</div><div class="ttdef"><b>Definition</b> message.hxx:61</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a3f4c56ad10968b8fac1b53b17141c2b4"><div class="ttname"><a href="classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4">im_server::Message::session_id</a></div><div class="ttdeci">std::string session_id()</div><div class="ttdef"><b>Definition</b> message.hxx:47</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a415b39e6965564a861c9f861fe81c33e"><div class="ttname"><a href="classim__server_1_1Message.html#a415b39e6965564a861c9f861fe81c33e">im_server::Message::message_type</a></div><div class="ttdeci">unsigned char message_type()</div><div class="ttdef"><b>Definition</b> message.hxx:53</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a469675ee1268ddd5cf22fbd69c723a21"><div class="ttname"><a href="classim__server_1_1Message.html#a469675ee1268ddd5cf22fbd69c723a21">im_server::Message::file_size</a></div><div class="ttdeci">void file_size(const unsigned int &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:81</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a47f2d9f0b49471167654fe70d1cfd12c"><div class="ttname"><a href="classim__server_1_1Message.html#a47f2d9f0b49471167654fe70d1cfd12c">im_server::Message::session_id</a></div><div class="ttdeci">void session_id(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:46</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a49d30c9b14f7cb0f55bd4eeef4c28f25"><div class="ttname"><a href="classim__server_1_1Message.html#a49d30c9b14f7cb0f55bd4eeef4c28f25">im_server::Message::create_time</a></div><div class="ttdeci">void create_time(const boost::posix_time::ptime &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:55</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a53a196eba4f312a8cca90defd9368ac0"><div class="ttname"><a href="classim__server_1_1Message.html#a53a196eba4f312a8cca90defd9368ac0">im_server::Message::file_name</a></div><div class="ttdeci">std::string file_name()</div><div class="ttdef"><b>Definition</b> message.hxx:68</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a5b4002944791ec69c47d65621cf5908e"><div class="ttname"><a href="classim__server_1_1Message.html#a5b4002944791ec69c47d65621cf5908e">im_server::Message::message_id</a></div><div class="ttdeci">void message_id(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:43</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a5f17e85aeba7069ee7579df25485bd5b"><div class="ttname"><a href="classim__server_1_1Message.html#a5f17e85aeba7069ee7579df25485bd5b">im_server::Message::content</a></div><div class="ttdeci">void content(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:74</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a6633f006dd54b08e3b2055195b1b4e6a"><div class="ttname"><a href="classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a">im_server::Message::user_id</a></div><div class="ttdeci">std::string user_id()</div><div class="ttdef"><b>Definition</b> message.hxx:50</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a78e431c583e6527bc857f462d85e6fa6"><div class="ttname"><a href="classim__server_1_1Message.html#a78e431c583e6527bc857f462d85e6fa6">im_server::Message::user_id</a></div><div class="ttdeci">void user_id(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:49</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a7d9445436e51bf7eb914c70e7f208ea7"><div class="ttname"><a href="classim__server_1_1Message.html#a7d9445436e51bf7eb914c70e7f208ea7">im_server::Message::message_type</a></div><div class="ttdeci">void message_type(const unsigned char val)</div><div class="ttdef"><b>Definition</b> message.hxx:52</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_a82a10276e705f0966e69f0e3f2a3ca2f"><div class="ttname"><a href="classim__server_1_1Message.html#a82a10276e705f0966e69f0e3f2a3ca2f">im_server::Message::create_time</a></div><div class="ttdeci">boost::posix_time::ptime create_time()</div><div class="ttdef"><b>Definition</b> message.hxx:58</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_ac8c3e707077e6482842a9b76a460d8ad"><div class="ttname"><a href="classim__server_1_1Message.html#ac8c3e707077e6482842a9b76a460d8ad">im_server::Message::Message</a></div><div class="ttdeci">Message()</div><div class="ttdef"><b>Definition</b> message.hxx:27</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_acb4d953abf85ae525f1d06a0c3a86a55"><div class="ttname"><a href="classim__server_1_1Message.html#acb4d953abf85ae525f1d06a0c3a86a55">im_server::Message::access</a></div><div class="ttdeci">friend class odb::access</div><div class="ttdef"><b>Definition</b> message.hxx:89</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_ad2d7262f82bfc687f7068d0dda204842"><div class="ttname"><a href="classim__server_1_1Message.html#ad2d7262f82bfc687f7068d0dda204842">im_server::Message::file_name</a></div><div class="ttdeci">void file_name(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> message.hxx:67</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_ad5ab05e4d31939aa1c9e92a36aaa8765"><div class="ttname"><a href="classim__server_1_1Message.html#ad5ab05e4d31939aa1c9e92a36aaa8765">im_server::Message::Message</a></div><div class="ttdeci">Message(const std::string &amp;message_id, const std::string &amp;session_id, const std::string &amp;user_id, const unsigned char message_type, const boost::posix_time::ptime &amp;create_time)</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>Definition</b> message.hxx:37</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_ae1314ebe666d8a5fd873d59674b9f8dd"><div class="ttname"><a href="classim__server_1_1Message.html#ae1314ebe666d8a5fd873d59674b9f8dd">im_server::Message::content</a></div><div class="ttdeci">std::string content()</div><div class="ttdef"><b>Definition</b> message.hxx:75</div></div>
+<div class="ttc" id="aclassim__server_1_1Message_html_ae6b27ed45e62590042645f0d90fd39e4"><div class="ttname"><a href="classim__server_1_1Message.html#ae6b27ed45e62590042645f0d90fd39e4">im_server::Message::message_id</a></div><div class="ttdeci">std::string message_id()</div><div class="ttdef"><b>Definition</b> message.hxx:44</div></div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

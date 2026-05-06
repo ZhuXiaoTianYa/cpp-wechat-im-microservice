@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::MQClient类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1MQClient.html">MQClient</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1MQClient-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::MQClient类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>RabbitMQ客户端类  
+ <a href="classim__server_1_1MQClient.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="rabbitmq_8hpp_source.html">rabbitmq.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:ad1817e040a6c222f4ee53ca50fdc79f0" id="r_ad1817e040a6c222f4ee53ca50fdc79f0"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#ad1817e040a6c222f4ee53ca50fdc79f0">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1MQClient.html">MQClient</a> &gt;</td></tr>
+<tr class="separator:ad1817e040a6c222f4ee53ca50fdc79f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a6adebfb57f67dbe62cba2edf3761c8" id="r_a1a6adebfb57f67dbe62cba2edf3761c8"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#a1a6adebfb57f67dbe62cba2edf3761c8">MessageCallback</a> = std::function&lt; void(const char *, size_t)&gt;</td></tr>
+<tr class="separator:a1a6adebfb57f67dbe62cba2edf3761c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a3e9a9e8b643137bad17cfb73a8b0d876" id="r_a3e9a9e8b643137bad17cfb73a8b0d876"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#a3e9a9e8b643137bad17cfb73a8b0d876">MQClient</a> (const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host)</td></tr>
+<tr class="memdesc:a3e9a9e8b643137bad17cfb73a8b0d876"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:a3e9a9e8b643137bad17cfb73a8b0d876"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfe0ea54f42c7ebbeea296cfc4e66413" id="r_adfe0ea54f42c7ebbeea296cfc4e66413"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#adfe0ea54f42c7ebbeea296cfc4e66413">~MQClient</a> ()</td></tr>
+<tr class="memdesc:adfe0ea54f42c7ebbeea296cfc4e66413"><td class="mdescLeft">&#160;</td><td class="mdescRight">析构函数  <br /></td></tr>
+<tr class="separator:adfe0ea54f42c7ebbeea296cfc4e66413"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd31994c3c0ab88c1a37e2e4dd0b99bc" id="r_abd31994c3c0ab88c1a37e2e4dd0b99bc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#abd31994c3c0ab88c1a37e2e4dd0b99bc">declareComponents</a> (const std::string &amp;exchange, const std::string &amp;queue, const std::string &amp;routing_key=&quot;routing_key&quot;, AMQP::ExchangeType exchange_type=AMQP::ExchangeType::direct)</td></tr>
+<tr class="memdesc:abd31994c3c0ab88c1a37e2e4dd0b99bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">声明MQ组件（交换机、队列、绑定）  <br /></td></tr>
+<tr class="separator:abd31994c3c0ab88c1a37e2e4dd0b99bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdb8b91e20f271228c8c81890fc1d376" id="r_abdb8b91e20f271228c8c81890fc1d376"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#abdb8b91e20f271228c8c81890fc1d376">publish</a> (const std::string &amp;exchange, const std::string &amp;msg, const std::string &amp;routing_key=&quot;routing_key&quot;)</td></tr>
+<tr class="separator:abdb8b91e20f271228c8c81890fc1d376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713e305eb2427262f0f92fb4092d209f" id="r_a713e305eb2427262f0f92fb4092d209f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MQClient.html#a713e305eb2427262f0f92fb4092d209f">consume</a> (const std::string &amp;queue, const <a class="el" href="classim__server_1_1MQClient.html#a1a6adebfb57f67dbe62cba2edf3761c8">MessageCallback</a> &amp;cb)</td></tr>
+<tr class="separator:a713e305eb2427262f0f92fb4092d209f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>RabbitMQ客户端类 </p>
+<p>封装RabbitMQ连接、信道、交换机、队列的声明和消息收发功能 </p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a1a6adebfb57f67dbe62cba2edf3761c8" name="a1a6adebfb57f67dbe62cba2edf3761c8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1a6adebfb57f67dbe62cba2edf3761c8">&#9670;&#160;</a></span>MessageCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1MQClient.html#a1a6adebfb57f67dbe62cba2edf3761c8">im_server::MQClient::MessageCallback</a> =  std::function&lt;void(const char *, size_t)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad1817e040a6c222f4ee53ca50fdc79f0" name="ad1817e040a6c222f4ee53ca50fdc79f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1817e040a6c222f4ee53ca50fdc79f0">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1MQClient.html#ad1817e040a6c222f4ee53ca50fdc79f0">im_server::MQClient::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1MQClient.html">MQClient</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a3e9a9e8b643137bad17cfb73a8b0d876" name="a3e9a9e8b643137bad17cfb73a8b0d876"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e9a9e8b643137bad17cfb73a8b0d876">&#9670;&#160;</a></span>MQClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::MQClient::MQClient </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>passwd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">user</td><td>RabbitMQ用户名 </td></tr>
+    <tr><td class="paramname">passwd</td><td>RabbitMQ密码 </td></tr>
+    <tr><td class="paramname">host</td><td>RabbitMQ服务器地址</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>创建连接、信道，并启动libev事件循环线程 </p>
+
+</div>
+</div>
+<a id="adfe0ea54f42c7ebbeea296cfc4e66413" name="adfe0ea54f42c7ebbeea296cfc4e66413"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adfe0ea54f42c7ebbeea296cfc4e66413">&#9670;&#160;</a></span>~MQClient()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::MQClient::~MQClient </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>析构函数 </p>
+<p>停止事件循环，等待线程退出 </p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a713e305eb2427262f0f92fb4092d209f" name="a713e305eb2427262f0f92fb4092d209f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a713e305eb2427262f0f92fb4092d209f">&#9670;&#160;</a></span>consume()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MQClient::consume </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classim__server_1_1MQClient.html#a1a6adebfb57f67dbe62cba2edf3761c8">MessageCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>cb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="abd31994c3c0ab88c1a37e2e4dd0b99bc" name="abd31994c3c0ab88c1a37e2e4dd0b99bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abd31994c3c0ab88c1a37e2e4dd0b99bc">&#9670;&#160;</a></span>declareComponents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MQClient::declareComponents </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>exchange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>queue</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>routing_key</em> = <code>&quot;routing_key&quot;</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">AMQP::ExchangeType&#160;</td>
+          <td class="paramname"><em>exchange_type</em> = <code>AMQP::ExchangeType::direct</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>声明MQ组件（交换机、队列、绑定） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">exchange</td><td>交换机名称 </td></tr>
+    <tr><td class="paramname">queue</td><td>队列名称 </td></tr>
+    <tr><td class="paramname">routing_key</td><td>路由键（默认为"routing_key"） </td></tr>
+    <tr><td class="paramname">exchange_type</td><td>交换机类型（默认为direct）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>声明交换机、队列并建立绑定关系 </p>
+
+</div>
+</div>
+<a id="abdb8b91e20f271228c8c81890fc1d376" name="abdb8b91e20f271228c8c81890fc1d376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abdb8b91e20f271228c8c81890fc1d376">&#9670;&#160;</a></span>publish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool im_server::MQClient::publish </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>exchange</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>routing_key</em> = <code>&quot;routing_key&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/<a class="el" href="rabbitmq_8hpp_source.html">rabbitmq.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

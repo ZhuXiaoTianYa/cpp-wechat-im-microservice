@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['uid_0',['uid',['../classim__server_1_1Session.html#abe80df44d54099ffaf05f2e8e6ee5152',1,'im_server::Session::uid()'],['../structim__server_1_1Connection_1_1ClientInfo.html#ac6f348d505d6543d088a18285a061a5d',1,'im_server::Connection::ClientInfo::uid']]],
+  ['unserialize_1',['UnSerialize',['../namespaceim__server.html#a36bf6320a80baaa7f8a3a063516d0409',1,'im_server']]],
+  ['update_2',['update',['../classim__server_1_1UserTable.html#aa477cca2e51454580ea1d8f46a6dc900',1,'im_server::UserTable']]],
+  ['user_3',['user',['../classim__server_1_1User.html',1,'im_server::User'],['../classim__server_1_1User.html#ad0b229eb0bb378cb64b24f14ef13194a',1,'im_server::User::User(const std::string &amp;uid, const std::string &amp;phone)'],['../classim__server_1_1User.html#a966a6f285f63c1c9d1478da9bff8e4b6',1,'im_server::User::User(const std::string &amp;uid, const std::string &amp;nickname, const std::string &amp;password)'],['../classim__server_1_1User.html#a64a81da9addce6eb7dcf62406b0f43ae',1,'im_server::User::User()']]],
+  ['user_2ehxx_4',['user.hxx',['../user_8hxx.html',1,'']]],
+  ['user_5fid_5',['user_id',['../classim__server_1_1User.html#aed531aeb86029f5826fea5ea77cc4840',1,'im_server::User::user_id()'],['../classim__server_1_1User.html#a4598c18681f9ef265255c8297731182d',1,'im_server::User::user_id(const std::string &amp;val)'],['../classim__server_1_1Relation.html#ac18af93c30ffff766e056c899f94893a',1,'im_server::Relation::user_id()'],['../classim__server_1_1Relation.html#a6630c142c636c03db0cdb8c7a5613c4b',1,'im_server::Relation::user_id(const std::string &amp;val)'],['../classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a',1,'im_server::Message::user_id()'],['../classim__server_1_1ChatSessionMember.html#a3f8de7f4c322bd781ca11ee4df9fee86',1,'im_server::ChatSessionMember::user_id(const std::string &amp;uid)'],['../classim__server_1_1ChatSessionMember.html#a2520da19ed3ea97f02c3f9f4b8b8776f',1,'im_server::ChatSessionMember::user_id()'],['../classim__server_1_1FriendApply.html#aaa13bb97c588d25e53a9a1bfa048dd1f',1,'im_server::FriendApply::user_id(const std::string &amp;val)'],['../classim__server_1_1FriendApply.html#ab2fda89f4867682e5aa5fae61ea18588',1,'im_server::FriendApply::user_id()'],['../classim__server_1_1Message.html#a78e431c583e6527bc857f462d85e6fa6',1,'im_server::Message::user_id()']]],
+  ['user_5fserver_2ecc_6',['user_server.cc',['../user__server_8cc.html',1,'']]],
+  ['user_5fserver_2ehpp_7',['user_server.hpp',['../user__server_8hpp.html',1,'']]],
+  ['userlogin_8',['UserLogin',['../classim__server_1_1UserServiceImpl.html#a518c84b0d78e6041d2cdf4342419bdf0',1,'im_server::UserServiceImpl']]],
+  ['username_5flogin_9',['USERNAME_LOGIN',['../group__HttpRoutes.html#ga84f98b2567b78618d49827366cb95fcc',1,'gateway_server.hpp']]],
+  ['username_5fregister_10',['USERNAME_REGISTER',['../group__HttpRoutes.html#gac45a7b9b8faf9dda5b8673e1085434c7',1,'gateway_server.hpp']]],
+  ['userregister_11',['UserRegister',['../classim__server_1_1UserServiceImpl.html#a36a92cf7226ac0e054d699ae1ce54fe2',1,'im_server::UserServiceImpl']]],
+  ['userserver_12',['userserver',['../classim__server_1_1UserServer.html',1,'im_server::UserServer'],['../classim__server_1_1UserServer.html#afa41440cacfafe8a64ff372f4958d523',1,'im_server::UserServer::UserServer()']]],
+  ['userserverbuilder_13',['UserServerBuilder',['../classim__server_1_1UserServerBuilder.html',1,'im_server']]],
+  ['userserviceimpl_14',['userserviceimpl',['../classim__server_1_1UserServiceImpl.html#a510f79554cce7db641230a88e76bec68',1,'im_server::UserServiceImpl::UserServiceImpl()'],['../classim__server_1_1UserServiceImpl.html',1,'im_server::UserServiceImpl']]],
+  ['usertable_15',['usertable',['../classim__server_1_1UserTable.html#a79280047dd5b61f22eb8cb415b107d94',1,'im_server::UserTable::UserTable()'],['../classim__server_1_1UserTable.html',1,'im_server::UserTable']]],
+  ['utils_2ehpp_16',['utils.hpp',['../utils_8hpp.html',1,'']]],
+  ['uuid_17',['uuid',['../namespaceim__server.html#a72288431585e95772230879cca9fc32a',1,'im_server']]]
+];

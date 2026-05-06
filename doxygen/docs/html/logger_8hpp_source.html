@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/logger.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_a0da88266a9bf42b4467cc2dfadac3cd.html">common</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">logger.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="logger_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;cstring&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;spdlog/async.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;spdlog/sinks/basic_file_sink.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;spdlog/sinks/stdout_color_sinks.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;spdlog/spdlog.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifndef IM_LOG_SERVICE_TAG</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">   19</a></span><span class="preprocessor">#define IM_LOG_SERVICE_TAG &quot;未配置服务&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="foldopen" id="foldopen00029" data-start="{" data-end="}">
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">   29</a></span><span class="keyword">inline</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_log_short_file</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *path) {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *s = std::strrchr(path, <span class="charliteral">&#39;/&#39;</span>);</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (s)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">return</span> s + 1;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    s = std::strrchr(path, <span class="charliteral">&#39;\\&#39;</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> s ? (s + 1) : path;</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">   38</a></span><span class="keyword">inline</span> std::shared_ptr&lt;spdlog::logger&gt; <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="foldopen" id="foldopen00046" data-start="{" data-end="}">
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="namespaceim__server.html#aaa96c2771ac190c3d5b3202379db913c">   46</a></span><span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code hl_function" href="namespaceim__server.html#aaa96c2771ac190c3d5b3202379db913c">init_logger</a>(<span class="keywordtype">bool</span> mode, std::string &amp;filename, uint32_t level) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (mode == <span class="keyword">false</span>) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a> = spdlog::stdout_color_mt(<span class="stringliteral">&quot;default-logger&quot;</span>);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a>-&gt;set_level(spdlog::level::trace);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a>-&gt;flush_on(spdlog::level::trace);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a> =</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            spdlog::basic_logger_mt&lt;spdlog::async_factory&gt;(<span class="stringliteral">&quot;default-logger&quot;</span>,</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>                                                          filename);</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a>-&gt;set_level((spdlog::level::level_enum)level);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a>-&gt;flush_on((spdlog::level::level_enum)level);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    }</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">g_default_logger</a>-&gt;set_pattern(</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="stringliteral">&quot;[%Y-%m-%d %H:%M:%S.%e][%n][%t][%-8l]%v&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>} <span class="comment">// namespace im_server</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00071" data-start="" data-end="">
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno"><a class="line" href="group__LogMacros.html#ga20f022b1b58ba62e014b624fdd13572c">   71</a></span><span class="preprocessor">#define LOG_TRACE(fmt, ...)                                                  \</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span><span class="preprocessor">    im_server::g_default_logger-&gt;trace(                                      \</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">        &quot;[{}] [{}:{}] &quot; fmt, IM_LOG_SERVICE_TAG,                             \</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">        im_server::im_log_short_file(__FILE__), __LINE__, ##__VA_ARGS__)</span></div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="foldopen" id="foldopen00077" data-start="" data-end="">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">   77</a></span><span class="preprocessor">#define LOG_DEBUG(fmt, ...)                                                  \</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">    im_server::g_default_logger-&gt;debug(                                      \</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span><span class="preprocessor">        &quot;[{}] [{}:{}] &quot; fmt, IM_LOG_SERVICE_TAG,                             \</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">        im_server::im_log_short_file(__FILE__), __LINE__, ##__VA_ARGS__)</span></div>
+</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="foldopen" id="foldopen00083" data-start="" data-end="">
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno"><a class="line" href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">   83</a></span><span class="preprocessor">#define LOG_INFO(fmt, ...)                                                   \</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span><span class="preprocessor">    im_server::g_default_logger-&gt;info(                                       \</span></div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">        &quot;[{}] [{}:{}] &quot; fmt, IM_LOG_SERVICE_TAG,                             \</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span><span class="preprocessor">        im_server::im_log_short_file(__FILE__), __LINE__, ##__VA_ARGS__)</span></div>
+</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="foldopen" id="foldopen00089" data-start="" data-end="">
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno"><a class="line" href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">   89</a></span><span class="preprocessor">#define LOG_WARN(fmt, ...)                                                   \</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">    im_server::g_default_logger-&gt;warn(                                       \</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">        &quot;[{}] [{}:{}] &quot; fmt, IM_LOG_SERVICE_TAG,                             \</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span><span class="preprocessor">        im_server::im_log_short_file(__FILE__), __LINE__, ##__VA_ARGS__)</span></div>
+</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
+<div class="foldopen" id="foldopen00095" data-start="" data-end="">
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno"><a class="line" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">   95</a></span><span class="preprocessor">#define LOG_ERROR(fmt, ...)                                                  \</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span><span class="preprocessor">    im_server::g_default_logger-&gt;error(                                      \</span></div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">        &quot;[{}] [{}:{}] &quot; fmt, IM_LOG_SERVICE_TAG,                             \</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="preprocessor">        im_server::im_log_short_file(__FILE__), __LINE__, ##__VA_ARGS__)</span></div>
+</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span> </div>
+<div class="foldopen" id="foldopen00101" data-start="" data-end="">
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno"><a class="line" href="group__LogMacros.html#gaa842d0e31b246c53e60d17b2d076e193">  101</a></span><span class="preprocessor">#define LOG_FATAL(fmt, ...)                                                  \</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="preprocessor">    im_server::g_default_logger-&gt;critical(                                   \</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">        &quot;[{}] [{}:{}] &quot; fmt, IM_LOG_SERVICE_TAG,                             \</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span><span class="preprocessor">        im_server::im_log_short_file(__FILE__), __LINE__, ##__VA_ARGS__)</span></div>
+</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span> </div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+<div class="ttc" id="anamespaceim__server_html_a27b91dc9615c16cedc7c16a40153127c"><div class="ttname"><a href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a></div><div class="ttdeci">std::shared_ptr&lt; spdlog::logger &gt; g_default_logger</div><div class="ttdoc">全局默认日志器实例</div><div class="ttdef"><b>Definition</b> logger.hpp:38</div></div>
+<div class="ttc" id="anamespaceim__server_html_aaa96c2771ac190c3d5b3202379db913c"><div class="ttname"><a href="namespaceim__server.html#aaa96c2771ac190c3d5b3202379db913c">im_server::init_logger</a></div><div class="ttdeci">void init_logger(bool mode, std::string &amp;filename, uint32_t level)</div><div class="ttdoc">初始化日志系统</div><div class="ttdef"><b>Definition</b> logger.hpp:46</div></div>
+<div class="ttc" id="anamespaceim__server_html_ad80d702bb92efd785e2cee867e3880a6"><div class="ttname"><a href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a></div><div class="ttdeci">const char * im_log_short_file(const char *path)</div><div class="ttdoc">提取文件路径中的短文件名</div><div class="ttdef"><b>Definition</b> logger.hpp:29</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

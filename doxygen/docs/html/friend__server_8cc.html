@@ -1,0 +1,856 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/friend/source/friend_server.cc 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_d0370cdebf8784660f55c6e66a025d32.html">friend</a></li><li class="navelem"><a class="el" href="dir_a4259d1157c0a8cc032d1245315c7d94.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">friend_server.cc 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="friend__server_8hpp_source.html">friend_server.hpp</a>&quot;</code><br />
+<code>#include &lt;gflags/gflags.h&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+friend_server.cc 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="friend__server_8cc__incl.png" border="0" usemap="#a_2home_2zhutian_2repositories_2gitee_2cpp-wechat-im-microservice_2code_2server_2friend_2source_2friend__server_8cc" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac932b11265f8d75ad853d1908a42d476" id="r_ac932b11265f8d75ad853d1908a42d476"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#ac932b11265f8d75ad853d1908a42d476">DEFINE_bool</a> (run_mode, false, &quot;程序运行模式: false-调试 true-发布&quot;)</td></tr>
+<tr class="separator:ac932b11265f8d75ad853d1908a42d476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30277f7dcc48e31c91f3c2b301456d7" id="r_aa30277f7dcc48e31c91f3c2b301456d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#aa30277f7dcc48e31c91f3c2b301456d7">DEFINE_string</a> (log_file, &quot;&quot;, &quot;发布模式下，指定日志输出文件&quot;)</td></tr>
+<tr class="separator:aa30277f7dcc48e31c91f3c2b301456d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e8c894b5881afd0a34674bbc233270d" id="r_a5e8c894b5881afd0a34674bbc233270d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a5e8c894b5881afd0a34674bbc233270d">DEFINE_uint32</a> (log_level, 0, &quot;发布模式下，指定日志输出等级&quot;)</td></tr>
+<tr class="separator:a5e8c894b5881afd0a34674bbc233270d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa84c1e692bb8c823cccf8f0a9ea68643" id="r_aa84c1e692bb8c823cccf8f0a9ea68643"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#aa84c1e692bb8c823cccf8f0a9ea68643">DEFINE_string</a> (registry_host, &quot;http://127.0.0.1:2379&quot;, &quot;注册服务中心地址&quot;)</td></tr>
+<tr class="separator:aa84c1e692bb8c823cccf8f0a9ea68643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790c9c4db75d231cd1f8d30b92422390" id="r_a790c9c4db75d231cd1f8d30b92422390"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a790c9c4db75d231cd1f8d30b92422390">DEFINE_string</a> (base_service, &quot;/service&quot;, &quot;服务器监控根目录&quot;)</td></tr>
+<tr class="separator:a790c9c4db75d231cd1f8d30b92422390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a589f232677cab07deec3652cc073f7df" id="r_a589f232677cab07deec3652cc073f7df"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a589f232677cab07deec3652cc073f7df">DEFINE_string</a> (instance_name, &quot;/friend_service/instance&quot;, &quot;当前实例化名称&quot;)</td></tr>
+<tr class="separator:a589f232677cab07deec3652cc073f7df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c94f1121eda3fc97f98e394619df752" id="r_a7c94f1121eda3fc97f98e394619df752"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a7c94f1121eda3fc97f98e394619df752">DEFINE_string</a> (access_host, &quot;127.0.0.1:9007&quot;, &quot;当前实例化外部访问地址&quot;)</td></tr>
+<tr class="separator:a7c94f1121eda3fc97f98e394619df752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fe15ed9ab2b6e363dbf11750407c16d" id="r_a6fe15ed9ab2b6e363dbf11750407c16d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a6fe15ed9ab2b6e363dbf11750407c16d">DEFINE_int32</a> (listen_port, 9007, &quot;Rpc服务监听端口&quot;)</td></tr>
+<tr class="separator:a6fe15ed9ab2b6e363dbf11750407c16d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1699b28a0310ff4639ca9493701e5ce2" id="r_a1699b28a0310ff4639ca9493701e5ce2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a1699b28a0310ff4639ca9493701e5ce2">DEFINE_int32</a> (rpc_timeout, -1, &quot;Rpc调用超时时间&quot;)</td></tr>
+<tr class="separator:a1699b28a0310ff4639ca9493701e5ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6641e17b413908a345b7e9591ee5a9" id="r_aef6641e17b413908a345b7e9591ee5a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#aef6641e17b413908a345b7e9591ee5a9">DEFINE_int32</a> (rpc_threads, 1, &quot;Rpc的I/O线程数量&quot;)</td></tr>
+<tr class="separator:aef6641e17b413908a345b7e9591ee5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c2da389a95a2bde9b22291385b428cf" id="r_a8c2da389a95a2bde9b22291385b428cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a8c2da389a95a2bde9b22291385b428cf">DEFINE_string</a> (mysql_host, &quot;127.0.0.1&quot;, &quot;Mysql服务器访问地址&quot;)</td></tr>
+<tr class="separator:a8c2da389a95a2bde9b22291385b428cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9aa890b9e422dcc7f4116f36cea3c996" id="r_a9aa890b9e422dcc7f4116f36cea3c996"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a9aa890b9e422dcc7f4116f36cea3c996">DEFINE_int32</a> (mysql_port, 0, &quot;Mysql服务器访问端口&quot;)</td></tr>
+<tr class="separator:a9aa890b9e422dcc7f4116f36cea3c996"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7293660b79530a5ebf68e1b51ecb60f" id="r_ac7293660b79530a5ebf68e1b51ecb60f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#ac7293660b79530a5ebf68e1b51ecb60f">DEFINE_string</a> (mysql_db, &quot;zhutian_im&quot;, &quot;Mysql默认库名称&quot;)</td></tr>
+<tr class="separator:ac7293660b79530a5ebf68e1b51ecb60f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a229a50739adbcd543d52c32923a7da08" id="r_a229a50739adbcd543d52c32923a7da08"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a229a50739adbcd543d52c32923a7da08">DEFINE_string</a> (mysql_user, &quot;zhutian&quot;, &quot;Mysql服务器访问用户名&quot;)</td></tr>
+<tr class="separator:a229a50739adbcd543d52c32923a7da08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeac761a3fed885bcccfff25fe7c32a5c" id="r_aeac761a3fed885bcccfff25fe7c32a5c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#aeac761a3fed885bcccfff25fe7c32a5c">DEFINE_string</a> (mysql_passwd, &quot;zhutian2004&quot;, &quot;Mysql服务器访问用户名&quot;)</td></tr>
+<tr class="separator:aeac761a3fed885bcccfff25fe7c32a5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d2abb24347add6a484dd822aa2e0d86" id="r_a4d2abb24347add6a484dd822aa2e0d86"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a4d2abb24347add6a484dd822aa2e0d86">DEFINE_string</a> (mysql_cset, &quot;utf8&quot;, &quot;Mysql客户端字符集&quot;)</td></tr>
+<tr class="separator:a4d2abb24347add6a484dd822aa2e0d86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a204f916893eccdcc50c6493458bfa7" id="r_a4a204f916893eccdcc50c6493458bfa7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a4a204f916893eccdcc50c6493458bfa7">DEFINE_int32</a> (mysql_pool_count, 4, &quot;Mysql连接池最大数量&quot;)</td></tr>
+<tr class="separator:a4a204f916893eccdcc50c6493458bfa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8838a403a2bf79731ebc10cd7f90c3d6" id="r_a8838a403a2bf79731ebc10cd7f90c3d6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a8838a403a2bf79731ebc10cd7f90c3d6">DEFINE_string</a> (es_host, &quot;http://127.0.0.1:9200/&quot;, &quot;ES搜索引擎服务器URL&quot;)</td></tr>
+<tr class="separator:a8838a403a2bf79731ebc10cd7f90c3d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af22b88eb329fe00a73491b582cd21b36" id="r_af22b88eb329fe00a73491b582cd21b36"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#af22b88eb329fe00a73491b582cd21b36">DEFINE_string</a> (message_service, &quot;/service/message_service&quot;, &quot;文件管理子服务名称&quot;)</td></tr>
+<tr class="separator:af22b88eb329fe00a73491b582cd21b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88f5244b8e6cd34b58349ee97fe87637" id="r_a88f5244b8e6cd34b58349ee97fe87637"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a88f5244b8e6cd34b58349ee97fe87637">DEFINE_string</a> (user_service, &quot;/service/user_service&quot;, &quot;文件管理子服务名称&quot;)</td></tr>
+<tr class="separator:a88f5244b8e6cd34b58349ee97fe87637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="friend__server_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="ac932b11265f8d75ad853d1908a42d476" name="ac932b11265f8d75ad853d1908a42d476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac932b11265f8d75ad853d1908a42d476">&#9670;&#160;</a></span>DEFINE_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_bool </td>
+          <td>(</td>
+          <td class="paramtype">run_mode&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">false&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;程序运行模式: false-调试 true-发布&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6fe15ed9ab2b6e363dbf11750407c16d" name="a6fe15ed9ab2b6e363dbf11750407c16d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fe15ed9ab2b6e363dbf11750407c16d">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[1/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">listen_port&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">9007&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Rpc服务监听端口&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4a204f916893eccdcc50c6493458bfa7" name="a4a204f916893eccdcc50c6493458bfa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a204f916893eccdcc50c6493458bfa7">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[2/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">mysql_pool_count&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">4&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql连接池最大数量&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9aa890b9e422dcc7f4116f36cea3c996" name="a9aa890b9e422dcc7f4116f36cea3c996"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9aa890b9e422dcc7f4116f36cea3c996">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[3/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">mysql_port&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql服务器访问端口&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef6641e17b413908a345b7e9591ee5a9" name="aef6641e17b413908a345b7e9591ee5a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6641e17b413908a345b7e9591ee5a9">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[4/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">rpc_threads&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Rpc的I/O线程数量&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1699b28a0310ff4639ca9493701e5ce2" name="a1699b28a0310ff4639ca9493701e5ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1699b28a0310ff4639ca9493701e5ce2">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">rpc_timeout&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">-&#160;</td>
+          <td class="paramname"><em>1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Rpc调用超时时间&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7c94f1121eda3fc97f98e394619df752" name="a7c94f1121eda3fc97f98e394619df752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c94f1121eda3fc97f98e394619df752">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[1/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">access_host&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;127.0.0.1:9007&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;当前实例化外部访问地址&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a790c9c4db75d231cd1f8d30b92422390" name="a790c9c4db75d231cd1f8d30b92422390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790c9c4db75d231cd1f8d30b92422390">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[2/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">base_service&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/service&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;服务器监控根目录&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8838a403a2bf79731ebc10cd7f90c3d6" name="a8838a403a2bf79731ebc10cd7f90c3d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8838a403a2bf79731ebc10cd7f90c3d6">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[3/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">es_host&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;http://127.0.0.1:9200/&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;ES搜索引擎服务器URL&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a589f232677cab07deec3652cc073f7df" name="a589f232677cab07deec3652cc073f7df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a589f232677cab07deec3652cc073f7df">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[4/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">instance_name&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/friend_service/instance&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;当前实例化名称&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa30277f7dcc48e31c91f3c2b301456d7" name="aa30277f7dcc48e31c91f3c2b301456d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa30277f7dcc48e31c91f3c2b301456d7">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[5/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">log_file&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;发布模式下，指定日志输出文件&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af22b88eb329fe00a73491b582cd21b36" name="af22b88eb329fe00a73491b582cd21b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af22b88eb329fe00a73491b582cd21b36">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[6/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">message_service&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/service/message_service&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;文件管理子服务名称&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4d2abb24347add6a484dd822aa2e0d86" name="a4d2abb24347add6a484dd822aa2e0d86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d2abb24347add6a484dd822aa2e0d86">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[7/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">mysql_cset&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;utf8&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql客户端字符集&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac7293660b79530a5ebf68e1b51ecb60f" name="ac7293660b79530a5ebf68e1b51ecb60f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7293660b79530a5ebf68e1b51ecb60f">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[8/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">mysql_db&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;zhutian_im&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql默认库名称&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8c2da389a95a2bde9b22291385b428cf" name="a8c2da389a95a2bde9b22291385b428cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c2da389a95a2bde9b22291385b428cf">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[9/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">mysql_host&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;127.0.0.1&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql服务器访问地址&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aeac761a3fed885bcccfff25fe7c32a5c" name="aeac761a3fed885bcccfff25fe7c32a5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeac761a3fed885bcccfff25fe7c32a5c">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[10/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">mysql_passwd&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;zhutian2004&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql服务器访问用户名&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a229a50739adbcd543d52c32923a7da08" name="a229a50739adbcd543d52c32923a7da08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a229a50739adbcd543d52c32923a7da08">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[11/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">mysql_user&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;zhutian&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Mysql服务器访问用户名&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa84c1e692bb8c823cccf8f0a9ea68643" name="aa84c1e692bb8c823cccf8f0a9ea68643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa84c1e692bb8c823cccf8f0a9ea68643">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[12/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">registry_host&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;http://127.0.0.1:2379&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;注册服务中心地址&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a88f5244b8e6cd34b58349ee97fe87637" name="a88f5244b8e6cd34b58349ee97fe87637"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88f5244b8e6cd34b58349ee97fe87637">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[13/13]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">user_service&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/service/user_service&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;文件管理子服务名称&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e8c894b5881afd0a34674bbc233270d" name="a5e8c894b5881afd0a34674bbc233270d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e8c894b5881afd0a34674bbc233270d">&#9670;&#160;</a></span>DEFINE_uint32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_uint32 </td>
+          <td>(</td>
+          <td class="paramtype">log_level&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;发布模式下，指定日志输出等级&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="friend__server_8cc_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#afriend__server_8cc_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

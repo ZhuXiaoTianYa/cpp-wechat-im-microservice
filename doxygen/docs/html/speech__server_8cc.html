@@ -1,0 +1,604 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/speech/source/speech_server.cc 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_aaef4e65d285fb942e7044383539ddd5.html">speech</a></li><li class="navelem"><a class="el" href="dir_1f20a199488d69ba0665ee347533e0bc.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">函数</a>  </div>
+  <div class="headertitle"><div class="title">speech_server.cc 文件参考</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="speech__server_8hpp_source.html">speech_server.hpp</a>&quot;</code><br />
+<code>#include &lt;gflags/gflags.h&gt;</code><br />
+<code>#include &lt;thread&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+speech_server.cc 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="speech__server_8cc__incl.png" border="0" usemap="#a_2home_2zhutian_2repositories_2gitee_2cpp-wechat-im-microservice_2code_2server_2speech_2source_2speech__server_8cc" alt=""/></div>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+函数</h2></td></tr>
+<tr class="memitem:ac932b11265f8d75ad853d1908a42d476" id="r_ac932b11265f8d75ad853d1908a42d476"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#ac932b11265f8d75ad853d1908a42d476">DEFINE_bool</a> (run_mode, false, &quot;程序运行模式: false-调试 true-发布&quot;)</td></tr>
+<tr class="separator:ac932b11265f8d75ad853d1908a42d476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa30277f7dcc48e31c91f3c2b301456d7" id="r_aa30277f7dcc48e31c91f3c2b301456d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#aa30277f7dcc48e31c91f3c2b301456d7">DEFINE_string</a> (log_file, &quot;&quot;, &quot;发布模式下，指定日志输出文件&quot;)</td></tr>
+<tr class="separator:aa30277f7dcc48e31c91f3c2b301456d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e8c894b5881afd0a34674bbc233270d" id="r_a5e8c894b5881afd0a34674bbc233270d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a5e8c894b5881afd0a34674bbc233270d">DEFINE_uint32</a> (log_level, 0, &quot;发布模式下，指定日志输出等级&quot;)</td></tr>
+<tr class="separator:a5e8c894b5881afd0a34674bbc233270d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa84c1e692bb8c823cccf8f0a9ea68643" id="r_aa84c1e692bb8c823cccf8f0a9ea68643"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#aa84c1e692bb8c823cccf8f0a9ea68643">DEFINE_string</a> (registry_host, &quot;http://127.0.0.1:2379&quot;, &quot;注册服务中心地址&quot;)</td></tr>
+<tr class="separator:aa84c1e692bb8c823cccf8f0a9ea68643"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a790c9c4db75d231cd1f8d30b92422390" id="r_a790c9c4db75d231cd1f8d30b92422390"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a790c9c4db75d231cd1f8d30b92422390">DEFINE_string</a> (base_service, &quot;/service&quot;, &quot;服务器监控根目录&quot;)</td></tr>
+<tr class="separator:a790c9c4db75d231cd1f8d30b92422390"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb86563523aca081695f04779acda63" id="r_adbb86563523aca081695f04779acda63"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#adbb86563523aca081695f04779acda63">DEFINE_string</a> (instance_name, &quot;/speech_service/instance&quot;, &quot;当前实例化名称&quot;)</td></tr>
+<tr class="separator:adbb86563523aca081695f04779acda63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ca10a3b372df19e256f7671f617f035" id="r_a4ca10a3b372df19e256f7671f617f035"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a4ca10a3b372df19e256f7671f617f035">DEFINE_string</a> (access_host, &quot;127.0.0.1:9002&quot;, &quot;当前实例化外部访问地址&quot;)</td></tr>
+<tr class="separator:a4ca10a3b372df19e256f7671f617f035"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94bf25b775c8a99f5447d0037c3a44a0" id="r_a94bf25b775c8a99f5447d0037c3a44a0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a94bf25b775c8a99f5447d0037c3a44a0">DEFINE_string</a> (app_id, &quot;123456&quot;, &quot;云服务的APP ID&quot;)</td></tr>
+<tr class="separator:a94bf25b775c8a99f5447d0037c3a44a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e64b724bb3743823f732c000b383893" id="r_a9e64b724bb3743823f732c000b383893"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a9e64b724bb3743823f732c000b383893">DEFINE_string</a> (api_key, &quot;123456&quot;, &quot;云服务的API KEY&quot;)</td></tr>
+<tr class="separator:a9e64b724bb3743823f732c000b383893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79b9b4ed1874a931c80e885915341047" id="r_a79b9b4ed1874a931c80e885915341047"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a79b9b4ed1874a931c80e885915341047">DEFINE_string</a> (secret_key, &quot;123456&quot;, &quot;云服务的SECRET KEY&quot;)</td></tr>
+<tr class="separator:a79b9b4ed1874a931c80e885915341047"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a839f71031b0465c6214c2f6bf68b6c77" id="r_a839f71031b0465c6214c2f6bf68b6c77"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a839f71031b0465c6214c2f6bf68b6c77">DEFINE_int32</a> (listen_port, 9002, &quot;Rpc服务监听端口&quot;)</td></tr>
+<tr class="separator:a839f71031b0465c6214c2f6bf68b6c77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1699b28a0310ff4639ca9493701e5ce2" id="r_a1699b28a0310ff4639ca9493701e5ce2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a1699b28a0310ff4639ca9493701e5ce2">DEFINE_int32</a> (rpc_timeout, -1, &quot;Rpc调用超时时间&quot;)</td></tr>
+<tr class="separator:a1699b28a0310ff4639ca9493701e5ce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef6641e17b413908a345b7e9591ee5a9" id="r_aef6641e17b413908a345b7e9591ee5a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#aef6641e17b413908a345b7e9591ee5a9">DEFINE_int32</a> (rpc_threads, 1, &quot;Rpc的I/O线程数量&quot;)</td></tr>
+<tr class="separator:aef6641e17b413908a345b7e9591ee5a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ddf1224851353fc92bfbff6f499fa97" id="r_a0ddf1224851353fc92bfbff6f499fa97"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="speech__server_8cc.html#a0ddf1224851353fc92bfbff6f499fa97">main</a> (int argc, char *argv[])</td></tr>
+<tr class="separator:a0ddf1224851353fc92bfbff6f499fa97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">函数说明</h2>
+<a id="ac932b11265f8d75ad853d1908a42d476" name="ac932b11265f8d75ad853d1908a42d476"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac932b11265f8d75ad853d1908a42d476">&#9670;&#160;</a></span>DEFINE_bool()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_bool </td>
+          <td>(</td>
+          <td class="paramtype">run_mode&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">false&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;程序运行模式: false-调试 true-发布&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a839f71031b0465c6214c2f6bf68b6c77" name="a839f71031b0465c6214c2f6bf68b6c77"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a839f71031b0465c6214c2f6bf68b6c77">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[1/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">listen_port&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">9002&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Rpc服务监听端口&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aef6641e17b413908a345b7e9591ee5a9" name="aef6641e17b413908a345b7e9591ee5a9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef6641e17b413908a345b7e9591ee5a9">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[2/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">rpc_threads&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">1&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Rpc的I/O线程数量&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1699b28a0310ff4639ca9493701e5ce2" name="a1699b28a0310ff4639ca9493701e5ce2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1699b28a0310ff4639ca9493701e5ce2">&#9670;&#160;</a></span>DEFINE_int32() <span class="overload">[3/3]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_int32 </td>
+          <td>(</td>
+          <td class="paramtype">rpc_timeout&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">-&#160;</td>
+          <td class="paramname"><em>1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;Rpc调用超时时间&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ca10a3b372df19e256f7671f617f035" name="a4ca10a3b372df19e256f7671f617f035"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ca10a3b372df19e256f7671f617f035">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[1/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">access_host&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;127.0.0.1:9002&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;当前实例化外部访问地址&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9e64b724bb3743823f732c000b383893" name="a9e64b724bb3743823f732c000b383893"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e64b724bb3743823f732c000b383893">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[2/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">api_key&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;123456&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;云服务的API KEY&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a94bf25b775c8a99f5447d0037c3a44a0" name="a94bf25b775c8a99f5447d0037c3a44a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94bf25b775c8a99f5447d0037c3a44a0">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[3/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">app_id&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;123456&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;云服务的APP ID&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a790c9c4db75d231cd1f8d30b92422390" name="a790c9c4db75d231cd1f8d30b92422390"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a790c9c4db75d231cd1f8d30b92422390">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[4/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">base_service&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/service&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;服务器监控根目录&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="adbb86563523aca081695f04779acda63" name="adbb86563523aca081695f04779acda63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbb86563523aca081695f04779acda63">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[5/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">instance_name&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;/speech_service/instance&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;当前实例化名称&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa30277f7dcc48e31c91f3c2b301456d7" name="aa30277f7dcc48e31c91f3c2b301456d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa30277f7dcc48e31c91f3c2b301456d7">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[6/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">log_file&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;发布模式下，指定日志输出文件&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa84c1e692bb8c823cccf8f0a9ea68643" name="aa84c1e692bb8c823cccf8f0a9ea68643"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa84c1e692bb8c823cccf8f0a9ea68643">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[7/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">registry_host&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;http://127.0.0.1:2379&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;注册服务中心地址&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a79b9b4ed1874a931c80e885915341047" name="a79b9b4ed1874a931c80e885915341047"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b9b4ed1874a931c80e885915341047">&#9670;&#160;</a></span>DEFINE_string() <span class="overload">[8/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_string </td>
+          <td>(</td>
+          <td class="paramtype">secret_key&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;123456&quot;&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;云服务的SECRET KEY&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5e8c894b5881afd0a34674bbc233270d" name="a5e8c894b5881afd0a34674bbc233270d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e8c894b5881afd0a34674bbc233270d">&#9670;&#160;</a></span>DEFINE_uint32()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">DEFINE_uint32 </td>
+          <td>(</td>
+          <td class="paramtype">log_level&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">0&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&quot;发布模式下，指定日志输出等级&quot;&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0ddf1224851353fc92bfbff6f499fa97" name="a0ddf1224851353fc92bfbff6f499fa97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ddf1224851353fc92bfbff6f499fa97">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>argv</em>[]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="speech__server_8cc_a0ddf1224851353fc92bfbff6f499fa97_cgraph.png" border="0" usemap="#aspeech__server_8cc_a0ddf1224851353fc92bfbff6f499fa97_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

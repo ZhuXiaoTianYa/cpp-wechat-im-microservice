@@ -1,0 +1,766 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::Message类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1Message.html">Message</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#friends">友元</a> &#124;
+<a href="classim__server_1_1Message-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::Message类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>消息实体类  
+ <a href="classim__server_1_1Message.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="message_8hxx_source.html">message.hxx</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ac8c3e707077e6482842a9b76a460d8ad" id="r_ac8c3e707077e6482842a9b76a460d8ad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#ac8c3e707077e6482842a9b76a460d8ad">Message</a> ()</td></tr>
+<tr class="separator:ac8c3e707077e6482842a9b76a460d8ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5ab05e4d31939aa1c9e92a36aaa8765" id="r_ad5ab05e4d31939aa1c9e92a36aaa8765"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#ad5ab05e4d31939aa1c9e92a36aaa8765">Message</a> (const std::string &amp;<a class="el" href="classim__server_1_1Message.html#a5b4002944791ec69c47d65621cf5908e">message_id</a>, const std::string &amp;<a class="el" href="classim__server_1_1Message.html#a47f2d9f0b49471167654fe70d1cfd12c">session_id</a>, const std::string &amp;<a class="el" href="classim__server_1_1Message.html#a78e431c583e6527bc857f462d85e6fa6">user_id</a>, const unsigned char <a class="el" href="classim__server_1_1Message.html#a7d9445436e51bf7eb914c70e7f208ea7">message_type</a>, const boost::posix_time::ptime &amp;<a class="el" href="classim__server_1_1Message.html#a49d30c9b14f7cb0f55bd4eeef4c28f25">create_time</a>)</td></tr>
+<tr class="memdesc:ad5ab05e4d31939aa1c9e92a36aaa8765"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:ad5ab05e4d31939aa1c9e92a36aaa8765"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b4002944791ec69c47d65621cf5908e" id="r_a5b4002944791ec69c47d65621cf5908e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a5b4002944791ec69c47d65621cf5908e">message_id</a> (const std::string &amp;val)</td></tr>
+<tr class="separator:a5b4002944791ec69c47d65621cf5908e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b27ed45e62590042645f0d90fd39e4" id="r_ae6b27ed45e62590042645f0d90fd39e4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#ae6b27ed45e62590042645f0d90fd39e4">message_id</a> ()</td></tr>
+<tr class="separator:ae6b27ed45e62590042645f0d90fd39e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47f2d9f0b49471167654fe70d1cfd12c" id="r_a47f2d9f0b49471167654fe70d1cfd12c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a47f2d9f0b49471167654fe70d1cfd12c">session_id</a> (const std::string &amp;val)</td></tr>
+<tr class="separator:a47f2d9f0b49471167654fe70d1cfd12c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f4c56ad10968b8fac1b53b17141c2b4" id="r_a3f4c56ad10968b8fac1b53b17141c2b4"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a3f4c56ad10968b8fac1b53b17141c2b4">session_id</a> ()</td></tr>
+<tr class="separator:a3f4c56ad10968b8fac1b53b17141c2b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e431c583e6527bc857f462d85e6fa6" id="r_a78e431c583e6527bc857f462d85e6fa6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a78e431c583e6527bc857f462d85e6fa6">user_id</a> (const std::string &amp;val)</td></tr>
+<tr class="separator:a78e431c583e6527bc857f462d85e6fa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6633f006dd54b08e3b2055195b1b4e6a" id="r_a6633f006dd54b08e3b2055195b1b4e6a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a6633f006dd54b08e3b2055195b1b4e6a">user_id</a> ()</td></tr>
+<tr class="separator:a6633f006dd54b08e3b2055195b1b4e6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d9445436e51bf7eb914c70e7f208ea7" id="r_a7d9445436e51bf7eb914c70e7f208ea7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a7d9445436e51bf7eb914c70e7f208ea7">message_type</a> (const unsigned char val)</td></tr>
+<tr class="separator:a7d9445436e51bf7eb914c70e7f208ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a415b39e6965564a861c9f861fe81c33e" id="r_a415b39e6965564a861c9f861fe81c33e"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a415b39e6965564a861c9f861fe81c33e">message_type</a> ()</td></tr>
+<tr class="separator:a415b39e6965564a861c9f861fe81c33e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49d30c9b14f7cb0f55bd4eeef4c28f25" id="r_a49d30c9b14f7cb0f55bd4eeef4c28f25"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a49d30c9b14f7cb0f55bd4eeef4c28f25">create_time</a> (const boost::posix_time::ptime &amp;val)</td></tr>
+<tr class="separator:a49d30c9b14f7cb0f55bd4eeef4c28f25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82a10276e705f0966e69f0e3f2a3ca2f" id="r_a82a10276e705f0966e69f0e3f2a3ca2f"><td class="memItemLeft" align="right" valign="top">boost::posix_time::ptime&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a82a10276e705f0966e69f0e3f2a3ca2f">create_time</a> ()</td></tr>
+<tr class="separator:a82a10276e705f0966e69f0e3f2a3ca2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0207cca5bb70d1f12cbb9b0391116c66" id="r_a0207cca5bb70d1f12cbb9b0391116c66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a0207cca5bb70d1f12cbb9b0391116c66">file_id</a> (const std::string &amp;val)</td></tr>
+<tr class="separator:a0207cca5bb70d1f12cbb9b0391116c66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34ee56517da42c2cff11a68da80d6ac2" id="r_a34ee56517da42c2cff11a68da80d6ac2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a34ee56517da42c2cff11a68da80d6ac2">file_id</a> ()</td></tr>
+<tr class="separator:a34ee56517da42c2cff11a68da80d6ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad2d7262f82bfc687f7068d0dda204842" id="r_ad2d7262f82bfc687f7068d0dda204842"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#ad2d7262f82bfc687f7068d0dda204842">file_name</a> (const std::string &amp;val)</td></tr>
+<tr class="separator:ad2d7262f82bfc687f7068d0dda204842"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a53a196eba4f312a8cca90defd9368ac0" id="r_a53a196eba4f312a8cca90defd9368ac0"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a53a196eba4f312a8cca90defd9368ac0">file_name</a> ()</td></tr>
+<tr class="separator:a53a196eba4f312a8cca90defd9368ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f17e85aeba7069ee7579df25485bd5b" id="r_a5f17e85aeba7069ee7579df25485bd5b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a5f17e85aeba7069ee7579df25485bd5b">content</a> (const std::string &amp;val)</td></tr>
+<tr class="separator:a5f17e85aeba7069ee7579df25485bd5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1314ebe666d8a5fd873d59674b9f8dd" id="r_ae1314ebe666d8a5fd873d59674b9f8dd"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#ae1314ebe666d8a5fd873d59674b9f8dd">content</a> ()</td></tr>
+<tr class="separator:ae1314ebe666d8a5fd873d59674b9f8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a469675ee1268ddd5cf22fbd69c723a21" id="r_a469675ee1268ddd5cf22fbd69c723a21"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a469675ee1268ddd5cf22fbd69c723a21">file_size</a> (const unsigned int &amp;val)</td></tr>
+<tr class="separator:a469675ee1268ddd5cf22fbd69c723a21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a328ba5035d10ffb854a84b001e2f070a" id="r_a328ba5035d10ffb854a84b001e2f070a"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#a328ba5035d10ffb854a84b001e2f070a">file_size</a> ()</td></tr>
+<tr class="separator:a328ba5035d10ffb854a84b001e2f070a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="friends" name="friends"></a>
+友元</h2></td></tr>
+<tr class="memitem:acb4d953abf85ae525f1d06a0c3a86a55" id="r_acb4d953abf85ae525f1d06a0c3a86a55"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Message.html#acb4d953abf85ae525f1d06a0c3a86a55">odb::access</a></td></tr>
+<tr class="separator:acb4d953abf85ae525f1d06a0c3a86a55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>消息实体类 </p>
+<p>对应数据库message表，存储各类型消息（文本/图片/文件/语音） </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ac8c3e707077e6482842a9b76a460d8ad" name="ac8c3e707077e6482842a9b76a460d8ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8c3e707077e6482842a9b76a460d8ad">&#9670;&#160;</a></span>Message() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::Message::Message </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad5ab05e4d31939aa1c9e92a36aaa8765" name="ad5ab05e4d31939aa1c9e92a36aaa8765"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5ab05e4d31939aa1c9e92a36aaa8765">&#9670;&#160;</a></span>Message() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::Message::Message </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>session_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>message_type</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const boost::posix_time::ptime &amp;&#160;</td>
+          <td class="paramname"><em>create_time</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message_id</td><td>消息ID </td></tr>
+    <tr><td class="paramname">session_id</td><td>会话ID </td></tr>
+    <tr><td class="paramname">user_id</td><td>发送者用户ID </td></tr>
+    <tr><td class="paramname">message_type</td><td>消息类型（0=文本，1=图片，2=文件，3=语音） </td></tr>
+    <tr><td class="paramname">create_time</td><td>创建时间 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ae1314ebe666d8a5fd873d59674b9f8dd" name="ae1314ebe666d8a5fd873d59674b9f8dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1314ebe666d8a5fd873d59674b9f8dd">&#9670;&#160;</a></span>content() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string im_server::Message::content </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5f17e85aeba7069ee7579df25485bd5b" name="a5f17e85aeba7069ee7579df25485bd5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5f17e85aeba7069ee7579df25485bd5b">&#9670;&#160;</a></span>content() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::content </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a5f17e85aeba7069ee7579df25485bd5b_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a5f17e85aeba7069ee7579df25485bd5b_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a82a10276e705f0966e69f0e3f2a3ca2f" name="a82a10276e705f0966e69f0e3f2a3ca2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82a10276e705f0966e69f0e3f2a3ca2f">&#9670;&#160;</a></span>create_time() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">boost::posix_time::ptime im_server::Message::create_time </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a49d30c9b14f7cb0f55bd4eeef4c28f25" name="a49d30c9b14f7cb0f55bd4eeef4c28f25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49d30c9b14f7cb0f55bd4eeef4c28f25">&#9670;&#160;</a></span>create_time() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::create_time </td>
+          <td>(</td>
+          <td class="paramtype">const boost::posix_time::ptime &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a49d30c9b14f7cb0f55bd4eeef4c28f25_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a49d30c9b14f7cb0f55bd4eeef4c28f25_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a34ee56517da42c2cff11a68da80d6ac2" name="a34ee56517da42c2cff11a68da80d6ac2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34ee56517da42c2cff11a68da80d6ac2">&#9670;&#160;</a></span>file_id() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string im_server::Message::file_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0207cca5bb70d1f12cbb9b0391116c66" name="a0207cca5bb70d1f12cbb9b0391116c66"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0207cca5bb70d1f12cbb9b0391116c66">&#9670;&#160;</a></span>file_id() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::file_id </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a0207cca5bb70d1f12cbb9b0391116c66_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a0207cca5bb70d1f12cbb9b0391116c66_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a53a196eba4f312a8cca90defd9368ac0" name="a53a196eba4f312a8cca90defd9368ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a53a196eba4f312a8cca90defd9368ac0">&#9670;&#160;</a></span>file_name() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string im_server::Message::file_name </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad2d7262f82bfc687f7068d0dda204842" name="ad2d7262f82bfc687f7068d0dda204842"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2d7262f82bfc687f7068d0dda204842">&#9670;&#160;</a></span>file_name() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::file_name </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_ad2d7262f82bfc687f7068d0dda204842_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_ad2d7262f82bfc687f7068d0dda204842_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a328ba5035d10ffb854a84b001e2f070a" name="a328ba5035d10ffb854a84b001e2f070a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a328ba5035d10ffb854a84b001e2f070a">&#9670;&#160;</a></span>file_size() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int im_server::Message::file_size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a469675ee1268ddd5cf22fbd69c723a21" name="a469675ee1268ddd5cf22fbd69c723a21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a469675ee1268ddd5cf22fbd69c723a21">&#9670;&#160;</a></span>file_size() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::file_size </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a469675ee1268ddd5cf22fbd69c723a21_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a469675ee1268ddd5cf22fbd69c723a21_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae6b27ed45e62590042645f0d90fd39e4" name="ae6b27ed45e62590042645f0d90fd39e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b27ed45e62590042645f0d90fd39e4">&#9670;&#160;</a></span>message_id() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string im_server::Message::message_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5b4002944791ec69c47d65621cf5908e" name="a5b4002944791ec69c47d65621cf5908e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b4002944791ec69c47d65621cf5908e">&#9670;&#160;</a></span>message_id() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::message_id </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a5b4002944791ec69c47d65621cf5908e_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a5b4002944791ec69c47d65621cf5908e_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a415b39e6965564a861c9f861fe81c33e" name="a415b39e6965564a861c9f861fe81c33e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a415b39e6965564a861c9f861fe81c33e">&#9670;&#160;</a></span>message_type() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char im_server::Message::message_type </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7d9445436e51bf7eb914c70e7f208ea7" name="a7d9445436e51bf7eb914c70e7f208ea7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7d9445436e51bf7eb914c70e7f208ea7">&#9670;&#160;</a></span>message_type() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::message_type </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3f4c56ad10968b8fac1b53b17141c2b4" name="a3f4c56ad10968b8fac1b53b17141c2b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f4c56ad10968b8fac1b53b17141c2b4">&#9670;&#160;</a></span>session_id() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string im_server::Message::session_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a47f2d9f0b49471167654fe70d1cfd12c" name="a47f2d9f0b49471167654fe70d1cfd12c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a47f2d9f0b49471167654fe70d1cfd12c">&#9670;&#160;</a></span>session_id() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::session_id </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a47f2d9f0b49471167654fe70d1cfd12c_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a47f2d9f0b49471167654fe70d1cfd12c_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a6633f006dd54b08e3b2055195b1b4e6a" name="a6633f006dd54b08e3b2055195b1b4e6a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6633f006dd54b08e3b2055195b1b4e6a">&#9670;&#160;</a></span>user_id() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string im_server::Message::user_id </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a78e431c583e6527bc857f462d85e6fa6" name="a78e431c583e6527bc857f462d85e6fa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e431c583e6527bc857f462d85e6fa6">&#9670;&#160;</a></span>user_id() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Message::user_id </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1Message_a78e431c583e6527bc857f462d85e6fa6_icgraph.png" border="0" usemap="#aclassim__server_1_1Message_a78e431c583e6527bc857f462d85e6fa6_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<h2 class="groupheader">友元及相关函数文档</h2>
+<a id="acb4d953abf85ae525f1d06a0c3a86a55" name="acb4d953abf85ae525f1d06a0c3a86a55"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb4d953abf85ae525f1d06a0c3a86a55">&#9670;&#160;</a></span>odb::access</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">friend class odb::access</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/odb/<a class="el" href="message_8hxx_source.html">message.hxx</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

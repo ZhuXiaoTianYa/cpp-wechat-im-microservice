@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::GatewayServer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1GatewayServer.html">GatewayServer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1GatewayServer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::GatewayServer类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>网关服务器主类  
+ <a href="classim__server_1_1GatewayServer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="gateway__server_8hpp_source.html">gateway_server.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a915283ed416ea7f847bceecc3021f1a1" id="r_a915283ed416ea7f847bceecc3021f1a1"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1GatewayServer.html#a915283ed416ea7f847bceecc3021f1a1">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1GatewayServer.html">GatewayServer</a> &gt;</td></tr>
+<tr class="separator:a915283ed416ea7f847bceecc3021f1a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a474cbd188334c67b49bd625dab165dc3" id="r_a474cbd188334c67b49bd625dab165dc3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1GatewayServer.html#a474cbd188334c67b49bd625dab165dc3">GatewayServer</a> (const int &amp;ws_port, const int &amp;http_port, const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;redis_client, const <a class="el" href="classim__server_1_1ServiceManager.html#aa956c3e52dd3886438752c9e29b61ad2">ServiceManager::ptr</a> &amp;mm_channels, const <a class="el" href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">Discoverer::ptr</a> &amp;server_discover, const std::string &amp;file_service_name, const std::string &amp;user_service_name, const std::string &amp;message_service_name, const std::string &amp;speech_service_name, const std::string &amp;transmite_service_name, const std::string &amp;friend_service_name)</td></tr>
+<tr class="memdesc:a474cbd188334c67b49bd625dab165dc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:a474cbd188334c67b49bd625dab165dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72a6669bc85382d1455a66387b3beeea" id="r_a72a6669bc85382d1455a66387b3beeea"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1GatewayServer.html#a72a6669bc85382d1455a66387b3beeea">~GatewayServer</a> ()</td></tr>
+<tr class="separator:a72a6669bc85382d1455a66387b3beeea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a728a11f71de6057e57c2e015790766a2" id="r_a728a11f71de6057e57c2e015790766a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1GatewayServer.html#a728a11f71de6057e57c2e015790766a2">start</a> ()</td></tr>
+<tr class="separator:a728a11f71de6057e57c2e015790766a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>网关服务器主类 </p>
+<p>集成HTTP服务器和WebSocket服务器，提供统一的对外接口，负责：</p><ul>
+<li>HTTP请求路由到后端微服务</li>
+<li>WebSocket长连接管理</li>
+<li>用户会话管理（Redis）</li>
+<li>实时消息推送</li>
+<li>服务发现与负载均衡 </li>
+</ul>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a915283ed416ea7f847bceecc3021f1a1" name="a915283ed416ea7f847bceecc3021f1a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a915283ed416ea7f847bceecc3021f1a1">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1GatewayServer.html#a915283ed416ea7f847bceecc3021f1a1">im_server::GatewayServer::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1GatewayServer.html">GatewayServer</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a474cbd188334c67b49bd625dab165dc3" name="a474cbd188334c67b49bd625dab165dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a474cbd188334c67b49bd625dab165dc3">&#9670;&#160;</a></span>GatewayServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::GatewayServer::GatewayServer </td>
+          <td>(</td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>ws_port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int &amp;&#160;</td>
+          <td class="paramname"><em>http_port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::shared_ptr&lt; sw::redis::Redis &gt; &amp;&#160;</td>
+          <td class="paramname"><em>redis_client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classim__server_1_1ServiceManager.html#aa956c3e52dd3886438752c9e29b61ad2">ServiceManager::ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>mm_channels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">Discoverer::ptr</a> &amp;&#160;</td>
+          <td class="paramname"><em>server_discover</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>message_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>speech_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>transmite_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>friend_service_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ws_port</td><td>WebSocket服务端口 </td></tr>
+    <tr><td class="paramname">http_port</td><td>HTTP服务端口 </td></tr>
+    <tr><td class="paramname">redis_client</td><td>Redis客户端（用于会话和状态管理） </td></tr>
+    <tr><td class="paramname">mm_channels</td><td>下游服务管理器 </td></tr>
+    <tr><td class="paramname">server_discover</td><td>服务发现客户端 </td></tr>
+    <tr><td class="paramname">file_service_name</td><td>文件服务名称 </td></tr>
+    <tr><td class="paramname">user_service_name</td><td>用户服务名称 </td></tr>
+    <tr><td class="paramname">message_service_name</td><td>消息服务名称 </td></tr>
+    <tr><td class="paramname">speech_service_name</td><td>语音服务名称 </td></tr>
+    <tr><td class="paramname">transmite_service_name</td><td>转发服务名称 </td></tr>
+    <tr><td class="paramname">friend_service_name</td><td>好友服务名称</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>初始化HTTP和WebSocket服务器，注册所有路由处理器 </p>
+
+</div>
+</div>
+<a id="a72a6669bc85382d1455a66387b3beeea" name="a72a6669bc85382d1455a66387b3beeea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72a6669bc85382d1455a66387b3beeea">&#9670;&#160;</a></span>~GatewayServer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::GatewayServer::~GatewayServer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a728a11f71de6057e57c2e015790766a2" name="a728a11f71de6057e57c2e015790766a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a728a11f71de6057e57c2e015790766a2">&#9670;&#160;</a></span>start()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::GatewayServer::start </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/gateway/source/<a class="el" href="gateway__server_8hpp_source.html">gateway_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

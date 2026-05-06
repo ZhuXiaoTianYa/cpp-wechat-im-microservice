@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['g_5fdefault_5flogger_0',['g_default_logger',['../namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c',1,'im_server']]],
+  ['gateway_5fserver_2ecc_1',['gateway_server.cc',['../gateway__server_8cc.html',1,'']]],
+  ['gateway_5fserver_2ehpp_2',['gateway_server.hpp',['../gateway__server_8hpp.html',1,'']]],
+  ['gatewayserver_3',['gatewayserver',['../classim__server_1_1GatewayServer.html#a474cbd188334c67b49bd625dab165dc3',1,'im_server::GatewayServer::GatewayServer()'],['../classim__server_1_1GatewayServer.html',1,'im_server::GatewayServer']]],
+  ['gatewayserverbuilder_4',['GatewayServerBuilder',['../classim__server_1_1GatewayServerBuilder.html',1,'im_server']]],
+  ['get_5fphone_5fverify_5fcode_5',['GET_PHONE_VERIFY_CODE',['../group__HttpRoutes.html#ga4ce667ff78634580caf064765a0fea35',1,'gateway_server.hpp']]],
+  ['get_5fuserinfo_6',['GET_USERINFO',['../group__HttpRoutes.html#ga71b7b4ae8925b7ab9f91150aaa003fc1',1,'gateway_server.hpp']]],
+  ['getchatsessionlist_7',['GetChatSessionList',['../classim__server_1_1FriendServiceImpl.html#ab34c5d710d5c2a5e1dd6b1cd04bbb4ad',1,'im_server::FriendServiceImpl']]],
+  ['getchatsessionmember_8',['GetChatSessionMember',['../classim__server_1_1FriendServiceImpl.html#a0bd20dcda398e2ead3ca91d371cbd8d0',1,'im_server::FriendServiceImpl']]],
+  ['getfriendlist_9',['GetFriendList',['../classim__server_1_1FriendServiceImpl.html#af8f4f33abfd7b040ae5f0cac00dac42a',1,'im_server::FriendServiceImpl']]],
+  ['gethistorymsg_10',['GetHistoryMsg',['../classim__server_1_1MessageServiceImpl.html#a13f8de72dccf69ba00b2608c7cb3b2de',1,'im_server::MessageServiceImpl']]],
+  ['getmultifile_11',['GetMultiFile',['../classim__server_1_1FileServiceImpl.html#a18e4072f29c4d56379d4b4473b31d224',1,'im_server::FileServiceImpl']]],
+  ['getmultiuserinfo_12',['GetMultiUserInfo',['../classim__server_1_1UserServiceImpl.html#aac851d7e8778c0fc20e027360484fd79',1,'im_server::UserServiceImpl']]],
+  ['getpendingfriendeventlist_13',['GetPendingFriendEventList',['../classim__server_1_1FriendServiceImpl.html#aa827ab9c081d0fb236591aea636fcb4f',1,'im_server::FriendServiceImpl']]],
+  ['getphoneverifycode_14',['GetPhoneVerifyCode',['../classim__server_1_1UserServiceImpl.html#a2f2dacfcc6cc173d335ee9970ed8d592',1,'im_server::UserServiceImpl']]],
+  ['getrecentmsg_15',['GetRecentMsg',['../classim__server_1_1MessageServiceImpl.html#a78b8c6b74d3d9799ce66ddf6ad064f86',1,'im_server::MessageServiceImpl']]],
+  ['getsinglefile_16',['GetSingleFile',['../classim__server_1_1FileServiceImpl.html#a1eba41f2357ecbc7550417db754fb92b',1,'im_server::FileServiceImpl']]],
+  ['gettransmittarget_17',['GetTransmitTarget',['../classim__server_1_1TransmiteServiceImpl.html#aefbf48a14d1903949a0fb9367285f1d6',1,'im_server::TransmiteServiceImpl']]],
+  ['getuserinfo_18',['GetUserInfo',['../classim__server_1_1UserServiceImpl.html#a048572b018e5e82d4a4971ddc80d847f',1,'im_server::UserServiceImpl']]],
+  ['group_19',['GROUP',['../namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c',1,'im_server']]],
+  ['groupchatsession_20',['groupchatsession',['../classim__server_1_1ChatSessionTable.html#a65e2dfe1303ec6d65a5e948f628a73d6',1,'im_server::ChatSessionTable::groupChatSession()'],['../structim__server_1_1GroupChatSession.html',1,'im_server::GroupChatSession']]]
+];

@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/mysql_chat_session.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_a0da88266a9bf42b4467cc2dfadac3cd.html">common</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">mysql_chat_session.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="mysql__chat__session_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;chat_session-odb.hxx&quot;</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="chat__session_8hxx.html">chat_session.hxx</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="chat__session__member_8hxx.html">chat_session_member.hxx</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="mysql_8hpp.html">mysql.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;odb/query.hxx&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="foldopen" id="foldopen00009" data-start="{" data-end="};">
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1ChatSessionTable.html">ChatSessionTable</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#a04b9e042e7d6dafc258deba5c789a6c2">   11</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classim__server_1_1ChatSessionTable.html#a04b9e042e7d6dafc258deba5c789a6c2">ptr</a> = std::shared_ptr&lt;ChatSessionTable&gt;;</div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="}">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#ae5c26d2d4d84c0ec256f677a0993f1dd">   12</a></span>    <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#ae5c26d2d4d84c0ec256f677a0993f1dd">ChatSessionTable</a>(<span class="keyword">const</span> std::shared_ptr&lt;odb::core::database&gt; &amp;db)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>        : _db(db) {}</div>
+</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="}">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#a04149b82e84949e04099445c19b766a5">   14</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#a04149b82e84949e04099445c19b766a5">insert</a>(<a class="code hl_class" href="classim__server_1_1ChatSession.html">ChatSession</a> &amp;ev) {</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            odb::transaction trans(_db-&gt;begin());</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            _db-&gt;persist(ev);</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            trans.commit();</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;新增会话失败 {}:{}&quot;</span>, ev.<a class="code hl_function" href="classim__server_1_1ChatSession.html#acb3d3c5328aeaecb3a8eb3118404c466">chat_session_name</a>(), e.what());</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        }</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    }</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00026" data-start="{" data-end="}">
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#a4c454aea001519f9b38c85a888e76eed">   26</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#a4c454aea001519f9b38c85a888e76eed">remove</a>(<span class="keyword">const</span> std::string &amp;ssid) {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>            odb::transaction trans(_db-&gt;begin());</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>            <span class="keyword">typedef</span> odb::query&lt;ChatSession&gt; query;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            <span class="keyword">typedef</span> odb::result&lt;ChatSession&gt; result;</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>            _db-&gt;erase_query&lt;<a class="code hl_class" href="classim__server_1_1ChatSession.html">ChatSession</a>&gt;(query::chat_session_id == ssid);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>            <span class="keyword">typedef</span> odb::query&lt;ChatSessionMember&gt; mquery;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            _db-&gt;erase_query&lt;<a class="code hl_class" href="classim__server_1_1ChatSessionMember.html">ChatSessionMember</a>&gt;(mquery::session_id == ssid);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>            trans.commit();</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;删除会话失败 {}:{}&quot;</span>, ssid, e.what());</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    }</div>
+</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#adb46d49ddd5c97b3ad78ffbd06697b29">   42</a></span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#adb46d49ddd5c97b3ad78ffbd06697b29">remove</a>(<span class="keyword">const</span> std::string &amp;uid, <span class="keyword">const</span> std::string &amp;pid) {</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>            odb::transaction trans(_db-&gt;begin());</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            <span class="keyword">typedef</span> odb::query&lt;SingleChatSession&gt; squery;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>            <span class="keyword">typedef</span> odb::result&lt;SingleChatSession&gt; sresult;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>            <span class="keyword">auto</span> res = _db-&gt;query_one&lt;<a class="code hl_struct" href="structim__server_1_1SingleChatSession.html">SingleChatSession</a>&gt;(</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>                squery::csm1::user_id == uid &amp;&amp; squery::csm2::user_id == pid &amp;&amp;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                squery::css::chat_session_type == <a class="code hl_enumvalue" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8">ChatSessionType::SINGLE</a>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            std::string cssid = res-&gt;<a class="code hl_variable" href="structim__server_1_1SingleChatSession.html#ada574a837a50c21330e3d406c0993e02">chat_session_id</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>            <span class="keyword">typedef</span> odb::query&lt;ChatSession&gt; query;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>            <span class="keyword">typedef</span> odb::result&lt;ChatSession&gt; result;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            _db-&gt;erase_query&lt;<a class="code hl_class" href="classim__server_1_1ChatSession.html">ChatSession</a>&gt;(query::chat_session_id == cssid);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keyword">typedef</span> odb::query&lt;ChatSessionMember&gt; mquery;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>            _db-&gt;erase_query&lt;<a class="code hl_class" href="classim__server_1_1ChatSessionMember.html">ChatSessionMember</a>&gt;(mquery::session_id == cssid);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>            trans.commit();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;删除会话失败 {}-{}:{}&quot;</span>, uid, pid, e.what());</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
+</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
+<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#a465233c63b82729256d994cafd8bf11e">   64</a></span>    std::shared_ptr&lt;ChatSession&gt; <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#a465233c63b82729256d994cafd8bf11e">select</a>(<span class="keyword">const</span> std::string &amp;ssid) {</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        std::shared_ptr&lt;ChatSession&gt; res;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            odb::transaction trans(_db-&gt;begin());</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>            <span class="keyword">typedef</span> odb::query&lt;ChatSession&gt; query;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keyword">typedef</span> odb::result&lt;ChatSession&gt; result;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            res.reset(</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                _db-&gt;query_one&lt;<a class="code hl_class" href="classim__server_1_1ChatSession.html">ChatSession</a>&gt;(query::chat_session_id == ssid));</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            trans.commit();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;通过会话ID查询会话信息失败 {}-{}&quot;</span>, ssid, e.what());</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+</div>
+<div class="foldopen" id="foldopen00078" data-start="{" data-end="}">
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#adcbd3f105ce7ada7da5ca88ccf0b6915">   78</a></span>    std::vector&lt;SingleChatSession&gt; <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#adcbd3f105ce7ada7da5ca88ccf0b6915">singleChatSession</a>(<span class="keyword">const</span> std::string &amp;uid) {</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        std::vector&lt;SingleChatSession&gt; res;</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>            odb::transaction trans(_db-&gt;begin());</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>            <span class="keyword">typedef</span> odb::query&lt;SingleChatSession&gt; query;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>            <span class="keyword">typedef</span> odb::result&lt;SingleChatSession&gt; result;</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>            result r(_db-&gt;query&lt;<a class="code hl_struct" href="structim__server_1_1SingleChatSession.html">SingleChatSession</a>&gt;(</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>                query::css::chat_session_type == <a class="code hl_enumvalue" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8">ChatSessionType::SINGLE</a> &amp;&amp;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                query::csm1::user_id == uid &amp;&amp;</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>                query::csm1::user_id != query::csm2::user_id));</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <span class="keywordflow">for</span> (result::iterator it(r.begin()); it != r.end(); it++) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                res.push_back(*it);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            }</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>            trans.commit();</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;查询用户-{}单聊会话失败：{}&quot;</span>, uid, e.what());</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        }</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    }</div>
+</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="foldopen" id="foldopen00098" data-start="{" data-end="}">
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSessionTable.html#a65e2dfe1303ec6d65a5e948f628a73d6">   98</a></span>    std::vector&lt;GroupChatSession&gt; <a class="code hl_function" href="classim__server_1_1ChatSessionTable.html#a65e2dfe1303ec6d65a5e948f628a73d6">groupChatSession</a>(<span class="keyword">const</span> std::string &amp;uid) {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        std::vector&lt;GroupChatSession&gt; res;</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">try</span> {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            odb::transaction trans(_db-&gt;begin());</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>            <span class="keyword">typedef</span> odb::query&lt;GroupChatSession&gt; query;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keyword">typedef</span> odb::result&lt;GroupChatSession&gt; result;</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            result r(_db-&gt;query&lt;<a class="code hl_struct" href="structim__server_1_1GroupChatSession.html">GroupChatSession</a>&gt;(</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>                query::css::chat_session_type == <a class="code hl_enumvalue" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c">ChatSessionType::GROUP</a> &amp;&amp;</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                query::csm::user_id == uid));</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>            <span class="keywordflow">for</span> (result::iterator it(r.begin()); it != r.end(); it++) {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>                res.push_back(*it);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            }</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>            trans.commit();</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        } <span class="keywordflow">catch</span> (std::exception &amp;e) {</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;查询用户-{}群聊会话失败：{}&quot;</span>, uid, e.what());</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">return</span> res;</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    std::shared_ptr&lt;odb::core::database&gt; _db;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>};</div>
+</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>} <span class="comment">// namespace im_server</span></div>
+<div class="ttc" id="achat__session_8hxx_html"><div class="ttname"><a href="chat__session_8hxx.html">chat_session.hxx</a></div><div class="ttdoc">聊天会话数据模型</div></div>
+<div class="ttc" id="achat__session__member_8hxx_html"><div class="ttname"><a href="chat__session__member_8hxx.html">chat_session_member.hxx</a></div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionMember_html"><div class="ttname"><a href="classim__server_1_1ChatSessionMember.html">im_server::ChatSessionMember</a></div><div class="ttdef"><b>Definition</b> chat_session_member.hxx:8</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html">im_server::ChatSessionTable</a></div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:9</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_a04149b82e84949e04099445c19b766a5"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#a04149b82e84949e04099445c19b766a5">im_server::ChatSessionTable::insert</a></div><div class="ttdeci">bool insert(ChatSession &amp;ev)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:14</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_a04b9e042e7d6dafc258deba5c789a6c2"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#a04b9e042e7d6dafc258deba5c789a6c2">im_server::ChatSessionTable::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ChatSessionTable &gt; ptr</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:11</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_a465233c63b82729256d994cafd8bf11e"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#a465233c63b82729256d994cafd8bf11e">im_server::ChatSessionTable::select</a></div><div class="ttdeci">std::shared_ptr&lt; ChatSession &gt; select(const std::string &amp;ssid)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:64</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_a4c454aea001519f9b38c85a888e76eed"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#a4c454aea001519f9b38c85a888e76eed">im_server::ChatSessionTable::remove</a></div><div class="ttdeci">bool remove(const std::string &amp;ssid)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:26</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_a65e2dfe1303ec6d65a5e948f628a73d6"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#a65e2dfe1303ec6d65a5e948f628a73d6">im_server::ChatSessionTable::groupChatSession</a></div><div class="ttdeci">std::vector&lt; GroupChatSession &gt; groupChatSession(const std::string &amp;uid)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:98</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_adb46d49ddd5c97b3ad78ffbd06697b29"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#adb46d49ddd5c97b3ad78ffbd06697b29">im_server::ChatSessionTable::remove</a></div><div class="ttdeci">bool remove(const std::string &amp;uid, const std::string &amp;pid)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:42</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_adcbd3f105ce7ada7da5ca88ccf0b6915"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#adcbd3f105ce7ada7da5ca88ccf0b6915">im_server::ChatSessionTable::singleChatSession</a></div><div class="ttdeci">std::vector&lt; SingleChatSession &gt; singleChatSession(const std::string &amp;uid)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:78</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionTable_html_ae5c26d2d4d84c0ec256f677a0993f1dd"><div class="ttname"><a href="classim__server_1_1ChatSessionTable.html#ae5c26d2d4d84c0ec256f677a0993f1dd">im_server::ChatSessionTable::ChatSessionTable</a></div><div class="ttdeci">ChatSessionTable(const std::shared_ptr&lt; odb::core::database &gt; &amp;db)</div><div class="ttdef"><b>Definition</b> mysql_chat_session.hpp:12</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html"><div class="ttname"><a href="classim__server_1_1ChatSession.html">im_server::ChatSession</a></div><div class="ttdoc">聊天会话实体类</div><div class="ttdef"><b>Definition</b> chat_session.hxx:32</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_acb3d3c5328aeaecb3a8eb3118404c466"><div class="ttname"><a href="classim__server_1_1ChatSession.html#acb3d3c5328aeaecb3a8eb3118404c466">im_server::ChatSession::chat_session_name</a></div><div class="ttdeci">void chat_session_name(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> chat_session.hxx:50</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gae6fc70e87e424e7083c63696b8fb9e78"><div class="ttname"><a href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(fmt,...)</div><div class="ttdoc">错误级别日志，用于记录错误和异常</div><div class="ttdef"><b>Definition</b> logger.hpp:95</div></div>
+<div class="ttc" id="amysql_8hpp_html"><div class="ttname"><a href="mysql_8hpp.html">mysql.hpp</a></div><div class="ttdoc">MySQL数据库连接池封装</div></div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+<div class="ttc" id="anamespaceim__server_html_af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8"><div class="ttname"><a href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8">im_server::ChatSessionType::SINGLE</a></div><div class="ttdeci">@ SINGLE</div><div class="ttdoc">单聊会话</div></div>
+<div class="ttc" id="anamespaceim__server_html_af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c"><div class="ttname"><a href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c">im_server::ChatSessionType::GROUP</a></div><div class="ttdeci">@ GROUP</div><div class="ttdoc">群聊会话</div></div>
+<div class="ttc" id="astructim__server_1_1GroupChatSession_html"><div class="ttname"><a href="structim__server_1_1GroupChatSession.html">im_server::GroupChatSession</a></div><div class="ttdoc">群聊会话视图</div><div class="ttdef"><b>Definition</b> chat_session.hxx:92</div></div>
+<div class="ttc" id="astructim__server_1_1SingleChatSession_html"><div class="ttname"><a href="structim__server_1_1SingleChatSession.html">im_server::SingleChatSession</a></div><div class="ttdoc">单聊会话视图</div><div class="ttdef"><b>Definition</b> chat_session.hxx:77</div></div>
+<div class="ttc" id="astructim__server_1_1SingleChatSession_html_ada574a837a50c21330e3d406c0993e02"><div class="ttname"><a href="structim__server_1_1SingleChatSession.html#ada574a837a50c21330e3d406c0993e02">im_server::SingleChatSession::chat_session_id</a></div><div class="ttdeci">std::string chat_session_id</div><div class="ttdoc">会话ID</div><div class="ttdef"><b>Definition</b> chat_session.hxx:79</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

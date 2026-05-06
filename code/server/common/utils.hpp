@@ -1,3 +1,13 @@
+/**
+ * @file utils.hpp
+ * @brief 通用工具函数
+ * @details 提供UUID生成、验证码生成、文件读写等工具函数
+ * @author ZhuTian
+ * @date 2026
+ */
+
+#pragma once
+
 #include <fstream>
 #include <random>
 #include <string>
@@ -8,6 +18,11 @@
 
 namespace im_server
 {
+    /**
+     * @brief 生成UUID
+     * @return UUID字符串（格式：xxxx-xxxx-xxxx-xxxx）
+     * @details 使用随机数和原子计数器生成唯一标识符
+     */
     std::string uuid()
     {
         std::random_device rd;
@@ -27,6 +42,11 @@ namespace im_server
         return ss.str();
     }
 
+    /**
+     * @brief 生成6位数字验证码
+     * @return 验证码字符串
+     * @details 生成随机6位数字验证码，用于短信验证
+     */
     std::string vcode()
     {
         std::random_device rd;
@@ -40,6 +60,13 @@ namespace im_server
         return ss.str();
     }
 
+    /**
+     * @brief 读取文件内容
+     * @param filename 文件路径
+     * @param[out] body 输出文件内容
+     * @return true=成功，false=失败
+     * @details 以二进制模式读取整个文件到字符串
+     */
     bool readFile(const std::string &filename, std::string &body)
     {
         std::ifstream ifs(filename, std::ios::binary);

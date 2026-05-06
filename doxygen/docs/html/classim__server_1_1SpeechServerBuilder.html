@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::SpeechServerBuilder类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1SpeechServerBuilder.html">SpeechServerBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1SpeechServerBuilder-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::SpeechServerBuilder类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>语音服务器构建器  
+ <a href="classim__server_1_1SpeechServerBuilder.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="speech__server_8hpp_source.html">speech_server.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a14fbfde77681d07f5bcec52e8db6bb15" id="r_a14fbfde77681d07f5bcec52e8db6bb15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServerBuilder.html#a14fbfde77681d07f5bcec52e8db6bb15">make_asr_object</a> (const std::string &amp;app_id, const std::string &amp;api_key, const std::string &amp;secret_key)</td></tr>
+<tr class="memdesc:a14fbfde77681d07f5bcec52e8db6bb15"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建百度ASR客户端  <br /></td></tr>
+<tr class="separator:a14fbfde77681d07f5bcec52e8db6bb15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acbb0823d66fabf1673300e98caa9086c" id="r_acbb0823d66fabf1673300e98caa9086c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServerBuilder.html#acbb0823d66fabf1673300e98caa9086c">make_reg_object</a> (const std::string &amp;reg_host, const std::string &amp;service_name, const std::string &amp;access_host)</td></tr>
+<tr class="memdesc:acbb0823d66fabf1673300e98caa9086c"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建服务注册客户端  <br /></td></tr>
+<tr class="separator:acbb0823d66fabf1673300e98caa9086c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac735762280a29abbe52c4c0236e430e7" id="r_ac735762280a29abbe52c4c0236e430e7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServerBuilder.html#ac735762280a29abbe52c4c0236e430e7">make_rpc_object</a> (const uint16_t &amp;port, const uint32_t &amp;timeout, const uint8_t &amp;num_threads)</td></tr>
+<tr class="memdesc:ac735762280a29abbe52c4c0236e430e7"><td class="mdescLeft">&#160;</td><td class="mdescRight">创建RPC服务器  <br /></td></tr>
+<tr class="separator:ac735762280a29abbe52c4c0236e430e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6538a597c29c85749df936715481c1dc" id="r_a6538a597c29c85749df936715481c1dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classim__server_1_1SpeechServer.html#afa6c1dbba6eeffaf6a826e7ad3af238c">SpeechServer::ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1SpeechServerBuilder.html#a6538a597c29c85749df936715481c1dc">build</a> ()</td></tr>
+<tr class="memdesc:a6538a597c29c85749df936715481c1dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">构建语音服务器实例  <br /></td></tr>
+<tr class="separator:a6538a597c29c85749df936715481c1dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>语音服务器构建器 </p>
+<p>使用Builder模式构建语音服务器，按步骤初始化各个组件 </p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a6538a597c29c85749df936715481c1dc" name="a6538a597c29c85749df936715481c1dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6538a597c29c85749df936715481c1dc">&#9670;&#160;</a></span>build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classim__server_1_1SpeechServer.html#afa6c1dbba6eeffaf6a826e7ad3af238c">SpeechServer::ptr</a> im_server::SpeechServerBuilder::build </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构建语音服务器实例 </p>
+<dl class="section return"><dt>返回</dt><dd>语音服务器智能指针</dd></dl>
+<p>检查所有组件是否已初始化，构建完整的服务器实例 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1SpeechServerBuilder_a6538a597c29c85749df936715481c1dc_icgraph.png" border="0" usemap="#aclassim__server_1_1SpeechServerBuilder_a6538a597c29c85749df936715481c1dc_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a14fbfde77681d07f5bcec52e8db6bb15" name="a14fbfde77681d07f5bcec52e8db6bb15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14fbfde77681d07f5bcec52e8db6bb15">&#9670;&#160;</a></span>make_asr_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::SpeechServerBuilder::make_asr_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>app_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>api_key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>secret_key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建百度ASR客户端 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">app_id</td><td>百度云应用ID </td></tr>
+    <tr><td class="paramname">api_key</td><td>百度云API Key </td></tr>
+    <tr><td class="paramname">secret_key</td><td>百度云Secret Key </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1SpeechServerBuilder_a14fbfde77681d07f5bcec52e8db6bb15_icgraph.png" border="0" usemap="#aclassim__server_1_1SpeechServerBuilder_a14fbfde77681d07f5bcec52e8db6bb15_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="acbb0823d66fabf1673300e98caa9086c" name="acbb0823d66fabf1673300e98caa9086c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbb0823d66fabf1673300e98caa9086c">&#9670;&#160;</a></span>make_reg_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::SpeechServerBuilder::make_reg_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg_host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>access_host</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建服务注册客户端 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg_host</td><td>etcd服务器地址 </td></tr>
+    <tr><td class="paramname">service_name</td><td>服务名称 </td></tr>
+    <tr><td class="paramname">access_host</td><td>服务访问地址</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>将本服务注册到etcd，失败则终止程序 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1SpeechServerBuilder_acbb0823d66fabf1673300e98caa9086c_icgraph.png" border="0" usemap="#aclassim__server_1_1SpeechServerBuilder_acbb0823d66fabf1673300e98caa9086c_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ac735762280a29abbe52c4c0236e430e7" name="ac735762280a29abbe52c4c0236e430e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac735762280a29abbe52c4c0236e430e7">&#9670;&#160;</a></span>make_rpc_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::SpeechServerBuilder::make_rpc_object </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t &amp;&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t &amp;&#160;</td>
+          <td class="paramname"><em>num_threads</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>创建RPC服务器 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">port</td><td>监听端口 </td></tr>
+    <tr><td class="paramname">timeout</td><td>空闲超时时间（秒） </td></tr>
+    <tr><td class="paramname">num_threads</td><td>工作线程数</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>创建并启动RPC服务器，注册语音服务实现 </p>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1SpeechServerBuilder_ac735762280a29abbe52c4c0236e430e7_icgraph.png" border="0" usemap="#aclassim__server_1_1SpeechServerBuilder_ac735762280a29abbe52c4c0236e430e7_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/speech/source/<a class="el" href="speech__server_8hpp_source.html">speech_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

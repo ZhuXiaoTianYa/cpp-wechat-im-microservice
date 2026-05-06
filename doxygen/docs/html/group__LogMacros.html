@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: 日志宏定义</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#define-members">宏定义</a>  </div>
+  <div class="headertitle"><div class="title">日志宏定义</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>统一格式的日志输出宏，自动添加服务名、文件名和行号  
+<a href="#details">更多...</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="define-members" name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:ga20f022b1b58ba62e014b624fdd13572c" id="r_ga20f022b1b58ba62e014b624fdd13572c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#ga20f022b1b58ba62e014b624fdd13572c">LOG_TRACE</a>(fmt, ...)</td></tr>
+<tr class="memdesc:ga20f022b1b58ba62e014b624fdd13572c"><td class="mdescLeft">&#160;</td><td class="mdescRight">跟踪级别日志，用于详细的调试信息  <br /></td></tr>
+<tr class="separator:ga20f022b1b58ba62e014b624fdd13572c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac06cfc686322558f590c50eab8622ebd" id="r_gac06cfc686322558f590c50eab8622ebd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gac06cfc686322558f590c50eab8622ebd"><td class="mdescLeft">&#160;</td><td class="mdescRight">调试级别日志，用于开发阶段的调试信息  <br /></td></tr>
+<tr class="separator:gac06cfc686322558f590c50eab8622ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae69d735f8291bd2aff230fe6ffb4d4b3" id="r_gae69d735f8291bd2aff230fe6ffb4d4b3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">LOG_INFO</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gae69d735f8291bd2aff230fe6ffb4d4b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">信息级别日志，用于记录关键业务流程  <br /></td></tr>
+<tr class="separator:gae69d735f8291bd2aff230fe6ffb4d4b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadba1363ea408060eab75cb5a48dcb907" id="r_gadba1363ea408060eab75cb5a48dcb907"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gadba1363ea408060eab75cb5a48dcb907">LOG_WARN</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gadba1363ea408060eab75cb5a48dcb907"><td class="mdescLeft">&#160;</td><td class="mdescRight">警告级别日志，用于记录潜在问题或业务拒绝场景  <br /></td></tr>
+<tr class="separator:gadba1363ea408060eab75cb5a48dcb907"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae6fc70e87e424e7083c63696b8fb9e78" id="r_gae6fc70e87e424e7083c63696b8fb9e78"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gae6fc70e87e424e7083c63696b8fb9e78"><td class="mdescLeft">&#160;</td><td class="mdescRight">错误级别日志，用于记录错误和异常  <br /></td></tr>
+<tr class="separator:gae6fc70e87e424e7083c63696b8fb9e78"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa842d0e31b246c53e60d17b2d076e193" id="r_gaa842d0e31b246c53e60d17b2d076e193"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__LogMacros.html#gaa842d0e31b246c53e60d17b2d076e193">LOG_FATAL</a>(fmt, ...)</td></tr>
+<tr class="memdesc:gaa842d0e31b246c53e60d17b2d076e193"><td class="mdescLeft">&#160;</td><td class="mdescRight">致命错误日志，用于记录导致服务无法继续运行的严重错误  <br /></td></tr>
+<tr class="separator:gaa842d0e31b246c53e60d17b2d076e193"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<p>统一格式的日志输出宏，自动添加服务名、文件名和行号 </p>
+<h2 class="groupheader">宏定义说明</h2>
+<a id="gac06cfc686322558f590c50eab8622ebd" name="gac06cfc686322558f590c50eab8622ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac06cfc686322558f590c50eab8622ebd">&#9670;&#160;</a></span>LOG_DEBUG</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_DEBUG</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a>-&gt;debug(                                      \</div>
+<div class="line">        <span class="stringliteral">&quot;[{}] [{}:{}] &quot;</span> fmt, <a class="code hl_define" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>,                             \</div>
+<div class="line">        <a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a>(__FILE__), __LINE__, ##__VA_ARGS__)</div>
+<div class="ttc" id="alogger_8hpp_html_ade8e70f1b78d83d5ea1c0aa31cfd2d8b"><div class="ttname"><a href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a></div><div class="ttdeci">#define IM_LOG_SERVICE_TAG</div><div class="ttdef"><b>Definition</b> logger.hpp:19</div></div>
+<div class="ttc" id="anamespaceim__server_html_a27b91dc9615c16cedc7c16a40153127c"><div class="ttname"><a href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a></div><div class="ttdeci">std::shared_ptr&lt; spdlog::logger &gt; g_default_logger</div><div class="ttdoc">全局默认日志器实例</div><div class="ttdef"><b>Definition</b> logger.hpp:38</div></div>
+<div class="ttc" id="anamespaceim__server_html_ad80d702bb92efd785e2cee867e3880a6"><div class="ttname"><a href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a></div><div class="ttdeci">const char * im_log_short_file(const char *path)</div><div class="ttdoc">提取文件路径中的短文件名</div><div class="ttdef"><b>Definition</b> logger.hpp:29</div></div>
+</div><!-- fragment -->
+<p>调试级别日志，用于开发阶段的调试信息 </p>
+
+</div>
+</div>
+<a id="gae6fc70e87e424e7083c63696b8fb9e78" name="gae6fc70e87e424e7083c63696b8fb9e78"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae6fc70e87e424e7083c63696b8fb9e78">&#9670;&#160;</a></span>LOG_ERROR</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_ERROR</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a>-&gt;error(                                      \</div>
+<div class="line">        <span class="stringliteral">&quot;[{}] [{}:{}] &quot;</span> fmt, <a class="code hl_define" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>,                             \</div>
+<div class="line">        <a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a>(__FILE__), __LINE__, ##__VA_ARGS__)</div>
+</div><!-- fragment -->
+<p>错误级别日志，用于记录错误和异常 </p>
+
+</div>
+</div>
+<a id="gaa842d0e31b246c53e60d17b2d076e193" name="gaa842d0e31b246c53e60d17b2d076e193"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa842d0e31b246c53e60d17b2d076e193">&#9670;&#160;</a></span>LOG_FATAL</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_FATAL</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a>-&gt;critical(                                   \</div>
+<div class="line">        <span class="stringliteral">&quot;[{}] [{}:{}] &quot;</span> fmt, <a class="code hl_define" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>,                             \</div>
+<div class="line">        <a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a>(__FILE__), __LINE__, ##__VA_ARGS__)</div>
+</div><!-- fragment -->
+<p>致命错误日志，用于记录导致服务无法继续运行的严重错误 </p>
+
+</div>
+</div>
+<a id="gae69d735f8291bd2aff230fe6ffb4d4b3" name="gae69d735f8291bd2aff230fe6ffb4d4b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae69d735f8291bd2aff230fe6ffb4d4b3">&#9670;&#160;</a></span>LOG_INFO</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_INFO</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a>-&gt;info(                                       \</div>
+<div class="line">        <span class="stringliteral">&quot;[{}] [{}:{}] &quot;</span> fmt, <a class="code hl_define" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>,                             \</div>
+<div class="line">        <a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a>(__FILE__), __LINE__, ##__VA_ARGS__)</div>
+</div><!-- fragment -->
+<p>信息级别日志，用于记录关键业务流程 </p>
+
+</div>
+</div>
+<a id="ga20f022b1b58ba62e014b624fdd13572c" name="ga20f022b1b58ba62e014b624fdd13572c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga20f022b1b58ba62e014b624fdd13572c">&#9670;&#160;</a></span>LOG_TRACE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_TRACE</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a>-&gt;trace(                                      \</div>
+<div class="line">        <span class="stringliteral">&quot;[{}] [{}:{}] &quot;</span> fmt, <a class="code hl_define" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>,                             \</div>
+<div class="line">        <a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a>(__FILE__), __LINE__, ##__VA_ARGS__)</div>
+</div><!-- fragment -->
+<p>跟踪级别日志，用于详细的调试信息 </p>
+
+</div>
+</div>
+<a id="gadba1363ea408060eab75cb5a48dcb907" name="gadba1363ea408060eab75cb5a48dcb907"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadba1363ea408060eab75cb5a48dcb907">&#9670;&#160;</a></span>LOG_WARN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LOG_WARN</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">fmt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>值:</b><div class="fragment"><div class="line">    <a class="code hl_variable" href="namespaceim__server.html#a27b91dc9615c16cedc7c16a40153127c">im_server::g_default_logger</a>-&gt;warn(                                       \</div>
+<div class="line">        <span class="stringliteral">&quot;[{}] [{}:{}] &quot;</span> fmt, <a class="code hl_define" href="logger_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">IM_LOG_SERVICE_TAG</a>,                             \</div>
+<div class="line">        <a class="code hl_function" href="namespaceim__server.html#ad80d702bb92efd785e2cee867e3880a6">im_server::im_log_short_file</a>(__FILE__), __LINE__, ##__VA_ARGS__)</div>
+</div><!-- fragment -->
+<p>警告级别日志，用于记录潜在问题或业务拒绝场景 </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

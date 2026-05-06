@@ -1,0 +1,477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::MessageServerBuilder类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1MessageServerBuilder.html">MessageServerBuilder</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1MessageServerBuilder-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::MessageServerBuilder类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="message__server_8hpp_source.html">message_server.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a3996487e1744ec3c6c371d04b162ae76" id="r_a3996487e1744ec3c6c371d04b162ae76"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#a3996487e1744ec3c6c371d04b162ae76">make_mq_object</a> (const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;exchange_name, const std::string &amp;queue_name, const std::string &amp;binding_key)</td></tr>
+<tr class="separator:a3996487e1744ec3c6c371d04b162ae76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a11aab4db1db2692bc581a60a2743d113" id="r_a11aab4db1db2692bc581a60a2743d113"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#a11aab4db1db2692bc581a60a2743d113">make_mysql_object</a> (const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;db, const std::string &amp;cset, int port, int &amp;conn_pool_count)</td></tr>
+<tr class="separator:a11aab4db1db2692bc581a60a2743d113"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5f80d9273ff6ad3dac058096cda7b36" id="r_aa5f80d9273ff6ad3dac058096cda7b36"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#aa5f80d9273ff6ad3dac058096cda7b36">make_es_object</a> (const std::vector&lt; std::string &gt; &amp;host_list)</td></tr>
+<tr class="separator:aa5f80d9273ff6ad3dac058096cda7b36"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af61a900163be13cf5455e23f29777913" id="r_af61a900163be13cf5455e23f29777913"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#af61a900163be13cf5455e23f29777913">make_discovery_object</a> (const std::string &amp;reg_host, const std::string &amp;base_service_name, const std::string &amp;file_service_name, const std::string &amp;user_service_name)</td></tr>
+<tr class="separator:af61a900163be13cf5455e23f29777913"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25630cf76a2fef72888b4ba4b7679d4d" id="r_a25630cf76a2fef72888b4ba4b7679d4d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#a25630cf76a2fef72888b4ba4b7679d4d">make_registry_object</a> (const std::string &amp;reg_host, const std::string &amp;service_name, const std::string &amp;access_host)</td></tr>
+<tr class="separator:a25630cf76a2fef72888b4ba4b7679d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6249f49a6b19e745d2983360f130a95" id="r_ae6249f49a6b19e745d2983360f130a95"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#ae6249f49a6b19e745d2983360f130a95">make_rpc_object</a> (const uint16_t &amp;port, const uint32_t &amp;timeout, const uint8_t &amp;num_threads)</td></tr>
+<tr class="separator:ae6249f49a6b19e745d2983360f130a95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a775c84f00da821c8d093a768ef65a438" id="r_a775c84f00da821c8d093a768ef65a438"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classim__server_1_1MessageServer.html#a8a79f68912d41568cc9f68d688af4e9d">MessageServer::ptr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1MessageServerBuilder.html#a775c84f00da821c8d093a768ef65a438">build</a> ()</td></tr>
+<tr class="separator:a775c84f00da821c8d093a768ef65a438"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a775c84f00da821c8d093a768ef65a438" name="a775c84f00da821c8d093a768ef65a438"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a775c84f00da821c8d093a768ef65a438">&#9670;&#160;</a></span>build()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classim__server_1_1MessageServer.html#a8a79f68912d41568cc9f68d688af4e9d">MessageServer::ptr</a> im_server::MessageServerBuilder::build </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_a775c84f00da821c8d093a768ef65a438_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_a775c84f00da821c8d093a768ef65a438_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="af61a900163be13cf5455e23f29777913" name="af61a900163be13cf5455e23f29777913"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af61a900163be13cf5455e23f29777913">&#9670;&#160;</a></span>make_discovery_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MessageServerBuilder::make_discovery_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg_host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>base_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file_service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user_service_name</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_af61a900163be13cf5455e23f29777913_cgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_af61a900163be13cf5455e23f29777913_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_af61a900163be13cf5455e23f29777913_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_af61a900163be13cf5455e23f29777913_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="aa5f80d9273ff6ad3dac058096cda7b36" name="aa5f80d9273ff6ad3dac058096cda7b36"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa5f80d9273ff6ad3dac058096cda7b36">&#9670;&#160;</a></span>make_es_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MessageServerBuilder::make_es_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>host_list</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_aa5f80d9273ff6ad3dac058096cda7b36_cgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_aa5f80d9273ff6ad3dac058096cda7b36_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_aa5f80d9273ff6ad3dac058096cda7b36_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_aa5f80d9273ff6ad3dac058096cda7b36_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a3996487e1744ec3c6c371d04b162ae76" name="a3996487e1744ec3c6c371d04b162ae76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3996487e1744ec3c6c371d04b162ae76">&#9670;&#160;</a></span>make_mq_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MessageServerBuilder::make_mq_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>passwd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>exchange_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>queue_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>binding_key</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_a3996487e1744ec3c6c371d04b162ae76_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_a3996487e1744ec3c6c371d04b162ae76_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a11aab4db1db2692bc581a60a2743d113" name="a11aab4db1db2692bc581a60a2743d113"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a11aab4db1db2692bc581a60a2743d113">&#9670;&#160;</a></span>make_mysql_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MessageServerBuilder::make_mysql_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>user</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>passwd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>db</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>cset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int &amp;&#160;</td>
+          <td class="paramname"><em>conn_pool_count</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_a11aab4db1db2692bc581a60a2743d113_cgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_a11aab4db1db2692bc581a60a2743d113_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_a11aab4db1db2692bc581a60a2743d113_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_a11aab4db1db2692bc581a60a2743d113_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a25630cf76a2fef72888b4ba4b7679d4d" name="a25630cf76a2fef72888b4ba4b7679d4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25630cf76a2fef72888b4ba4b7679d4d">&#9670;&#160;</a></span>make_registry_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MessageServerBuilder::make_registry_object </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>reg_host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>service_name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>access_host</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_a25630cf76a2fef72888b4ba4b7679d4d_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_a25630cf76a2fef72888b4ba4b7679d4d_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="ae6249f49a6b19e745d2983360f130a95" name="ae6249f49a6b19e745d2983360f130a95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6249f49a6b19e745d2983360f130a95">&#9670;&#160;</a></span>make_rpc_object()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::MessageServerBuilder::make_rpc_object </td>
+          <td>(</td>
+          <td class="paramtype">const uint16_t &amp;&#160;</td>
+          <td class="paramname"><em>port</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint32_t &amp;&#160;</td>
+          <td class="paramname"><em>timeout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const uint8_t &amp;&#160;</td>
+          <td class="paramname"><em>num_threads</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_ae6249f49a6b19e745d2983360f130a95_cgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_ae6249f49a6b19e745d2983360f130a95_cgraph" alt=""/></div>
+</div>
+<div class="dynheader">
+这是这个函数的调用关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1MessageServerBuilder_ae6249f49a6b19e745d2983360f130a95_icgraph.png" border="0" usemap="#aclassim__server_1_1MessageServerBuilder_ae6249f49a6b19e745d2983360f130a95_icgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/message/source/<a class="el" href="message__server_8hpp_source.html">message_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

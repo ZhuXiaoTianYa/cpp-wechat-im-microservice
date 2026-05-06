@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::Discoverer类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1Discoverer.html">Discoverer</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1Discoverer-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::Discoverer类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>服务发现类  
+ <a href="classim__server_1_1Discoverer.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="etcd_8hpp_source.html">etcd.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a82c5cf28898573814eff6d0811fc0dd2" id="r_a82c5cf28898573814eff6d0811fc0dd2"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1Discoverer.html">Discoverer</a> &gt;</td></tr>
+<tr class="separator:a82c5cf28898573814eff6d0811fc0dd2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85d4d58dbdea092c789cb17fb0dd945c" id="r_a85d4d58dbdea092c789cb17fb0dd945c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Discoverer.html#a85d4d58dbdea092c789cb17fb0dd945c">NotifyCallback</a> = std::function&lt; void(const std::string &amp;, const std::string &amp;)&gt;</td></tr>
+<tr class="separator:a85d4d58dbdea092c789cb17fb0dd945c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:aef941a5f292dd0df9be19495bc690446" id="r_aef941a5f292dd0df9be19495bc690446"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Discoverer.html#aef941a5f292dd0df9be19495bc690446">Discoverer</a> (const std::string &amp;host, const std::string &amp;basedir, const <a class="el" href="classim__server_1_1Discoverer.html#a85d4d58dbdea092c789cb17fb0dd945c">NotifyCallback</a> &amp;put_cb, const <a class="el" href="classim__server_1_1Discoverer.html#a85d4d58dbdea092c789cb17fb0dd945c">NotifyCallback</a> &amp;del_cb)</td></tr>
+<tr class="memdesc:aef941a5f292dd0df9be19495bc690446"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:aef941a5f292dd0df9be19495bc690446"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>服务发现类 </p>
+<p>从etcd发现服务，监听服务上下线事件并触发回调 </p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a85d4d58dbdea092c789cb17fb0dd945c" name="a85d4d58dbdea092c789cb17fb0dd945c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a85d4d58dbdea092c789cb17fb0dd945c">&#9670;&#160;</a></span>NotifyCallback</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1Discoverer.html#a85d4d58dbdea092c789cb17fb0dd945c">im_server::Discoverer::NotifyCallback</a> =  std::function&lt;void(const std::string &amp;, const std::string &amp;)&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a82c5cf28898573814eff6d0811fc0dd2" name="a82c5cf28898573814eff6d0811fc0dd2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a82c5cf28898573814eff6d0811fc0dd2">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">im_server::Discoverer::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1Discoverer.html">Discoverer</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aef941a5f292dd0df9be19495bc690446" name="aef941a5f292dd0df9be19495bc690446"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef941a5f292dd0df9be19495bc690446">&#9670;&#160;</a></span>Discoverer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::Discoverer::Discoverer </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>host</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>basedir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classim__server_1_1Discoverer.html#a85d4d58dbdea092c789cb17fb0dd945c">NotifyCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>put_cb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classim__server_1_1Discoverer.html#a85d4d58dbdea092c789cb17fb0dd945c">NotifyCallback</a> &amp;&#160;</td>
+          <td class="paramname"><em>del_cb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">host</td><td>etcd服务器地址 </td></tr>
+    <tr><td class="paramname">basedir</td><td>服务发现基础路径（如"/service"） </td></tr>
+    <tr><td class="paramname">put_cb</td><td>服务上线回调（参数：key, value） </td></tr>
+    <tr><td class="paramname">del_cb</td><td>服务下线回调（参数：key, value）</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>先拉取全量服务列表，再启动监听器监听增量变化 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/common/<a class="el" href="etcd_8hpp_source.html">etcd.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

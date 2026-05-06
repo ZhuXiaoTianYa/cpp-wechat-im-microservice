@@ -1,3 +1,14 @@
+/**
+ * @file gateway_server.hpp
+ * @brief 网关服务模块
+ * @details 提供HTTP和WebSocket双协议接入，统一对外服务入口，负责请求路由、会话管理、实时通知
+ * @author ZhuTian
+ * @date 2026
+ */
+
+#pragma once
+
+#define IM_LOG_SERVICE_TAG "网关"
 #include <brpc/controller.h>
 #include <brpc/server.h>
 #include <butil/logging.h>
@@ -25,7 +36,13 @@
 #include <websocketpp/close.hpp>
 #include <websocketpp/connection.hpp>
 #include <websocketpp/frame.hpp>
+
 namespace im_server {
+
+/** @defgroup HttpRoutes HTTP路由定义
+ * @brief 所有HTTP接口的路由路径常量
+ * @{
+ */
 #define GET_PHONE_VERIFY_CODE "/service/user/get_phone_verify_code"
 #define USERNAME_REGISTER "/service/user/username_register"
 #define USERNAME_LOGIN "/service/user/username_login"
@@ -54,9 +71,37 @@ namespace im_server {
 #define FILE_PUT_SINGLE "/service/file/put_single_file"
 #define FILE_PUT_MULTI "/service/file/put_multi_file"
 #define SPEECH_RECOGNITION "/service/speech/recognition"
+/** @} */
+
+/**
+ * @class GatewayServer
+ * @brief 网关服务器主类
+ * @details 集成HTTP服务器和WebSocket服务器，提供统一的对外接口，负责：
+ *          - HTTP请求路由到后端微服务
+ *          - WebSocket长连接管理
+ *          - 用户会话管理（Redis）
+ *          - 实时消息推送
+ *          - 服务发现与负载均衡
+ */
 class GatewayServer {
 public:
     using ptr = std::shared_ptr<GatewayServer>;
+    
+    /**
+     * @brief 构造函数
+     * @param ws_port WebSocket服务端口
+     * @param http_port HTTP服务端口
+     * @param redis_client Redis客户端（用于会话和状态管理）
+     * @param mm_channels 下游服务管理器
+     * @param server_discover 服务发现客户端
+     * @param file_service_name 文件服务名称
+     * @param user_service_name 用户服务名称
+     * @param message_service_name 消息服务名称
+     * @param speech_service_name 语音服务名称
+     * @param transmite_service_name 转发服务名称
+     * @param friend_service_name 好友服务名称
+     * @details 初始化HTTP和WebSocket服务器，注册所有路由处理器
+     */
     GatewayServer(const int &ws_port, const int &http_port,
                   const std::shared_ptr<sw::redis::Redis> &redis_client,
                   const ServiceManager::ptr &mm_channels,
@@ -213,28 +258,30 @@ public:
 private:
     void onOpen(websocketpp::connection_hdl hdl) {
         std::cout << "websocket长连接建立成功" << std::endl;
-        LOG_DEBUG("websocket长连接建立成功：{}",
-                  (size_t)_ws_server.get_con_from_hdl(hdl).get());
+        LOG_INFO("WebSocket 连接已建立 | conn={}",
+                 (void *)_ws_server.get_con_from_hdl(hdl).get());
     }
     void onClose(websocketpp::connection_hdl hdl) {
         auto conn = _ws_server.get_con_from_hdl(hdl);
         std::string ssid, uid;
         bool ret = _connections->client(conn, uid, ssid);
         if (ret == false) {
-            LOG_WARN("长连接断开，未找到长连接对应的客户端信息");
+            LOG_WARN("WebSocket 关闭时未找到连接映射，跳过 Redis 清理 | conn={}",
+                     (void *)conn.get());
             return;
         }
         _redis_session->remove(ssid);
         _redis_status->remove(uid);
         _connections->remove(conn);
-        LOG_DEBUG("{}-{}-{} 长连接断开，清理缓存数据", ssid, uid,
-                  (size_t)conn.get());
+        LOG_INFO(
+            "WebSocket 已断开并完成清理 | session_id={} | user_id={} | conn={}",
+            ssid, uid, (void *)conn.get());
     }
 
     void keepAlive(server_t::connection_ptr conn) {
         if (!conn ||
             conn->get_state() != websocketpp::session::state::value::open) {
-            LOG_DEBUG("非正常连接状态，结束连接保活");
+            LOG_DEBUG("连接保活结束：当前非 OPEN 状态，停止定时 ping");
             return;
         }
         conn->ping("");
@@ -246,7 +293,7 @@ private:
         ClientAuthenticationReq req;
         bool ret = req.ParseFromString(msg->get_payload());
         if (ret == false) {
-            LOG_ERROR("长连接身份识别失败,正文反序列化失败");
+            LOG_WARN("WebSocket 首包鉴权失败：Protobuf 解析失败，将关闭连接");
             _ws_server.close(hdl, websocketpp::close::status::unsupported_data,
                              "正文反序列化失败");
             return;
@@ -254,19 +301,22 @@ private:
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("长连接身份识别失败,未找到会话信息 {}", ssid);
+            LOG_WARN(
+                "WebSocket 首包鉴权失败：Redis 中无此 session_id | session_id={}",
+                ssid);
             _ws_server.close(hdl, websocketpp::close::status::unsupported_data,
                              "未找到会话信息");
             return;
         }
         _connections->insert(conn, *uid, ssid);
         keepAlive(conn);
-        LOG_DEBUG("新增长连接管理：{}-{}-{}", ssid, *uid, (size_t)conn.get());
+        LOG_INFO("WebSocket 鉴权成功并已注册路由 | session_id={} | user_id={} | "
+                 "conn={}",
+                 ssid, *uid, (void *)conn.get());
     }
 
     void GetPhoneVerifyCode(const httplib::Request &request,
                             httplib::Response &response) {
-        LOG_ERROR("{} 用户注册请求收到");
         PhoneVerifyCodeReq req;
         PhoneVerifyCodeRsp rsp;
         brpc::Controller cntl;
@@ -278,22 +328,28 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取短信验证码请求反序列化失败");
+            LOG_WARN("HTTP 获取短信验证码 | 阶段=解析请求体 | 结果=失败 | "
+                     "原因=Protobuf 反序列化失败");
             return err_response("获取短信验证码请求反序列化失败");
         }
 
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("HTTP 获取短信验证码 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败 | 原因=未发现可用用户服务实例 | target={}",
+                      req.request_id(), _user_service_name);
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.GetPhoneVerifyCode(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 获取短信验证码 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 获取短信验证码 | request_id={} | 结果=成功",
+                  req.request_id());
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void UserRegister(const httplib::Request &request,
@@ -309,22 +365,28 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("用户名注册请求反序列化失败");
+            LOG_WARN("HTTP 用户名注册 | 阶段=解析请求体 | 结果=失败 | "
+                     "原因=Protobuf 反序列化失败");
             return err_response("用户名注册请求反序列化失败");
         }
 
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("HTTP 用户名注册 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败 | 原因=无可用用户服务 | target={}",
+                      req.request_id(), _user_service_name);
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.UserRegister(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 用户名注册 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 用户名注册 | request_id={} | 结果=成功",
+                  req.request_id());
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void UserLogin(const httplib::Request &request,
@@ -340,22 +402,28 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("用户登录请求反序列化失败");
+            LOG_WARN("HTTP 用户名登录 | 阶段=解析请求体 | 结果=失败 | "
+                     "原因=Protobuf 反序列化失败");
             return err_response("用户登录请求反序列化失败");
         }
 
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("HTTP 用户名登录 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败 | 原因=无可用用户服务 | target={}",
+                      req.request_id(), _user_service_name);
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.UserLogin(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 用户名登录 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_INFO("HTTP 用户名登录 | request_id={} | 阶段=完成 | 结果=成功",
+                 req.request_id());
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void PhoneRegister(const httplib::Request &request,
@@ -371,22 +439,28 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("手机号注册请求反序列化失败");
+            LOG_WARN("HTTP 手机号注册 | 阶段=解析请求体 | 结果=失败 | "
+                     "原因=Protobuf 反序列化失败");
             return err_response("手机号注册请求反序列化失败");
         }
 
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("HTTP 手机号注册 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败 | target={}",
+                      req.request_id(), _user_service_name);
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.PhoneRegister(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 手机号注册 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 手机号注册 | request_id={} | 结果=成功",
+                  req.request_id());
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void PhoneLogin(const httplib::Request &request,
@@ -402,22 +476,28 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("手机号登录请求反序列化失败");
+            LOG_WARN("HTTP 手机号登录 | 阶段=解析请求体 | 结果=失败 | "
+                     "原因=Protobuf 反序列化失败");
             return err_response("手机号登录请求反序列化失败");
         }
 
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("HTTP 手机号登录 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败 | target={}",
+                      req.request_id(), _user_service_name);
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.PhoneLogin(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 手机号登录 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_INFO("HTTP 手机号登录 | request_id={} | 阶段=完成 | 结果=成功",
+                 req.request_id());
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void GetUserInfo(const httplib::Request &request,
@@ -433,30 +513,38 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取用户信息请求反序列化失败");
+            LOG_WARN("HTTP 获取当前用户信息 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取用户信息请求反序列化失败");
         }
         std::string ssid = req.session_id();
-        LOG_DEBUG("{} 用户ssid", ssid);
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("HTTP 获取当前用户信息 | request_id={} | 阶段=会话校验 | "
+                     "结果=失败 | session_id={} | 原因=Redis 无映射",
+                     req.request_id(), ssid);
             return err_response("获取登录会话关联信息失败");
         }
-        LOG_DEBUG("{} 用户uid", *uid);
+        LOG_DEBUG("HTTP 获取当前用户信息 | request_id={} | session_id={} | "
+                  "user_id={}",
+                  req.request_id(), ssid, *uid);
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("HTTP 获取当前用户信息 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败 | target={}",
+                      req.request_id(), _user_service_name);
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.GetUserInfo(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 获取当前用户信息 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 获取当前用户信息 | request_id={} | 结果=成功",
+                  req.request_id());
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void SetUserAvatar(const httplib::Request &request,
@@ -472,28 +560,34 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("设置用户头像请求反序列化失败");
+            LOG_WARN("HTTP 修改头像 | 阶段=解析请求体 | 结果=失败");
             return err_response("设置用户头像请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("HTTP 修改头像 | request_id={} | session_id={} | "
+                     "阶段=会话校验 | 结果=失败",
+                     req.request_id(), ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
+            LOG_ERROR("HTTP 修改头像 | request_id={} | 阶段=RPC选路 | 结果=失败",
                       req.request_id());
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.SetUserAvatar(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 修改头像 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
+                      "brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 修改头像 | request_id={} | user_id={} | 结果=成功",
+                  req.request_id(), *uid);
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void SetUserNickname(const httplib::Request &request,
@@ -509,28 +603,34 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("设置用户名称请求反序列化失败");
+            LOG_WARN("HTTP 修改昵称 | 阶段=解析请求体 | 结果=失败");
             return err_response("设置用户名称请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("HTTP 修改昵称 | request_id={} | session_id={} | "
+                     "阶段=会话校验 | 结果=失败",
+                     req.request_id(), ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
+            LOG_ERROR("HTTP 修改昵称 | request_id={} | 阶段=RPC选路 | 结果=失败",
                       req.request_id());
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.SetUserNickname(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 修改昵称 | request_id={} | 阶段=RPC调用 | 结果=失败 | "
+                      "brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 修改昵称 | request_id={} | user_id={} | 结果=成功",
+                  req.request_id(), *uid);
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void SetUserDescription(const httplib::Request &request,
@@ -546,28 +646,35 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("设置用户签名请求反序列化失败");
+            LOG_WARN("HTTP 修改个性签名 | 阶段=解析请求体 | 结果=失败");
             return err_response("设置用户签名请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("HTTP 修改个性签名 | request_id={} | session_id={} | "
+                     "阶段=会话校验 | 结果=失败",
+                     req.request_id(), ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR(
+                "HTTP 修改个性签名 | request_id={} | 阶段=RPC选路 | 结果=失败",
+                req.request_id());
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.SetUserDescription(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 修改个性签名 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 修改个性签名 | request_id={} | user_id={} | 结果=成功",
+                  req.request_id(), *uid);
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void SetUserPhoneNumber(const httplib::Request &request,
@@ -583,28 +690,35 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("设置用户手机号请求反序列化失败");
+            LOG_WARN("HTTP 修改绑定手机 | 阶段=解析请求体 | 结果=失败");
             return err_response("设置用户手机号请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("HTTP 修改绑定手机 | request_id={} | session_id={} | "
+                     "阶段=会话校验 | 结果=失败",
+                     req.request_id(), ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
+            LOG_ERROR("HTTP 修改绑定手机 | request_id={} | 阶段=RPC选路 | "
+                      "结果=失败",
                       req.request_id());
             return err_response("未找到可供业务处理的用户子服务节点");
         }
         UserService_Stub stub(channel.get());
         stub.SetUserPhoneNumber(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("HTTP 修改绑定手机 | request_id={} | 阶段=RPC调用 | "
+                      "结果=失败 | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("用户子服务调用失败");
         }
+        LOG_DEBUG("HTTP 修改绑定手机 | request_id={} | user_id={} | 结果=成功",
+                  req.request_id(), *uid);
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
     }
     void GetFriendList(const httplib::Request &request,
@@ -620,26 +734,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取好友列表请求反序列化失败");
+            LOG_WARN("HTTP 获取好友列表 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取好友列表请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.GetFriendList(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -650,18 +765,20 @@ private:
         GetUserInfoReq req;
         auto rsp = std::make_shared<GetUserInfoRsp>();
         brpc::Controller cntl;
-        std::string ssid = req.session_id();
         req.set_user_id(uid);
         auto channel = _mm_channels->choose(_user_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的用户子服务节点",
-                      req.request_id());
+            LOG_ERROR("网关内部查询用户资料 | request_id={} | user_id={} | "
+                      "阶段=RPC选路 | 结果=失败 | service={}",
+                      rid, uid, _user_service_name);
             return rsp;
         }
         UserService_Stub stub(channel.get());
         stub.GetUserInfo(&cntl, &req, rsp.get(), nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 用户子服务调用失败", req.request_id());
+            LOG_ERROR("网关内部查询用户资料 | request_id={} | user_id={} | "
+                      "阶段=RPC调用 | 结果=失败 | brpc={}",
+                      rid, uid, cntl.ErrorText());
             return rsp;
         }
         return rsp;
@@ -680,34 +797,38 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("申请好友请求反序列化失败");
+            LOG_WARN("HTTP 发起好友申请 | 阶段=解析请求体 | 结果=失败");
             return err_response("申请好友请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.FriendAdd(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         auto conn = _connections->connection(req.respondent_id());
         if (rsp.success() == true && conn) {
-            LOG_DEBUG("{}-被申请人在线", req.respondent_id());
+            LOG_DEBUG("好友申请实时通知 | 被申请人已在线 | user_id={}",
+                      req.respondent_id());
             auto user_rsp = _GetUserInfo(req.request_id(), *uid);
             if (!user_rsp) {
-                LOG_ERROR("{} 获取用户信息失败", req.request_id());
+                LOG_ERROR("好友申请推送失败 | request_id={} | 阶段=内部查询申请人资料 | "
+                          "结果=失败",
+                          req.request_id());
                 return err_response("获取用户信息失败");
             }
             NotifyMessage notify;
@@ -732,7 +853,7 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("申请好友请求反序列化失败");
+            LOG_WARN("HTTP 处理好友申请 | 阶段=解析请求体 | 结果=失败");
             return err_response("申请好友请求反序列化失败");
         }
         std::string ssid = req.session_id();
@@ -740,44 +861,48 @@ private:
         bool argee = req.agree();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.FriendAddProcess(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         if (rsp.success() == true) {
             std::string new_session_id = rsp.new_session_id();
             auto process_user_rsp = _GetUserInfo(req.request_id(), *uid);
             if (!process_user_rsp) {
-                LOG_ERROR("{} 获取用户信息失败", req.request_id());
+                LOG_ERROR("好友同意流程 | request_id={} | 阶段=查询处理人资料 | 结果=失败",
+                          req.request_id());
                 return err_response("获取用户信息失败");
             }
             auto apply_user_rsp = _GetUserInfo(req.request_id(), apply_id);
             if (!apply_user_rsp) {
-                LOG_ERROR("{} 获取用户信息失败", req.request_id());
+                LOG_ERROR("好友同意流程 | request_id={} | 阶段=查询申请人资料 | 结果=失败",
+                          req.request_id());
                 return err_response("获取用户信息失败");
             }
             auto process_conn = _connections->connection(*uid);
             if (!process_conn) {
-                LOG_ERROR("{} 获取用户信息失败", req.request_id());
+                LOG_DEBUG("会话创建通知跳过 | 处理人当前不在线 | user_id={}", *uid);
             }
             auto apply_conn = _connections->connection(apply_id);
             if (!apply_conn) {
-                LOG_ERROR("{} 获取用户信息失败", req.request_id());
+                LOG_DEBUG("会话创建通知跳过 | 申请人当前不在线 | user_id={}",
+                          apply_id);
             }
             if (argee && apply_conn) {
-                LOG_DEBUG("{}-申请人在线", apply_id);
+                LOG_DEBUG("会话创建通知下发 | 目标=申请人 | user_id={}", apply_id);
                 NotifyMessage notify;
                 notify.set_notify_type(NotifyType::CHAT_SESSION_CREATE_NOTIFY);
                 notify.mutable_new_chat_session_info()
@@ -797,7 +922,7 @@ private:
                                  websocketpp::frame::opcode::binary);
             }
             if (argee && process_conn) {
-                LOG_DEBUG("{}-处理人在线", *uid);
+                LOG_DEBUG("会话创建通知下发 | 目标=处理人 | user_id={}", *uid);
                 NotifyMessage notify;
                 notify.set_notify_type(NotifyType::CHAT_SESSION_CREATE_NOTIFY);
                 notify.mutable_new_chat_session_info()
@@ -832,32 +957,33 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("好友删除请求反序列化失败");
+            LOG_WARN("HTTP 删除好友 | 阶段=解析请求体 | 结果=失败");
             return err_response("好友删除请求反序列化失败");
         }
         std::string ssid = req.session_id();
         std::string peer_id = req.peer_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.FriendRemove(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         auto conn = _connections->connection(peer_id);
         if (rsp.success() == true && conn) {
-            LOG_DEBUG("{}-被删除好友在线", peer_id);
+            LOG_DEBUG("删除好友实时通知 | 对方在线 | peer_user_id={}", peer_id);
             NotifyMessage notify;
             notify.set_notify_type(NotifyType::FRIEND_REMOVE_NOTIFY);
             notify.mutable_friend_remove()->set_user_id(*uid);
@@ -879,26 +1005,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("好友搜索请求反序列化失败");
+            LOG_WARN("HTTP 搜索用户 | 阶段=解析请求体 | 结果=失败");
             return err_response("好友搜索请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.FriendSearch(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -916,26 +1043,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取待处理好友申请请求反序列化失败");
+            LOG_WARN("HTTP 待处理好友申请列表 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取待处理好友申请请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.GetPendingFriendEventList(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -953,26 +1081,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取聊天会话列表申请请求反序列化失败");
+            LOG_WARN("HTTP 会话列表 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取聊天会话列表申请请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.GetChatSessionList(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -990,26 +1119,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取聊天会话成员信息申请请求反序列化失败");
+            LOG_WARN("HTTP 会话成员列表 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取聊天会话成员信息申请请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.GetChatSessionMember(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1027,33 +1157,35 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("创建聊天会话请求反序列化失败");
+            LOG_WARN("HTTP 创建群会话 | 阶段=解析请求体 | 结果=失败");
             return err_response("创建聊天会话请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_friend_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的好友子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用好友服务实例 | request_id={} | service={}",
+                      req.request_id(), _friend_service_name);
             return err_response("未找到可供业务处理的好友子服务节点");
         }
         FriendService_Stub stub(channel.get());
         stub.ChatSessionCreate(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 好友子服务调用失败", req.request_id());
+            LOG_ERROR("好友服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("好友子服务调用失败");
         }
         if (rsp.success() == true) {
             for (int i = 0; i < req.member_id_list_size(); i++) {
                 auto conn = _connections->connection(req.member_id_list(i));
                 if (!conn) {
-                    LOG_DEBUG("{}-用户未在线", req.member_id_list(i));
+                    LOG_DEBUG("群会话创建通知跳过 | 成员未建立长连接 | user_id={}",
+                              req.member_id_list(i));
                     continue;
                 }
                 NotifyMessage notify;
@@ -1081,26 +1213,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取历史区间消息请求反序列化失败");
+            LOG_WARN("HTTP 历史消息区间查询 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取历史区间消息请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的消息存储子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用消息存储服务实例 | request_id={} | service={}",
+                      req.request_id(), _message_service_name);
             return err_response("未找到可供业务处理的消息存储子服务节点");
         }
         MsgStorageService_Stub stub(channel.get());
         stub.GetHistoryMsg(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 消息存储子服务调用失败", req.request_id());
+            LOG_ERROR("消息存储服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("消息存储子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1118,26 +1251,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("获取最近消息请求反序列化失败");
+            LOG_WARN("HTTP 最近消息查询 | 阶段=解析请求体 | 结果=失败");
             return err_response("获取最近消息请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的消息存储子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用消息存储服务实例 | request_id={} | service={}",
+                      req.request_id(), _message_service_name);
             return err_response("未找到可供业务处理的消息存储子服务节点");
         }
         MsgStorageService_Stub stub(channel.get());
         stub.GetRecentMsg(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 消息存储子服务调用失败", req.request_id());
+            LOG_ERROR("消息存储服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("消息存储子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1155,26 +1289,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("消息搜索请求反序列化失败");
+            LOG_WARN("HTTP 消息关键词搜索 | 阶段=解析请求体 | 结果=失败");
             return err_response("消息搜索请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的消息存储子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用消息存储服务实例 | request_id={} | service={}",
+                      req.request_id(), _message_service_name);
             return err_response("未找到可供业务处理的消息存储子服务节点");
         }
         MsgStorageService_Stub stub(channel.get());
         stub.MsgSearch(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 消息存储子服务调用失败", req.request_id());
+            LOG_ERROR("消息存储服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("消息存储子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1192,26 +1327,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("单文件下载请求反序列化失败");
+            LOG_WARN("HTTP 单文件下载 | 阶段=解析请求体 | 结果=失败");
             return err_response("单文件下载请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的文件子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
+                      req.request_id(), _file_service_name);
             return err_response("未找到可供业务处理的文件子服务节点");
         }
         FileService_Stub stub(channel.get());
         stub.GetSingleFile(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 文件子服务调用失败", req.request_id());
+            LOG_ERROR("文件服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("文件子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1229,26 +1365,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("多文件下载请求反序列化失败");
+            LOG_WARN("HTTP 多文件下载 | 阶段=解析请求体 | 结果=失败");
             return err_response("多文件下载请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的文件子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
+                      req.request_id(), _file_service_name);
             return err_response("未找到可供业务处理的文件子服务节点");
         }
         FileService_Stub stub(channel.get());
         stub.GetMultiFile(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 文件子服务调用失败", req.request_id());
+            LOG_ERROR("文件服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("文件子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1266,26 +1403,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("单文件上传请求反序列化失败");
+            LOG_WARN("HTTP 单文件上传 | 阶段=解析请求体 | 结果=失败");
             return err_response("单文件上传请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的文件子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
+                      req.request_id(), _file_service_name);
             return err_response("未找到可供业务处理的文件子服务节点");
         }
         FileService_Stub stub(channel.get());
         stub.PutSingleFile(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 文件子服务调用失败", req.request_id());
+            LOG_ERROR("文件服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("文件子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1303,26 +1441,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("多文件上传请求反序列化失败");
+            LOG_WARN("HTTP 多文件上传 | 阶段=解析请求体 | 结果=失败");
             return err_response("多文件上传请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_message_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的文件子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用文件服务实例 | request_id={} | service={}",
+                      req.request_id(), _file_service_name);
             return err_response("未找到可供业务处理的文件子服务节点");
         }
         FileService_Stub stub(channel.get());
         stub.PutMultiFile(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 文件子服务调用失败", req.request_id());
+            LOG_ERROR("文件服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("文件子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1340,26 +1479,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("语音识别请求反序列化失败");
+            LOG_WARN("HTTP 语音识别 | 阶段=解析请求体 | 结果=失败");
             return err_response("语音识别请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_speech_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的语音子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用语音识别服务实例 | request_id={} | service={}",
+                      req.request_id(), _speech_service_name);
             return err_response("未找到可供业务处理的语音子服务节点");
         }
         SpeechService_Stub stub(channel.get());
         stub.SpeechRecognition(&cntl, &req, &rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 语音子服务调用失败", req.request_id());
+            LOG_ERROR("语音服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("语音子服务调用失败");
         }
         response.set_content(rsp.SerializeAsString(), "application/x-protbuf");
@@ -1378,26 +1518,27 @@ private:
         };
         bool ret = req.ParseFromString(request.body);
         if (ret == false) {
-            LOG_ERROR("新消息请求反序列化失败");
+            LOG_WARN("HTTP 发送消息 | 阶段=解析请求体 | 结果=失败");
             return err_response("新消息请求反序列化失败");
         }
         std::string ssid = req.session_id();
         auto uid = _redis_session->uid(ssid);
         if (!uid) {
-            LOG_ERROR("{} 获取登录会话关联信息失败", ssid);
+            LOG_WARN("登录会话无效或已过期 | session_id={}", ssid);
             return err_response("获取登录会话关联信息失败");
         }
         req.set_user_id(*uid);
         auto channel = _mm_channels->choose(_transmite_service_name);
         if (!channel) {
-            LOG_ERROR("{} 未找到可供业务处理的消息转发子服务节点",
-                      req.request_id());
+            LOG_ERROR("未发现可用消息转发服务实例 | request_id={} | service={}",
+                      req.request_id(), _transmite_service_name);
             return err_response("未找到可供业务处理的消息转发子服务节点");
         }
         MsgTransmitService_Stub stub(channel.get());
         stub.GetTransmitTarget(&cntl, &req, &target_rsp, nullptr);
         if (cntl.Failed() == true) {
-            LOG_ERROR("{} 消息转发子服务调用失败", req.request_id());
+            LOG_ERROR("消息转发服务 RPC 失败 | request_id={} | brpc={}",
+                      req.request_id(), cntl.ErrorText());
             return err_response("消息转发子服务调用失败");
         }
         if (target_rsp.success() == true) {
@@ -1492,15 +1633,15 @@ public:
     GatewayServer::ptr build() {
 
         if (!_redis_client) {
-            LOG_ERROR("Redis数据库模块未初始化");
+            LOG_ERROR("网关启动检查失败 | 组件=Redis | 原因=未初始化");
             abort();
         }
         if (!_mm_channels) {
-            LOG_ERROR("信道管理模块未初始化");
+            LOG_ERROR("网关启动检查失败 | 组件=RPC信道管理 | 原因=未初始化");
             abort();
         }
         if (!_service_discoverer) {
-            LOG_ERROR("服务发现模块未初始化");
+            LOG_ERROR("网关启动检查失败 | 组件=etcd服务发现 | 原因=未初始化");
             abort();
         }
 

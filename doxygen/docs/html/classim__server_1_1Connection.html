@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::Connection类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1Connection.html">Connection</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1Connection-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::Connection类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>WebSocket连接管理器  
+ <a href="classim__server_1_1Connection.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="connection_8hpp_source.html">connection.hpp</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structim__server_1_1Connection_1_1ClientInfo.html">ClientInfo</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">客户端信息结构  <a href="structim__server_1_1Connection_1_1ClientInfo.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-types" name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:af3beea4a8102b12af6514ba0b4fe95ab" id="r_af3beea4a8102b12af6514ba0b4fe95ab"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#af3beea4a8102b12af6514ba0b4fe95ab">ptr</a> = std::shared_ptr&lt; <a class="el" href="classim__server_1_1Connection.html">Connection</a> &gt;</td></tr>
+<tr class="separator:af3beea4a8102b12af6514ba0b4fe95ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a7577d82d468f0d78574f8cb74a2dce0b" id="r_a7577d82d468f0d78574f8cb74a2dce0b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#a7577d82d468f0d78574f8cb74a2dce0b">Connection</a> ()</td></tr>
+<tr class="separator:a7577d82d468f0d78574f8cb74a2dce0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcd143a78261f26789b16967f437b2c4" id="r_afcd143a78261f26789b16967f437b2c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#afcd143a78261f26789b16967f437b2c4">~Connection</a> ()</td></tr>
+<tr class="separator:afcd143a78261f26789b16967f437b2c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3007121f9fa2e82e369985a466e8710" id="r_ab3007121f9fa2e82e369985a466e8710"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#ab3007121f9fa2e82e369985a466e8710">insert</a> (const server_t::connection_ptr &amp;conn, const std::string &amp;uid, const std::string &amp;ssid)</td></tr>
+<tr class="memdesc:ab3007121f9fa2e82e369985a466e8710"><td class="mdescLeft">&#160;</td><td class="mdescRight">插入新的连接映射  <br /></td></tr>
+<tr class="separator:ab3007121f9fa2e82e369985a466e8710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff08602e9ac3fe8e1578204e36c76c63" id="r_aff08602e9ac3fe8e1578204e36c76c63"><td class="memItemLeft" align="right" valign="top">server_t::connection_ptr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#aff08602e9ac3fe8e1578204e36c76c63">connection</a> (const std::string &amp;uid)</td></tr>
+<tr class="memdesc:aff08602e9ac3fe8e1578204e36c76c63"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据用户ID查找WebSocket连接  <br /></td></tr>
+<tr class="separator:aff08602e9ac3fe8e1578204e36c76c63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac54ce5b6281354ddd656fcb6555a0a1d" id="r_ac54ce5b6281354ddd656fcb6555a0a1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#ac54ce5b6281354ddd656fcb6555a0a1d">client</a> (const server_t::connection_ptr &amp;conn, std::string &amp;uid, std::string &amp;ssid)</td></tr>
+<tr class="memdesc:ac54ce5b6281354ddd656fcb6555a0a1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">根据连接查找客户端信息  <br /></td></tr>
+<tr class="separator:ac54ce5b6281354ddd656fcb6555a0a1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63c281c6bb342790cab7e5d3ac84f0dd" id="r_a63c281c6bb342790cab7e5d3ac84f0dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1Connection.html#a63c281c6bb342790cab7e5d3ac84f0dd">remove</a> (const server_t::connection_ptr &amp;conn)</td></tr>
+<tr class="memdesc:a63c281c6bb342790cab7e5d3ac84f0dd"><td class="mdescLeft">&#160;</td><td class="mdescRight">移除连接映射  <br /></td></tr>
+<tr class="separator:a63c281c6bb342790cab7e5d3ac84f0dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>WebSocket连接管理器 </p>
+<p>维护用户ID与WebSocket连接的双向映射，支持：</p><ul>
+<li>根据用户ID查找连接（用于消息推送）</li>
+<li>根据连接查找用户信息（用于消息接收）</li>
+<li>线程安全的增删改查操作 </li>
+</ul>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="af3beea4a8102b12af6514ba0b4fe95ab" name="af3beea4a8102b12af6514ba0b4fe95ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3beea4a8102b12af6514ba0b4fe95ab">&#9670;&#160;</a></span>ptr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classim__server_1_1Connection.html#af3beea4a8102b12af6514ba0b4fe95ab">im_server::Connection::ptr</a> =  std::shared_ptr&lt;<a class="el" href="classim__server_1_1Connection.html">Connection</a>&gt;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a7577d82d468f0d78574f8cb74a2dce0b" name="a7577d82d468f0d78574f8cb74a2dce0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7577d82d468f0d78574f8cb74a2dce0b">&#9670;&#160;</a></span>Connection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::Connection::Connection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcd143a78261f26789b16967f437b2c4" name="afcd143a78261f26789b16967f437b2c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcd143a78261f26789b16967f437b2c4">&#9670;&#160;</a></span>~Connection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::Connection::~Connection </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="ac54ce5b6281354ddd656fcb6555a0a1d" name="ac54ce5b6281354ddd656fcb6555a0a1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac54ce5b6281354ddd656fcb6555a0a1d">&#9670;&#160;</a></span>client()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool im_server::Connection::client </td>
+          <td>(</td>
+          <td class="paramtype">const server_t::connection_ptr &amp;&#160;</td>
+          <td class="paramname"><em>conn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>uid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string &amp;&#160;</td>
+          <td class="paramname"><em>ssid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>根据连接查找客户端信息 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir"></td><td class="paramname">conn</td><td>WebSocket连接指针 </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">uid</td><td>输出用户ID </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">ssid</td><td>输出会话ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true=查找成功，false=连接不存在</dd></dl>
+<p>用于处理客户端消息时识别发送者身份 </p>
+
+</div>
+</div>
+<a id="aff08602e9ac3fe8e1578204e36c76c63" name="aff08602e9ac3fe8e1578204e36c76c63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff08602e9ac3fe8e1578204e36c76c63">&#9670;&#160;</a></span>connection()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">server_t::connection_ptr im_server::Connection::connection </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uid</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>根据用户ID查找WebSocket连接 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uid</td><td>用户ID </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>WebSocket连接指针，若不存在则返回空指针</dd></dl>
+<p>用于向指定用户推送消息 </p>
+
+</div>
+</div>
+<a id="ab3007121f9fa2e82e369985a466e8710" name="ab3007121f9fa2e82e369985a466e8710"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3007121f9fa2e82e369985a466e8710">&#9670;&#160;</a></span>insert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Connection::insert </td>
+          <td>(</td>
+          <td class="paramtype">const server_t::connection_ptr &amp;&#160;</td>
+          <td class="paramname"><em>conn</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>ssid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>插入新的连接映射 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conn</td><td>WebSocket连接指针 </td></tr>
+    <tr><td class="paramname">uid</td><td>用户ID </td></tr>
+    <tr><td class="paramname">ssid</td><td>会话ID</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>建立用户ID到连接、连接到客户端信息的双向映射 </p>
+
+</div>
+</div>
+<a id="a63c281c6bb342790cab7e5d3ac84f0dd" name="a63c281c6bb342790cab7e5d3ac84f0dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63c281c6bb342790cab7e5d3ac84f0dd">&#9670;&#160;</a></span>remove()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::Connection::remove </td>
+          <td>(</td>
+          <td class="paramtype">const server_t::connection_ptr &amp;&#160;</td>
+          <td class="paramname"><em>conn</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>移除连接映射 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">conn</td><td>WebSocket连接指针</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>同时删除双向映射关系，用于连接断开时清理资源 </p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/gateway/source/<a class="el" href="connection_8hpp_source.html">connection.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

@@ -1,0 +1,19 @@
+digraph "im_server::MessageServerBuilder::make_rpc_object"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="im_server::MessageServer\lBuilder::make_rpc_object",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="im_server::MessageService\lImpl::onMessage",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1MessageServiceImpl.html#ad9b6691226e11d613c75188ea9bea106",tooltip="MQ消息消费回调"];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="im_server::Message\l::content",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1Message.html#a5f17e85aeba7069ee7579df25485bd5b",tooltip=" "];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="im_server::Message\l::file_id",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1Message.html#a0207cca5bb70d1f12cbb9b0391116c66",tooltip=" "];
+  Node2 -> Node5 [id="edge4_Node000002_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="im_server::Message\l::file_name",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1Message.html#ad2d7262f82bfc687f7068d0dda204842",tooltip=" "];
+  Node2 -> Node6 [id="edge5_Node000002_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="im_server::Message\l::file_size",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classim__server_1_1Message.html#a469675ee1268ddd5cf22fbd69c723a21",tooltip=" "];
+}

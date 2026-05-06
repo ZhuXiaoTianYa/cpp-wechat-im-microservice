@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/odb/chat_session.hxx 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_41b53c9105f563c9baeb0959506990af.html">odb</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">chat_session.hxx</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="chat__session_8hxx.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="chat__session__member_8hxx.html">chat_session_member.hxx</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;odb/core.hxx&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;odb/nullable.hxx&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="foldopen" id="foldopen00021" data-start="{" data-end="};">
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">   21</a></span><span class="keyword">enum class</span> <a class="code hl_enumeration" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">ChatSessionType</a> { </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <a class="code hl_enumvalue" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8">SINGLE</a> = 1, </div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    <a class="code hl_enumvalue" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c">GROUP</a> = 2   </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>};</div>
+</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#pragma db object table(&quot;chat_session&quot;)</span></div>
+<div class="foldopen" id="foldopen00032" data-start="{" data-end="};">
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html">   32</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1ChatSession.html">ChatSession</a> {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#aa5b2a1800a05dde10b7b05c7a78a182c">   34</a></span>    <a class="code hl_function" href="classim__server_1_1ChatSession.html#aa5b2a1800a05dde10b7b05c7a78a182c">ChatSession</a>() {}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    </div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#a86b2869d210415f17829c6ca3d7aba51">   42</a></span>    <a class="code hl_function" href="classim__server_1_1ChatSession.html#a86b2869d210415f17829c6ca3d7aba51">ChatSession</a>(<span class="keyword">const</span> std::string &amp;ssid, <span class="keyword">const</span> std::string &amp;ssname,</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>                <span class="keyword">const</span> <a class="code hl_enumeration" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">ChatSessionType</a> &amp;sstype)</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        : _chat_session_id(ssid), _chat_session_name(ssname),</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>          _chat_session_type(sstype) {}</div>
+</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#af1f5b84ab28437cb3eddb0597266f5d1">   47</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1ChatSession.html#af1f5b84ab28437cb3eddb0597266f5d1">chat_session_id</a>(<span class="keyword">const</span> std::string &amp;val) { _chat_session_id = val; }</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#a9ebde8369108494019bfd8cdd16442e0">   48</a></span>    std::string <a class="code hl_function" href="classim__server_1_1ChatSession.html#a9ebde8369108494019bfd8cdd16442e0">chat_session_id</a>() { <span class="keywordflow">return</span> _chat_session_id; }</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#acb3d3c5328aeaecb3a8eb3118404c466">   50</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1ChatSession.html#acb3d3c5328aeaecb3a8eb3118404c466">chat_session_name</a>(<span class="keyword">const</span> std::string &amp;val) { _chat_session_name = val; }</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#ac455c2676da77831cd3eeac4ea80731a">   51</a></span>    std::string <a class="code hl_function" href="classim__server_1_1ChatSession.html#ac455c2676da77831cd3eeac4ea80731a">chat_session_name</a>() { <span class="keywordflow">return</span> _chat_session_name; }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#a4fa5f3ca32140a50e3792b55eea89f98">   53</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1ChatSession.html#a4fa5f3ca32140a50e3792b55eea89f98">chat_session_type</a>(<a class="code hl_enumeration" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">ChatSessionType</a> &amp;val) { _chat_session_type = val; }</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#a4a52aad096df1a22a11167fee2e5688b">   54</a></span>    <a class="code hl_enumeration" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">ChatSessionType</a> <a class="code hl_function" href="classim__server_1_1ChatSession.html#a4a52aad096df1a22a11167fee2e5688b">chat_session_type</a>() { <span class="keywordflow">return</span> _chat_session_type; }</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno"><a class="line" href="classim__server_1_1ChatSession.html#acb4d953abf85ae525f1d06a0c3a86a55">   57</a></span>    <span class="keyword">friend</span> <span class="keyword">class </span><a class="code hl_friend" href="classim__server_1_1ChatSession.html#acb4d953abf85ae525f1d06a0c3a86a55">odb::access</a>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#pragma db id auto</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> _id;                      </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#pragma db type(&quot;varchar(64)&quot;) index unique</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    std::string _chat_session_id;           </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="preprocessor">#pragma db type(&quot;varchar(64)&quot;)</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    std::string _chat_session_name;         </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span><span class="preprocessor">#pragma db type(&quot;tinyint&quot;)</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <a class="code hl_enumeration" href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">ChatSessionType</a> _chat_session_type;     </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>};</div>
+</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#pragma db view object(ChatSession = css) object(                              \</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span><span class="preprocessor">    ChatSessionMember = csm1 : css::_chat_session_id == csm1::_session_id)     \</span></div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span><span class="preprocessor">    object(ChatSessionMember =                                                 \</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">               csm2 : css::_chat_session_id == csm2::_session_id) query((?))</span></div>
+<div class="foldopen" id="foldopen00077" data-start="{" data-end="};">
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno"><a class="line" href="structim__server_1_1SingleChatSession.html">   77</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structim__server_1_1SingleChatSession.html">SingleChatSession</a> {</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#pragma db column(css::_chat_session_id)</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno"><a class="line" href="structim__server_1_1SingleChatSession.html#ada574a837a50c21330e3d406c0993e02">   79</a></span>    std::string <a class="code hl_variable" href="structim__server_1_1SingleChatSession.html#ada574a837a50c21330e3d406c0993e02">chat_session_id</a>; </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#pragma db column(csm2::_user_id)</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno"><a class="line" href="structim__server_1_1SingleChatSession.html#a38d58d3361ef350ebf4e6a5751ebccdc">   81</a></span>    std::string <a class="code hl_variable" href="structim__server_1_1SingleChatSession.html#a38d58d3361ef350ebf4e6a5751ebccdc">friend_id</a>;        </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>};</div>
+</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span><span class="preprocessor">#pragma db view object(ChatSession = css)                                      \</span></div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span><span class="preprocessor">    object(ChatSessionMember =                                                 \</span></div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span><span class="preprocessor">               csm : css::_chat_session_id == csm::_session_id) query((?))</span></div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="};">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="structim__server_1_1GroupChatSession.html">   92</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structim__server_1_1GroupChatSession.html">GroupChatSession</a> {</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="preprocessor">#pragma db column(css::_chat_session_id)</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno"><a class="line" href="structim__server_1_1GroupChatSession.html#a4ba33f2a4f45c02361d7cbbb81a9a691">   94</a></span>    std::string <a class="code hl_variable" href="structim__server_1_1GroupChatSession.html#a4ba33f2a4f45c02361d7cbbb81a9a691">chat_session_id</a>;   </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span><span class="preprocessor">#pragma db column(css::_chat_session_name)</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno"><a class="line" href="structim__server_1_1GroupChatSession.html#a44a4bf548f1aff463bf27f4ec286965b">   96</a></span>    std::string <a class="code hl_variable" href="structim__server_1_1GroupChatSession.html#a44a4bf548f1aff463bf27f4ec286965b">chat_session_name</a>; </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>};</div>
+</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span> </div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>} <span class="comment">// namespace im_server</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span><span class="comment">// odb -d mysql --std c++11 --generate-query --generate-schema --profile</span></div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span><span class="comment">// boost/date-time ../../../../odb/user.hxx</span></div>
+<div class="ttc" id="achat__session__member_8hxx_html"><div class="ttname"><a href="chat__session__member_8hxx.html">chat_session_member.hxx</a></div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html"><div class="ttname"><a href="classim__server_1_1ChatSession.html">im_server::ChatSession</a></div><div class="ttdoc">聊天会话实体类</div><div class="ttdef"><b>Definition</b> chat_session.hxx:32</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_a4a52aad096df1a22a11167fee2e5688b"><div class="ttname"><a href="classim__server_1_1ChatSession.html#a4a52aad096df1a22a11167fee2e5688b">im_server::ChatSession::chat_session_type</a></div><div class="ttdeci">ChatSessionType chat_session_type()</div><div class="ttdef"><b>Definition</b> chat_session.hxx:54</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_a4fa5f3ca32140a50e3792b55eea89f98"><div class="ttname"><a href="classim__server_1_1ChatSession.html#a4fa5f3ca32140a50e3792b55eea89f98">im_server::ChatSession::chat_session_type</a></div><div class="ttdeci">void chat_session_type(ChatSessionType &amp;val)</div><div class="ttdef"><b>Definition</b> chat_session.hxx:53</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_a86b2869d210415f17829c6ca3d7aba51"><div class="ttname"><a href="classim__server_1_1ChatSession.html#a86b2869d210415f17829c6ca3d7aba51">im_server::ChatSession::ChatSession</a></div><div class="ttdeci">ChatSession(const std::string &amp;ssid, const std::string &amp;ssname, const ChatSessionType &amp;sstype)</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>Definition</b> chat_session.hxx:42</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_a9ebde8369108494019bfd8cdd16442e0"><div class="ttname"><a href="classim__server_1_1ChatSession.html#a9ebde8369108494019bfd8cdd16442e0">im_server::ChatSession::chat_session_id</a></div><div class="ttdeci">std::string chat_session_id()</div><div class="ttdef"><b>Definition</b> chat_session.hxx:48</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_aa5b2a1800a05dde10b7b05c7a78a182c"><div class="ttname"><a href="classim__server_1_1ChatSession.html#aa5b2a1800a05dde10b7b05c7a78a182c">im_server::ChatSession::ChatSession</a></div><div class="ttdeci">ChatSession()</div><div class="ttdef"><b>Definition</b> chat_session.hxx:34</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_ac455c2676da77831cd3eeac4ea80731a"><div class="ttname"><a href="classim__server_1_1ChatSession.html#ac455c2676da77831cd3eeac4ea80731a">im_server::ChatSession::chat_session_name</a></div><div class="ttdeci">std::string chat_session_name()</div><div class="ttdef"><b>Definition</b> chat_session.hxx:51</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_acb3d3c5328aeaecb3a8eb3118404c466"><div class="ttname"><a href="classim__server_1_1ChatSession.html#acb3d3c5328aeaecb3a8eb3118404c466">im_server::ChatSession::chat_session_name</a></div><div class="ttdeci">void chat_session_name(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> chat_session.hxx:50</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_acb4d953abf85ae525f1d06a0c3a86a55"><div class="ttname"><a href="classim__server_1_1ChatSession.html#acb4d953abf85ae525f1d06a0c3a86a55">im_server::ChatSession::access</a></div><div class="ttdeci">friend class odb::access</div><div class="ttdef"><b>Definition</b> chat_session.hxx:57</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSession_html_af1f5b84ab28437cb3eddb0597266f5d1"><div class="ttname"><a href="classim__server_1_1ChatSession.html#af1f5b84ab28437cb3eddb0597266f5d1">im_server::ChatSession::chat_session_id</a></div><div class="ttdeci">void chat_session_id(const std::string &amp;val)</div><div class="ttdef"><b>Definition</b> chat_session.hxx:47</div></div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+<div class="ttc" id="anamespaceim__server_html_af9c0f774d0f36b89cfd507a19fea163f"><div class="ttname"><a href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163f">im_server::ChatSessionType</a></div><div class="ttdeci">ChatSessionType</div><div class="ttdoc">会话类型枚举</div><div class="ttdef"><b>Definition</b> chat_session.hxx:21</div></div>
+<div class="ttc" id="anamespaceim__server_html_af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8"><div class="ttname"><a href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa0679273e201afd0bf57af3961f8a23b8">im_server::ChatSessionType::SINGLE</a></div><div class="ttdeci">@ SINGLE</div><div class="ttdoc">单聊会话</div></div>
+<div class="ttc" id="anamespaceim__server_html_af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c"><div class="ttname"><a href="namespaceim__server.html#af9c0f774d0f36b89cfd507a19fea163fa720909a4b948fc9e33633b61960d6b3c">im_server::ChatSessionType::GROUP</a></div><div class="ttdeci">@ GROUP</div><div class="ttdoc">群聊会话</div></div>
+<div class="ttc" id="astructim__server_1_1GroupChatSession_html"><div class="ttname"><a href="structim__server_1_1GroupChatSession.html">im_server::GroupChatSession</a></div><div class="ttdoc">群聊会话视图</div><div class="ttdef"><b>Definition</b> chat_session.hxx:92</div></div>
+<div class="ttc" id="astructim__server_1_1GroupChatSession_html_a44a4bf548f1aff463bf27f4ec286965b"><div class="ttname"><a href="structim__server_1_1GroupChatSession.html#a44a4bf548f1aff463bf27f4ec286965b">im_server::GroupChatSession::chat_session_name</a></div><div class="ttdeci">std::string chat_session_name</div><div class="ttdoc">会话名称</div><div class="ttdef"><b>Definition</b> chat_session.hxx:96</div></div>
+<div class="ttc" id="astructim__server_1_1GroupChatSession_html_a4ba33f2a4f45c02361d7cbbb81a9a691"><div class="ttname"><a href="structim__server_1_1GroupChatSession.html#a4ba33f2a4f45c02361d7cbbb81a9a691">im_server::GroupChatSession::chat_session_id</a></div><div class="ttdeci">std::string chat_session_id</div><div class="ttdoc">会话ID</div><div class="ttdef"><b>Definition</b> chat_session.hxx:94</div></div>
+<div class="ttc" id="astructim__server_1_1SingleChatSession_html"><div class="ttname"><a href="structim__server_1_1SingleChatSession.html">im_server::SingleChatSession</a></div><div class="ttdoc">单聊会话视图</div><div class="ttdef"><b>Definition</b> chat_session.hxx:77</div></div>
+<div class="ttc" id="astructim__server_1_1SingleChatSession_html_a38d58d3361ef350ebf4e6a5751ebccdc"><div class="ttname"><a href="structim__server_1_1SingleChatSession.html#a38d58d3361ef350ebf4e6a5751ebccdc">im_server::SingleChatSession::friend_id</a></div><div class="ttdeci">std::string friend_id</div><div class="ttdoc">对方用户ID</div><div class="ttdef"><b>Definition</b> chat_session.hxx:81</div></div>
+<div class="ttc" id="astructim__server_1_1SingleChatSession_html_ada574a837a50c21330e3d406c0993e02"><div class="ttname"><a href="structim__server_1_1SingleChatSession.html#ada574a837a50c21330e3d406c0993e02">im_server::SingleChatSession::chat_session_id</a></div><div class="ttdeci">std::string chat_session_id</div><div class="ttdoc">会话ID</div><div class="ttdef"><b>Definition</b> chat_session.hxx:79</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

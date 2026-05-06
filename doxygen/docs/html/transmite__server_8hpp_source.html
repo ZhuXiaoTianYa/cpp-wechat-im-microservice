@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: /home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/transmite/source/transmite_server.hpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(document).ready(function() { init_codefold(0); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_050edd66366d13764f98250ef6db77f6.html">code</a></li><li class="navelem"><a class="el" href="dir_e337b8660358a3b6ee135e2f8cbd7dc9.html">server</a></li><li class="navelem"><a class="el" href="dir_19f0053f5a4d3a384987c05010ef6d0e.html">transmite</a></li><li class="navelem"><a class="el" href="dir_7090f06c8c64722a42ac6362a1caf436.html">source</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle"><div class="title">transmite_server.hpp</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="transmite__server_8hpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span> </div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="transmite__server_8hpp.html#ade8e70f1b78d83d5ea1c0aa31cfd2d8b">   11</a></span><span class="preprocessor">#define IM_LOG_SERVICE_TAG &quot;消息转发服务&quot;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &lt;brpc/server.h&gt;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &lt;butil/logging.h&gt;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;base.pb.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="channel_8hpp.html">channel.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="etcd_8hpp.html">etcd.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="logger_8hpp.html">logger.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#include &quot;<a class="code" href="mysql__chat__session__member_8hpp.html">mysql_chat_session_member.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#include &quot;<a class="code" href="rabbitmq_8hpp.html">rabbitmq.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;transmite.pb.h&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#include &quot;user.pb.h&quot;</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span><span class="preprocessor">#include &quot;<a class="code" href="utils_8hpp.html">utils.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">namespace </span><a class="code hl_namespace" href="namespaceim__server.html">im_server</a> {</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServiceImpl.html">   31</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1TransmiteServiceImpl.html">TransmiteServiceImpl</a> : <span class="keyword">public</span> MsgTransmitService {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00042" data-start="{" data-end="}">
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServiceImpl.html#a0c539acc7c711bbbf13443fc82b7f18b">   42</a></span>    <a class="code hl_function" href="classim__server_1_1TransmiteServiceImpl.html#a0c539acc7c711bbbf13443fc82b7f18b">TransmiteServiceImpl</a>(</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keyword">const</span> std::shared_ptr&lt;odb::core::database&gt; &amp;mysql_client,</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keyword">const</span> std::string &amp;exchange_name, <span class="keyword">const</span> std::string &amp;routing_key,</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keyword">const</span> std::shared_ptr&lt;MQClient&gt; &amp;mq_client,</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keyword">const</span> std::shared_ptr&lt;ServiceManager&gt; &amp;mm_channels,</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        <span class="keyword">const</span> std::string &amp;user_service_name)</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        : _mq_client(mq_client),</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>          _mysql_chat_session_member_table(</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>              std::make_shared&lt;<a class="code hl_class" href="classim__server_1_1ChatSessionMemberTable.html">ChatSessionMemberTable</a>&gt;(mysql_client)),</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>          _mm_channels(mm_channels), _user_service_name(user_service_name),</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>          _exchange_name(exchange_name), _routing_key(routing_key) {}</div>
+</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServiceImpl.html#a4477337e6c4c7e5bcc8cf6386244a144">   54</a></span>    <a class="code hl_function" href="classim__server_1_1TransmiteServiceImpl.html#a4477337e6c4c7e5bcc8cf6386244a144">~TransmiteServiceImpl</a>() {}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span></div>
+<div class="foldopen" id="foldopen00065" data-start="{" data-end="}">
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServiceImpl.html#aefbf48a14d1903949a0fb9367285f1d6">   65</a></span>    <a class="code hl_function" href="classim__server_1_1TransmiteServiceImpl.html#aefbf48a14d1903949a0fb9367285f1d6">GetTransmitTarget</a>(::google::protobuf::RpcController *controller,</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>                      const ::im_server::NewMessageReq *request,</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>                      ::im_server::GetTransmitTargetRsp *response,</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>                      ::google::protobuf::Closure *done) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        brpc::ClosureGuard rpc_guard(done);</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keyword">auto</span> err_response = [<span class="keyword">this</span>,</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>                             response](<span class="keyword">const</span> std::string &amp;rid,</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>                                       <span class="keyword">const</span> std::string &amp;errmsg) -&gt; <span class="keywordtype">void</span> {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            response-&gt;set_request_id(rid);</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            response-&gt;set_success(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            response-&gt;set_errmsg(errmsg);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        };</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        std::string rid = request-&gt;request_id();</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        std::string uid = request-&gt;user_id();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        std::string chat_ssid = request-&gt;chat_session_id();</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keyword">const</span> MessageContent &amp;content = request-&gt;message();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        </div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>        <a class="code hl_define" href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">LOG_INFO</a>(<span class="stringliteral">&quot;RPC GetTransmitTarget | request_id={} | user_id={} | session_id={} | msg_type={}&quot;</span>, </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                 rid, uid, chat_ssid, content.message_type());</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        </div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>        <span class="keyword">auto</span> channel = _mm_channels-&gt;choose(_user_service_name);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        <span class="keywordflow">if</span> (!channel) {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;RPC GetTransmitTarget | request_id={} | 阶段=RPC选路 | 结果=失败 | target={}&quot;</span>, </div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>                      rid, _user_service_name);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>            <span class="keywordflow">return</span> err_response(rid, <span class="stringliteral">&quot;未找到用户管理子服务节点&quot;</span>);</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>        </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>        UserService_Stub stub(channel.get());</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        GetUserInfoReq req;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        GetUserInfoRsp resp;</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        brpc::Controller cntl;</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>        req.set_request_id(rid);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        req.set_user_id(uid);</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        stub.GetUserInfo(&amp;cntl, &amp;req, &amp;resp, <span class="keyword">nullptr</span>);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        <span class="keywordflow">if</span> (cntl.Failed() || resp.success() == <span class="keyword">false</span>) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;RPC GetTransmitTarget | request_id={} | 阶段=拉取发送者信息 | 结果=失败 | brpc={}&quot;</span>, </div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                      rid, cntl.ErrorText());</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>            <span class="keywordflow">return</span> err_response(rid, <span class="stringliteral">&quot;用户子服务调用失败&quot;</span>);</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        }</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        </div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        MessageInfo message;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        message.set_message_id(<a class="code hl_function" href="namespaceim__server.html#a72288431585e95772230879cca9fc32a">uuid</a>());</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        message.set_chat_session_id(chat_ssid);</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        message.set_timestamp(time(<span class="keyword">nullptr</span>));</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        message.mutable_sender()-&gt;CopyFrom(resp.user_info());</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        message.mutable_message()-&gt;CopyFrom(request-&gt;message());</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        std::string data = message.SerializeAsString();</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_define" href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a>(<span class="stringliteral">&quot;RPC GetTransmitTarget | request_id={} | 阶段=序列化消息 | size={}&quot;</span>, rid, data.size());</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keywordtype">bool</span> ret = _mq_client-&gt;publish(_exchange_name, data, _routing_key);</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">if</span> (ret == <span class="keyword">false</span>) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;RPC GetTransmitTarget | request_id={} | 阶段=MQ发布 | 结果=失败 | exchange={} | routing_key={}&quot;</span>, </div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>                      rid, _exchange_name, _routing_key);</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>            <span class="keywordflow">return</span> err_response(rid, <span class="stringliteral">&quot;持久化消息发布失败&quot;</span>);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        }</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keyword">auto</span> target_list = _mysql_chat_session_member_table-&gt;members(chat_ssid);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <a class="code hl_define" href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">LOG_INFO</a>(<span class="stringliteral">&quot;RPC GetTransmitTarget | request_id={} | 阶段=完成 | target_count={}&quot;</span>, rid, target_list.size());</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;<span class="keywordtype">id</span> : target_list) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>            response-&gt;add_target_id_list(<span class="keywordtype">id</span>);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        response-&gt;set_request_id(rid);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        response-&gt;set_success(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        response-&gt;mutable_message()-&gt;CopyFrom(message);</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    }</div>
+</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <a class="code hl_typedef" href="classim__server_1_1ChatSessionMemberTable.html#a77524c09ad0464cf44d2370df721987e">ChatSessionMemberTable::ptr</a> _mysql_chat_session_member_table; </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    std::string _exchange_name;                                   </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    std::string _routing_key;                                     </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <a class="code hl_typedef" href="classim__server_1_1MQClient.html#ad1817e040a6c222f4ee53ca50fdc79f0">MQClient::ptr</a> _mq_client;                                     </div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    std::string _user_service_name;                               </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    <a class="code hl_typedef" href="classim__server_1_1ServiceManager.html#aa956c3e52dd3886438752c9e29b61ad2">ServiceManager::ptr</a> _mm_channels;                             </div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>};</div>
+</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
+<div class="foldopen" id="foldopen00148" data-start="{" data-end="};">
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServer.html">  148</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1TransmiteServer.html">TransmiteServer</a> {</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServer.html#a940c75b758f87b68e1bfc5c1278414db">  150</a></span>    <span class="keyword">using </span><a class="code hl_typedef" href="classim__server_1_1TransmiteServer.html#a940c75b758f87b68e1bfc5c1278414db">ptr</a> = std::shared_ptr&lt;TransmiteServer&gt;;</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    </div>
+<div class="foldopen" id="foldopen00159" data-start="{" data-end="}">
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServer.html#a6c3adab4af35626c1c4e6a7c2edbe3b8">  159</a></span>    <a class="code hl_function" href="classim__server_1_1TransmiteServer.html#a6c3adab4af35626c1c4e6a7c2edbe3b8">TransmiteServer</a>(<span class="keyword">const</span> std::shared_ptr&lt;odb::core::database&gt; &amp;mysql_client,</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>                    <span class="keyword">const</span> std::shared_ptr&lt;Discoverer&gt; &amp;service_discoverer,</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>                    <span class="keyword">const</span> std::shared_ptr&lt;Registrar&gt; &amp;registry_client,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>                    <span class="keyword">const</span> std::shared_ptr&lt;brpc::Server&gt; &amp;rpc_server)</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        : _mysql_client(mysql_client), _service_discoverer(service_discoverer),</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>          _registry_client(registry_client), _rpc_server(rpc_server) {}</div>
+</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    </div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServer.html#a0bb0017dc144e3b055b44031245628d2">  166</a></span>    <a class="code hl_function" href="classim__server_1_1TransmiteServer.html#a0bb0017dc144e3b055b44031245628d2">~TransmiteServer</a>() {}</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServer.html#a5049020966938afd0bd44ca723e773dc">  172</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1TransmiteServer.html#a5049020966938afd0bd44ca723e773dc">start</a>() { _rpc_server-&gt;RunUntilAskedToQuit(); }</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span> </div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    std::shared_ptr&lt;odb::core::database&gt; _mysql_client; </div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <a class="code hl_typedef" href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">Discoverer::ptr</a> _service_discoverer;                </div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <a class="code hl_typedef" href="classim__server_1_1Registrar.html#a2fc39421e647ca02f8d7c2f225dcb089">Registrar::ptr</a> _registry_client;                    </div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>    std::shared_ptr&lt;brpc::Server&gt; _rpc_server;          </div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>};</div>
+</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span> </div>
+<div class="foldopen" id="foldopen00186" data-start="{" data-end="};">
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html">  186</a></span><span class="keyword">class </span><a class="code hl_class" href="classim__server_1_1TransmiteServerBuilder.html">TransmiteServerBuilder</a> {</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="keyword">public</span>:</div>
+<div class="foldopen" id="foldopen00198" data-start="{" data-end="}">
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html#a6741540df0b6ab87ab81055ce8747276">  198</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1TransmiteServerBuilder.html#a6741540df0b6ab87ab81055ce8747276">make_mysql_object</a>(<span class="keyword">const</span> std::string &amp;user, <span class="keyword">const</span> std::string &amp;passwd,</div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>                           <span class="keyword">const</span> std::string &amp;host, <span class="keyword">const</span> std::string &amp;db,</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>                           <span class="keyword">const</span> std::string &amp;cset, <span class="keywordtype">int</span> port,</div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                           <span class="keywordtype">int</span> &amp;conn_pool_count) {</div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        _mysql_client = <a class="code hl_function" href="classim__server_1_1ODBFactory.html#a2e5c095232c39a52bba87ba646c5d07d">im_server::ODBFactory::create</a>(</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            user, passwd, host, db, cset, port, conn_pool_count);</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>    }</div>
+</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
+<div class="foldopen" id="foldopen00213" data-start="{" data-end="}">
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html#a4059a8c4ca6e7eb6877070a1044185a7">  213</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1TransmiteServerBuilder.html#a4059a8c4ca6e7eb6877070a1044185a7">make_discovery_object</a>(<span class="keyword">const</span> std::string &amp;reg_host,</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                               <span class="keyword">const</span> std::string &amp;base_service_name,</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                               <span class="keyword">const</span> std::string &amp;user_service_name) {</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        _user_service_name = user_service_name;</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        _mm_channels = std::make_shared&lt;ServiceManager&gt;();</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>        _mm_channels-&gt;declared(_user_service_name);</div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keyword">auto</span> put_cb =</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            std::bind(&amp;<a class="code hl_function" href="classim__server_1_1ServiceManager.html#a0caf34fbdb95af0f8136de8e67ad470b">ServiceManager::onServiceOnline</a>, _mm_channels.get(),</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>                      std::placeholders::_1, std::placeholders::_2);</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keyword">auto</span> del_cb =</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>            std::bind(&amp;<a class="code hl_function" href="classim__server_1_1ServiceManager.html#a2c5a0b3c79a19f9040a3f554e9c71d83">ServiceManager::onServiceOffline</a>, _mm_channels.get(),</div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>                      std::placeholders::_1, std::placeholders::_2);</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        _service_discoverer = std::make_shared&lt;Discoverer&gt;(</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            reg_host, base_service_name, put_cb, del_cb);</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }</div>
+</div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span> </div>
+<div class="foldopen" id="foldopen00236" data-start="{" data-end="}">
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html#a463f35bb97acc62d3fe6fd62f01d070a">  236</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1TransmiteServerBuilder.html#a463f35bb97acc62d3fe6fd62f01d070a">make_registry_object</a>(<span class="keyword">const</span> std::string &amp;reg_host,</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                              <span class="keyword">const</span> std::string &amp;service_name,</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>                              <span class="keyword">const</span> std::string &amp;access_host) {</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        _registry_client = std::make_shared&lt;Registrar&gt;(reg_host);</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>        <span class="keywordtype">bool</span> ret = _registry_client-&gt;registry(service_name, access_host);</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>        <span class="keywordflow">if</span> (ret == <span class="keyword">false</span>)</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>            abort();</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    }</div>
+</div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
+<div class="foldopen" id="foldopen00256" data-start="{" data-end="}">
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html#a4704f273dd454b899878325ca49f178b">  256</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1TransmiteServerBuilder.html#a4704f273dd454b899878325ca49f178b">make_mq_object</a>(<span class="keyword">const</span> std::string &amp;user, <span class="keyword">const</span> std::string &amp;passwd,</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                        <span class="keyword">const</span> std::string &amp;host,</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>                        <span class="keyword">const</span> std::string &amp;exchange_name,</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>                        <span class="keyword">const</span> std::string &amp;queue_name,</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>                        <span class="keyword">const</span> std::string &amp;routing_key = <span class="stringliteral">&quot;routing_key&quot;</span>) {</div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>        _exchange_name = exchange_name;</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>        _routing_key = _routing_key;</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>        _mq_client = std::make_shared&lt;MQClient&gt;(user, passwd, host);</div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>        _mq_client-&gt;declareComponents(_exchange_name, queue_name, _routing_key);</div>
+<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span>    }</div>
+</div>
+<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
+<div class="foldopen" id="foldopen00267" data-start="{" data-end="}">
+<div class="line"><a id="l00267" name="l00267"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html#aa0539e00a5dc2ca43252322744db4e7e">  267</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classim__server_1_1TransmiteServerBuilder.html#aa0539e00a5dc2ca43252322744db4e7e">make_rpc_object</a>(<span class="keyword">const</span> uint16_t &amp;port, <span class="keyword">const</span> uint32_t &amp;timeout,</div>
+<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>                         <span class="keyword">const</span> uint8_t &amp;num_threads) {</div>
+<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span>        <span class="keywordflow">if</span> (!_mysql_client) {</div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务启动检查失败 | 组件=MySQL | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>            abort();</div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>        }</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>        <span class="keywordflow">if</span> (!_mm_channels) {</div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务启动检查失败 | 组件=下游RPC信道 | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>            abort();</div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        }</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        <span class="keywordflow">if</span> (!_mq_client) {</div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务启动检查失败 | 组件=RabbitMQ | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>            abort();</div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        }</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>        <span class="keywordflow">if</span> (!_service_discoverer) {</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务启动检查失败 | 组件=etcd服务发现 | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>            abort();</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>        }</div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>        _rpc_server = std::make_shared&lt;brpc::Server&gt;();</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>        <a class="code hl_class" href="classim__server_1_1TransmiteServiceImpl.html">TransmiteServiceImpl</a> *transmite_service = <span class="keyword">new</span> <a class="code hl_class" href="classim__server_1_1TransmiteServiceImpl.html">TransmiteServiceImpl</a>(</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            _mysql_client, _exchange_name, _routing_key, _mq_client,</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>            _mm_channels, _user_service_name);</div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        <span class="keywordtype">int</span> ret = _rpc_server-&gt;AddService(</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>            transmite_service, brpc::ServiceOwnership::SERVER_OWNS_SERVICE);</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>        <span class="keywordflow">if</span> (ret == -1) {</div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务启动失败 | 阶段=添加RPC服务&quot;</span>);</div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>            abort();</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        }</div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>        brpc::ServerOptions options;</div>
+<div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span>        options.idle_timeout_sec = timeout;</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        options.num_threads = num_threads;</div>
+<div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span>        ret = _rpc_server-&gt;Start(port, &amp;options);</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keywordflow">if</span> (ret == -1) {</div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务启动失败 | 阶段=启动RPC服务器 | port={}&quot;</span>, port);</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>            abort();</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>        }</div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>        <a class="code hl_define" href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">LOG_INFO</a>(<span class="stringliteral">&quot;转发服务启动成功 | port={} | timeout={}s | threads={}&quot;</span>, port, timeout, num_threads);</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    }</div>
+</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="foldopen" id="foldopen00306" data-start="{" data-end="}">
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno"><a class="line" href="classim__server_1_1TransmiteServerBuilder.html#aae95d5ababeb858dca1b6161aa1e5a57">  306</a></span>    <a class="code hl_typedef" href="classim__server_1_1TransmiteServer.html#a940c75b758f87b68e1bfc5c1278414db">TransmiteServer::ptr</a> <a class="code hl_function" href="classim__server_1_1TransmiteServerBuilder.html#aae95d5ababeb858dca1b6161aa1e5a57">build</a>() {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>        <span class="keywordflow">if</span> (!_mq_client) {</div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务构建失败 | 组件=RabbitMQ | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>            abort();</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        }</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>        <span class="keywordflow">if</span> (!_mysql_client) {</div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务构建失败 | 组件=MySQL | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>            abort();</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span>        }</div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>        <span class="keywordflow">if</span> (!_mm_channels) {</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务构建失败 | 组件=下游RPC信道 | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>            abort();</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>        }</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span>        <span class="keywordflow">if</span> (!_service_discoverer) {</div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务构建失败 | 组件=etcd服务发现 | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>            abort();</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>        }</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>        <span class="keywordflow">if</span> (!_registry_client) {</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务构建失败 | 组件=etcd服务注册 | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00325" name="l00325"></a><span class="lineno">  325</span>            abort();</div>
+<div class="line"><a id="l00326" name="l00326"></a><span class="lineno">  326</span>        }</div>
+<div class="line"><a id="l00327" name="l00327"></a><span class="lineno">  327</span>        <span class="keywordflow">if</span> (!_rpc_server) {</div>
+<div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>            <a class="code hl_define" href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a>(<span class="stringliteral">&quot;转发服务构建失败 | 组件=RPC服务器 | 原因=未初始化&quot;</span>);</div>
+<div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>            abort();</div>
+<div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>        }</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>        <span class="keywordflow">return</span> std::make_shared&lt;TransmiteServer&gt;(</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>            _mysql_client, _service_discoverer, _registry_client, _rpc_server);</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    }</div>
+</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span> </div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>    <a class="code hl_typedef" href="classim__server_1_1MQClient.html#ad1817e040a6c222f4ee53ca50fdc79f0">MQClient::ptr</a> _mq_client;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    std::shared_ptr&lt;odb::core::database&gt; _mysql_client;</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    std::string _user_service_name;</div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span>    std::string _exchange_name;</div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>    std::string _routing_key;</div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>    <a class="code hl_typedef" href="classim__server_1_1ServiceManager.html#aa956c3e52dd3886438752c9e29b61ad2">ServiceManager::ptr</a> _mm_channels;</div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>    <a class="code hl_typedef" href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">Discoverer::ptr</a> _service_discoverer;</div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>    <a class="code hl_typedef" href="classim__server_1_1Registrar.html#a2fc39421e647ca02f8d7c2f225dcb089">Registrar::ptr</a> _registry_client;</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>    std::shared_ptr&lt;brpc::Server&gt; _rpc_server;</div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>};</div>
+</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>} <span class="comment">// namespace im_server</span></div>
+<div class="ttc" id="achannel_8hpp_html"><div class="ttname"><a href="channel_8hpp.html">channel.hpp</a></div><div class="ttdoc">RPC信道管理模块</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionMemberTable_html"><div class="ttname"><a href="classim__server_1_1ChatSessionMemberTable.html">im_server::ChatSessionMemberTable</a></div><div class="ttdef"><b>Definition</b> mysql_chat_session_member.hpp:6</div></div>
+<div class="ttc" id="aclassim__server_1_1ChatSessionMemberTable_html_a77524c09ad0464cf44d2370df721987e"><div class="ttname"><a href="classim__server_1_1ChatSessionMemberTable.html#a77524c09ad0464cf44d2370df721987e">im_server::ChatSessionMemberTable::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ChatSessionMemberTable &gt; ptr</div><div class="ttdef"><b>Definition</b> mysql_chat_session_member.hpp:8</div></div>
+<div class="ttc" id="aclassim__server_1_1Discoverer_html_a82c5cf28898573814eff6d0811fc0dd2"><div class="ttname"><a href="classim__server_1_1Discoverer.html#a82c5cf28898573814eff6d0811fc0dd2">im_server::Discoverer::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Discoverer &gt; ptr</div><div class="ttdef"><b>Definition</b> etcd.hpp:82</div></div>
+<div class="ttc" id="aclassim__server_1_1MQClient_html_ad1817e040a6c222f4ee53ca50fdc79f0"><div class="ttname"><a href="classim__server_1_1MQClient.html#ad1817e040a6c222f4ee53ca50fdc79f0">im_server::MQClient::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; MQClient &gt; ptr</div><div class="ttdef"><b>Definition</b> rabbitmq.hpp:28</div></div>
+<div class="ttc" id="aclassim__server_1_1ODBFactory_html_a2e5c095232c39a52bba87ba646c5d07d"><div class="ttname"><a href="classim__server_1_1ODBFactory.html#a2e5c095232c39a52bba87ba646c5d07d">im_server::ODBFactory::create</a></div><div class="ttdeci">static std::shared_ptr&lt; odb::core::database &gt; create(const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;db, const std::string &amp;cset, const int &amp;port, const int &amp;conn_pool_count)</div><div class="ttdoc">创建MySQL数据库连接池</div><div class="ttdef"><b>Definition</b> mysql.hpp:41</div></div>
+<div class="ttc" id="aclassim__server_1_1Registrar_html_a2fc39421e647ca02f8d7c2f225dcb089"><div class="ttname"><a href="classim__server_1_1Registrar.html#a2fc39421e647ca02f8d7c2f225dcb089">im_server::Registrar::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; Registrar &gt; ptr</div><div class="ttdef"><b>Definition</b> etcd.hpp:29</div></div>
+<div class="ttc" id="aclassim__server_1_1ServiceManager_html_a0caf34fbdb95af0f8136de8e67ad470b"><div class="ttname"><a href="classim__server_1_1ServiceManager.html#a0caf34fbdb95af0f8136de8e67ad470b">im_server::ServiceManager::onServiceOnline</a></div><div class="ttdeci">void onServiceOnline(const std::string &amp;service_instance, const std::string &amp;host)</div><div class="ttdoc">服务上线回调</div><div class="ttdef"><b>Definition</b> channel.hpp:159</div></div>
+<div class="ttc" id="aclassim__server_1_1ServiceManager_html_a2c5a0b3c79a19f9040a3f554e9c71d83"><div class="ttname"><a href="classim__server_1_1ServiceManager.html#a2c5a0b3c79a19f9040a3f554e9c71d83">im_server::ServiceManager::onServiceOffline</a></div><div class="ttdeci">void onServiceOffline(const std::string &amp;service_instance, const std::string &amp;host)</div><div class="ttdef"><b>Definition</b> channel.hpp:190</div></div>
+<div class="ttc" id="aclassim__server_1_1ServiceManager_html_aa956c3e52dd3886438752c9e29b61ad2"><div class="ttname"><a href="classim__server_1_1ServiceManager.html#aa956c3e52dd3886438752c9e29b61ad2">im_server::ServiceManager::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; ServiceManager &gt; ptr</div><div class="ttdef"><b>Definition</b> channel.hpp:120</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html">im_server::TransmiteServerBuilder</a></div><div class="ttdoc">消息转发服务器构建器</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:186</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html_a4059a8c4ca6e7eb6877070a1044185a7"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html#a4059a8c4ca6e7eb6877070a1044185a7">im_server::TransmiteServerBuilder::make_discovery_object</a></div><div class="ttdeci">void make_discovery_object(const std::string &amp;reg_host, const std::string &amp;base_service_name, const std::string &amp;user_service_name)</div><div class="ttdoc">创建服务发现客户端</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:213</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html_a463f35bb97acc62d3fe6fd62f01d070a"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html#a463f35bb97acc62d3fe6fd62f01d070a">im_server::TransmiteServerBuilder::make_registry_object</a></div><div class="ttdeci">void make_registry_object(const std::string &amp;reg_host, const std::string &amp;service_name, const std::string &amp;access_host)</div><div class="ttdoc">创建服务注册客户端</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:236</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html_a4704f273dd454b899878325ca49f178b"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html#a4704f273dd454b899878325ca49f178b">im_server::TransmiteServerBuilder::make_mq_object</a></div><div class="ttdeci">void make_mq_object(const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;exchange_name, const std::string &amp;queue_name, const std::string &amp;routing_key=&quot;routing_key&quot;)</div><div class="ttdoc">创建RabbitMQ客户端</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:256</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html_a6741540df0b6ab87ab81055ce8747276"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html#a6741540df0b6ab87ab81055ce8747276">im_server::TransmiteServerBuilder::make_mysql_object</a></div><div class="ttdeci">void make_mysql_object(const std::string &amp;user, const std::string &amp;passwd, const std::string &amp;host, const std::string &amp;db, const std::string &amp;cset, int port, int &amp;conn_pool_count)</div><div class="ttdoc">创建MySQL客户端</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:198</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html_aa0539e00a5dc2ca43252322744db4e7e"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html#aa0539e00a5dc2ca43252322744db4e7e">im_server::TransmiteServerBuilder::make_rpc_object</a></div><div class="ttdeci">void make_rpc_object(const uint16_t &amp;port, const uint32_t &amp;timeout, const uint8_t &amp;num_threads)</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:267</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServerBuilder_html_aae95d5ababeb858dca1b6161aa1e5a57"><div class="ttname"><a href="classim__server_1_1TransmiteServerBuilder.html#aae95d5ababeb858dca1b6161aa1e5a57">im_server::TransmiteServerBuilder::build</a></div><div class="ttdeci">TransmiteServer::ptr build()</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:306</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServer_html"><div class="ttname"><a href="classim__server_1_1TransmiteServer.html">im_server::TransmiteServer</a></div><div class="ttdoc">消息转发服务器主类</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:148</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServer_html_a0bb0017dc144e3b055b44031245628d2"><div class="ttname"><a href="classim__server_1_1TransmiteServer.html#a0bb0017dc144e3b055b44031245628d2">im_server::TransmiteServer::~TransmiteServer</a></div><div class="ttdeci">~TransmiteServer()</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:166</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServer_html_a5049020966938afd0bd44ca723e773dc"><div class="ttname"><a href="classim__server_1_1TransmiteServer.html#a5049020966938afd0bd44ca723e773dc">im_server::TransmiteServer::start</a></div><div class="ttdeci">void start()</div><div class="ttdoc">启动RPC服务器</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:172</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServer_html_a6c3adab4af35626c1c4e6a7c2edbe3b8"><div class="ttname"><a href="classim__server_1_1TransmiteServer.html#a6c3adab4af35626c1c4e6a7c2edbe3b8">im_server::TransmiteServer::TransmiteServer</a></div><div class="ttdeci">TransmiteServer(const std::shared_ptr&lt; odb::core::database &gt; &amp;mysql_client, const std::shared_ptr&lt; Discoverer &gt; &amp;service_discoverer, const std::shared_ptr&lt; Registrar &gt; &amp;registry_client, const std::shared_ptr&lt; brpc::Server &gt; &amp;rpc_server)</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:159</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServer_html_a940c75b758f87b68e1bfc5c1278414db"><div class="ttname"><a href="classim__server_1_1TransmiteServer.html#a940c75b758f87b68e1bfc5c1278414db">im_server::TransmiteServer::ptr</a></div><div class="ttdeci">std::shared_ptr&lt; TransmiteServer &gt; ptr</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:150</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServiceImpl_html"><div class="ttname"><a href="classim__server_1_1TransmiteServiceImpl.html">im_server::TransmiteServiceImpl</a></div><div class="ttdoc">消息转发服务RPC接口实现类</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:31</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServiceImpl_html_a0c539acc7c711bbbf13443fc82b7f18b"><div class="ttname"><a href="classim__server_1_1TransmiteServiceImpl.html#a0c539acc7c711bbbf13443fc82b7f18b">im_server::TransmiteServiceImpl::TransmiteServiceImpl</a></div><div class="ttdeci">TransmiteServiceImpl(const std::shared_ptr&lt; odb::core::database &gt; &amp;mysql_client, const std::string &amp;exchange_name, const std::string &amp;routing_key, const std::shared_ptr&lt; MQClient &gt; &amp;mq_client, const std::shared_ptr&lt; ServiceManager &gt; &amp;mm_channels, const std::string &amp;user_service_name)</div><div class="ttdoc">构造函数</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:42</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServiceImpl_html_a4477337e6c4c7e5bcc8cf6386244a144"><div class="ttname"><a href="classim__server_1_1TransmiteServiceImpl.html#a4477337e6c4c7e5bcc8cf6386244a144">im_server::TransmiteServiceImpl::~TransmiteServiceImpl</a></div><div class="ttdeci">~TransmiteServiceImpl()</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:54</div></div>
+<div class="ttc" id="aclassim__server_1_1TransmiteServiceImpl_html_aefbf48a14d1903949a0fb9367285f1d6"><div class="ttname"><a href="classim__server_1_1TransmiteServiceImpl.html#aefbf48a14d1903949a0fb9367285f1d6">im_server::TransmiteServiceImpl::GetTransmitTarget</a></div><div class="ttdeci">virtual void GetTransmitTarget(::google::protobuf::RpcController *controller, const ::im_server::NewMessageReq *request, ::im_server::GetTransmitTargetRsp *response, ::google::protobuf::Closure *done)</div><div class="ttdoc">获取消息转发目标列表</div><div class="ttdef"><b>Definition</b> transmite_server.hpp:65</div></div>
+<div class="ttc" id="aetcd_8hpp_html"><div class="ttname"><a href="etcd_8hpp.html">etcd.hpp</a></div><div class="ttdoc">etcd服务注册与发现封装</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gac06cfc686322558f590c50eab8622ebd"><div class="ttname"><a href="group__LogMacros.html#gac06cfc686322558f590c50eab8622ebd">LOG_DEBUG</a></div><div class="ttdeci">#define LOG_DEBUG(fmt,...)</div><div class="ttdoc">调试级别日志，用于开发阶段的调试信息</div><div class="ttdef"><b>Definition</b> logger.hpp:77</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gae69d735f8291bd2aff230fe6ffb4d4b3"><div class="ttname"><a href="group__LogMacros.html#gae69d735f8291bd2aff230fe6ffb4d4b3">LOG_INFO</a></div><div class="ttdeci">#define LOG_INFO(fmt,...)</div><div class="ttdoc">信息级别日志，用于记录关键业务流程</div><div class="ttdef"><b>Definition</b> logger.hpp:83</div></div>
+<div class="ttc" id="agroup__LogMacros_html_gae6fc70e87e424e7083c63696b8fb9e78"><div class="ttname"><a href="group__LogMacros.html#gae6fc70e87e424e7083c63696b8fb9e78">LOG_ERROR</a></div><div class="ttdeci">#define LOG_ERROR(fmt,...)</div><div class="ttdoc">错误级别日志，用于记录错误和异常</div><div class="ttdef"><b>Definition</b> logger.hpp:95</div></div>
+<div class="ttc" id="alogger_8hpp_html"><div class="ttname"><a href="logger_8hpp.html">logger.hpp</a></div><div class="ttdoc">IM服务器日志模块封装</div></div>
+<div class="ttc" id="amysql__chat__session__member_8hpp_html"><div class="ttname"><a href="mysql__chat__session__member_8hpp.html">mysql_chat_session_member.hpp</a></div></div>
+<div class="ttc" id="anamespaceim__server_html"><div class="ttname"><a href="namespaceim__server.html">im_server</a></div><div class="ttdef"><b>Definition</b> asr.hpp:11</div></div>
+<div class="ttc" id="anamespaceim__server_html_a72288431585e95772230879cca9fc32a"><div class="ttname"><a href="namespaceim__server.html#a72288431585e95772230879cca9fc32a">im_server::uuid</a></div><div class="ttdeci">std::string uuid()</div><div class="ttdoc">生成UUID</div><div class="ttdef"><b>Definition</b> utils.hpp:26</div></div>
+<div class="ttc" id="arabbitmq_8hpp_html"><div class="ttname"><a href="rabbitmq_8hpp.html">rabbitmq.hpp</a></div><div class="ttdoc">RabbitMQ消息队列封装</div></div>
+<div class="ttc" id="autils_8hpp_html"><div class="ttname"><a href="utils_8hpp.html">utils.hpp</a></div><div class="ttdoc">通用工具函数</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

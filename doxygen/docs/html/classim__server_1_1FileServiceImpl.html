@@ -1,0 +1,453 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.9.8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>IM微服务系统: im_server::FileServiceImpl类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">IM微服务系统<span id="projectnumber">&#160;1.0</span>
+   </div>
+   <div id="projectbrief">基于C++的即时通讯微服务架构</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.9.8 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">载入中...</div>
+<div class="SRStatus" id="Searching">搜索中...</div>
+<div class="SRStatus" id="NoMatches">未找到</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="namespaceim__server.html">im_server</a></li><li class="navelem"><a class="el" href="classim__server_1_1FileServiceImpl.html">FileServiceImpl</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="classim__server_1_1FileServiceImpl-members.html">所有成员列表</a>  </div>
+  <div class="headertitle"><div class="title">im_server::FileServiceImpl类 参考</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>文件服务RPC接口实现类  
+ <a href="classim__server_1_1FileServiceImpl.html#details">更多...</a></p>
+
+<p><code>#include &lt;<a class="el" href="file__server_8hpp_source.html">file_server.hpp</a>&gt;</code></p>
+<div class="dynheader">
+类 im_server::FileServiceImpl 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1FileServiceImpl__inherit__graph.png" border="0" usemap="#aim__server_1_1FileServiceImpl_inherit__map" alt="Inheritance graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+im_server::FileServiceImpl 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1FileServiceImpl__coll__graph.png" border="0" usemap="#aim__server_1_1FileServiceImpl_coll__map" alt="Collaboration graph"/></div>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a3f8e61fa6063281f78be9602e8189cbe" id="r_a3f8e61fa6063281f78be9602e8189cbe"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1FileServiceImpl.html#a3f8e61fa6063281f78be9602e8189cbe">FileServiceImpl</a> (const std::string &amp;storage_path)</td></tr>
+<tr class="memdesc:a3f8e61fa6063281f78be9602e8189cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数  <br /></td></tr>
+<tr class="separator:a3f8e61fa6063281f78be9602e8189cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f72a32d47092e6470d0057b59defeb8" id="r_a4f72a32d47092e6470d0057b59defeb8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1FileServiceImpl.html#a4f72a32d47092e6470d0057b59defeb8">~FileServiceImpl</a> ()</td></tr>
+<tr class="separator:a4f72a32d47092e6470d0057b59defeb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eba41f2357ecbc7550417db754fb92b" id="r_a1eba41f2357ecbc7550417db754fb92b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1FileServiceImpl.html#a1eba41f2357ecbc7550417db754fb92b">GetSingleFile</a> (google::protobuf::RpcController *controller, const ::im_server::GetSingleFileReq *request, ::im_server::GetSingleFileRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="memdesc:a1eba41f2357ecbc7550417db754fb92b"><td class="mdescLeft">&#160;</td><td class="mdescRight">下载单个文件  <br /></td></tr>
+<tr class="separator:a1eba41f2357ecbc7550417db754fb92b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a13b96101ad59e7b61e5402bb411704a0" id="r_a13b96101ad59e7b61e5402bb411704a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1FileServiceImpl.html#a13b96101ad59e7b61e5402bb411704a0">PutSingleFile</a> (google::protobuf::RpcController *controller, const ::im_server::PutSingleFileReq *request, ::im_server::PutSingleFileRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="memdesc:a13b96101ad59e7b61e5402bb411704a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">上传单个文件  <br /></td></tr>
+<tr class="separator:a13b96101ad59e7b61e5402bb411704a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18e4072f29c4d56379d4b4473b31d224" id="r_a18e4072f29c4d56379d4b4473b31d224"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1FileServiceImpl.html#a18e4072f29c4d56379d4b4473b31d224">GetMultiFile</a> (google::protobuf::RpcController *controller, const ::im_server::GetMultiFileReq *request, ::im_server::GetMultiFileRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="memdesc:a18e4072f29c4d56379d4b4473b31d224"><td class="mdescLeft">&#160;</td><td class="mdescRight">批量下载文件  <br /></td></tr>
+<tr class="separator:a18e4072f29c4d56379d4b4473b31d224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56e284fede28a923eb97d97bc5c939f4" id="r_a56e284fede28a923eb97d97bc5c939f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classim__server_1_1FileServiceImpl.html#a56e284fede28a923eb97d97bc5c939f4">PutMultiFile</a> (google::protobuf::RpcController *controller, const ::im_server::PutMultiFileReq *request, ::im_server::PutMultiFileRsp *response, ::google::protobuf::Closure *done)</td></tr>
+<tr class="memdesc:a56e284fede28a923eb97d97bc5c939f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">批量上传文件  <br /></td></tr>
+<tr class="separator:a56e284fede28a923eb97d97bc5c939f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p>文件服务RPC接口实现类 </p>
+<p>提供单文件/多文件上传下载功能，基于本地文件系统存储 </p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="a3f8e61fa6063281f78be9602e8189cbe" name="a3f8e61fa6063281f78be9602e8189cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f8e61fa6063281f78be9602e8189cbe">&#9670;&#160;</a></span>FileServiceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::FileServiceImpl::FileServiceImpl </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>storage_path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>构造函数 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">storage_path</td><td>文件存储根目录路径</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>自动创建存储目录，设置权限为0775 </p>
+
+</div>
+</div>
+<a id="a4f72a32d47092e6470d0057b59defeb8" name="a4f72a32d47092e6470d0057b59defeb8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f72a32d47092e6470d0057b59defeb8">&#9670;&#160;</a></span>~FileServiceImpl()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">im_server::FileServiceImpl::~FileServiceImpl </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a18e4072f29c4d56379d4b4473b31d224" name="a18e4072f29c4d56379d4b4473b31d224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18e4072f29c4d56379d4b4473b31d224">&#9670;&#160;</a></span>GetMultiFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::FileServiceImpl::GetMultiFile </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::GetMultiFileReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::GetMultiFileRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>批量下载文件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>RPC控制器 </td></tr>
+    <tr><td class="paramname">request</td><td>请求（包含多个文件ID） </td></tr>
+    <tr><td class="paramname">response</td><td>响应（包含多个文件内容） </td></tr>
+    <tr><td class="paramname">done</td><td>RPC回调</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>根据文件ID列表批量读取文件内容 </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1FileServiceImpl_a18e4072f29c4d56379d4b4473b31d224_cgraph.png" border="0" usemap="#aclassim__server_1_1FileServiceImpl_a18e4072f29c4d56379d4b4473b31d224_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a1eba41f2357ecbc7550417db754fb92b" name="a1eba41f2357ecbc7550417db754fb92b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eba41f2357ecbc7550417db754fb92b">&#9670;&#160;</a></span>GetSingleFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::FileServiceImpl::GetSingleFile </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::GetSingleFileReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::GetSingleFileRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>下载单个文件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>RPC控制器 </td></tr>
+    <tr><td class="paramname">request</td><td>请求（包含文件ID） </td></tr>
+    <tr><td class="paramname">response</td><td>响应（包含文件内容） </td></tr>
+    <tr><td class="paramname">done</td><td>RPC回调</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>根据文件ID从本地存储读取文件内容 </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1FileServiceImpl_a1eba41f2357ecbc7550417db754fb92b_cgraph.png" border="0" usemap="#aclassim__server_1_1FileServiceImpl_a1eba41f2357ecbc7550417db754fb92b_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a56e284fede28a923eb97d97bc5c939f4" name="a56e284fede28a923eb97d97bc5c939f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a56e284fede28a923eb97d97bc5c939f4">&#9670;&#160;</a></span>PutMultiFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::FileServiceImpl::PutMultiFile </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::PutMultiFileReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::PutMultiFileRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>批量上传文件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>RPC控制器 </td></tr>
+    <tr><td class="paramname">request</td><td>请求（包含多个文件数据） </td></tr>
+    <tr><td class="paramname">response</td><td>响应（包含多个文件信息） </td></tr>
+    <tr><td class="paramname">done</td><td>RPC回调</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>批量上传文件到本地存储，为每个文件生成唯一ID </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1FileServiceImpl_a56e284fede28a923eb97d97bc5c939f4_cgraph.png" border="0" usemap="#aclassim__server_1_1FileServiceImpl_a56e284fede28a923eb97d97bc5c939f4_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<a id="a13b96101ad59e7b61e5402bb411704a0" name="a13b96101ad59e7b61e5402bb411704a0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13b96101ad59e7b61e5402bb411704a0">&#9670;&#160;</a></span>PutSingleFile()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void im_server::FileServiceImpl::PutSingleFile </td>
+          <td>(</td>
+          <td class="paramtype">google::protobuf::RpcController *&#160;</td>
+          <td class="paramname"><em>controller</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const ::im_server::PutSingleFileReq *&#160;</td>
+          <td class="paramname"><em>request</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::im_server::PutSingleFileRsp *&#160;</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">::google::protobuf::Closure *&#160;</td>
+          <td class="paramname"><em>done</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>上传单个文件 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">controller</td><td>RPC控制器 </td></tr>
+    <tr><td class="paramname">request</td><td>请求（包含文件数据） </td></tr>
+    <tr><td class="paramname">response</td><td>响应（包含文件ID和元信息） </td></tr>
+    <tr><td class="paramname">done</td><td>RPC回调</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>上传文件到本地存储，生成唯一文件ID </p>
+<div class="dynheader">
+函数调用图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classim__server_1_1FileServiceImpl_a13b96101ad59e7b61e5402bb411704a0_cgraph.png" border="0" usemap="#aclassim__server_1_1FileServiceImpl_a13b96101ad59e7b61e5402bb411704a0_cgraph" alt=""/></div>
+</div>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li>/home/zhutian/repositories/gitee/cpp-wechat-im-microservice/code/server/file/source/<a class="el" href="file__server_8hpp_source.html">file_server.hpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.8
+</small></address>
+</body>
+</html>

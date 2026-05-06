@@ -1,3 +1,14 @@
+/**
+ * @file message_server.hpp
+ * @brief 消息存储服务模块
+ * @details 提供消息持久化、历史消息查询、消息搜索等功能，集成MySQL、ES、RabbitMQ
+ * @author ZhuTian
+ * @date 2026
+ */
+
+#pragma once
+
+#define IM_LOG_SERVICE_TAG "消息存储服务"
 #include <boost/date_time/posix_time/conversion.hpp>
 #include <boost/date_time/posix_time/ptime.hpp>
 #include <brpc/server.h>
@@ -23,8 +34,22 @@
 #include <utility>
 #include <vector>
 namespace im_server {
+
+/**
+ * @class MessageServiceImpl
+ * @brief 消息存储服务RPC接口实现类
+ * @details 提供消息持久化、历史查询、搜索功能，集成MySQL、ES、RabbitMQ和下游服务
+ */
 class MessageServiceImpl : public MsgStorageService {
 public:
+    /**
+     * @brief 构造函数
+     * @param es_client Elasticsearch客户端（用于消息搜索）
+     * @param mysql_client MySQL数据库连接（用于消息持久化）
+     * @param mm_channels 下游服务管理器
+     * @param file_service_name 文件服务名称
+     * @param user_service_name 用户服务名称
+     */
     MessageServiceImpl(const std::shared_ptr<elasticlient::Client> &es_client,
                        const std::shared_ptr<odb::core::database> &mysql_client,
                        const std::shared_ptr<ServiceManager> &mm_channels,
@@ -36,8 +61,17 @@ public:
           _user_service_name(user_service_name) {
         _es_message->createIndex();
     }
+    
     ~MessageServiceImpl() {}
 
+    /**
+     * @brief 获取历史消息
+     * @param controller RPC控制器
+     * @param request 请求（包含会话ID、起止时间）
+     * @param response 响应（包含消息列表）
+     * @param done RPC回调
+     * @details 从MySQL按时间范围查询消息，批量拉取文件和用户信息
+     */
     virtual void GetHistoryMsg(::google::protobuf::RpcController *controller,
                                const ::im_server::GetHistoryMsgReq *request,
                                ::im_server::GetHistoryMsgRsp *response,
@@ -57,12 +91,20 @@ public:
             boost::posix_time::from_time_t(request->start_time());
         boost::posix_time::ptime etime =
             boost::posix_time::from_time_t(request->over_time());
+        
+        LOG_INFO("RPC GetHistoryMsg | request_id={} | session_id={} | start_time={} | end_time={}", 
+                 rid, chat_ssid, request->start_time(), request->over_time());
+        
         auto msg_list = _mysql_message->range(chat_ssid, stime, etime);
         if (msg_list.empty()) {
+            LOG_DEBUG("RPC GetHistoryMsg | request_id={} | 结果=无历史消息", rid);
             response->set_request_id(rid);
             response->set_success(true);
             return;
         }
+        
+        LOG_DEBUG("RPC GetHistoryMsg | request_id={} | 阶段=MySQL查询完成 | count={}", rid, msg_list.size());
+        
         std::unordered_set<std::string> file_id_list;
         for (auto &msg : msg_list) {
             if (msg.file_id().empty())
@@ -77,14 +119,15 @@ public:
         std::unordered_map<std::string, std::string> file_data_list;
         bool ret = _GetFile(rid, file_id_list, file_data_list);
         if (ret == false) {
-            LOG_ERROR("{} - 批量文件数据下载失败", rid);
-            return err_response(request->request_id(), "批量文件数据下载失败");
+            LOG_ERROR("RPC GetHistoryMsg | request_id={} | 阶段=批量拉取文件 | 结果=失败", rid);
+            return err_response(rid, "批量文件数据下载失败");
         }
+        
         std::unordered_map<std::string, UserInfo> user_info_list;
         ret = _GetUser(rid, user_id_list, user_info_list);
         if (ret == false) {
-            LOG_ERROR("{} - 批量用户数据获取失败", rid);
-            return err_response(request->request_id(), "批量用户数据获取失败");
+            LOG_ERROR("RPC GetHistoryMsg | request_id={} | 阶段=批量拉取用户 | 结果=失败", rid);
+            return err_response(rid, "批量用户数据获取失败");
         }
         for (auto &msg : msg_list) {
             auto message_info = response->add_msg_list();
@@ -139,10 +182,12 @@ public:
                     ->set_file_id(msg.file_id());
                 break;
             default:
-                LOG_ERROR("消息类型错误");
+                LOG_ERROR("RPC GetRecentMsg | request_id={} | 消息类型未知 | type={}", rid, msg.message_type());
                 return;
             }
         }
+        
+        LOG_INFO("RPC GetRecentMsg | request_id={} | 阶段=完成 | msg_count={}", rid, msg_list.size());
         response->set_request_id(rid);
         response->set_success(true);
         return;
@@ -163,12 +208,18 @@ public:
         std::string rid = request->request_id();
         std::string chat_ssid = request->chat_session_id();
         int64_t msg_count = request->msg_count();
+        
+        LOG_INFO("RPC GetRecentMsg | request_id={} | session_id={} | count={}", rid, chat_ssid, msg_count);
+        
         auto msg_list = _mysql_message->recent(chat_ssid, msg_count);
         if (msg_list.empty()) {
+            LOG_DEBUG("RPC GetRecentMsg | request_id={} | 结果=无最近消息", rid);
             response->set_request_id(rid);
             response->set_success(true);
             return;
         }
+        
+        LOG_DEBUG("RPC GetRecentMsg | request_id={} | 阶段=MySQL查询完成 | count={}", rid, msg_list.size());
         std::unordered_set<std::string> file_id_list;
         for (auto &msg : msg_list) {
             if (msg.file_id().empty())
@@ -183,14 +234,14 @@ public:
         std::unordered_map<std::string, std::string> file_data_list;
         bool ret = _GetFile(rid, file_id_list, file_data_list);
         if (ret == false) {
-            LOG_ERROR("{} - 批量文件数据下载失败", rid);
-            return err_response(request->request_id(), "批量文件数据下载失败");
+            LOG_ERROR("RPC GetRecentMsg | request_id={} | 阶段=批量拉取文件 | 结果=失败", rid);
+            return err_response(rid, "批量文件数据下载失败");
         }
         std::unordered_map<std::string, UserInfo> user_info_list;
         ret = _GetUser(rid, user_id_list, user_info_list);
         if (ret == false) {
-            LOG_ERROR("{} - 批量用户数据获取失败", rid);
-            return err_response(request->request_id(), "批量用户数据获取失败");
+            LOG_ERROR("RPC GetRecentMsg | request_id={} | 阶段=批量拉取用户 | 结果=失败", rid);
+            return err_response(rid, "批量用户数据获取失败");
         }
         for (auto &msg : msg_list) {
             auto message_info = response->add_msg_list();
@@ -245,10 +296,12 @@ public:
                     ->set_file_id(msg.file_id());
                 break;
             default:
-                LOG_ERROR("消息类型错误");
+                LOG_ERROR("RPC GetHistoryMsg | request_id={} | 消息类型未知 | type={}", rid, msg.message_type());
                 return;
             }
         }
+        
+        LOG_INFO("RPC GetHistoryMsg | request_id={} | 阶段=完成 | msg_count={}", rid, msg_list.size());
         response->set_request_id(rid);
         response->set_success(true);
         return;
@@ -269,12 +322,19 @@ public:
         std::string rid = request->request_id();
         std::string chat_ssid = request->chat_session_id();
         std::string skey = request->search_key();
+        
+        LOG_INFO("RPC MsgSearch | request_id={} | session_id={} | search_key={}", rid, chat_ssid, skey);
+        
         auto msg_list = _es_message->search(skey, chat_ssid);
         if (msg_list.empty()) {
+            LOG_DEBUG("RPC MsgSearch | request_id={} | 结果=无匹配消息", rid);
             response->set_request_id(rid);
             response->set_success(true);
             return;
         }
+        
+        LOG_DEBUG("RPC MsgSearch | request_id={} | 阶段=ES搜索完成 | count={}", rid, msg_list.size());
+        
         std::unordered_set<std::string> user_id_list;
         for (auto &msg : msg_list) {
             user_id_list.insert(msg.user_id());
@@ -282,8 +342,8 @@ public:
         std::unordered_map<std::string, UserInfo> user_info_list;
         bool ret = _GetUser(rid, user_id_list, user_info_list);
         if (ret == false) {
-            LOG_ERROR("{} - 批量用户数据获取失败", rid);
-            return err_response(request->request_id(), "批量用户数据获取失败");
+            LOG_ERROR("RPC MsgSearch | request_id={} | 阶段=批量拉取用户 | 结果=失败", rid);
+            return err_response(rid, "批量获取用户信息失败");
         }
         for (auto &msg : msg_list) {
             auto message_info = response->add_msg_list();
@@ -299,25 +359,39 @@ public:
                 ->mutable_string_message()
                 ->set_content(msg.content());
         }
+        
+        LOG_INFO("RPC MsgSearch | request_id={} | 阶段=完成 | result_count={}", rid, msg_list.size());
         response->set_request_id(rid);
         response->set_success(true);
         return;
     }
 
+    /**
+     * @brief MQ消息消费回调
+     * @param body 消息体二进制数据
+     * @param sz 消息体大小
+     * @details 从MQ消费消息，反序列化后根据类型处理（文本/图片/文件/语音），写入MySQL和ES
+     */
     void onMessage(const char *body, size_t sz) {
-        LOG_DEBUG("Received MQ body size: {}, first 4 bytes: "
-                  "{}{}{}{}",
-                  sz, (unsigned char)body[0], (unsigned char)body[1],
-                  (unsigned char)body[2], (unsigned char)body[3]);
+        LOG_DEBUG("MQ消费 | body_size={}", sz);
+        
         MessageInfo message;
         bool ret = message.ParseFromArray(body, sz);
         if (ret == false) {
-            LOG_ERROR("对消费到的消息进行反序列化失败");
+            LOG_ERROR("MQ消费 | 阶段=反序列化消息 | 结果=失败");
             return;
         }
+        
+        std::string msg_id = message.message_id();
+        std::string session_id = message.chat_session_id();
+        std::string sender_id = message.sender().user_id();
+        MessageType msg_type = message.message().message_type();
+        
+        LOG_INFO("MQ消费 | msg_id={} | session_id={} | sender={} | type={}", 
+                 msg_id, session_id, sender_id, msg_type);
+        
         std::string file_id, file_name, content;
         int64_t file_size;
-        LOG_ERROR("获取一次消费：{}", message.message().message_type());
         switch (message.message().message_type()) {
         case MessageType::STRING:
             content = message.message().string_message().content();
@@ -325,17 +399,18 @@ public:
                 message.sender().user_id(), message.message_id(),
                 message.timestamp(), message.chat_session_id(), content);
             if (ret == false) {
-                LOG_ERROR("文本消息向存储引擎存储失败");
+                LOG_ERROR("MQ消费 | msg_id={} | 阶段=ES写入文本消息 | 结果=失败", msg_id);
                 return;
             }
+            LOG_DEBUG("MQ消费 | msg_id={} | 阶段=ES写入文本消息 | 结果=成功", msg_id);
             break;
         case MessageType::IMAGE: {
             const auto &msg = message.message().image_message();
             file_size = msg.image_content().size();
-            LOG_DEBUG("收到图片消息 {}", file_size);
+            LOG_DEBUG("MQ消费 | msg_id={} | 阶段=处理图片消息 | size={}", msg_id, file_size);
             ret = _PutFile("", msg.image_content(), file_size, file_id);
             if (ret == false) {
-                LOG_ERROR("上传图片到文件子服务失败");
+                LOG_ERROR("MQ消费 | msg_id={} | 阶段=上传图片到文件服务 | 结果=失败", msg_id);
                 return;
             }
         } break;
@@ -343,25 +418,25 @@ public:
             const auto &msg = message.message().file_message();
             file_name = msg.file_name();
             file_size = msg.file_size();
-            LOG_DEBUG("收到文件消息 {}-{}", file_name, file_size);
+            LOG_DEBUG("MQ消费 | msg_id={} | 阶段=处理文件消息 | name={} | size={}", msg_id, file_name, file_size);
             ret = _PutFile(file_name, msg.file_contents(), file_size, file_id);
             if (ret == false) {
-                LOG_ERROR("上传文件到文件子服务失败");
+                LOG_ERROR("MQ消费 | msg_id={} | 阶段=上传文件到文件服务 | 结果=失败", msg_id);
                 return;
             }
         } break;
         case MessageType::SPEECH: {
             const auto &msg = message.message().speech_message();
             file_size = msg.file_contents().size();
-            LOG_DEBUG("收到语音消息 {}", file_size);
+            LOG_DEBUG("MQ消费 | msg_id={} | 阶段=处理语音消息 | size={}", msg_id, file_size);
             ret = _PutFile("", msg.file_contents(), file_size, file_id);
             if (ret == false) {
-                LOG_ERROR("上传语音到文件子服务失败");
+                LOG_ERROR("MQ消费 | msg_id={} | 阶段=上传语音到文件服务 | 结果=失败", msg_id);
                 return;
             }
         } break;
         default:
-            LOG_ERROR("消息类型错误");
+            LOG_ERROR("MQ消费 | msg_id={} | 消息类型未知 | type={}", msg_id, msg_type);
             return;
         }
         Message msg(message.message_id(), message.chat_session_id(),
@@ -374,12 +449,22 @@ public:
         msg.content(content);
         ret = _mysql_message->insert(msg);
         if (ret == false) {
-            LOG_ERROR("向数据库插入新消息失败");
+            LOG_ERROR("MQ消费 | msg_id={} | 阶段=MySQL写入消息 | 结果=失败", msg_id);
             return;
         }
+        
+        LOG_INFO("MQ消费 | msg_id={} | 阶段=完成 | file_id={}", msg_id, file_id);
     }
 
 private:
+    /**
+     * @brief 批量获取文件内容
+     * @param rid 请求ID
+     * @param file_id_list 文件ID集合
+     * @param[out] file_data_list 输出文件ID到内容的映射
+     * @return true=成功，false=失败
+     * @details 调用文件服务批量下载文件
+     */
     bool
     _GetFile(const std::string &rid,
              const std::unordered_set<std::string> &file_id_list,
@@ -410,6 +495,14 @@ private:
         return true;
     }
 
+    /**
+     * @brief 批量获取用户信息
+     * @param rid 请求ID
+     * @param user_id_list 用户ID集合
+     * @param[out] user_info_list 输出用户ID到信息的映射
+     * @return true=成功，false=失败
+     * @details 调用用户服务批量获取用户详细信息
+     */
     bool _GetUser(const std::string &rid,
                   const std::unordered_set<std::string> &user_id_list,
                   std::unordered_map<std::string, UserInfo> &user_info_list) {
@@ -438,6 +531,15 @@ private:
         return true;
     }
 
+    /**
+     * @brief 上传单个文件
+     * @param filename 文件名
+     * @param body 文件内容
+     * @param fsize 文件大小
+     * @param[out] file_id 输出文件ID
+     * @return true=成功，false=失败
+     * @details 调用文件服务上传文件并获取文件ID
+     */
     bool _PutFile(const std::string &filename, const std::string &body,
                   const int64_t fsize, std::string &file_id) {
         auto channel = _mm_channels->choose(_file_service_name);
@@ -463,17 +565,31 @@ private:
     }
 
 private:
-    ESMessage::ptr _es_message;
-    MessageTable::ptr _mysql_message;
-    // rpc调用客户端
-    std::string _file_service_name;
-    std::string _user_service_name;
-    ServiceManager::ptr _mm_channels;
+    ESMessage::ptr _es_message;           ///< Elasticsearch消息索引管理
+    MessageTable::ptr _mysql_message;     ///< MySQL消息表操作
+    std::string _file_service_name;       ///< 文件服务名称
+    std::string _user_service_name;       ///< 用户服务名称
+    ServiceManager::ptr _mm_channels;     ///< 下游服务管理器
 };
 
+/**
+ * @class MessageServer
+ * @brief 消息存储服务器主类
+ * @details 封装消息存储服务的所有依赖组件，提供启动接口
+ */
 class MessageServer {
 public:
     using ptr = std::shared_ptr<MessageServer>;
+    
+    /**
+     * @brief 构造函数
+     * @param mq_client RabbitMQ客户端
+     * @param service_discoverer 服务发现客户端
+     * @param registry_client 服务注册客户端
+     * @param es_client Elasticsearch客户端
+     * @param mysql_client MySQL数据库连接
+     * @param rpc_server RPC服务器实例
+     */
     MessageServer(const std::shared_ptr<MQClient> &mq_client,
                   const std::shared_ptr<Discoverer> &service_discoverer,
                   const std::shared_ptr<Registrar> &registry_client,
@@ -555,19 +671,19 @@ public:
     void make_rpc_object(const uint16_t &port, const uint32_t &timeout,
                          const uint8_t &num_threads) {
         if (!_mysql_client) {
-            LOG_ERROR("Mysql数据库模块未初始化");
+            LOG_ERROR("消息服务启动检查失败 | 组件=MySQL | 原因=未初始化");
             abort();
         }
         if (!_es_client) {
-            LOG_ERROR("ES数据库模块未初始化");
+            LOG_ERROR("消息服务启动检查失败 | 组件=Elasticsearch | 原因=未初始化");
             abort();
         }
         if (!_mm_channels) {
-            LOG_ERROR("信道管理模块未初始化");
+            LOG_ERROR("消息服务启动检查失败 | 组件=下游RPC信道 | 原因=未初始化");
             abort();
         }
         if (!_service_discoverer) {
-            LOG_ERROR("服务发现模块未初始化");
+            LOG_ERROR("消息服务启动检查失败 | 组件=etcd服务发现 | 原因=未初始化");
             abort();
         }
         _rpc_server = std::make_shared<brpc::Server>();
@@ -578,7 +694,7 @@ public:
         int ret = _rpc_server->AddService(
             message_service, brpc::ServiceOwnership::SERVER_OWNS_SERVICE);
         if (ret == -1) {
-            LOG_ERROR("添加Rpc服务失败");
+            LOG_ERROR("消息服务启动失败 | 阶段=添加RPC服务");
             abort();
         }
         brpc::ServerOptions options;
@@ -586,38 +702,41 @@ public:
         options.num_threads = num_threads;
         ret = _rpc_server->Start(port, &options);
         if (ret == -1) {
-            LOG_ERROR("启动Rpc服务失败");
+            LOG_ERROR("消息服务启动失败 | 阶段=启动RPC服务器 | port={}", port);
             abort();
         }
+        LOG_INFO("消息服务启动成功 | port={} | timeout={}s | threads={}", port, timeout, num_threads);
+        
         auto callback =
             std::bind(&MessageServiceImpl::onMessage, message_service,
                       std::placeholders::_1, std::placeholders::_2);
         _mq_client->consume(_queue_name, callback);
+        LOG_INFO("消息服务MQ消费启动 | queue={}", _queue_name);
     }
 
     MessageServer::ptr build() {
         if (!_mysql_client) {
-            LOG_ERROR("Mysql数据库模块未初始化");
+            LOG_ERROR("消息服务构建失败 | 组件=MySQL | 原因=未初始化");
             abort();
         }
         if (!_es_client) {
-            LOG_ERROR("ES数据库模块未初始化");
+            LOG_ERROR("消息服务构建失败 | 组件=Elasticsearch | 原因=未初始化");
             abort();
         }
         if (!_mm_channels) {
-            LOG_ERROR("信道管理模块未初始化");
+            LOG_ERROR("消息服务构建失败 | 组件=下游RPC信道 | 原因=未初始化");
             abort();
         }
         if (!_service_discoverer) {
-            LOG_ERROR("服务发现模块未初始化");
+            LOG_ERROR("消息服务构建失败 | 组件=etcd服务发现 | 原因=未初始化");
             abort();
         }
         if (!_registry_client) {
-            LOG_ERROR("服务注册模块未初始化");
+            LOG_ERROR("消息服务构建失败 | 组件=etcd服务注册 | 原因=未初始化");
             abort();
         }
         if (!_rpc_server) {
-            LOG_ERROR("Rpc服务器模块未初始化");
+            LOG_ERROR("消息服务构建失败 | 组件=RPC服务器 | 原因=未初始化");
             abort();
         }
 
