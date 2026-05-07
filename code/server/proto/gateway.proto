@@ -1,6 +1,5 @@
 syntax = "proto3";
 package im_server;
-import "base.proto";
 option cc_generic_services = true;
 
 message ClientAuthenticationReq {

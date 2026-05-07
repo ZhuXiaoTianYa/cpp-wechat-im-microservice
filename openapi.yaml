@@ -1,0 +1,2183 @@
+openapi: 3.0.3
+info:
+  title: 即时通讯系统网关 API (Protobuf)
+  version: 1.0.0
+  description: |
+    # 即时通讯系统网关 API 文档
+    
+    ## 协议说明
+    本系统采用 **HTTP + Protobuf** 和 **WebSocket + Protobuf** 混合架构：
+    
+    - **HTTP 接口**：所有业务请求使用 POST 方法，Content-Type 为 `application/x-protobuf`
+    - **WebSocket 接口**：用于实时消息推送和长连接维持
+    - **数据格式**：请求体和响应体均为 Protobuf 二进制数据
+    
+    ## 重要提示
+    
+    ### 1. HTTP 状态码说明
+    - 所有接口的 HTTP 状态码均为 **200 OK**
+    - 真正的业务成功/失败由响应 message 中的 `success` 字段判断
+    - 错误信息在 `errmsg` 字段中返回
+    
+    ### 2. Protobuf 定义文件
+    客户端必须先获取 `.proto` 定义文件，使用 Protobuf 序列化库进行编解码：
+    - 项目 proto 文件位置：`code/server/proto/`
+    - 主要文件：`user.proto`, `friend.proto`, `message.proto`, `file.proto`, `speech.proto`, `base.proto`
+    
+    ### 3. 会话管理
+    - 登录成功后会返回 `login_session_id`
+    - 后续需要认证的接口需在请求中携带 `session_id` 字段
+    - WebSocket 连接建立后需发送 `ClientAuthenticationReq` 进行鉴权
+    
+    ### 4. 业务错误码
+    | 错误信息 | 说明 |
+    |---------|------|
+    | 用户名长度不合法 | 昵称长度超过22字符 |
+    | 密码格式不合法 | 密码不符合6-15位字母数字下划线短横线规则 |
+    | 用户名被占用 | 注册时昵称已存在 |
+    | 用户名或密码错误 | 登录认证失败 |
+    | 用户已在其他地方登录 | 单点登录限制 |
+    | 手机验证码错误 | 验证码不匹配或已过期 |
+    | 该手机号已注册过用户 | 手机号重复注册 |
+    | 未找到用户信息 | 用户ID不存在 |
+    | 获取登录会话关联信息失败 | session_id无效或已过期 |
+    | 两者已经是好友了 | 重复添加好友 |
+    | 已经申请过对方好友 | 重复发送好友申请 |
+    | 没有找到对应的好友申请事件 | 申请记录不存在 |
+    | 批量获取用户信息失败 | 内部服务调用失败 |
+    | 文件子服务调用失败 | 文件服务不可用 |
+    | 用户子服务调用失败 | 用户服务不可用 |
+    | 好友子服务调用失败 | 好友服务不可用 |
+    | 消息存储子服务调用失败 | 消息服务不可用 |
+    | 消息转发子服务调用失败 | 转发服务不可用 |
+    | 语音子服务调用失败 | 语音服务不可用 |
+    
+  contact:
+    name: ZhuTian
+    email: support@example.com
+  license:
+    name: MIT
+    url: https://opensource.org/licenses/MIT
+
+servers:
+  - url: http://211.159.146.107:9000
+    description: 生产环境 HTTP 服务器
+  - url: ws://211.159.146.107:9001
+    description: 生产环境 WebSocket 服务器
+
+tags:
+  - name: 用户管理
+    description: 用户注册、登录、信息管理
+  - name: 好友管理
+    description: 好友关系、好友申请、用户搜索
+  - name: 会话管理
+    description: 聊天会话创建、查询、成员管理
+  - name: 消息管理
+    description: 消息发送、历史查询、消息搜索
+  - name: 文件管理
+    description: 文件上传、下载
+  - name: 语音服务
+    description: 语音识别、语音转文字
+  - name: WebSocket
+    description: 实时消息推送、长连接管理
+
+paths:
+  /service/user/get_phone_verify_code:
+    post:
+      tags:
+        - 用户管理
+      summary: 获取短信验证码
+      description: |
+        发送短信验证码到指定手机号，用于手机号注册或登录。
+        验证码有效期为 60 秒。
+      operationId: getPhoneVerifyCode
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/PhoneVerifyCodeReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/PhoneVerifyCodeRsp'
+
+  /service/user/username_register:
+    post:
+      tags:
+        - 用户管理
+      summary: 用户名密码注册
+      description: |
+        使用昵称和密码注册新用户。
+        - 昵称长度限制：< 22 字符
+        - 密码要求：6-15位，仅包含字母、数字、下划线、短横线
+      operationId: usernameRegister
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/UserRegisterReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/UserRegisterRsp'
+
+  /service/user/username_login:
+    post:
+      tags:
+        - 用户管理
+      summary: 用户名密码登录
+      description: |
+        使用昵称和密码登录，成功后返回 session_id。
+        系统强制单点登录，同一账号不能同时在多处登录。
+      operationId: usernameLogin
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/UserLoginReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/UserLoginRsp'
+
+  /service/user/phone_register:
+    post:
+      tags:
+        - 用户管理
+      summary: 手机号注册
+      description: |
+        使用手机号和验证码注册新用户。
+        需先调用 `/service/user/get_phone_verify_code` 获取验证码。
+      operationId: phoneRegister
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/PhoneRegisterReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/PhoneRegisterRsp'
+
+  /service/user/phone_login:
+    post:
+      tags:
+        - 用户管理
+      summary: 手机号登录
+      description: |
+        使用手机号和验证码登录，成功后返回 session_id。
+        需先调用 `/service/user/get_phone_verify_code` 获取验证码。
+      operationId: phoneLogin
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/PhoneLoginReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/PhoneLoginRsp'
+
+  /service/user/get_user_info:
+    post:
+      tags:
+        - 用户管理
+      summary: 获取当前用户信息
+      description: |
+        获取当前登录用户的详细信息（昵称、签名、手机号、头像）。
+        需要携带有效的 session_id。
+      operationId: getUserInfo
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetUserInfoReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetUserInfoRsp'
+
+  /service/user/set_avatar:
+    post:
+      tags:
+        - 用户管理
+      summary: 修改用户头像
+      description: |
+        上传新头像图片（二进制数据）。
+        需要携带有效的 session_id。
+      operationId: setUserAvatar
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/SetUserAvatarReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/SetUserAvatarRsp'
+
+  /service/user/set_nickname:
+    post:
+      tags:
+        - 用户管理
+      summary: 修改用户昵称
+      description: |
+        修改当前用户的昵称。
+        昵称长度限制：< 22 字符。
+      operationId: setUserNickname
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/SetUserNicknameReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/SetUserNicknameRsp'
+
+  /service/user/set_description:
+    post:
+      tags:
+        - 用户管理
+      summary: 修改个性签名
+      description: |
+        修改当前用户的个性签名/描述。
+      operationId: setUserDescription
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/SetUserDescriptionReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/SetUserDescriptionRsp'
+
+  /service/user/set_phone:
+    post:
+      tags:
+        - 用户管理
+      summary: 修改绑定手机号
+      description: |
+        修改当前用户绑定的手机号。
+        需先调用 `/service/user/get_phone_verify_code` 获取新手机号的验证码。
+      operationId: setUserPhoneNumber
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/SetUserPhoneNumberReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/SetUserPhoneNumberRsp'
+
+  /service/friend/get_friend_list:
+    post:
+      tags:
+        - 好友管理
+      summary: 获取好友列表
+      description: |
+        获取当前用户的所有好友信息列表。
+      operationId: getFriendList
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetFriendListReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetFriendListRsp'
+
+  /service/friend/add_friend_apply:
+    post:
+      tags:
+        - 好友管理
+      summary: 发送好友申请
+      description: |
+        向指定用户发送好友申请。
+        如果对方在线，会通过 WebSocket 实时推送通知。
+      operationId: friendAdd
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/FriendAddReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/FriendAddRsp'
+
+  /service/friend/add_friend_process:
+    post:
+      tags:
+        - 好友管理
+      summary: 处理好友申请
+      description: |
+        同意或拒绝好友申请。
+        同意后会自动创建单聊会话，双方都会收到 WebSocket 通知。
+      operationId: friendAddProcess
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/FriendAddProcessReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/FriendAddProcessRsp'
+
+  /service/friend/remove_friend:
+    post:
+      tags:
+        - 好友管理
+      summary: 删除好友
+      description: |
+        删除指定好友关系，同时删除对应的单聊会话。
+        如果对方在线，会通过 WebSocket 实时推送通知。
+      operationId: friendRemove
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/FriendRemoveReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/FriendRemoveRsp'
+
+  /service/friend/search_friend:
+    post:
+      tags:
+        - 好友管理
+      summary: 搜索用户
+      description: |
+        根据关键词搜索用户（昵称、手机号模糊匹配）。
+        搜索结果会排除当前用户自己和已经是好友的用户。
+      operationId: friendSearch
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/FriendSearchReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/FriendSearchRsp'
+
+  /service/friend/get_pending_friend_events:
+    post:
+      tags:
+        - 好友管理
+      summary: 获取待处理好友申请列表
+      description: |
+        获取所有待处理的好友申请（别人申请加自己为好友）。
+      operationId: getPendingFriendEventList
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetPendingFriendEventListReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetPendingFriendEventListRsp'
+
+  /service/friend/get_chat_session_list:
+    post:
+      tags:
+        - 会话管理
+      summary: 获取会话列表
+      description: |
+        获取当前用户的所有聊天会话（单聊+群聊）。
+        每个会话包含最后一条消息预览。
+      operationId: getChatSessionList
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetChatSessionListReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetChatSessionListRsp'
+
+  /service/friend/create_chat_session:
+    post:
+      tags:
+        - 会话管理
+      summary: 创建群聊会话
+      description: |
+        创建新的群聊会话。
+        所有成员（包括创建者）都会收到 WebSocket 通知。
+      operationId: chatSessionCreate
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/ChatSessionCreateReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/ChatSessionCreateRsp'
+
+  /service/friend/get_chat_session_member:
+    post:
+      tags:
+        - 会话管理
+      summary: 获取会话成员列表
+      description: |
+        获取指定会话的所有成员信息。
+      operationId: getChatSessionMember
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetChatSessionMemberReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetChatSessionMemberRsp'
+
+  /service/message_storage/get_history:
+    post:
+      tags:
+        - 消息管理
+      summary: 获取历史消息
+      description: |
+        按时间范围查询指定会话的历史消息。
+        支持文本、图片、文件、语音四种消息类型。
+      operationId: getHistoryMsg
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetHistoryMsgReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetHistoryMsgRsp'
+
+  /service/message_storage/get_recent:
+    post:
+      tags:
+        - 消息管理
+      summary: 获取最近N条消息
+      description: |
+        获取指定会话的最近 N 条消息。
+        常用于会话打开时加载最新消息。
+      operationId: getRecentMsg
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetRecentMsgReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetRecentMsgRsp'
+
+  /service/message_storage/search_history:
+    post:
+      tags:
+        - 消息管理
+      summary: 搜索历史消息
+      description: |
+        在指定会话中按关键词搜索历史消息（仅支持文本消息）。
+        使用 Elasticsearch 全文检索。
+      operationId: msgSearch
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/MsgSearchReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/MsgSearchRsp'
+
+  /service/message_transmit/new_message:
+    post:
+      tags:
+        - 消息管理
+      summary: 发送消息
+      description: |
+        发送新消息到指定会话。
+        支持文本、图片、文件、语音四种消息类型。
+        在线成员会通过 WebSocket 实时收到消息。
+      operationId: newMessage
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/NewMessageReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/NewMessageRsp'
+
+  /service/file/get_single_file:
+    post:
+      tags:
+        - 文件管理
+      summary: 下载单个文件
+      description: |
+        根据文件ID下载文件内容。
+      operationId: getSingleFile
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetSingleFileReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetSingleFileRsp'
+
+  /service/file/get_multi_file:
+    post:
+      tags:
+        - 文件管理
+      summary: 批量下载文件
+      description: |
+        根据文件ID列表批量下载文件内容。
+      operationId: getMultiFile
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/GetMultiFileReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/GetMultiFileRsp'
+
+  /service/file/put_single_file:
+    post:
+      tags:
+        - 文件管理
+      summary: 上传单个文件
+      description: |
+        上传单个文件，返回文件ID。
+      operationId: putSingleFile
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/PutSingleFileReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/PutSingleFileRsp'
+
+  /service/file/put_multi_file:
+    post:
+      tags:
+        - 文件管理
+      summary: 批量上传文件
+      description: |
+        批量上传文件，返回文件ID列表。
+      operationId: putMultiFile
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/PutMultiFileReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/PutMultiFileRsp'
+
+  /service/speech/recognition:
+    post:
+      tags:
+        - 语音服务
+      summary: 语音识别
+      description: |
+        将语音文件转换为文字。
+        使用百度 ASR 接口进行识别。
+      operationId: speechRecognition
+      security:
+        - SessionAuth: []
+      requestBody:
+        required: true
+        content:
+          application/x-protobuf:
+            schema:
+              $ref: '#/components/schemas/SpeechRecognitionReq'
+      responses:
+        '200':
+          description: 请求已接收（业务成功/失败见 success 字段）
+          content:
+            application/x-protobuf:
+              schema:
+                $ref: '#/components/schemas/SpeechRecognitionRsp'
+
+components:
+  securitySchemes:
+    SessionAuth:
+      type: apiKey
+      in: header
+      name: X-Session-ID
+      description: |
+        登录后获得的 session_id，需在请求 body 的 Protobuf message 中携带 session_id 字段。
+        注意：这不是 HTTP Header，而是 Protobuf message 中的字段。
+
+  schemas:
+    # ==================== 用户相关 ====================
+    PhoneVerifyCodeReq:
+      type: object
+      required:
+        - request_id
+        - phone_number
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识（UUID）
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        phone_number:
+          type: string
+          description: 手机号（11位，13-19开头）
+          example: "13800138000"
+
+    PhoneVerifyCodeRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息（success=false时有值）
+        verify_code_id:
+          type: string
+          description: 验证码ID（用于后续验证）
+
+    UserRegisterReq:
+      type: object
+      required:
+        - request_id
+        - nickname
+        - password
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        nickname:
+          type: string
+          description: 用户昵称（< 22字符）
+          example: "张三"
+        password:
+          type: string
+          description: 密码（6-15位，字母数字下划线短横线）
+          example: "password123"
+        verify_code_id:
+          type: string
+          description: 验证码ID（可选，用于图形验证码等扩展场景）
+        verify_code:
+          type: string
+          description: 验证码（可选，用于图形验证码等扩展场景）
+
+    UserRegisterRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    UserLoginReq:
+      type: object
+      required:
+        - request_id
+        - nickname
+        - password
+        - verify_code_id
+        - verify_code
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        nickname:
+          type: string
+          description: 用户昵称
+        password:
+          type: string
+          description: 密码
+        verify_code_id:
+          type: string
+          description: 验证码ID
+        verify_code:
+          type: string
+          description: 验证码
+
+    UserLoginRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        login_session_id:
+          type: string
+          description: 登录会话ID（后续请求需携带）
+
+    PhoneRegisterReq:
+      type: object
+      required:
+        - request_id
+        - phone_number
+        - verify_code_id
+        - verify_code
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        phone_number:
+          type: string
+          description: 手机号
+        verify_code_id:
+          type: string
+          description: 验证码ID
+        verify_code:
+          type: string
+          description: 验证码
+
+    PhoneRegisterRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    PhoneLoginReq:
+      type: object
+      required:
+        - request_id
+        - phone_number
+        - verify_code_id
+        - verify_code
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        phone_number:
+          type: string
+          description: 手机号
+        verify_code_id:
+          type: string
+          description: 验证码ID
+        verify_code:
+          type: string
+          description: 验证码
+
+    PhoneLoginRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        login_session_id:
+          type: string
+          description: 登录会话ID
+
+    GetUserInfoReq:
+      type: object
+      required:
+        - request_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选，内部使用）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+
+    GetUserInfoRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+
+    SetUserAvatarReq:
+      type: object
+      required:
+        - request_id
+        - avatar
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选，内部使用）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        avatar:
+          type: string
+          format: byte
+          description: 头像图片二进制数据（Base64编码）
+
+    SetUserAvatarRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    SetUserNicknameReq:
+      type: object
+      required:
+        - request_id
+        - nickname
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        nickname:
+          type: string
+          description: 新昵称
+
+    SetUserNicknameRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    SetUserDescriptionReq:
+      type: object
+      required:
+        - request_id
+        - description
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        description:
+          type: string
+          description: 新个性签名
+
+    SetUserDescriptionRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    SetUserPhoneNumberReq:
+      type: object
+      required:
+        - request_id
+        - phone_number
+        - phone_verify_code_id
+        - phone_verify_code
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        phone_number:
+          type: string
+          description: 新手机号
+        phone_verify_code_id:
+          type: string
+          description: 验证码ID
+        phone_verify_code:
+          type: string
+          description: 验证码
+
+    SetUserPhoneNumberRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    # ==================== 好友相关 ====================
+    GetFriendListReq:
+      type: object
+      required:
+        - request_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+
+    GetFriendListRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        friend_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInfo'
+
+    FriendAddReq:
+      type: object
+      required:
+        - request_id
+        - respondent_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 申请人ID（可选）
+        respondent_id:
+          type: string
+          description: 被申请人ID
+
+    FriendAddRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        notify_event_id:
+          type: string
+          description: 通知事件ID
+
+    FriendAddProcessReq:
+      type: object
+      required:
+        - request_id
+        - notify_event_id
+        - agree
+        - apply_user_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        notify_event_id:
+          type: string
+          description: 通知事件ID
+        agree:
+          type: boolean
+          description: 是否同意好友申请
+        apply_user_id:
+          type: string
+          description: 申请人用户ID
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 处理人ID（可选）
+
+    FriendAddProcessRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        new_session_id:
+          type: string
+          description: 新建会话ID（同意后创建）
+
+    FriendRemoveReq:
+      type: object
+      required:
+        - request_id
+        - peer_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        peer_id:
+          type: string
+          description: 对方用户ID
+
+    FriendRemoveRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    FriendSearchReq:
+      type: object
+      required:
+        - request_id
+        - search_key
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        search_key:
+          type: string
+          description: 搜索关键词（昵称或手机号）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+
+    FriendSearchRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        user_info:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInfo'
+
+    GetPendingFriendEventListReq:
+      type: object
+      required:
+        - request_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+
+    GetPendingFriendEventListRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        event:
+          type: array
+          items:
+            $ref: '#/components/schemas/FriendEvent'
+
+    # ==================== 会话相关 ====================
+    GetChatSessionListReq:
+      type: object
+      required:
+        - request_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+
+    GetChatSessionListRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        chat_session_info_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/ChatSessionInfo'
+
+    ChatSessionCreateReq:
+      type: object
+      required:
+        - request_id
+        - chat_session_name
+        - member_id_list
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        chat_session_name:
+          type: string
+          description: 群聊名称
+        member_id_list:
+          type: array
+          items:
+            type: string
+          description: 成员ID列表（包含创建者自己）
+
+    ChatSessionCreateRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        chat_session_info:
+          $ref: '#/components/schemas/ChatSessionInfo'
+
+    GetChatSessionMemberReq:
+      type: object
+      required:
+        - request_id
+        - chat_session_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        chat_session_id:
+          type: string
+          description: 聊天会话ID
+
+    GetChatSessionMemberRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        member_info_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInfo'
+
+    # ==================== 消息相关 ====================
+    GetHistoryMsgReq:
+      type: object
+      required:
+        - request_id
+        - chat_session_id
+        - start_time
+        - over_time
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        chat_session_id:
+          type: string
+          description: 聊天会话ID
+        start_time:
+          type: integer
+          format: int64
+          description: 起始时间戳（秒）
+        over_time:
+          type: integer
+          format: int64
+          description: 结束时间戳（秒）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+
+    GetHistoryMsgRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        msg_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageInfo'
+
+    GetRecentMsgReq:
+      type: object
+      required:
+        - request_id
+        - chat_session_id
+        - msg_count
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        chat_session_id:
+          type: string
+          description: 聊天会话ID
+        msg_count:
+          type: integer
+          format: int64
+          description: 消息数量
+        cur_time:
+          type: integer
+          format: int64
+          description: 当前时间戳（可选，用于扩展）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+
+    GetRecentMsgRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        msg_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageInfo'
+
+    MsgSearchReq:
+      type: object
+      required:
+        - request_id
+        - chat_session_id
+        - search_key
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        chat_session_id:
+          type: string
+          description: 聊天会话ID
+        search_key:
+          type: string
+          description: 搜索关键词
+
+    MsgSearchRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        msg_list:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageInfo'
+
+    NewMessageReq:
+      type: object
+      required:
+        - request_id
+        - chat_session_id
+        - message
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        chat_session_id:
+          type: string
+          description: 聊天会话ID
+        message:
+          $ref: '#/components/schemas/MessageContent'
+
+    NewMessageRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+
+    # ==================== 文件相关 ====================
+    GetSingleFileReq:
+      type: object
+      required:
+        - request_id
+        - file_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        file_id:
+          type: string
+          description: 文件ID
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+
+    GetSingleFileRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        file_data:
+          $ref: '#/components/schemas/FileDownloadData'
+
+    GetMultiFileReq:
+      type: object
+      required:
+        - request_id
+        - file_id_list
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        file_id_list:
+          type: array
+          items:
+            type: string
+          description: 文件ID列表
+
+    GetMultiFileRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        file_data:
+          type: object
+          additionalProperties:
+            $ref: '#/components/schemas/FileDownloadData'
+          description: 文件ID到文件数据的映射
+
+    PutSingleFileReq:
+      type: object
+      required:
+        - request_id
+        - file_data
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        file_data:
+          $ref: '#/components/schemas/FileUploadData'
+
+    PutSingleFileRsp:
+      type: object
+      required:
+        - request_id
+        - success
+        - file_info
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        file_info:
+          $ref: '#/components/schemas/FileMessageInfo'
+
+    PutMultiFileReq:
+      type: object
+      required:
+        - request_id
+        - file_data
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+        file_data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileUploadData'
+
+    PutMultiFileRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        file_info:
+          type: array
+          items:
+            $ref: '#/components/schemas/FileMessageInfo'
+
+    # ==================== 语音相关 ====================
+    SpeechRecognitionReq:
+      type: object
+      required:
+        - request_id
+        - speech_content
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        speech_content:
+          type: string
+          format: byte
+          description: 语音文件二进制数据（Base64编码）
+        user_id:
+          type: string
+          description: 用户ID（可选）
+        session_id:
+          type: string
+          description: 会话ID（必填）
+
+    SpeechRecognitionRsp:
+      type: object
+      required:
+        - request_id
+        - success
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        success:
+          type: boolean
+          description: 业务是否成功
+        errmsg:
+          type: string
+          description: 错误信息
+        recognition_result:
+          type: string
+          description: 识别结果文本
+
+    # ==================== 基础数据结构 ====================
+    UserInfo:
+      type: object
+      required:
+        - user_id
+        - nickname
+      properties:
+        user_id:
+          type: string
+          description: 用户ID
+          example: "550e8400-e29b-41d4-a716-446655440000"
+        nickname:
+          type: string
+          description: 用户昵称
+          example: "张三"
+        description:
+          type: string
+          description: 个性签名
+          example: "这个人很懒，什么都没留下"
+        phone:
+          type: string
+          description: 绑定手机号
+          example: "13800138000"
+        avatar:
+          type: string
+          format: byte
+          description: 头像图片二进制数据（Base64编码）
+
+    ChatSessionInfo:
+      type: object
+      required:
+        - chat_session_id
+        - chat_session_name
+      properties:
+        single_chat_friend_id:
+          type: string
+          description: 单聊时对方用户ID（群聊时为空）
+        chat_session_id:
+          type: string
+          description: 会话ID
+        chat_session_name:
+          type: string
+          description: 会话名称（单聊为对方昵称，群聊为群名）
+        prev_message:
+          $ref: '#/components/schemas/MessageInfo'
+          description: 最后一条消息（可选）
+        avatar:
+          type: string
+          format: byte
+          description: 会话头像（单聊为对方头像，群聊固定渲染）
+
+    MessageInfo:
+      type: object
+      required:
+        - message_id
+        - chat_session_id
+        - timestamp
+        - sender
+        - message
+      properties:
+        message_id:
+          type: string
+          description: 消息ID
+        chat_session_id:
+          type: string
+          description: 所属会话ID
+        timestamp:
+          type: integer
+          format: int64
+          description: 消息时间戳（秒）
+        sender:
+          $ref: '#/components/schemas/UserInfo'
+          description: 发送者信息
+        message:
+          $ref: '#/components/schemas/MessageContent'
+          description: 消息内容
+
+    MessageContent:
+      type: object
+      required:
+        - message_type
+      properties:
+        message_type:
+          type: string
+          enum: [STRING, IMAGE, FILE, SPEECH]
+          description: |
+            消息类型：
+            - STRING: 文本消息
+            - IMAGE: 图片消息
+            - FILE: 文件消息
+            - SPEECH: 语音消息
+        string_message:
+          $ref: '#/components/schemas/StringMessageInfo'
+        image_message:
+          $ref: '#/components/schemas/ImageMessageInfo'
+        file_message:
+          $ref: '#/components/schemas/FileMessageInfo'
+        speech_message:
+          $ref: '#/components/schemas/SpeechMessageInfo'
+
+    StringMessageInfo:
+      type: object
+      required:
+        - content
+      properties:
+        content:
+          type: string
+          description: 文本内容
+          example: "你好，世界！"
+
+    ImageMessageInfo:
+      type: object
+      properties:
+        file_id:
+          type: string
+          description: 图片文件ID（服务端设置）
+        image_content:
+          type: string
+          format: byte
+          description: 图片二进制数据（Base64编码）
+
+    FileMessageInfo:
+      type: object
+      properties:
+        file_id:
+          type: string
+          description: 文件ID（服务端设置）
+        file_size:
+          type: integer
+          format: int64
+          description: 文件大小（字节）
+        file_name:
+          type: string
+          description: 文件名
+        file_contents:
+          type: string
+          format: byte
+          description: 文件二进制数据（Base64编码）
+
+    SpeechMessageInfo:
+      type: object
+      properties:
+        file_id:
+          type: string
+          description: 语音文件ID（服务端设置）
+        file_contents:
+          type: string
+          format: byte
+          description: 语音二进制数据（Base64编码）
+
+    FileDownloadData:
+      type: object
+      required:
+        - file_id
+        - file_content
+      properties:
+        file_id:
+          type: string
+          description: 文件ID
+        file_content:
+          type: string
+          format: byte
+          description: 文件二进制数据（Base64编码）
+
+    FileUploadData:
+      type: object
+      required:
+        - file_name
+        - file_size
+        - file_content
+      properties:
+        file_name:
+          type: string
+          description: 文件名
+        file_size:
+          type: integer
+          format: int64
+          description: 文件大小（字节）
+        file_content:
+          type: string
+          format: byte
+          description: 文件二进制数据（Base64编码）
+
+    FriendEvent:
+      type: object
+      required:
+        - event_id
+        - sender
+      properties:
+        event_id:
+          type: string
+          description: 事件ID
+        sender:
+          $ref: '#/components/schemas/UserInfo'
+          description: 申请人信息
+
+    # ==================== WebSocket 相关 ====================
+    ClientAuthenticationReq:
+      type: object
+      required:
+        - request_id
+        - session_id
+      properties:
+        request_id:
+          type: string
+          description: 请求唯一标识
+        session_id:
+          type: string
+          description: 登录会话ID
+      description: |
+        WebSocket 连接建立后的首包鉴权消息。
+        客户端必须在连接建立后立即发送此消息进行身份验证。
+
+    NotifyMessage:
+      type: object
+      required:
+        - notify_type
+      properties:
+        notify_event_id:
+          type: string
+          description: 通知事件ID（可选）
+        notify_type:
+          type: string
+          enum:
+            - FRIEND_ADD_APPLY_NOTIFY
+            - FRIEND_ADD_PROCESS_NOTIFY
+            - CHAT_SESSION_CREATE_NOTIFY
+            - CHAT_MESSAGE_NOTIFY
+            - FRIEND_REMOVE_NOTIFY
+          description: |
+            通知类型：
+            - FRIEND_ADD_APPLY_NOTIFY: 收到好友申请
+            - FRIEND_ADD_PROCESS_NOTIFY: 好友申请被处理
+            - CHAT_SESSION_CREATE_NOTIFY: 新会话创建
+            - CHAT_MESSAGE_NOTIFY: 新消息到达
+            - FRIEND_REMOVE_NOTIFY: 被删除好友
+        friend_add_apply:
+          $ref: '#/components/schemas/NotifyFriendAddApply'
+        friend_process_result:
+          $ref: '#/components/schemas/NotifyFriendAddProcess'
+        friend_remove:
+          $ref: '#/components/schemas/NotifyFriendRemove'
+        new_chat_session_info:
+          $ref: '#/components/schemas/NotifyNewChatSession'
+        new_message_info:
+          $ref: '#/components/schemas/NotifyNewMessage'
+      description: |
+        WebSocket 推送的通知消息。
+        服务端通过 WebSocket 向在线用户推送各类实时通知。
+
+    NotifyFriendAddApply:
+      type: object
+      required:
+        - user_info
+      properties:
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+          description: 申请人信息
+
+    NotifyFriendAddProcess:
+      type: object
+      required:
+        - agree
+        - user_info
+      properties:
+        agree:
+          type: boolean
+          description: 是否同意
+        user_info:
+          $ref: '#/components/schemas/UserInfo'
+          description: 处理人信息
+
+    NotifyFriendRemove:
+      type: object
+      required:
+        - user_id
+      properties:
+        user_id:
+          type: string
+          description: 删除自己的用户ID
+
+    NotifyNewChatSession:
+      type: object
+      required:
+        - chat_session_info
+      properties:
+        chat_session_info:
+          $ref: '#/components/schemas/ChatSessionInfo'
+          description: 新建会话信息
+
+    NotifyNewMessage:
+      type: object
+      required:
+        - message_info
+      properties:
+        message_info:
+          $ref: '#/components/schemas/MessageInfo'
+          description: 新消息
+
+externalDocs:
+  description: 项目 GitHub 仓库
+  url: https://gitee.com/zhutian/cpp-wechat-im-microservice
