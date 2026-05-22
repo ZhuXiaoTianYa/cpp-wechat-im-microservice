@@ -259,7 +259,7 @@ public:
                         const std::string &queue_name,
                         const std::string &routing_key = "routing_key") {
         _exchange_name = exchange_name;
-        _routing_key = _routing_key;
+        _routing_key = routing_key;
         _mq_client = std::make_shared<MQClient>(user, passwd, host);
         _mq_client->declareComponents(_exchange_name, queue_name, _routing_key);
     }

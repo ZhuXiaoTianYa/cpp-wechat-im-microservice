@@ -45,3 +45,11 @@ code/server/build
 code/server/friend/test/mysql_test/main
 code/server/friend/build/
 code/server/gateway/build/
+code/server/gateway/depends
+code/server/user/depends
+code/server/friend/depends
+code/server/transmite/depends
+code/server/file/depends
+code/server/speech/depends
+code/server/message/depends
+code/server/middle

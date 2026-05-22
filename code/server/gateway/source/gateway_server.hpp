@@ -280,16 +280,43 @@ private:
             ssid, uid, (void *)conn.get());
     }
 
-    void keepAlive(server_t::connection_ptr conn) {
-        if (!conn ||
-            conn->get_state() != websocketpp::session::state::value::open) {
-            LOG_DEBUG("连接保活结束：当前非 OPEN 状态，停止定时 ping");
-            return;
-        }
-        conn->ping("");
-        _ws_server.set_timer(60000,
-                             std::bind(&GatewayServer::keepAlive, this, conn));
+void keepAlive(server_t::connection_ptr conn) {
+    // 添加日志：记录当前连接状态和指针
+    LOG_DEBUG("保活检查 | conn={} | state={}", 
+              (void*)conn.get(),
+              conn ? std::to_string(conn->get_state()) : "null");
+    
+    if (!conn) {
+        LOG_WARN("保活结束：连接指针为空");
+        return;
     }
+    
+    auto state = conn->get_state();
+    if (state != websocketpp::session::state::value::open) {
+        LOG_DEBUG("保活结束：当前非 OPEN 状态，state={}，停止定时 ping", state);
+        return;
+    }
+    
+    // 添加日志：记录发送 ping 的时间
+    LOG_DEBUG("发送 Ping | conn={}", (void*)conn.get());
+    conn->ping("");
+    
+    // 添加日志：确认定时器已设置
+    LOG_DEBUG("设置下一次保活定时器 | conn={} | delay=60000ms", (void*)conn.get());
+    _ws_server.set_timer(60000, std::bind(&GatewayServer::keepAlive, this, conn));
+}
+
+
+    //    void keepAlive(server_t::connection_ptr conn) {
+//        if (!conn ||
+//            conn->get_state() != websocketpp::session::state::value::open) {
+//            LOG_DEBUG("连接保活结束：当前非 OPEN 状态，停止定时 ping");
+//            return;
+//        }
+//        conn->ping("");
+//        _ws_server.set_timer(60000,
+//                             std::bind(&GatewayServer::keepAlive, this, conn));
+//    }
     void onMessage(websocketpp::connection_hdl hdl, server_t::message_ptr msg) {
         auto conn = _ws_server.get_con_from_hdl(hdl);
         ClientAuthenticationReq req;

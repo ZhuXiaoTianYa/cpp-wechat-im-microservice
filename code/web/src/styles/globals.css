@@ -1,0 +1,136 @@
+/**
+ * 全局样式 - 微信 WeUI 风格
+ * 参考 Figma 设计稿
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:root {
+  /* WeUI 主题色 */
+  --wechat-primary: #07C160;
+  --wechat-primary-light: rgba(7, 193, 96, 0.18);
+  
+  /* 背景色 */
+  --wechat-bg-gray: #EDEDED;
+  --wechat-bg-sidebar: #2C2C2C;
+  --wechat-bg-list: #EBE9E9;
+  --wechat-bg-page: #F5F5F5;
+  --wechat-bg-card: #FFFFFF;
+  
+  /* 消息气泡 */
+  --wechat-bubble-self: #95EC69;
+  --wechat-bubble-other: #FFFFFF;
+  
+  /* 边框 */
+  --wechat-border: #D9D9D9;
+  --wechat-border-light: #F0F0F0;
+  
+  /* 文字颜色 */
+  --wechat-text-primary: #191919;
+  --wechat-text-secondary: #ABABAB;
+  --wechat-text-hint: #888;
+  --wechat-text-disabled: #BBB;
+  
+  /* 状态颜色 */
+  --wechat-danger: #F5222D;
+  --wechat-warning: #FFA500;
+  --wechat-success: #07C160;
+  --wechat-info: #1890FF;
+  
+  /* 交互 */
+  --wechat-hover: #E0DEDE;
+  --wechat-active: #C9C7C7;
+  
+  /* 尺寸 */
+  --wechat-header-height: 54px;
+  --wechat-list-item-height: 64px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--wechat-text-primary);
+  background-color: var(--wechat-bg-gray);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* 自定义滚动条 - 聊天区域 */
+.chat-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+}
+
+/* 文本选择 */
+::selection {
+  background: var(--wechat-primary-light);
+  color: var(--wechat-text-primary);
+}
+
+/* Toast 样式覆盖 */
+.toast-container {
+  z-index: 9999 !important;
+}
